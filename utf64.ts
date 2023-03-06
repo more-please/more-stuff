@@ -38,7 +38,6 @@ export function str_to_utf64(str: string): string {
     // Remaining encodings are packed UTF-8 (without the synchronisation bits)
     result.push("Z");
     let bytes: number;
-    console.log(n);
     if (n <= 0x7ff) {
       result.push(base64[n >> 6]!);
       bytes = 1;
@@ -52,10 +51,8 @@ export function str_to_utf64(str: string): string {
       // Should never happen with a valid UTF-16 input string!
       throw new Error(`Codepoint out of permitted Unicode range: ${n}`);
     }
-    console.log(bytes);
     for (let b = bytes - 1; b >= 0; --b) {
       const value = (n >> (6 * b)) & 0x3f;
-      console.log(n, b, value);
       result.push(base64[value]!);
     }
   }

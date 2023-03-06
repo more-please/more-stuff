@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "format": "prettier --loglevel warn -w ."
+    "format": "prettier --loglevel warn -w .",
+    "hooks": "rm -f .git/hooks/pre-commit && ln -s ../../.githooks/pre-commit .git/hooks/pre-commit"
   },
   "keywords": [],
   "author": "",

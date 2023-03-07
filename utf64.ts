@@ -13,7 +13,7 @@ export function str_to_utf64(str: string): string {
   const result: string[] = [];
   for (const c of str) {
     // a-z, 0-9 and - are encoded as themselves
-    if ((c >= "a" && c <= "z") || (c >= "0" && c <= "9") || c == "-") {
+    if ((c >= "a" && c <= "z") || (c >= "0" && c <= "9") || c === "-") {
       result.push(c);
       continue;
     }

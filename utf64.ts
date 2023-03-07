@@ -60,5 +60,59 @@ export function str_to_utf64(str: string): string {
 }
 
 export function utf64_to_str(str: string): string {
-  return "foo";
+  const result: string[] = [];
+  const iter = str[Symbol.iterator]();
+  const word = () => base64.indexOf(iter.next().value);
+  for (let next = iter.next(); !next.done; next = iter.next()) {
+    let c = next.value;
+    // a-z, 0-9 and - are encoded as themselves
+    if (
+      (c >= "a" && c <= "z") ||
+      (c >= "0" && c <= "9") ||
+      c === "-" ||
+      c === "_"
+    ) {
+      result.push(c);
+      continue;
+    }
+    // _ and A-W are mapped to special characters
+    if (c >= "A" && c <= "W") {
+      result.push(special[c.codePointAt(0)! - 64]!);
+      continue;
+    }
+    // X and Y are low and high halves of 7-bit ASCII
+    if (c === "X") {
+      const i = word();
+      result.push(String.fromCodePoint(i));
+      continue;
+    }
+    if (c === "Y") {
+      const i = word();
+      result.push(String.fromCodePoint(64 + i));
+      continue;
+    }
+    // Remaining encodings are packed UTF-8 (without the synchronisation bits)
+    if (c != "Z") {
+      throw new Error(`Invalid UTF-64 character: ${c}`);
+    }
+    let i = word();
+    let bytes: number;
+    if (i < 0x20) {
+      i &= 0x1f;
+      bytes = 1;
+    } else if (i < 0x30) {
+      i &= 0xf;
+      bytes = 2;
+    } else if (i < 0x38) {
+      i &= 0x7;
+      bytes = 3;
+    } else {
+      throw new Error(`Invalid UTF-8 byte: ${i}`);
+    }
+    for (let b = 0; b < bytes; ++b) {
+      i = (i << 6) + word();
+    }
+    result.push(String.fromCodePoint(i));
+  }
+  return "".concat(...result);
 }

@@ -1,0 +1,17 @@
+{
+  "valid_utf64": {
+    "": "",
+    "foo": "foo",
+    "oneCVtwoCVthree": "one, two, three",
+    "YHello": "Hello",
+    "YHelloCVworldG": "Hello, world!",
+    "OAhelloAFQAworldACAGARP": "{\"hello\":[\"world\",\"!\"]}",
+    "ZiASZiBSZiAqZiAgZiAu": "こんにちは",
+    "ZkjmZkt1Zkk8": "大家好",
+    "YCeudVmZCrleVfZCfilte": "Ceud mìle fàilte",
+    "ZvemP": "🧐",
+    "ZveG5ZveG3": "🇺🇸",
+    "ZveOzZyfAmZyfAhZyfAyZyfAiZyfAzZyfA-": "🏴󠁧󠁢󠁳󠁣󠁴󠁿"
+  },
+  "invalid_utf64": {}
+}

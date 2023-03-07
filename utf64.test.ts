@@ -1,21 +1,10 @@
 import { assert, test } from "vitest";
 
 import { str_to_utf64 } from "./utf64";
+import { valid_utf64 } from "./test.json";
 
 test("str_to_utf64", () => {
-  function check(lhs: string, rhs: string) {
-    assert.equal(str_to_utf64(lhs), rhs);
+  for (const [dest, src] of Object.entries(valid_utf64)) {
+    assert.equal(dest, str_to_utf64(src));
   }
-  check("", "");
-  check("foo", "foo");
-  check("one, two, three", "oneCVtwoCVthree");
-  check("Hello", "YHello");
-  check("Hello, world!", "YHelloCVworldG");
-  check(`{"hello":["world","!"]}`, "OAhelloAFQAworldACAGARP");
-  check("こんにちは", "ZiASZiBSZiAqZiAgZiAu");
-  check("大家好", "ZkjmZkt1Zkk8");
-  check("Ceud mìle fàilte", "YCeudVmZCrleVfZCfilte");
-  check("🧐", "ZvemP");
-  check("🇺🇸", "ZveG5ZveG3");
-  check("🏴󠁧󠁢󠁳󠁣󠁴󠁿", "ZveOzZyfAmZyfAhZyfAyZyfAiZyfAzZyfA-");
 });

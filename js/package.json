@@ -1,16 +1,20 @@
 {
   "name": "utf64",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "Encoder/decoder for UTF-64, a base64-like format for Unicode text",
+  "license": "Unlicense",
+  "author": "Iain Merrick <iain@moreplease.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/more-please/utf64.git",
+    "directory": "js"
+  },
+  "main": "dist/utf64.js",
   "type": "module",
   "scripts": {
-    "build": "tsc",
+    "prepare": "tsc",
     "test": "vitest run"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "typescript": "^4.9.5",
     "vitest": "^0.29.2"

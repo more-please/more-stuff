@@ -1,5 +1,5 @@
 import { assert, test } from "vitest";
-import { invalid_utf64, valid_utf64 } from "./test.json";
+import { invalid_utf64, valid_utf64 } from "../test.json";
 import { str_to_utf64, utf64_to_str } from "./utf64";
 
 for (const [dest, src] of Object.entries(valid_utf64)) {

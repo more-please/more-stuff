@@ -2,8 +2,8 @@ const base64 =
   "_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-";
 
 // A-W encodes frequently-used whitespace and punctuation
-//               _ABCDEFGHIJKLMNOPQRSTUVW
-const special = `_"',.;:!?+-*/(){}[]<>= \n`;
+//               _ABCDEFGHIJKLMNOPQRSTU V W
+const special = `_"',.;:!?()[]{}#=+-*/\\\n `;
 
 // X is 0-63 (note some redundancy with the chars above)
 // Y is 64-127 (ditto)
@@ -49,7 +49,7 @@ export function str_to_utf64(str: string): string {
       bytes = 3;
     } else {
       // Should never happen with a valid UTF-16 input string!
-      throw new Error(`Codepoint out of permitted Unicode range: ${n}`);
+      throw new Error(`Invalid Unicode code point: ${n}`);
     }
     for (let b = bytes - 1; b >= 0; --b) {
       const value = (n >> (6 * b)) & 0x3f;
@@ -62,9 +62,27 @@ export function str_to_utf64(str: string): string {
 export function utf64_to_str(str: string): string {
   const result: string[] = [];
   const iter = str[Symbol.iterator]();
-  const word = () => base64.indexOf(iter.next().value);
-  for (let next = iter.next(); !next.done; next = iter.next()) {
-    let c = next.value;
+  const next = () => {
+    const n = iter.next();
+    if (n.done) {
+      throw new Error("Unexpected end of input");
+    }
+    const c = n.value.codePointAt(0)!;
+    if (c === 95) {
+      return 0; // _
+    } else if (c >= 65 && c <= 90) {
+      return 1 + (c - 65); // A-Z
+    } else if (c >= 97 && c <= 122) {
+      return 27 + (c - 97); // a-z
+    } else if (c >= 48 && c <= 57) {
+      return 53 + (c - 48); // 0-9
+    } else if (c === 45) {
+      return 63; // -
+    }
+    throw new Error(`Invalid UTF-64 character: ${n.value}`);
+  };
+  for (let n = iter.next(); !n.done; n = iter.next()) {
+    let c = n.value;
     // a-z, 0-9 and - are encoded as themselves
     if (
       (c >= "a" && c <= "z") ||
@@ -82,12 +100,12 @@ export function utf64_to_str(str: string): string {
     }
     // X and Y are low and high halves of 7-bit ASCII
     if (c === "X") {
-      const i = word();
+      const i = next();
       result.push(String.fromCodePoint(i));
       continue;
     }
     if (c === "Y") {
-      const i = word();
+      const i = next();
       result.push(String.fromCodePoint(64 + i));
       continue;
     }
@@ -95,7 +113,7 @@ export function utf64_to_str(str: string): string {
     if (c != "Z") {
       throw new Error(`Invalid UTF-64 character: ${c}`);
     }
-    let i = word();
+    let i = next();
     let bytes: number;
     if (i < 0x20) {
       i &= 0x1f;
@@ -107,10 +125,10 @@ export function utf64_to_str(str: string): string {
       i &= 0x7;
       bytes = 3;
     } else {
-      throw new Error(`Invalid UTF-8 byte: ${i}`);
+      throw new Error(`Invalid UTF-8 prefix: ${i}`);
     }
     for (let b = 0; b < bytes; ++b) {
-      i = (i << 6) + word();
+      i = (i << 6) + next();
     }
     result.push(String.fromCodePoint(i));
   }

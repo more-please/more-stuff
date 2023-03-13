@@ -1,8 +1,8 @@
 {
+  "private": true,
   "scripts": {
     "format": "prettier --loglevel warn -w .",
     "hooks": "rm -f .git/hooks/pre-commit && ln -s ../../.githooks/pre-commit .git/hooks/pre-commit",
-    "prepare": "pnpm -r prepare",
     "test": "pnpm -r test"
   },
   "devDependencies": {

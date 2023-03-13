@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf .python",
+    "venv": "python3 -m venv .python",
+    "test": "echo test"
+  }
+}

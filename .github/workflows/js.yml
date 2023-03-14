@@ -1,9 +1,5 @@
 name: Test JS
-on:
-  push:
-    paths:
-      - test.json
-      - js/**
+on: push
 jobs:
   test-js:
     runs-on: ubuntu-latest
@@ -19,4 +15,4 @@ jobs:
       - name: Install
         run: pnpm install
       - name: Test
-        run: cd js && pnpm test
+        run: cd js && pnpm exec pnpm test

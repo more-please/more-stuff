@@ -17,7 +17,7 @@ $(ENV): dev_requirements.txt
 	python3 -m venv $@
 	$(PYTHON3) -m pip install -r dev_requirements.txt
 
-.PHONY: clean test format
+.PHONY: clean test format publish
 
 clean:
 	rm -rf $(ENV)
@@ -27,3 +27,6 @@ test: $(PYTHON3)
 
 format: $(PYTHON3)
 	$(PYTHON3) -m black .
+
+publish: $(PYTHON3)
+	$(PYTHON3) -m flit publish

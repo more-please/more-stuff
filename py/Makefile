@@ -3,21 +3,27 @@ MAKEFLAGS += --no-builtin-rules
 MAKEFLAGS += --no-builtin-variables
 .SUFFIXES:
 
-PYTHON = .python/pyvenv.cfg
+ENV = env
+PYTHON3 = $(ENV)/bin/python3
 
-TARGETS = \
-	$(PYTHON)
+TARGETS = $(PYTHON3)
 
-$(PYTHON): dev_requirements.txt requirements.txt
-	rm -rf .python
-	python3 -m venv .python
-	.python/bin/python3 -m pip install -r dev_requirements.txt
+all: $(TARGETS)
 
-.PHONY: test format
+$(PYTHON3): $(ENV)
 
-test: $(PYTHON)
-	.python/bin/python3 -m unittest
+$(ENV): dev_requirements.txt
+	rm -rf $@
+	python3 -m venv $@
+	$(PYTHON3) -m pip install -r dev_requirements.txt
 
-format: $(PYTHON)
-	.python/bin/python3 -m black .
+.PHONY: clean test format
 
+clean:
+	rm -rf $(ENV)
+
+test: $(PYTHON3)
+	$(PYTHON3) -m unittest
+
+format: $(PYTHON3)
+	$(PYTHON3) -m black .

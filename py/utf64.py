@@ -1,3 +1,7 @@
+"""Codec for UTF-64, a base64-like format for Unicode text"""
+
+__version__ = "0.0.1"
+
 _base64 = "_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
 
 _special = "_\"',.;:!?()[]{}#=+-*/\\\n "

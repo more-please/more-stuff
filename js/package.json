@@ -13,7 +13,8 @@
   "type": "module",
   "scripts": {
     "prepare": "tsc",
-    "test": "vitest run"
+    "test": "vitest run",
+    "upgrade-deps": "pnpm update --latest"
   },
   "devDependencies": {
     "typescript": "^4.9.5",

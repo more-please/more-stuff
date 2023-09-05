@@ -3,7 +3,8 @@
   "scripts": {
     "format": "prettier --loglevel warn -w . && pnpm -r format",
     "hooks": "rm -f .git/hooks/pre-commit && ln -s ../../.githooks/pre-commit .git/hooks/pre-commit",
-    "test": "pnpm -r test"
+    "test": "pnpm -r test",
+    "upgrade-deps": "pnpm update --latest && pnpm -r upgrade-deps"
   },
   "devDependencies": {
     "prettier": "^2.8.4"

@@ -5,7 +5,7 @@ import os
 import utf64
 
 _dir = os.path.dirname(__file__)
-_json = os.path.join(_dir, "test.json")
+_json = os.path.join(_dir, "../test.json")
 with open(_json, mode="r", encoding="utf-8") as f:
     _data = json.loads(f.read())
 

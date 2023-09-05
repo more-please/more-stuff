@@ -6,6 +6,7 @@ build-backend = "flit_core.buildapi"
 name = "utf64"
 authors = [{name = "Iain Merrick", email = "iain@moreplease.com"}]
 dynamic = ["version", "description"]
+readme = "README.md"
 requires-python = ">=3.3"
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -15,3 +16,6 @@ classifiers = [
 
 [project.urls]
 Home = "https://github.com/more-please/utf64"
+
+[tool.flit.sdist]
+include = ["README.md"]

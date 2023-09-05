@@ -5,12 +5,17 @@ MAKEFLAGS += --no-builtin-variables
 
 ENV = env
 PYTHON3 = $(ENV)/bin/python3
+README = README.md
 
-TARGETS = $(PYTHON3)
+TARGETS = $(PYTHON3) $(README)
 
 all: $(TARGETS)
 
 $(PYTHON3): $(ENV)
+
+$(README): ../$(README)
+	rm -f $@
+	cp $< $@
 
 $(ENV): dev_requirements.txt
 	rm -rf $@
@@ -20,6 +25,7 @@ $(ENV): dev_requirements.txt
 .PHONY: clean test format publish
 
 clean:
+	rm -f $(README)
 	rm -rf $(ENV)
 
 test: $(PYTHON3)
@@ -28,5 +34,5 @@ test: $(PYTHON3)
 format: $(PYTHON3)
 	$(PYTHON3) -m black .
 
-publish: $(PYTHON3)
+publish: all
 	$(PYTHON3) -m flit publish

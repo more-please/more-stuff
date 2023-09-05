@@ -2,7 +2,7 @@
   "name": "utf64",
   "version": "0.0.5",
   "description": "Encoder/decoder for UTF-64, a URL-safe encoding for JSONish strings",
-  "license": "Unlicense",
+  "license": "0BSD",
   "author": "Iain Merrick <iain@moreplease.com>",
   "repository": {
     "type": "git",

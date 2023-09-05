@@ -12,7 +12,7 @@
     "declaration": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "outDir": "dist"
+    "outDir": "js/dist"
   },
-  "files": ["utf64.ts", "utf64.tool.ts"]
+  "files": ["js/utf64.ts", "js/utf64.tool.ts"]
 }

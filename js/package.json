@@ -11,12 +11,16 @@
   },
   "main": "dist/utf64.js",
   "type": "module",
+  "bin": {
+    "utf64": "./bin/utf64"
+  },
   "scripts": {
     "prepare": "tsc",
     "test": "vitest run",
     "upgrade-deps": "pnpm update --latest"
   },
   "devDependencies": {
+    "@types/node": "^20.5.9",
     "typescript": "^5.2.2",
     "vitest": "^0.34.3"
   }

@@ -1,4 +1,4 @@
-"""Codec for UTF-64, a base64-like format for Unicode text"""
+"""Encoder/decoder for UTF-64, a URL-safe encoding for JSONish strings"""
 
 __version__ = "0.0.1"
 

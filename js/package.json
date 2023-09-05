@@ -1,6 +1,6 @@
 {
   "name": "utf64",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Encoder/decoder for UTF-64, a URL-safe encoding for JSONish strings",
   "license": "Unlicense",
   "author": "Iain Merrick <iain@moreplease.com>",

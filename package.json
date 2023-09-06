@@ -2,6 +2,7 @@
   "name": "utf64",
   "version": "0.0.8",
   "description": "Encoder/decoder for UTF-64, a URL-safe encoding for JSONish strings",
+  "keywords": ["utf64", "base64", "base64url"],
   "license": "0BSD",
   "author": "Iain Merrick <iain@moreplease.com>",
   "repository": {

@@ -1,6 +1,6 @@
 """Encoder/decoder for UTF-64, a URL-safe encoding for JSONish strings"""
 
-__version__ = "0.0.6"
+__version__ = "0.0.7"
 
 _base64 = "_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
 

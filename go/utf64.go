@@ -138,7 +138,7 @@ func Decode(text string) (string, error) {
 				}
 				n = (n << 6) + i
 			}
-			if (n > 0x10ffff) {
+			if n > 0x10ffff {
 				return "", errors.New(fmt.Sprintf("Invalid Unicode output: 0x%x", n))
 			}
 			result.WriteRune(rune(n))

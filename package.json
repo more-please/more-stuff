@@ -2,7 +2,11 @@
   "name": "utf64",
   "version": "0.0.8",
   "description": "Encoder/decoder for UTF-64, a URL-safe encoding for JSONish strings",
-  "keywords": ["utf64", "base64", "base64url"],
+  "keywords": [
+    "utf64",
+    "base64",
+    "base64url"
+  ],
   "license": "0BSD",
   "author": "Iain Merrick <iain@moreplease.com>",
   "repository": {
@@ -23,13 +27,15 @@
   ],
   "scripts": {
     "hooks": "rm -f .git/hooks/pre-commit && ln -s ../../.githooks/pre-commit .git/hooks/pre-commit",
-    "format": "pnpm run format:js && pnpm run format:py",
-    "test": "pnpm run test:js && pnpm run test:py",
+    "format": "pnpm run format:js && pnpm run format:py && pnpm run format:go",
+    "test": "pnpm run test:js && pnpm run test:py && pnpm run test:go",
     "prepare": "tsc",
     "test:js": "vitest run",
     "format:js": "prettier --loglevel warn -w .",
     "test:py": "cd py && make test",
-    "format:py": "cd py && make format"
+    "format:py": "cd py && make format",
+    "test:go": "cd go && go test",
+    "format:go": "cd go && gofmt -w -s ."
   },
   "devDependencies": {
     "@types/node": "^20.5.9",

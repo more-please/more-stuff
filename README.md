@@ -51,6 +51,12 @@ print(str_to_utf64("Hello!"))
 print(utf64_to_str("YHelloG"))
 ```
 
+### Go
+
+```
+go get moreplease.com/utf64
+```
+
 ### Command-line tool
 
 The JS package includes a `utf64` command-line tool:

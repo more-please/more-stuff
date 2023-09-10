@@ -58,6 +58,24 @@ print(utf64_to_str("YHelloG"))
 go get moreplease.com/utf64
 ```
 
+```
+package main
+
+import (
+	"fmt"
+	"moreplease.com/utf64"
+)
+
+func main() {
+	fmt.Println(utf64.Encode("Hello!"))
+	result, err := utf64.Decode("YHelloG")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(result)
+}
+```
+
 ### Command-line tool
 
 The JS package includes a `utf64` command-line tool:

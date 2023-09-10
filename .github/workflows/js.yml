@@ -15,4 +15,4 @@ jobs:
       - name: Install
         run: pnpm install
       - name: Test
-        run: cd js && pnpm test
+        run: pnpm test:js

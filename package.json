@@ -34,8 +34,8 @@
     "format:js": "prettier --loglevel warn -w .",
     "test:py": "cd py && make test",
     "format:py": "cd py && make format",
-    "test:go": "cd go && go test",
-    "format:go": "cd go && gofmt -w -s ."
+    "test:go": "go test",
+    "format:go": "gofmt -w -s ."
   },
   "devDependencies": {
     "@types/node": "^20.5.9",

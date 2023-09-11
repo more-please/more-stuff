@@ -5,7 +5,8 @@
     "test": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "dev": "vite dev",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "push": "vite build && wrangler pages deploy --project-name utf64 .svelte-kit/cloudflare"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^2.1.0",

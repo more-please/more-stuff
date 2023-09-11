@@ -1,0 +1,26 @@
+name: Push website
+on:
+  push:
+    branches:
+      - main
+jobs:
+  push-website:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.0.0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "pnpm"
+      - name: Install
+        run: pnpm install
+      - name: Test
+        run: cd website && pnpm test
+      - name: Push
+        run: cd website && pnpm run push
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

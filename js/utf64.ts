@@ -79,7 +79,7 @@ export function utf64_to_str(str: string): string {
     } else if (c === 45) {
       return 63; // -
     }
-    throw new Error(`Invalid UTF-64 character: ${n.value}`);
+    throw new Error(`Invalid UTF-64 character: '${n.value}'`);
   };
   for (let n = iter.next(); !n.done; n = iter.next()) {
     let c = n.value;
@@ -111,7 +111,7 @@ export function utf64_to_str(str: string): string {
     }
     // Remaining encodings are packed UTF-8 (without the synchronisation bits)
     if (c != "Z") {
-      throw new Error(`Invalid UTF-64 character: ${c}`);
+      throw new Error(`Invalid UTF-64 character: '${c}'`);
     }
     let i = next();
     let bytes: number;
@@ -125,7 +125,7 @@ export function utf64_to_str(str: string): string {
       i &= 0x7;
       bytes = 3;
     } else {
-      throw new Error(`Invalid UTF-8 prefix: ${i}`);
+      throw new Error(`Invalid UTF-8 prefix: '${i}'`);
     }
     for (let b = 0; b < bytes; ++b) {
       i = (i << 6) + next();

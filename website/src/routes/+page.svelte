@@ -58,13 +58,38 @@
       <h3>What it does</h3>
       <p>
         UTF-64 is a way to encode any Unicode string so that it can safely be
-        stored in a URL parameter. This is useful any time you want to pass a
-        JSON blob or Unicode string in a URL.
+        stored in a URL parameter, in a compact and readable way. This is useful
+        any time you want to pass a JSON blob or Unicode string anywhere in a
+        URL.
       </p>
-      <p>
-        It's similar to <a href="https://en.wikipedia.org/wiki/Base64">Base64</a
-        >, but has some advantages:
-      </p>
+      <h4>
+        Compared to <a
+          href="https://developer.mozilla.org/en-US/docs/Glossary/percent-encoding"
+          >percent-encoding</a
+        >
+      </h4>
+      <ul>
+        <li>
+          UTF-64 has a single API with consistent behavior across languages. No
+          more confusion around <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI"
+            >encodeURI</a
+          >
+          vs
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent"
+            >encodeURIComponent</a
+          >,
+          <a href="https://pkg.go.dev/net/url?utm_source=godoc#PathEscape"
+            >PathEscape</a
+          >
+          vs
+          <a href="https://pkg.go.dev/net/url?utm_source=godoc#QueryEscape"
+            >QueryEscape</a
+          >, etc.
+        </li>
+      </ul>
+      <h4>Compared to Base64</h4>
       <ul>
         <li>
           Base64 isn't URL-safe (you need to use <a
@@ -74,14 +99,9 @@
         <li>
           Base64 has an <a
             href="https://developer.mozilla.org/en-US/docs/Glossary/Base64#the_unicode_problem"
-            >awkward JavaScript API</a
+            >awkward JS API</a
           > for Unicode strings. UTF-64 has a convenient Unicode-aware API for multiple
           languages.
-        </li>
-        <li>UTF-64 is more compact for typical JSON input.</li>
-        <li>
-          UTF-64 is more readable, as numbers and lowercase letters are stored
-          directly (e.g. the string "hello123" is encoded as "hello123").
         </li>
       </ul>
     </div>

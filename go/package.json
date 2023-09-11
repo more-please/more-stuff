@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "scripts": {
+    "format": "cd .. && gofmt -w -s .",
+    "test": "cd .. && go test"
+  }
+}

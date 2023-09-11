@@ -1,46 +1,8 @@
 {
-  "name": "utf64",
-  "version": "0.0.9",
-  "description": "Encoder/decoder for UTF-64, a URL-safe encoding for JSONish strings",
-  "keywords": [
-    "utf64",
-    "base64",
-    "base64url"
-  ],
-  "license": "0BSD",
-  "author": "Iain Merrick <iain@moreplease.com>",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/more-please/utf64.git",
-    "directory": "js"
-  },
-  "main": "dist/utf64.js",
-  "type": "module",
-  "bin": {
-    "utf64": "./bin/utf64"
-  },
-  "files": [
-    "README.md",
-    "LICENSE",
-    "dist/*",
-    "bin/*"
-  ],
+  "private": true,
   "scripts": {
     "hooks": "rm -f .git/hooks/pre-commit && ln -s ../../.githooks/pre-commit .git/hooks/pre-commit",
-    "format": "pnpm run format:js && pnpm run format:py && pnpm run format:go",
-    "test": "pnpm run test:js && pnpm run test:py && pnpm run test:go",
-    "prepare": "tsc",
-    "test:js": "vitest run",
-    "format:js": "prettier --loglevel warn -w .",
-    "test:py": "cd py && make test",
-    "format:py": "cd py && make format",
-    "test:go": "go test",
-    "format:go": "gofmt -w -s ."
-  },
-  "devDependencies": {
-    "@types/node": "^20.5.9",
-    "prettier": "^3.0.3",
-    "typescript": "^5.2.2",
-    "vitest": "^0.34.3"
+    "format": "pnpm run -r format",
+    "test": "pnpm run -r test"
   }
 }

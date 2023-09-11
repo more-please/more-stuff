@@ -1,0 +1,38 @@
+{
+  "name": "utf64",
+  "version": "0.0.9",
+  "description": "Encoder/decoder for UTF-64, a URL-safe encoding for JSONish strings",
+  "keywords": [
+    "utf64",
+    "base64",
+    "base64url"
+  ],
+  "license": "0BSD",
+  "author": "Iain Merrick <iain@moreplease.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/more-please/utf64.git",
+    "directory": "js"
+  },
+  "main": "dist/utf64.js",
+  "type": "module",
+  "bin": {
+    "utf64": "utf64.sh"
+  },
+  "files": [
+    "README.md",
+    "LICENSE",
+    "dist/*"
+  ],
+  "scripts": {
+    "format": "prettier --log-level warn -w .",
+    "test": "vitest run",
+    "prepare": "tsc && cp -f ../README.md ../LICENSE ."
+  },
+  "devDependencies": {
+    "@types/node": "^20.6.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.4"
+  }
+}

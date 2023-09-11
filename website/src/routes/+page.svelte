@@ -18,7 +18,7 @@
   <title>UTF-64</title>
   <meta
     name="go-import"
-    content="moreplease.com/utf64 git https://github.com/more-please/utf64"
+    content="utf64.moreplease.com git https://github.com/more-please/utf64"
   />
 </svelte:head>
 
@@ -112,7 +112,7 @@
       <h4>Python</h4>
       <pre>pip install utf64</pre>
       <h4>Go</h4>
-      <pre>go get moreplease.com/utf64</pre>
+      <pre>go get utf64.moreplease.com</pre>
       <h4>Other languages</h4>
       <p>
         Contributions welcome! Please feel free to send a pull request or file

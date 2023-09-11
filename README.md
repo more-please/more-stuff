@@ -55,7 +55,7 @@ print(utf64_to_str("YHelloG"))
 ### Go
 
 ```
-go get moreplease.com/utf64
+go get utf64.moreplease.com
 ```
 
 ```
@@ -63,7 +63,7 @@ package main
 
 import (
 	"fmt"
-	"moreplease.com/utf64"
+	"utf64.moreplease.com"
 )
 
 func main() {

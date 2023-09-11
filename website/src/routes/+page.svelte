@@ -20,6 +20,7 @@
     name="go-import"
     content="utf64.moreplease.com git https://github.com/more-please/utf64"
   />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </svelte:head>
 
 <div class="content">
@@ -120,6 +121,7 @@
       </p>
     </div>
   </div>
+  <div class="cols">
   <div class="col">
     <h3>About</h3>
     <p>
@@ -133,6 +135,7 @@
       <a href="https://moreplease.com">More Please</a> is my freelance software development
       business.
     </p>
+  </div>
   </div>
 </div>
 
@@ -184,7 +187,7 @@
     margin: 0 auto;
   }
   div.col {
-    width: 24em;
+    max-width: 24em;
   }
   form {
     display: flex;

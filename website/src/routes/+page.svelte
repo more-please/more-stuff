@@ -24,7 +24,7 @@
 </svelte:head>
 
 <div class="content">
-  <h1>UTF-64</h1>
+  <h1><img src="$lib/utf64.svg" alt="utf-64" width="236" height="64" /></h1>
   <h2>A terse, human-readable, URL-safe encoding for JSONish strings</h2>
   <div class="cols">
     <form class="col" method="get">
@@ -122,20 +122,20 @@
     </div>
   </div>
   <div class="cols">
-  <div class="col">
-    <h3>About</h3>
-    <p>
-      UTF-64 is by <a href="mailto:iain@moreplease.com">Iain Merrick</a>. It's
-      free to use for any purpose. (See
-      <a href="https://github.com/more-please/utf64/blob/main/LICENSE"
-        >LICENSE</a
-      > on GitHub.)
-    </p>
-    <p>
-      <a href="https://moreplease.com">More Please</a> is my freelance software development
-      business.
-    </p>
-  </div>
+    <div class="col">
+      <h3>About</h3>
+      <p>
+        UTF-64 is by <a href="mailto:iain@moreplease.com">Iain Merrick</a>. It's
+        free to use for any purpose. (See
+        <a href="https://github.com/more-please/utf64/blob/main/LICENSE"
+          >LICENSE</a
+        > on GitHub.)
+      </p>
+      <p>
+        <a href="https://moreplease.com">More Please</a> is my freelance software
+        development business.
+      </p>
+    </div>
   </div>
 </div>
 

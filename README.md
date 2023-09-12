@@ -1,8 +1,6 @@
-# utf64
+![utf-64](utf64.svg)
 
 A terse, human-readable, URL-safe encoding for JSONish strings.
-
-### **[utf64.moreplease.com](https://utf64.moreplease.com)**
 
 [![Test JS](https://github.com/more-please/utf64/actions/workflows/js.yml/badge.svg)](https://github.com/more-please/utf64/actions/workflows/js.yml)
 [![Test Python](https://github.com/more-please/utf64/actions/workflows/py.yml/badge.svg)](https://github.com/more-please/utf64/actions/workflows/py.yml)

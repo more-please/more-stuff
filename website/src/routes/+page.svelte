@@ -42,6 +42,7 @@
     <form class="col" method="get">
       <label for="encode">Try it! Type anything here:</label>
       <textarea
+        id="encode"
         name="encode"
         bind:value={src}
         on:input={encode}
@@ -57,6 +58,7 @@
         >{#if error}<span class="error">{error}</span>{:else}Encoded as UTF-64:{/if}</label
       >
       <textarea
+        id="decode"
         name="decode"
         class={error ? "error" : ""}
         bind:value={dest}

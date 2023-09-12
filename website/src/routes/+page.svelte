@@ -25,10 +25,14 @@
 <svelte:head>
   <title>UTF-64</title>
   <meta
+    name="description"
+    content="A terse, human-readable, URL-safe encoding for JSONish strings"
+  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
     name="go-import"
     content="utf64.moreplease.com git https://github.com/more-please/utf64"
   />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </svelte:head>
 
 <div class="content">

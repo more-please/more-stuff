@@ -5,12 +5,20 @@
   export let data: PageData;
   let src = data.src;
   let dest = data.dest;
+  let error = data.error;
 
   function encode() {
     dest = utf64.encode(src);
+    error = null;
   }
   function decode() {
-    src = utf64.decode(dest);
+    try {
+      src = utf64.decode(dest);
+      error = null;
+    } catch (err) {
+      const e = err as Error;
+      error = e.message;
+    }
   }
 </script>
 
@@ -41,9 +49,12 @@
       </noscript>
     </form>
     <form class="col" method="get">
-      <label for="decode">Encoded as UTF-64:</label>
+      <label for="decode"
+        >{#if error}<span class="error">{error}</span>{:else}Encoded as UTF-64:{/if}</label
+      >
       <textarea
         name="decode"
+        class={error ? "error" : ""}
         bind:value={dest}
         on:input={decode}
         rows="8"
@@ -200,5 +211,12 @@
     background-color: floralwhite;
     border: 1px solid lightgray;
     padding: 0.5em;
+  }
+  span.error {
+    font-weight: bold;
+    color: red;
+  }
+  textarea.error {
+    background-color: rgba(255, 0, 0, 25%);
   }
 </style>

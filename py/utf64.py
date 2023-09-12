@@ -1,13 +1,13 @@
 """Encoder/decoder for UTF-64, a URL-safe encoding for JSONish strings"""
 
-__version__ = "0.0.9"
+__version__ = "0.0.10"
 
 _base64 = "_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
 
 _special = "_\"',.;:!?()[]{}#=+-*/\\\n "
 
 
-def str_to_utf64(input: str) -> str:
+def encode(input: str) -> str:
     result = []
     for c in input:
         # a-z, 0-9 and - are encoded as themselves
@@ -48,7 +48,7 @@ def str_to_utf64(input: str) -> str:
     return "".join(result)
 
 
-def utf64_to_str(input: str) -> str:
+def decode(input: str) -> str:
     result = []
     it = iter(input)
 

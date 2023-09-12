@@ -3,8 +3,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import * as url from "node:url";
-
-import { str_to_utf64, utf64_to_str } from "./utf64.js";
+import * as utf64 from "./utf64.js";
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
@@ -62,6 +61,6 @@ if (input.length === 0) {
 }
 
 for (const line of input) {
-  const output = decode ? utf64_to_str(line) : str_to_utf64(line);
+  const output = decode ? utf64.decode(line) : utf64.encode(line);
   process.stdout.write(`${output}\n`);
 }

@@ -27,13 +27,10 @@ npm install utf64
 ```
 
 ```
-import { str_to_utf64, utf64_to_str } from "utf64";
+import * as utf64 from "utf64";
 
-# Encode
-console.log(str_to_utf64("Hello!"));
-
-# Decode
-console.log(utf64_to_str("YHelloG"));
+console.log(utf64.encode("Hello!"));
+console.log(utf64.decode("YHelloG"));
 ```
 
 ### Python
@@ -43,13 +40,10 @@ pip install utf64
 ```
 
 ```
-from utf64 import str_to_utf64, utf64_to_str
+import utf64
 
-# Encode
-print(str_to_utf64("Hello!"))
-
-# Decode
-print(utf64_to_str("YHelloG"))
+print(utf64.encode("Hello!"))
+print(utf64.decode("YHelloG"))
 ```
 
 ### Go
@@ -85,11 +79,8 @@ npm install -g utf64
 ```
 
 ```
-# Encode
-echo -n "Hello\!" | utf64
-
-# Decode
-echo -n "YHelloG" | utf64 -d
+utf64 "Hello\!"
+utf64 -d YHelloG
 ```
 
 ## Specification

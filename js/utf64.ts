@@ -9,7 +9,7 @@ const special = `_"',.;:!?()[]{}#=+-*/\\\n `;
 // Y is 64-127 (ditto)
 // Z is codepoints 128+ (bottom 6 bits of UTF-8)
 
-export function str_to_utf64(str: string): string {
+export function encode(str: string): string {
   const result: string[] = [];
   for (const c of str) {
     // a-z, 0-9 and - are encoded as themselves
@@ -59,7 +59,7 @@ export function str_to_utf64(str: string): string {
   return "".concat(...result);
 }
 
-export function utf64_to_str(str: string): string {
+export function decode(str: string): string {
   const result: string[] = [];
   const iter = str[Symbol.iterator]();
   const next = () => {

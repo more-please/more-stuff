@@ -13,15 +13,15 @@ with open(_json, mode="r", encoding="utf-8") as f:
 class TestUtf64(unittest.TestCase):
     def test_str_to_utf64(self):
         for dest, src in _data["valid_utf64"].items():
-            self.assertEqual(dest, utf64.str_to_utf64(src))
+            self.assertEqual(dest, utf64.encode(src))
 
     def test_utf64_to_str(self):
         for dest, src in _data["valid_utf64"].items():
-            self.assertEqual(src, utf64.utf64_to_str(dest))
+            self.assertEqual(src, utf64.decode(dest))
 
     def test_invalid_utf64(self):
         for dest, err in _data["invalid_utf64"].items():
-            self.assertRaises(ValueError, utf64.utf64_to_str, dest)
+            self.assertRaises(ValueError, utf64.decode, dest)
 
 
 if __name__ == "__main__":

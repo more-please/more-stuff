@@ -1,16 +1,16 @@
 <script lang="ts">
   import type { PageData } from "./$types";
-  import { str_to_utf64, utf64_to_str } from "utf64";
+  import * as utf64 from "utf64";
 
   export let data: PageData;
   let src = data.src;
   let dest = data.dest;
 
   function encode() {
-    dest = str_to_utf64(src);
+    dest = utf64.encode(src);
   }
   function decode() {
-    src = utf64_to_str(dest);
+    src = utf64.decode(dest);
   }
 </script>
 

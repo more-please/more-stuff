@@ -4,12 +4,12 @@ version = "0.1.0"
 edition = "2021"
 authors = ["Mark Musante <mark.musante@gmail.com>"]
 keywords = ["text", "utility", "string", "unicode", "trait"]
-license-file = "../../LICENSE"
+license-file = "../LICENSE"
 description = "A utility to encode utf-8 strings into utf-64, and decode them back."
 homepage = "https://utf64.moreplease.com/"
 documentation = "https://docs.rs/utf64"
 repository = "https://github.com/more-please/utf64"
-readme = "../../README.md"
+readme = "../README.md"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

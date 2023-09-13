@@ -29,21 +29,26 @@ impl<T: AsRef<str>> UTF64 for T {
                 result.push(ch);
                 continue;
             }
+
             if let Some(index) = SPECIAL.find(ch) {
                 result.push_str(&BASE64[index..index + 1]);
                 continue;
             }
+
             let n = (ch as u32) as usize;
+
             if n < 64 {
                 result.push('X');
                 result.push_str(&BASE64[n..n + 1]);
                 continue;
             }
+
             if n < 128 {
                 result.push('Y');
                 result.push_str(&BASE64[n - 64..n - 63]);
                 continue;
             }
+
             result.push('Z');
             let (bytes, index) = if n < 0x7ff {
                 (1, n >> 6)
@@ -64,6 +69,22 @@ impl<T: AsRef<str>> UTF64 for T {
     }
 
     fn decode_utf64(&self) -> Result<String, Self::Error> {
+        fn code(chars: &mut Chars) -> Result<u8, String> {
+            let Some(ch) = chars.next() else {
+                return Err("Unexpected end of input".to_string());
+            };
+            let num = ch as u8;
+
+            Ok(match num {
+                95 => 0,
+                65..=90 => 1 + (num - 65),
+                97..=122 => 27 + (num - 97),
+                48..=57 => 53 + (num - 48),
+                45 => 63,
+                _ => return Err(format!("Invalid UTF-64 character: {ch}")),
+            })
+        }
+
         let mut result = String::new();
         let mut iter = self.as_ref().chars();
 
@@ -72,15 +93,19 @@ impl<T: AsRef<str>> UTF64 for T {
 
             match ch {
                 '-' | '_' | 'a'..='z' | '0'..='9' => result.push(ch),
+
                 'A'..='W' => {
                     let index = (ch as u8 - b'A' + 1) as usize;
                     result.push_str(&SPECIAL[index..index + 1]);
                 }
-                'X' => result.push(code(pop(&mut iter)?)? as char),
-                'Y' => result.push((64 + code(pop(&mut iter)?)?) as char),
+
+                'X' => result.push(code(&mut iter)? as char),
+
+                'Y' => result.push((64 + code(&mut iter)?) as char),
+
                 'Z' => {
-                    let ch = pop(&mut iter)?;
-                    let chcode = code(ch)?;
+                    let chcode = code(&mut iter)?;
+
                     let (mut index, bytes) = if chcode < 0x20 {
                         (chcode as u32 & 0x1f, 1)
                     } else if chcode < 0x30 {
@@ -90,14 +115,15 @@ impl<T: AsRef<str>> UTF64 for T {
                     } else {
                         return Err(format!("Invalid UTF-8 prefix: {chcode}"));
                     };
+
                     for _ in 0..bytes {
-                        let ch = pop(&mut iter)?;
-                        let chcode = code(ch)?;
+                        let chcode = code(&mut iter)?;
                         index = (index << 6) + chcode as u32;
                     }
                     let Some(ch) = char::from_u32(index) else {
                         return Err(format!("Invalid UTF-8 codepoint: {index}"));
                     };
+
                     result.push(ch);
                 }
                 _ => return Err(format!("Invalid UTF-64 character: {ch}")),
@@ -106,26 +132,6 @@ impl<T: AsRef<str>> UTF64 for T {
 
         Ok(result)
     }
-}
-
-fn pop(chars: &mut Chars) -> Result<char, String> {
-    let Some(ch) = chars.next() else {
-        return Err(format!("Unexpected end of input"));
-    };
-    Ok(ch)
-}
-
-fn code(ch: char) -> Result<u8, String> {
-    let num = ch as u8;
-
-    Ok(match num {
-        95 => 0,
-        65..=90 => 1 + (num - 65),
-        97..=122 => 27 + (num - 97),
-        48..=57 => 53 + (num - 48),
-        45 => 63,
-        _ => return Err(format!("Invalid UTF-64 character: {ch}")),
-    })
 }
 
 #[cfg(test)]

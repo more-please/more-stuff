@@ -1,5 +1,9 @@
 name: Test JS
-on: push
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
 jobs:
   test-js:
     runs-on: ubuntu-latest

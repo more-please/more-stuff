@@ -1,8 +1,9 @@
 name: Test website
 on:
   push:
-    branches:
-      - main
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
 jobs:
   push-website:
     runs-on: ubuntu-latest

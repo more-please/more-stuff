@@ -11,6 +11,6 @@ documentation = "https://docs.rs/utf64"
 repository = "https://github.com/more-please/utf64"
 readme = "../README.md"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[dev-dependencies]
+serde_json = "1.0.107"
 
-[dependencies]

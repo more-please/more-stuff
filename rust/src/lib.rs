@@ -89,7 +89,9 @@ impl<T: AsRef<str>> UTF64 for T {
         let mut iter = self.as_ref().chars();
 
         loop {
-            let Some(ch) = iter.next() else { break; };
+            let Some(ch) = iter.next() else {
+                break;
+            };
 
             match ch {
                 '-' | '_' | 'a'..='z' | '0'..='9' => result.push(ch),
@@ -136,41 +138,25 @@ impl<T: AsRef<str>> UTF64 for T {
 
 #[cfg(test)]
 mod test {
-    use std::collections::HashMap;
-
     use super::*;
-
-    fn get_valid() -> HashMap<&'static str, &'static str> {
-        HashMap::from([
-            ("", ""),
-            ("foo", "foo"),
-            ("foo_bar_xyzzy", "foo_bar_xyzzy"),
-            ("Xk", "%"),
-            ("oneCWtwoCWthree", "one, two, three"),
-            ("UAescapedWquotesUA", "\\\"escaped quotes\\\""),
-            ("hello", "hello"),
-            ("YHello", "Hello"),
-            ("Ohello", "#hello"),
-            ("YHelloCWworldG", "Hello, world!"),
-            ("MAhelloAFKAworldACAGALN", "{\"hello\":[\"world\",\"!\"]}"),
-            ("ZiASZiBSZiAqZiAgZiAu", "こんにちは"),
-            ("ZkjmZkt1Zkk8", "大家好"),
-            ("YCeudWmZCrleWfZCfilte", "Ceud mìle fàilte"),
-            ("ZvemP", "🧐"),
-            ("ZhBr", "€"),
-            ("ZveG5ZveG3", "🇺🇸"),
-            ("ZveOzZyfAmZyfAhZyfAyZyfAiZyfAzZyfA-", "🏴󠁧󠁢󠁳󠁣󠁴󠁿"),
-        ])
-    }
+    use serde_json::Value;
+    use std::{fs::File, io::Read};
 
     #[test]
-    fn encoding_tests() {
-        let valid_utf64 = get_valid();
+    fn valid_tests() {
+        let mut f = File::open("../test.json").expect("unable to open test data file");
+        let mut data = String::new();
+        f.read_to_string(&mut data).expect("failed to read file");
+        let mut v: Value = serde_json::from_str(data.as_str()).expect("failure parsing test.json");
+
+        let valid_utf64 = v["valid_utf64"].take();
+        let valid_utf64 = valid_utf64.as_object().unwrap();
+        assert!(valid_utf64.len() > 0);
 
         let mut success = 0;
         let mut failure = 0;
-        for (k, v) in &valid_utf64 {
-            let enc = v.encode_utf64().unwrap();
+        for (k, v) in valid_utf64 {
+            let enc = v.as_str().unwrap().encode_utf64().unwrap();
             if k == &enc.as_str() {
                 success += 1;
             } else {
@@ -180,29 +166,9 @@ mod test {
         }
         assert_eq!(valid_utf64.len(), success);
         assert_eq!(0, failure);
-    }
 
-    #[test]
-    fn decoding_tests() {
-        let valid_utf64 = get_valid();
-        let invalid_utf64 = HashMap::from([
-            ("?", "invalid UTF-64 character"),
-            ("X", "truncated X escape"),
-            ("X?", "invalid X escape"),
-            ("Y", "truncated Y escape"),
-            ("Y?", "invalid X escape"),
-            ("Z", "truncated Z escape"),
-            ("Z?", "invalid Z escape"),
-            ("Zvem", "truncated UTF-8"),
-            ("Z0___", "invalid UTF-8"),
-        ]);
-
-        assert_eq!("@".to_string(), String::from("Y_").decode_utf64().unwrap());
-
-        let mut success = 0;
-        let mut failure = 0;
-
-        for (k, v) in &valid_utf64 {
+        success = 0;
+        for (k, v) in valid_utf64 {
             match k.decode_utf64() {
                 Ok(dec) => {
                     if v == &dec.as_str() {
@@ -220,8 +186,21 @@ mod test {
         }
         assert_eq!(valid_utf64.len(), success);
         assert_eq!(0, failure);
+    }
 
-        for (k, _) in &invalid_utf64 {
+    #[test]
+    fn invalid_tests() {
+        let mut f = File::open("../test.json").expect("unable to open test data file");
+        let mut data = String::new();
+        f.read_to_string(&mut data).expect("failed to read file");
+        let mut v: Value = serde_json::from_str(data.as_str()).expect("failure parsing test.json");
+
+        let invalid_utf64 = v["invalid_utf64"].take();
+        let invalid_utf64 = invalid_utf64.as_object().unwrap();
+        assert!(invalid_utf64.len() > 0);
+
+        let mut failure = 0;
+        for (k, _) in invalid_utf64 {
             if !k.decode_utf64().is_err() {
                 failure += 1;
                 println!("failed to report '{k}' as invalid utf64");

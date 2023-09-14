@@ -70,6 +70,23 @@ func main() {
 }
 ```
 
+### Rust
+```
+cargo add utf64
+```
+
+```
+use utf64::*;
+
+fn main() {
+    println!("{}", "Hello!".encode_utf64().unwrap());
+    match "YHelloG".decode_utf64() {
+        Ok(result) => println!("{result}"),
+        Err(e) => panic!("{e}"),
+    }
+}
+```
+
 ### Command-line tool
 
 The JS package includes a `utf64` command-line tool:

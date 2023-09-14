@@ -1,0 +1,16 @@
+[package]
+name = "utf64"
+version = "0.1.0"
+edition = "2021"
+authors = ["Mark Musante <mark.musante@gmail.com>"]
+keywords = ["text", "utility", "string", "unicode", "trait"]
+license-file = "../LICENSE"
+description = "A utility to encode utf-8 strings into utf-64, and decode them back."
+homepage = "https://utf64.moreplease.com/"
+documentation = "https://docs.rs/utf64"
+repository = "https://github.com/more-please/utf64"
+readme = "../README.md"
+
+[dev-dependencies]
+serde_json = "1.0.107"
+

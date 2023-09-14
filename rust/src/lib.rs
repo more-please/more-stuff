@@ -1,6 +1,17 @@
 #![warn(missing_docs)]
 
-//! utf-64 is a terse, human-readable, URL-safe encoding for JSONish strings
+//! [UTF-64](UTF64) is a terse, human-readable, URL-safe encoding for JSONish strings.
+//!
+//! It is a way to encode any Unicode string so that it can safely be
+//! stored in a URL parameter, in a compact and readable way. This is useful
+//! any time you want to pass a JSON blob or Unicode string anywhere in a
+//! URL. Output is encoded using base64url-compatible characters:
+//! `_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-`
+//!
+//! Any string-like variable, if it implements `AsRef<str>`, can be encoded into
+//! a [UTF-64](UTF64) string.
+//!
+//! More information is available [on the website](https://utf64.moreplease.com/).
 
 use std::str::Chars;
 
@@ -10,9 +21,19 @@ pub trait UTF64 {
     type Error;
 
     /// Convert a string-like object into utf-64
+    /// ```rust
+    ///     use crate::utf64::UTF64;
+    ///     let encoded = "Contact info: <@handle@example.com>".encode_utf64().unwrap();
+    ///     assert_eq!("YContactWinfoFWX7Y_handleY_exampleDcomX9", encoded);
+    /// ```
     fn encode_utf64(&self) -> Result<String, Self::Error>;
 
     /// Convert a utf-64-encoded string-like object back into the origial string
+    /// ```rust
+    ///     use crate::utf64::UTF64;
+    ///     let decoded = "YContactWinfoFWX7Y_handleY_exampleDcomX9".decode_utf64().unwrap();
+    ///     assert_eq!("Contact info: <@handle@example.com>", decoded);
+    /// ```
     fn decode_utf64(&self) -> Result<String, Self::Error>;
 }
 
@@ -88,11 +109,7 @@ impl<T: AsRef<str>> UTF64 for T {
         let mut result = String::new();
         let mut iter = self.as_ref().chars();
 
-        loop {
-            let Some(ch) = iter.next() else {
-                break;
-            };
-
+        while let Some(ch) = iter.next() {
             match ch {
                 '-' | '_' | 'a'..='z' | '0'..='9' => result.push(ch),
 

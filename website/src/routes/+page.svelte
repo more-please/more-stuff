@@ -125,6 +125,8 @@
       <pre>pip install utf64</pre>
       <h4>Go</h4>
       <pre>go get utf64.moreplease.com</pre>
+      <h4>Rust</h4>
+      <pre>cargo add utf64</pre>
       <h4>Other languages</h4>
       <p>
         Contributions welcome! Please feel free to send a pull request or file

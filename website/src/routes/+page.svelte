@@ -25,10 +25,14 @@
 <svelte:head>
   <title>UTF-64</title>
   <meta
+    name="description"
+    content="A terse, human-readable, URL-safe encoding for JSONish strings"
+  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
     name="go-import"
     content="utf64.moreplease.com git https://github.com/more-please/utf64"
   />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </svelte:head>
 
 <div class="content">
@@ -38,6 +42,7 @@
     <form class="col" method="get">
       <label for="encode">Try it! Type anything here:</label>
       <textarea
+        id="encode"
         name="encode"
         bind:value={src}
         on:input={encode}
@@ -53,6 +58,7 @@
         >{#if error}<span class="error">{error}</span>{:else}Encoded as UTF-64:{/if}</label
       >
       <textarea
+        id="decode"
         name="decode"
         class={error ? "error" : ""}
         bind:value={dest}

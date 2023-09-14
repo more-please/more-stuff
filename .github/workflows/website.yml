@@ -1,8 +1,9 @@
-name: Push website
+name: Test website
 on:
   push:
-    branches:
-      - main
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
 jobs:
   push-website:
     runs-on: ubuntu-latest
@@ -19,8 +20,3 @@ jobs:
         run: pnpm install
       - name: Test
         run: cd website && pnpm test
-      - name: Push
-        run: cd website && pnpm run push
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

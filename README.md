@@ -17,7 +17,9 @@ Use this when you need to encode a string to make it URL-safe, but you also want
 | "Hello!"          | IkhlbGxvISI=             | AYHelloGA          |
 | {"Hello":"world"} | eyJIZWxsbyI6IndvcmxkIn0= | MAYHelloAFAworldAN |
 
-I made this because I wanted to build a web API with a nice JSON schema that could also be cached by a CDN. To make it cacheable, I had to use the GET method; but GET can't (portably) have a request body, so this means all the API parameters need to be packed into the URL. `utf64` is a fire-and-forget way to solve this problem.
+I made this because I wanted to build a web API with a nice JSON schema that could also be cached by a CDN. To make it cacheable, I had to use the GET method; but GET can't (portably) have a request body, so this means all the API parameters need to be packed into the URL. UTF-64 is a fire-and-forget way to solve this problem.
+
+UTF-64 uses the very permissive [0BSD licence](LICENSE) so you can freely use this code & spec anywhere. I picked 0BSD as it seems to be the "public domain equivalent" most widely accepted by corporations, e.g. Google has a [specific exception permitting the use of 0BSD](https://opensource.google/documentation/reference/patching#forbidden).
 
 ## Installation & usage
 

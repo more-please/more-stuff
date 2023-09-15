@@ -2,9 +2,10 @@
 
 A terse, human-readable, URL-safe encoding for JSONish strings.
 
-[![Test JS](https://github.com/more-please/utf64/actions/workflows/js.yml/badge.svg)](https://github.com/more-please/utf64/actions/workflows/js.yml)
-[![Test Python](https://github.com/more-please/utf64/actions/workflows/py.yml/badge.svg)](https://github.com/more-please/utf64/actions/workflows/py.yml)
-[![Test Go](https://github.com/more-please/utf64/actions/workflows/go.yml/badge.svg)](https://github.com/more-please/utf64/actions/workflows/go.yml)
+[![JS](https://github.com/more-please/utf64/actions/workflows/js.yml/badge.svg)](https://github.com/more-please/utf64/actions/workflows/js.yml)
+[![Python](https://github.com/more-please/utf64/actions/workflows/py.yml/badge.svg)](https://github.com/more-please/utf64/actions/workflows/py.yml)
+[![Go](https://github.com/more-please/utf64/actions/workflows/go.yml/badge.svg)](https://github.com/more-please/utf64/actions/workflows/go.yml)
+[![Rust](https://github.com/more-please/utf64/actions/workflows/rust.yml/badge.svg)](https://github.com/more-please/utf64/actions/workflows/rust.yml)
 
 ## Overview
 

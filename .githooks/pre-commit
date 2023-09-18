@@ -9,7 +9,7 @@ ALL=$(git diff --cached --name-only --diff-filter=ACMR)
 # (can't seem to just assign to variable due to Bash weirdness)
 if [[ $(echo "$ALL" | egrep "(html|py|js|jsx|ts|tsx|go|svelte)$") ]]; then
   # Reformat everything
-  npx pnpm format
+  pnpm format
 
   # Re-add only the file types we're interested in.
   FILES=$(echo "$ALL" | egrep "(html|py|js|jsx|ts|tsx|go|svelte)$")

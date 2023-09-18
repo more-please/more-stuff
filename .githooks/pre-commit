@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -euo pipefail
+
+# See which files are due to be committed
+ALL=$(git diff --cached --name-only --diff-filter=ACMR)
+
+# Check for interesting file types
+# (can't seem to just assign to variable due to Bash weirdness)
+if [[ $(echo "$ALL" | egrep "(html|py|js|jsx|ts|tsx|go|svelte)$") ]]; then
+  # Reformat everything
+  pnpm format
+
+  # Re-add only the file types we're interested in.
+  FILES=$(echo "$ALL" | egrep "(html|py|js|jsx|ts|tsx|go|svelte)$")
+  git add $FILES
+fi

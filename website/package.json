@@ -1,0 +1,28 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "format": "prettier --plugin prettier-plugin-svelte --log-level warn -w .",
+    "test": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "^2.1.0",
+    "@sveltejs/adapter-cloudflare": "^2.3.3",
+    "@sveltejs/kit": "^1.24.1",
+    "prettier": "^3.0.3",
+    "prettier-plugin-svelte": "^3.0.3",
+    "svelte": "^4.2.0",
+    "svelte-check": "^3.5.1",
+    "svelte-preprocess-import-assets": "^1.0.1",
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9"
+  },
+  "dependencies": {
+    "gosub-goproxy": "link:../goproxy",
+    "zod": "^3.22.2"
+  }
+}

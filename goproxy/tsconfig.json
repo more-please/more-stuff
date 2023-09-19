@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "emitDeclarationOnly": true,
+    "outDir": "dist",
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "lib": ["ES2022", "WebWorker"],
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "declaration": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  }
+}

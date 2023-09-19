@@ -1,5 +1,6 @@
 /build
 /.svelte-kit
+/.netlify
 /package
 .env
 .env.*

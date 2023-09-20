@@ -2,6 +2,7 @@
   "compilerOptions": {
     "strict": true,
     "emitDeclarationOnly": true,
+    "rootDir": "src",
     "outDir": "dist",
     "noImplicitReturns": true,
     "noImplicitOverride": true,

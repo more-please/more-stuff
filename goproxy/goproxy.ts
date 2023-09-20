@@ -78,8 +78,9 @@ export function goproxy(
             )) {
               const tags = parse(github.Tags, await page.json());
               for (const tag of tags) {
-                if (decodeVersion(tag.name)) {
-                  controller.enqueue(`${name}\n`);
+                const v = decodeVersion(tag.name);
+                if (v) {
+                  controller.enqueue(`v${v.major}.${v.minor}.${v.patch}\n`);
                 }
               }
             }

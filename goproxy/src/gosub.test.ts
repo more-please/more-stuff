@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { gosub, gosubDecode, gosubEncode } from "./gosub";
 
-import { GoproxyConfig } from "./goproxy";
+import type { GoproxyConfig } from "./goproxy";
 
 const TESTS: Record<string, GoproxyConfig> = {
   "/github.com/more-please/gosub;": {

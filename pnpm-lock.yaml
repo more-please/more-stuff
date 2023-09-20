@@ -31,12 +31,12 @@ importers:
       '@sveltejs/adapter-netlify':
         specifier: ^2.0.8
         version: 2.0.8(@sveltejs/kit@1.25.0)
-      gosub-goproxy:
-        specifier: link:../goproxy
-        version: link:../goproxy
       svelte:
         specifier: ^4.2.0
         version: 4.2.0
+      valibot:
+        specifier: ^0.17.0
+        version: 0.17.0
     devDependencies:
       '@sveltejs/kit':
         specifier: ^1.24.1
@@ -62,6 +62,9 @@ importers:
       vite:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@20.6.2)
+      vitest:
+        specifier: ^0.34.4
+        version: 0.34.4
 
 packages:
 
@@ -1491,7 +1494,6 @@ packages:
 
   /valibot@0.17.0:
     resolution: {integrity: sha512-ykoYfBc4HOH+osdWaFBmeL7yX35bFfKg1WdwHYZhNVuvGIRH5f2gtYT6cnU85XOsOE7R8la5RnVY6yAScWU9qg==}
-    dev: true
 
   /vite-node@0.34.4(@types/node@20.6.2):
     resolution: {integrity: sha512-ho8HtiLc+nsmbwZMw8SlghESEE3KxJNp04F/jPUCLVvaURwt0d+r9LxEqCX5hvrrOQ0GSyxbYr5ZfRYhQ0yVKQ==}

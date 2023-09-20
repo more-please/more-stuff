@@ -1,7 +1,5 @@
 import { removeOptionalPrefix, removePrefix } from "./utils";
-
-import type { GoproxyConfig } from "./goproxy";
-import { goproxy } from "./goproxy";
+import { type GoproxyConfig, goproxy } from "./goproxy";
 
 export function gosubEncode(config: GoproxyConfig): string {
   const { base, repo, directory, tagPrefix, tagSuffix } = config;

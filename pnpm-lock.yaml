@@ -31,6 +31,9 @@ importers:
       '@sveltejs/adapter-netlify':
         specifier: ^2.0.8
         version: 2.0.8(@sveltejs/kit@1.25.0)
+      gosub-goproxy:
+        specifier: link:../goproxy
+        version: link:../goproxy
       svelte:
         specifier: ^4.2.0
         version: 4.2.0

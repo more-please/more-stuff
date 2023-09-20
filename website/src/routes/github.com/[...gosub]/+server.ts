@@ -1,5 +1,5 @@
 import { error, type RequestHandler } from "@sveltejs/kit";
-import { gosub } from "$lib/gosub";
+import { gosub } from "gosub-goproxy";
 
 const handler = gosub();
 

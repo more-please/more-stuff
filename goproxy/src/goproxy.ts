@@ -66,13 +66,18 @@ export function goproxy(
     if (cmdStart < 0) {
       return;
     }
+
+    const { signal, abort } = new AbortController();
+
     const cmd = path.substring(cmdStart);
     const v = removePrefix(`@v/`, cmd);
     if (v === "list") {
       const stream = new ReadableStream({
         async start(controller) {
+          controller.enqueue(`AHOY\n`);
           for await (const page of github.paginate(
             `${github.api}/repos/${owner}/${repo}/tags`,
+            { signal },
           )) {
             const json = await page.json();
             console.log("PAGE", json);
@@ -89,6 +94,9 @@ export function goproxy(
           console.log("DONE");
           controller.close();
         },
+        cancel(e) {
+          abort(e);
+        },
       });
       return new Response(stream, { headers: textHeaders });
     }
@@ -97,6 +105,7 @@ export function goproxy(
     if (info) {
       const refData = await fetch(
         `${github.api}/repos/${owner}/${repo}/git/ref/tags/${prefix}${info}${suffix}`,
+        { signal },
       );
       const ref = parse(github.Ref, await refData.json());
       const tagData = await fetch(ref.object.url);
@@ -111,7 +120,7 @@ export function goproxy(
     const mod = removeSuffix(".mod", v);
     if (mod) {
       const url = `https://raw.githubusercontent.com/${owner}/${repo}/${prefix}${mod}${suffix}/go.mod`;
-      const result = await fetch(url);
+      const result = await fetch(url, { signal });
       const text = await result.text();
       return new Response(text, { headers: textHeaders });
     }

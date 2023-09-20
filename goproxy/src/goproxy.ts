@@ -1,7 +1,8 @@
 import * as github from "./github";
 
-import { type Output, parse } from "valibot";
 import { removePrefix, removeSuffix } from "./utils";
+
+import { parse } from "valibot";
 
 const jsonHeaders = {
   "content-type": "application/json",
@@ -79,7 +80,7 @@ export function goproxy(
             { signal },
           )) {
             const json = await page.json();
-            const tags = json as Output<typeof github.Tags>; // parse(github.Tags, json);
+            const tags = parse(github.Tags, json);
             for (const tag of tags) {
               const v = decodeVersion(tag.name);
               if (v) {

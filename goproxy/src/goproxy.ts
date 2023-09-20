@@ -1,14 +1,14 @@
 import * as github from "./github";
 
-import { Output, parse } from "valibot";
+import { type Output, parse } from "valibot";
 import { removePrefix, removeSuffix } from "./utils";
 
 const jsonHeaders = {
-  "Content-Type": "application/json",
+  "content-type": "application/json",
 };
 
 const textHeaders = {
-  "Content-Type": "text/plain",
+  "content-type": "text/plain; charset=utf-8",
 };
 
 export type GoproxyConfig = {
@@ -74,31 +74,27 @@ export function goproxy(
     if (v === "list") {
       const stream = new ReadableStream({
         async start(controller) {
-          controller.enqueue(`AHOY\n`);
           for await (const page of github.paginate(
             `${github.api}/repos/${owner}/${repo}/tags`,
             { signal },
           )) {
             const json = await page.json();
-            console.log("PAGE", json);
             const tags = json as Output<typeof github.Tags>; // parse(github.Tags, json);
             for (const tag of tags) {
-              console.log("TAG", tag);
               const v = decodeVersion(tag.name);
               if (v) {
-                console.log("VERSION", `v${v.major}.${v.minor}.${v.patch}\n`);
                 controller.enqueue(`v${v.major}.${v.minor}.${v.patch}\n`);
               }
             }
           }
-          console.log("DONE");
           controller.close();
         },
         cancel(e) {
           abort(e);
         },
       });
-      return new Response(stream, { headers: textHeaders });
+      const body = stream.pipeThrough(new TextEncoderStream());
+      return new Response(body, { headers: textHeaders });
     }
 
     const info = removeSuffix(".info", v);

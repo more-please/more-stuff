@@ -4,6 +4,8 @@ import { goproxy } from "gosub-goproxy";
 const handler = goproxy({
   base: "/go",
   repo: "https://github.com/more-please/utf64",
+  directory: "go",
+  tagPrefix: "go-",
 });
 
 export const GET: RequestHandler = async (event) => {

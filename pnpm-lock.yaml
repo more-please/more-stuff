@@ -29,9 +29,9 @@ importers:
 
   website:
     dependencies:
-      utf64:
-        specifier: link:../js
-        version: link:../js
+      gosub-goproxy:
+        specifier: ^0.0.4
+        version: 0.0.4
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^2.1.0
@@ -63,6 +63,9 @@ importers:
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
+      utf64:
+        specifier: link:../js
+        version: link:../js
       vite:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@20.6.0)
@@ -939,6 +942,10 @@ packages:
     resolution: {integrity: sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==}
     dev: true
 
+  /client-zip@2.4.4:
+    resolution: {integrity: sha512-Ixk40BUI7VvNDxW7SCze20GbCuC+gjP4tGkXUpo6/W96bOf96HSed6cOQVeUOIe74SJAG/dIrBr7AtR4xBVnsA==}
+    dev: false
+
   /code-red@1.0.4:
     resolution: {integrity: sha512-7qJWqItLA8/VPVlKJlFXU+NBlo/qyfs39aJcuMT/2ere32ZqvF5OSxgdM5xOfJJ7O429gg2HM47y8v9P+9wrNw==}
     dependencies:
@@ -1217,6 +1224,12 @@ packages:
   /globrex@0.1.2:
     resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
     dev: true
+
+  /gosub-goproxy@0.0.4:
+    resolution: {integrity: sha512-Wfv+69IvhvYp8Zuje84eq0/7bbylmT2PliisB1aUf8NUIfsvTtt9+np2DMGiFfHX3gaVIRsExkqN+pROT8v79g==}
+    dependencies:
+      client-zip: 2.4.4
+    dev: false
 
   /graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}

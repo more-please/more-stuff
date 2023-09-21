@@ -14,8 +14,14 @@ const port = command.opts().port;
 const server = gosub();
 
 async function handler(request: Request): Promise<Response> {
-  const result =
-    (await server(request)) ?? new Response("Not found", { status: 404 });
+  let result: Response;
+  try {
+    const response = await server(request);
+    result = response ?? new Response("Not found", { status: 404 });
+  } catch (e) {
+    console.error(e);
+    result = new Response("Server error", { status: 500 });
+  }
   console.error(`${request.method} ${request.url} ${result.status}`);
   return result;
 }

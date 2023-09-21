@@ -1,5 +1,6 @@
 import * as github from "./github.ts";
 
+import { downloadZip, predictLength } from "client-zip";
 import { removePrefix, removeSuffix } from "./utils.ts";
 
 import { parse } from "valibot";
@@ -141,12 +142,34 @@ export function goproxy(
         `${github.API}/repos/${owner}/${repo}/git/trees/${ref.object.sha}:${dir}?recursive=1`,
         { signal },
       );
-      const tree = parse(github.Tree, await treeData.json());
-      // Results are probably sorted by path already, but just in case...
-      tree.tree.sort((a, b) =>
-        a.path < b.path ? -1 : a.path > b.path ? 1 : 0,
-      );
-      return Response.json(tree);
+      // Extract the metadata we care about
+      const metadata = parse(github.Tree, await treeData.json())
+        .tree.filter(github.isBlob)
+        // Results are probably sorted by path already, but just in case...
+        .sort((a, b) => (a.path < b.path ? -1 : a.path > b.path ? 1 : 0))
+        .map((i) => ({
+          name: i.path,
+          size: i.size,
+          url: i.url,
+        }));
+      // TODO: skip subdirectories containing nested go.mod files
+      // Build zip file
+      async function* data() {
+        for (const m of metadata) {
+          console.log(`Fetching ${m.name}...`);
+          const input = await fetch(m.url, {
+            signal,
+            headers: { Accept: "application/vnd.github.v3.raw" },
+          });
+          console.log(`Zipping ${m.name}...`);
+          yield {
+            name: m.name,
+            input,
+          };
+          console.log(`Finished ${m.name}`);
+        }
+      }
+      return downloadZip(data(), { metadata });
     }
 
     return new Response("Not found", { status: 404 });

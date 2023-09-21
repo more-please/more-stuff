@@ -28,26 +28,42 @@ export const Ref = object({
   }),
 });
 
-const ItemCommon = object({
+const TreeItemCommon = object({
   mode: string(),
   path: string(),
   type: string(),
   sha: string(),
   url: string(),
 });
-const ItemBlob = object({ type: literal("blob"), size: number() });
-const ItemTree = object({ type: literal("tree") });
-const Item = union([
-  merge([ItemCommon, ItemBlob]),
-  merge([ItemCommon, ItemTree]),
-]);
 
-type Item = Output<typeof Item>;
+export const TreeItemBlob = merge([
+  TreeItemCommon,
+  object({ type: literal("blob"), size: number() }),
+]);
+export type TreeItemBlob = Output<typeof TreeItemBlob>;
+
+export const TreeItemTree = merge([
+  TreeItemCommon,
+  object({ type: literal("tree") }),
+]);
+export type TreeItemTree = Output<typeof TreeItemTree>;
+
+export const TreeItem = union([TreeItemBlob, TreeItemTree]);
+export type TreeItem = Output<typeof TreeItem>;
 
 export const Tree = object({
   sha: string(),
-  tree: array(Item),
+  tree: array(TreeItem),
 });
+export type Tree = Output<typeof Tree>;
+
+export function isBlob(i: TreeItem): i is TreeItemBlob {
+  return i.type === "blob";
+}
+
+export function isTree(i: TreeItem): i is TreeItemTree {
+  return i.type === "tree";
+}
 
 const NEXT_LINK = /(?<=<)([\S]*)(?=>; rel="Next")/i;
 

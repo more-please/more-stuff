@@ -9,6 +9,10 @@ importers:
   .: {}
 
   goproxy:
+    dependencies:
+      client-zip:
+        specifier: ^2.4.4
+        version: 2.4.4
     devDependencies:
       '@commander-js/extra-typings':
         specifier: ^11.0.0
@@ -851,6 +855,10 @@ packages:
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
+
+  /client-zip@2.4.4:
+    resolution: {integrity: sha512-Ixk40BUI7VvNDxW7SCze20GbCuC+gjP4tGkXUpo6/W96bOf96HSed6cOQVeUOIe74SJAG/dIrBr7AtR4xBVnsA==}
+    dev: false
 
   /code-red@1.0.4:
     resolution: {integrity: sha512-7qJWqItLA8/VPVlKJlFXU+NBlo/qyfs39aJcuMT/2ere32ZqvF5OSxgdM5xOfJJ7O429gg2HM47y8v9P+9wrNw==}

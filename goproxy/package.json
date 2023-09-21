@@ -45,5 +45,8 @@
     "typescript": "^5.2.2",
     "valibot": "^0.17.0",
     "vitest": "^0.34.4"
+  },
+  "dependencies": {
+    "client-zip": "^2.4.4"
   }
 }

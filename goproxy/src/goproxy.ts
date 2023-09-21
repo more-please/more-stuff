@@ -127,6 +127,28 @@ export function goproxy(
       return new Response(text, { headers: textHeaders });
     }
 
+    const zip = removeSuffix(".zip", v);
+    if (zip) {
+      // Get tag SHA
+      const refData = await fetch(
+        `${github.API}/repos/${owner}/${repo}/git/ref/tags/${prefix}${zip}${suffix}`,
+        { signal },
+      );
+      const ref = parse(github.Ref, await refData.json());
+      // Get subdirectory tree
+      const dir = config.directory ?? "";
+      const treeData = await fetch(
+        `${github.API}/repos/${owner}/${repo}/git/trees/${ref.object.sha}:${dir}?recursive=1`,
+        { signal },
+      );
+      const tree = parse(github.Tree, await treeData.json());
+      // Results are probably sorted by path already, but just in case...
+      tree.tree.sort((a, b) =>
+        a.path < b.path ? -1 : a.path > b.path ? 1 : 0,
+      );
+      return Response.json(tree);
+    }
+
     return new Response("Not found", { status: 404 });
   };
 }

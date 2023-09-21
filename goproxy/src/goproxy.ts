@@ -1,12 +1,12 @@
 import * as github from "./github.ts";
 
-import { downloadZip, predictLength } from "client-zip";
 import { removePrefix, removeSuffix } from "./utils.ts";
 
+import { downloadZip } from "client-zip";
 import { parse } from "valibot";
 
-const jsonHeaders = {
-  "content-type": "application/json",
+const headers = {
+  "User-Agent": "gosub-goproxy",
 };
 
 const textHeaders = {
@@ -78,10 +78,10 @@ export function goproxy(
         async start(controller) {
           for await (const page of github.paginate(
             `${github.API}/repos/${owner}/${repo}/tags`,
-            { signal },
+            { signal, headers },
           )) {
-            const json = await page.json();
-            const tags = parse(github.Tags, json);
+            const json = await page.text();
+            const tags = parse(github.Tags, JSON.parse(json));
             for (const tag of tags) {
               const v = decodeVersion(tag.name);
               if (v) {
@@ -108,10 +108,10 @@ export function goproxy(
     if (info) {
       const refData = await fetch(
         `${github.API}/repos/${owner}/${repo}/git/ref/tags/${prefix}${info}${suffix}`,
-        { signal },
+        { signal, headers },
       );
       const ref = parse(github.Ref, await refData.json());
-      const tagData = await fetch(ref.object.url);
+      const tagData = await fetch(ref.object.url, { headers });
       const tag = parse(github.Tag, await tagData.json());
       const result = {
         Version: info,
@@ -123,7 +123,7 @@ export function goproxy(
     const mod = removeSuffix(".mod", v);
     if (mod) {
       const url = `https://raw.githubusercontent.com/${owner}/${repo}/${prefix}${mod}${suffix}/go.mod`;
-      const result = await fetch(url, { signal });
+      const result = await fetch(url, { signal, headers });
       const text = await result.text();
       return new Response(text, { headers: textHeaders });
     }
@@ -133,14 +133,14 @@ export function goproxy(
       // Get tag SHA
       const refData = await fetch(
         `${github.API}/repos/${owner}/${repo}/git/ref/tags/${prefix}${zip}${suffix}`,
-        { signal },
+        { signal, headers },
       );
       const ref = parse(github.Ref, await refData.json());
       // Get subdirectory tree
       const dir = config.directory ?? "";
       const treeData = await fetch(
         `${github.API}/repos/${owner}/${repo}/git/trees/${ref.object.sha}:${dir}?recursive=1`,
-        { signal },
+        { signal, headers },
       );
       // Extract the metadata we care about
       const metadata = parse(github.Tree, await treeData.json())
@@ -156,17 +156,14 @@ export function goproxy(
       // Build zip file
       async function* data() {
         for (const m of metadata) {
-          console.log(`Fetching ${m.name}...`);
           const input = await fetch(m.url, {
             signal,
-            headers: { Accept: "application/vnd.github.v3.raw" },
+            headers: { ...headers, Accept: "application/vnd.github.v3.raw" },
           });
-          console.log(`Zipping ${m.name}...`);
           yield {
             name: m.name,
             input,
           };
-          console.log(`Finished ${m.name}`);
         }
       }
       return downloadZip(data(), { metadata });

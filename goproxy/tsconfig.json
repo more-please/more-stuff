@@ -4,6 +4,7 @@
     "emitDeclarationOnly": true,
     "rootDir": "src",
     "outDir": "dist",
+    "allowImportingTsExtensions": true,
     "noImplicitReturns": true,
     "noImplicitOverride": true,
     "noUncheckedIndexedAccess": true,

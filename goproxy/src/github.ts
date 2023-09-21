@@ -6,7 +6,7 @@ export const Ref = object({ object: object({ sha: string(), url: string() }) });
 
 const NEXT_LINK = /(?<=<)([\S]*)(?=>; rel="Next")/i;
 
-export const api = "https://api.github.com";
+export const API = "https://api.github.com";
 
 export async function* paginate(
   url: string,

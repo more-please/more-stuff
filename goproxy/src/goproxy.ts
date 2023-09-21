@@ -1,6 +1,6 @@
-import * as github from "./github";
+import * as github from "./github.ts";
 
-import { removePrefix, removeSuffix } from "./utils";
+import { removePrefix, removeSuffix } from "./utils.ts";
 
 import { parse } from "valibot";
 
@@ -73,10 +73,10 @@ export function goproxy(
     const cmd = path.substring(cmdStart);
     const v = removePrefix(`@v/`, cmd);
     if (v === "list") {
-      const stream = new ReadableStream({
+      let stream = new ReadableStream({
         async start(controller) {
           for await (const page of github.paginate(
-            `${github.api}/repos/${owner}/${repo}/tags`,
+            `${github.API}/repos/${owner}/${repo}/tags`,
             { signal },
           )) {
             const json = await page.json();
@@ -94,14 +94,19 @@ export function goproxy(
           abort(e);
         },
       });
-      const body = stream.pipeThrough(new TextEncoderStream());
-      return new Response(body, { headers: textHeaders });
+      if (typeof TextEncoderStream === "function") {
+        // Explicitly encode output as text - required by Deno
+        stream = stream.pipeThrough(new TextEncoderStream());
+      } else {
+        // No TextEncoderStream, send raw output - required by Bun
+      }
+      return new Response(stream, { headers: textHeaders });
     }
 
     const info = removeSuffix(".info", v);
     if (info) {
       const refData = await fetch(
-        `${github.api}/repos/${owner}/${repo}/git/ref/tags/${prefix}${info}${suffix}`,
+        `${github.API}/repos/${owner}/${repo}/git/ref/tags/${prefix}${info}${suffix}`,
         { signal },
       );
       const ref = parse(github.Ref, await refData.json());

@@ -122,7 +122,8 @@ export function goproxy(
 
     const mod = removeSuffix(".mod", v);
     if (mod) {
-      const url = `https://raw.githubusercontent.com/${owner}/${repo}/${prefix}${mod}${suffix}/go.mod`;
+      const path = config.directory ? `${config.directory}/go.mod` : "go.mod";
+      const url = `https://raw.githubusercontent.com/${owner}/${repo}/${prefix}${mod}${suffix}/${path}`;
       const result = await fetch(url, { signal, headers });
       const text = await result.text();
       return new Response(text, { headers: textHeaders });

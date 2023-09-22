@@ -1,6 +1,6 @@
 import * as github from "./github.ts";
 
-import { removePrefix, removeSuffix } from "./utils.ts";
+import { removeOptionalPrefix, removePrefix, removeSuffix } from "./utils.ts";
 
 import { downloadZip } from "client-zip";
 import { parse } from "valibot";
@@ -71,6 +71,7 @@ export function goproxy(
 
     const { signal, abort } = new AbortController();
 
+    const module = removeOptionalPrefix("/", path.substring(0, cmdStart));
     const cmd = path.substring(cmdStart);
     const v = removePrefix(`@v/`, cmd);
     if (v === "list") {
@@ -162,7 +163,7 @@ export function goproxy(
             headers: { ...headers, Accept: "application/vnd.github.v3.raw" },
           });
           yield {
-            name: m.name,
+            name: `${module}@${zip}/${m.name}`,
             input,
           };
         }

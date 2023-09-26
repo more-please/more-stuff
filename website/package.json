@@ -20,11 +20,11 @@
     "svelte-preprocess-import-assets": "^1.0.1",
     "tslib": "^2.6.2",
     "typescript": "^5.2.2",
-    "utf64": "link:../js",
     "vite": "^4.4.9",
     "wrangler": "^3.7.0"
   },
   "dependencies": {
-    "gosub-goproxy": "^0.0.4"
+    "gosub-goproxy": "^0.0.5",
+    "utf64": "link:../js"
   }
 }

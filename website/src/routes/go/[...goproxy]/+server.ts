@@ -1,9 +1,9 @@
 import { error, type RequestHandler } from "@sveltejs/kit";
 import { goproxy } from "gosub-goproxy";
 
-const handler = goproxy({
-  base: "/go",
-  repo: "https://github.com/more-please/utf64",
+const handler = goproxy("/go", {
+  url: "https://github.com/more-please/utf64",
+  module: "utf64.moreplease.com",
   directory: "go",
   tagPrefix: "go-",
 });

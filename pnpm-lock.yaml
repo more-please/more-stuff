@@ -30,8 +30,11 @@ importers:
   website:
     dependencies:
       gosub-goproxy:
-        specifier: ^0.0.4
-        version: 0.0.4
+        specifier: ^0.0.5
+        version: 0.0.5
+      utf64:
+        specifier: link:../js
+        version: link:../js
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^2.1.0
@@ -63,9 +66,6 @@ importers:
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
-      utf64:
-        specifier: link:../js
-        version: link:../js
       vite:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@20.6.0)
@@ -1225,8 +1225,8 @@ packages:
     resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
     dev: true
 
-  /gosub-goproxy@0.0.4:
-    resolution: {integrity: sha512-Wfv+69IvhvYp8Zuje84eq0/7bbylmT2PliisB1aUf8NUIfsvTtt9+np2DMGiFfHX3gaVIRsExkqN+pROT8v79g==}
+  /gosub-goproxy@0.0.5:
+    resolution: {integrity: sha512-TZgqKU3Atvt7U1t1dw636df24AlNtV4o3N9YsltkNPADXVINp+vplS5zTk5NOU0/j8M+gpSgdUEqsIB9EELrIg==}
     dependencies:
       client-zip: 2.4.4
     dev: false

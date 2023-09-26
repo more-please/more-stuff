@@ -14,18 +14,18 @@ const textHeaders = {
 };
 
 export type GoproxyConfig = {
-  base?: string; // Base path for server
-
-  repo: string; // Git repo URL - currently only Github is supported
+  url: string; // Git repo URL - currently only Github is supported
+  module?: string; // If set, Go module is required to match this
   directory?: string; // Subdirectory within the git repo
   tagPrefix?: string; // Prefix for version tags in git
   tagSuffix?: string; // Suffix for version tags in git
 };
 
 export function goproxy(
+  base: string,
   config: GoproxyConfig,
 ): (request: Request) => Promise<Response | undefined> {
-  const url = new URL(config.repo);
+  const url = new URL(config.url);
   if (url.hostname !== "github.com") {
     throw new Error("Only github.com URLs are supported");
   }
@@ -34,7 +34,6 @@ export function goproxy(
     throw new Error("Repo URL must be https://github.com/[owner]/[repo]");
   }
 
-  const base = config.base ?? "/";
   const prefix = config.tagPrefix ?? "";
   const suffix = config.tagSuffix ?? "";
 
@@ -64,16 +63,18 @@ export function goproxy(
     if (!path) {
       return;
     }
-    const cmdStart = path.indexOf("@");
+    const cmdStart = path.lastIndexOf("/@");
     if (cmdStart < 0) {
+      return;
+    }
+    const module = path.substring(0, cmdStart);
+    if (config.module && config.module !== module) {
       return;
     }
 
     const { signal, abort } = new AbortController();
 
-    const module = removeOptionalPrefix("/", path.substring(0, cmdStart));
-    const cmd = path.substring(cmdStart);
-    const v = removePrefix(`@v/`, cmd);
+    const v = removePrefix("/@v/", path.substring(cmdStart));
     if (v === "list") {
       let stream = new ReadableStream({
         async start(controller) {

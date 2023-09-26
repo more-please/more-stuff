@@ -1,17 +1,21 @@
-import { removeOptionalPrefix, removePrefix } from "./utils.ts";
+import {
+  removeOptionalPrefix,
+  removeOptionalSuffix,
+  removePrefix,
+} from "./utils.ts";
 import { type GoproxyConfig, goproxy } from "./goproxy.ts";
 
 export function gosubEncode(config: GoproxyConfig): string {
-  const { base, repo, directory, tagPrefix, tagSuffix } = config;
+  const { url: repo, directory, tagPrefix, tagSuffix } = config;
   const path = removePrefix(
-    "github.com",
-    removeOptionalPrefix("https://", repo),
+    "github.com/",
+    removeOptionalPrefix("https://", removeOptionalSuffix("/", repo)),
   );
   if (!path) {
     throw new Error("Only github.com URLs are supported");
   }
-  const [_, ghOwner, ghRepo, ghExtra] = path.split("/");
-  if (!ghOwner || !ghRepo || ghExtra) {
+  const [ghOwner, ghRepo, ghExtra] = path.split("/");
+  if (!ghOwner || !ghRepo || ghExtra !== undefined) {
     throw new Error("Repo URL must be https://github.com/[owner]/[repo]");
   }
   const params = new URLSearchParams();
@@ -24,19 +28,10 @@ export function gosubEncode(config: GoproxyConfig): string {
   if (tagSuffix) {
     params.set("s", tagSuffix);
   }
-  return `${base ?? ""}/github.com${path}${params.size ? `:${params}` : ""};`;
+  return `github.com/${path}${params.size ? `:${params}` : ""};`;
 }
 
-export function gosubDecode(
-  path?: string,
-  base?: string,
-): GoproxyConfig | undefined {
-  if (base && base !== "/") {
-    path = removePrefix(base, path);
-  }
-  if (!path) {
-    return;
-  }
+export function gosubDecode(path: string): GoproxyConfig | undefined {
   const [spec] = path.split(";");
   if (!spec) {
     return;
@@ -45,13 +40,12 @@ export function gosubDecode(
   if (!url) {
     return;
   }
-  const [_, host, owner, repo, extra] = url.split("/");
-  if (_ || host !== "github.com" || !owner || !repo || extra) {
+  const [host, owner, repo, extra] = url.split("/");
+  if (host !== "github.com" || !owner || !repo || extra !== undefined) {
     return;
   }
   const config: GoproxyConfig = {
-    base,
-    repo: `https://${host}/${owner}/${repo}`,
+    url: `https://${host}/${owner}/${repo}`,
   };
   if (args) {
     const params = new URLSearchParams(args);
@@ -63,24 +57,29 @@ export function gosubDecode(
 }
 
 export type GosubConfig = {
-  base: string;
   goproxy: typeof goproxy;
 };
 
 export function gosub(
+  base: string = "/",
   config: Partial<GosubConfig> = {},
 ): (request: Request) => Promise<Response | undefined> {
   const args: GosubConfig = {
-    base: "/",
     goproxy,
     ...config,
   };
+  if (!base.startsWith("/")) {
+    throw Error(`'base' must be an absolute path`);
+  }
   return async (request: Request) => {
     const url = new URL(request.url);
-    const config = gosubDecode(url.pathname, args.base);
+    const subpath = removePrefix(base, url.pathname);
+    const config = subpath && gosubDecode(subpath);
     if (!config) {
       return;
     }
-    return args.goproxy(config)(request);
+    const base2 = gosubEncode(config);
+    const handler = args.goproxy(`${base}${base2}/`, config);
+    return handler(request);
   };
 }

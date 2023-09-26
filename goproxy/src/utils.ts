@@ -22,3 +22,14 @@ export function removeSuffix(
     ? from.substring(0, from.length - suffix.length)
     : undefined;
 }
+
+export function removeOptionalSuffix(suffix: string): undefined;
+export function removeOptionalSuffix(suffix: string, from: string): string;
+export function removeOptionalSuffix(
+  suffix: string,
+  from?: string,
+): string | undefined {
+  return from?.endsWith(suffix)
+    ? from.substring(0, from.length - suffix.length)
+    : from;
+}

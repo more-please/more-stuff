@@ -4,14 +4,14 @@ import { Command, Option } from "@commander-js/extra-typings";
 
 import { gosub } from "./gosub.ts";
 
-const command = new Command()
+const { base, port } = new Command()
   .description("Standalone Gosub server")
   .addOption(new Option("-p, --port <number>").env("PORT").default(6060))
-  .parse();
+  .addOption(new Option("-b, --base <string>").env("BASE").default("/"))
+  .parse()
+  .opts();
 
-const port = command.opts().port;
-
-const server = gosub();
+const server = gosub(base);
 
 async function handler(request: Request): Promise<Response> {
   let result: Response;

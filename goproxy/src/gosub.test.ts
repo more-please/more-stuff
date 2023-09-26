@@ -3,70 +3,86 @@ import { gosub, gosubDecode, gosubEncode } from "./gosub.ts";
 
 import type { GoproxyConfig } from "./goproxy.ts";
 
-const TESTS: Record<string, GoproxyConfig> = {
-  "/github.com/more-please/gosub;": {
-    repo: "https://github.com/more-please/gosub",
-  },
-  "/github.com/more-please/gosub;ignore/everything/after/;": {
-    repo: "https://github.com/more-please/gosub",
-  },
-  "/test/base/github.com/more-please/gosub;": {
-    base: "/test/base",
-    repo: "https://github.com/more-please/gosub",
-  },
-  "/github.com/more-please/gosub:d=goproxy;ignored": {
-    repo: "https://github.com/more-please/gosub",
-    directory: "goproxy",
-  },
-  "/github.com/more-please/gosub:p=test-&s=-test;": {
-    repo: "https://github.com/more-please/gosub",
-    tagPrefix: "test-",
-    tagSuffix: "-test",
-  },
+type Test = {
+  encoded: string;
+  config: GoproxyConfig;
 };
+const TESTS: Test[] = [
+  {
+    encoded: "github.com/more-please/gosub;",
+    config: {
+      url: "https://github.com/more-please/gosub",
+    },
+  },
+  {
+    encoded: "github.com/more-please/gosub:d=goproxy;",
+    config: {
+      url: "https://github.com/more-please/gosub",
+      directory: "goproxy",
+    },
+  },
+  {
+    encoded: "github.com/more-please/gosub:d=foo%2Fbar;",
+    config: {
+      url: "https://github.com/more-please/gosub",
+      directory: "foo/bar",
+    },
+  },
+  {
+    encoded: "github.com/more-please/gosub:p=pre-&s=-post;",
+    config: {
+      url: "https://github.com/more-please/gosub",
+      tagPrefix: "pre-",
+      tagSuffix: "-post",
+    },
+  },
+];
 
 describe("encode", () => {
-  for (const [dest, src] of Object.entries(TESTS)) {
-    test(dest, () => {
-      const expectedDest = dest.split(";")[0] + ";";
-      const actualDest = gosubEncode(src);
-      expect(actualDest).toEqual(expectedDest);
+  for (const { config, encoded } of TESTS) {
+    test(encoded, () => {
+      const actualEncoded = gosubEncode(config);
+      expect(actualEncoded).toEqual(encoded);
     });
   }
 });
 
 describe("decode", () => {
-  for (const [dest, src] of Object.entries(TESTS)) {
-    test(dest, () => {
-      const actualSrc = gosubDecode(dest, src.base);
-      expect(actualSrc).toEqual(src);
-    });
+  for (let { config, encoded } of TESTS) {
+    for (const extra of ["", "ignore;", "/extra/stuff/"]) {
+      encoded += extra;
+      test(encoded, () => {
+        const actualConfig = gosubDecode(encoded);
+        expect(actualConfig).toEqual(config);
+      });
+    }
   }
 });
 
 describe("gosub", async () => {
-  for (const [dest, src] of Object.entries(TESTS)) {
-    test(dest, async () => {
-      const badRequest = new Request(
-        `https://foo.bar/wrong${dest}so/ignore/it`,
-      );
-      const goodRequest = new Request(
-        `https://foo.bar${dest}extra/goproxy/args`,
-      );
-      const goodResponse = new Response();
-      const mockProxy = (config: GoproxyConfig) => {
-        expect(config).toEqual(src);
-        return async (request: Request) => {
-          expect(request).toBe(goodRequest);
-          return goodResponse;
-        };
-      };
-      const handler = gosub({
-        base: src.base,
-        goproxy: mockProxy,
-      });
-      expect(await handler(goodRequest)).toBe(goodResponse);
-      expect(await handler(badRequest)).toBeUndefined();
-    });
+  for (const base of ["/", "/base/"]) {
+    for (const extra of ["", "ignore;", "/extra/stuff/"]) {
+      for (let { config, encoded } of TESTS) {
+        encoded = `${base}${encoded}`;
+        test(encoded, async () => {
+          const badRequest = new Request(
+            `https://foo.bar/wrong${encoded}${extra}so/ignore/it`,
+          );
+          const goodRequest = new Request(`https://foo.bar${encoded}${extra}`);
+          const goodResponse = new Response();
+          const mockProxy = (proxyBase: string, proxyConfig: GoproxyConfig) => {
+            expect(proxyBase).toEqual(encoded + "/");
+            expect(proxyConfig).toEqual(config);
+            return async (request: Request) => {
+              expect(request).toBe(goodRequest);
+              return goodResponse;
+            };
+          };
+          const handler = gosub(base, { goproxy: mockProxy });
+          expect(await handler(goodRequest)).toBe(goodResponse);
+          expect(await handler(badRequest)).toBeUndefined();
+        });
+      }
+    }
   }
 });

@@ -30,8 +30,8 @@ importers:
   website:
     dependencies:
       gosub-goproxy:
-        specifier: ^0.0.5
-        version: 0.0.5
+        specifier: ^0.0.6
+        version: 0.0.6
       utf64:
         specifier: link:../js
         version: link:../js
@@ -1225,8 +1225,8 @@ packages:
     resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
     dev: true
 
-  /gosub-goproxy@0.0.5:
-    resolution: {integrity: sha512-TZgqKU3Atvt7U1t1dw636df24AlNtV4o3N9YsltkNPADXVINp+vplS5zTk5NOU0/j8M+gpSgdUEqsIB9EELrIg==}
+  /gosub-goproxy@0.0.6:
+    resolution: {integrity: sha512-vgAis1y+FLlIGnwa3OqEPmbQJj9tc3RP4aDitrIAqHGLcu0M/lT3aZxgPx+QYJC6HqIqGzNTiSp2nos5dxPR/Q==}
     dependencies:
       client-zip: 2.4.4
     dev: false

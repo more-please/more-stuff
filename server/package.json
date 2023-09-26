@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "format": "prettier --log-level warn -w .",
-    "test": "vitest run && tsc",
+    "test": "tsc",
     "build": "esbuild server.ts --outfile=server.mjs --platform=node",
     "dev": "pnpm run dev:deno",
     "dev:bun": "bun server.ts",
@@ -19,8 +19,7 @@
     "esbuild": "^0.19.3",
     "prettier": "^3.0.3",
     "tslib": "^2.6.2",
-    "typescript": "^5.2.2",
-    "vitest": "^0.34.4"
+    "typescript": "^5.2.2"
   },
   "dependencies": {
     "client-zip": "^2.4.4",

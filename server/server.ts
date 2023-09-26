@@ -2,7 +2,7 @@
 
 import { Command, Option } from "@commander-js/extra-typings";
 
-import { gosub } from "./gosub.ts";
+import { gosub } from "./lib/index.ts";
 
 const { base, port } = new Command()
   .description("Standalone Gosub server")

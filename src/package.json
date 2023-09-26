@@ -28,28 +28,17 @@
   "scripts": {
     "format": "prettier --log-level warn -w .",
     "test": "vitest run && tsc",
-    "build": "pnpm run /build:.*/",
-    "build:worker": "esbuild index.ts --outdir=dist --format=esm --bundle --minify",
-    "build:node": "esbuild server.ts --outfile=dist/server.cjs --platform=node --bundle --minify",
-    "dev": "pnpm run dev:bun",
-    "dev:bun": "bun server.ts",
-    "dev:deno": "deno run --allow-read --allow-net server.ts",
-    "dev:node": "pnpm run build:node && node dist/server.cjs",
+    "build": "esbuild index.ts --outdir=dist --format=esm --bundle --minify",
     "prepare": "tsc && pnpm run build && cp -f ../LICENSE ."
   },
   "devDependencies": {
-    "@commander-js/extra-typings": "^11.0.0",
-    "@types/node": "^20.6.3",
-    "bun": "^1.0.2",
-    "commander": "^11.0.0",
-    "deno-bin": "^1.37.0",
     "esbuild": "^0.19.3",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2",
-    "valibot": "^0.17.0",
     "vitest": "^0.34.4"
   },
   "dependencies": {
-    "client-zip": "^2.4.4"
+    "client-zip": "^2.4.4",
+    "valibot": "^0.17.0"
   }
 }

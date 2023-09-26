@@ -20,7 +20,10 @@
   "files": [
     "README.md",
     "LICENSE",
-    "dist/*"
+    "dist/goproxy.d.ts",
+    "dist/gosub.d.ts",
+    "dist/index.d.ts",
+    "dist/index.js"
   ],
   "scripts": {
     "format": "prettier --log-level warn -w .",

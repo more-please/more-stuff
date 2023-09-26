@@ -1,4 +1,6 @@
 import {
+  ensurePrefix,
+  ensureSuffix,
   removeOptionalPrefix,
   removeOptionalSuffix,
   removePrefix,
@@ -68,9 +70,7 @@ export function gosub(
     goproxy,
     ...config,
   };
-  if (!base.startsWith("/")) {
-    throw Error(`'base' must be an absolute path`);
-  }
+  base = ensurePrefix("/", ensureSuffix("/", base));
   return async (request: Request) => {
     const url = new URL(request.url);
     const subpath = removePrefix(base, url.pathname);

@@ -33,3 +33,11 @@ export function removeOptionalSuffix(
     ? from.substring(0, from.length - suffix.length)
     : from;
 }
+
+export function ensurePrefix(prefix: string, on: string): string {
+  return on.startsWith(prefix) ? on : prefix + on;
+}
+
+export function ensureSuffix(suffix: string, on: string): string {
+  return on.endsWith(suffix) ? on : on + suffix;
+}

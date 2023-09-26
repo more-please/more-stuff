@@ -1,6 +1,12 @@
 import * as github from "./github.ts";
 
-import { removeOptionalPrefix, removePrefix, removeSuffix } from "./utils.ts";
+import {
+  ensurePrefix,
+  ensureSuffix,
+  removeOptionalPrefix,
+  removePrefix,
+  removeSuffix,
+} from "./utils.ts";
 
 import { downloadZip } from "client-zip";
 import { parse } from "valibot";
@@ -34,6 +40,7 @@ export function goproxy(
     throw new Error("Repo URL must be https://github.com/[owner]/[repo]");
   }
 
+  base = ensurePrefix("/", ensureSuffix("/", base));
   const prefix = config.tagPrefix ?? "";
   const suffix = config.tagSuffix ?? "";
 

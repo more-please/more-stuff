@@ -31,7 +31,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="go-import"
-    content="utf64.moreplease.com git https://github.com/more-please/utf64"
+    content="utf64.moreplease.com mod https://utf64.moreplease.com/go"
   />
 </svelte:head>
 

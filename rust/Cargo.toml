@@ -1,6 +1,6 @@
 [package]
 name = "utf64"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2021"
 authors = ["Mark Musante <mark.musante@gmail.com>"]
 keywords = ["text", "utility", "string", "unicode", "trait"]

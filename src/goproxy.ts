@@ -11,10 +11,6 @@ import {
 import { downloadZip } from "client-zip";
 import { parse } from "valibot";
 
-const headers = {
-  "User-Agent": "gosub-goproxy",
-};
-
 const textHeaders = {
   "content-type": "text/plain; charset=utf-8",
 };
@@ -25,6 +21,7 @@ export type GoproxyConfig = {
   directory?: string; // Subdirectory within the git repo
   tagPrefix?: string; // Prefix for version tags in git
   tagSuffix?: string; // Suffix for version tags in git
+  githubToken?: string;
 };
 
 export function goproxy(
@@ -77,6 +74,14 @@ export function goproxy(
     const module = path.substring(0, cmdStart);
     if (config.module && config.module !== module) {
       return;
+    }
+
+    const headers = new Headers({
+      "User-Agent": "gosub-goproxy",
+      "X-GitHub-Api-Version": "2022-11-28",
+    });
+    if (config.githubToken) {
+      headers.set("authorization", `Bearer ${config.githubToken}`);
     }
 
     const { signal, abort } = new AbortController();

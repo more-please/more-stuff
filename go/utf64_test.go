@@ -12,7 +12,7 @@ type TestJson struct {
 }
 
 func TestUtf64(t *testing.T) {
-	file, err := os.ReadFile("test.json")
+	file, err := os.ReadFile("../test.json")
 	if err != nil {
 		panic(err)
 	}

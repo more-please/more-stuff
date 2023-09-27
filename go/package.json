@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "format": "cd .. && gofmt -w -s .",
-    "test": "cd .. && go test"
+    "format": "gofmt -w -s .",
+    "test": "go test"
   }
 }

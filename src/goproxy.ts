@@ -38,17 +38,17 @@ export function goproxy(
   }
 
   base = ensurePrefix("/", ensureSuffix("/", base));
-  const prefix = config.tagPrefix ?? "";
+  const prefix = config.tagPrefix ?? "v";
   const suffix = config.tagSuffix ?? "";
 
   type Version = { major: number; minor: number; patch: number };
 
   function encodeVersion(v: Version) {
-    return `${prefix}v${v.major}.${v.minor}.${v.patch}${suffix}`;
+    return `${prefix}${v.major}.${v.minor}.${v.patch}${suffix}`;
   }
 
   function decodeVersion(str: string): Version | undefined {
-    const VERSION = /^v(?<major>[0-9]+)\.(?<minor>[0-9]+)\.(?<patch>[0-9]+)$/;
+    const VERSION = /^(?<major>[0-9]+)\.(?<minor>[0-9]+)\.(?<patch>[0-9]+)$/;
     const v = removePrefix(prefix, removeSuffix(suffix, str));
     const g = v && v.match(VERSION)?.groups;
     if (!g) {

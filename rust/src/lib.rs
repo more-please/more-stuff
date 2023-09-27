@@ -1,28 +1,47 @@
 #![warn(missing_docs)]
 
-//! utf-64 is a terse, human-readable, URL-safe encoding for JSONish strings
+//! [UTF-64](UTF64) is a terse, human-readable, URL-safe encoding for JSONish strings.
+//!
+//! It is a way to encode any Unicode string so that it can safely be
+//! stored in a URL parameter, in a compact and readable way. This is useful
+//! any time you want to pass a JSON blob or Unicode string anywhere in a
+//! URL. Output is encoded using base64url-compatible characters:
+//! `_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-`
+//!
+//! Any string-like variable, if it implements `AsRef<str>`, can be encoded into
+//! a [UTF-64](UTF64) string.
+//!
+//! More information is available [on the website](https://utf64.moreplease.com/).
 
+mod error;
+
+use error::Utf64Error;
 use std::str::Chars;
 
 /// The trait for converting to/from UTF-64
 pub trait UTF64 {
-    /// The type for reporting conversion errors
-    type Error;
-
     /// Convert a string-like object into utf-64
-    fn encode_utf64(&self) -> Result<String, Self::Error>;
+    /// ```rust
+    ///     use crate::utf64::UTF64;
+    ///     let encoded = "Contact info: <@handle@example.com>".encode_utf64().unwrap();
+    ///     assert_eq!("YContactWinfoFWX7Y_handleY_exampleDcomX9", encoded);
+    /// ```
+    fn encode_utf64(&self) -> Result<String, Utf64Error>;
 
     /// Convert a utf-64-encoded string-like object back into the origial string
-    fn decode_utf64(&self) -> Result<String, Self::Error>;
+    /// ```rust
+    ///     use crate::utf64::UTF64;
+    ///     let decoded = "YContactWinfoFWX7Y_handleY_exampleDcomX9".decode_utf64().unwrap();
+    ///     assert_eq!("Contact info: <@handle@example.com>", decoded);
+    /// ```
+    fn decode_utf64(&self) -> Result<String, Utf64Error>;
 }
 
 const BASE64: &str = "_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-";
 const SPECIAL: &str = "_\"',.;:!?()[]{}#=+-*/\\\n ";
 
 impl<T: AsRef<str>> UTF64 for T {
-    type Error = String;
-
-    fn encode_utf64(&self) -> Result<String, Self::Error> {
+    fn encode_utf64(&self) -> Result<String, Utf64Error> {
         let mut result = String::new();
         for ch in self.as_ref().chars() {
             if matches!(ch, '-' | 'a'..='z' | '0'..='9') {
@@ -57,7 +76,7 @@ impl<T: AsRef<str>> UTF64 for T {
             } else if n < 0x10ffff {
                 (3, 0x30 + (n >> 18))
             } else {
-                return Err(format!("Invalid Unicode code point: {n}"));
+                return Err(Utf64Error::InvalidCodePoint(n as u32));
             };
             result.push_str(&BASE64[index..index + 1]);
             for b in (0..bytes).rev() {
@@ -68,10 +87,10 @@ impl<T: AsRef<str>> UTF64 for T {
         Ok(result)
     }
 
-    fn decode_utf64(&self) -> Result<String, Self::Error> {
-        fn code(chars: &mut Chars) -> Result<u8, String> {
+    fn decode_utf64(&self) -> Result<String, Utf64Error> {
+        fn code(chars: &mut Chars) -> Result<u8, Utf64Error> {
             let Some(ch) = chars.next() else {
-                return Err("Unexpected end of input".to_string());
+                return Err(Utf64Error::UnexpectedEOF);
             };
             let num = ch as u8;
 
@@ -81,18 +100,14 @@ impl<T: AsRef<str>> UTF64 for T {
                 97..=122 => 27 + (num - 97),
                 48..=57 => 53 + (num - 48),
                 45 => 63,
-                _ => return Err(format!("Invalid UTF-64 character: {ch}")),
+                _ => return Err(Utf64Error::InvalidUtf64(ch)),
             })
         }
 
         let mut result = String::new();
         let mut iter = self.as_ref().chars();
 
-        loop {
-            let Some(ch) = iter.next() else {
-                break;
-            };
-
+        while let Some(ch) = iter.next() {
             match ch {
                 '-' | '_' | 'a'..='z' | '0'..='9' => result.push(ch),
 
@@ -115,7 +130,7 @@ impl<T: AsRef<str>> UTF64 for T {
                     } else if chcode < 0x38 {
                         (chcode as u32 & 0x7, 3)
                     } else {
-                        return Err(format!("Invalid UTF-8 prefix: {chcode}"));
+                        return Err(Utf64Error::InvalidUtf8Prefix(chcode));
                     };
 
                     for _ in 0..bytes {
@@ -123,12 +138,12 @@ impl<T: AsRef<str>> UTF64 for T {
                         index = (index << 6) + chcode as u32;
                     }
                     let Some(ch) = char::from_u32(index) else {
-                        return Err(format!("Invalid UTF-8 codepoint: {index}"));
+                        return Err(Utf64Error::InvalidCodePoint(index));
                     };
 
                     result.push(ch);
                 }
-                _ => return Err(format!("Invalid UTF-64 character: {ch}")),
+                _ => return Err(Utf64Error::InvalidUtf64(ch)),
             }
         }
 

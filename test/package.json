@@ -9,7 +9,7 @@
     "prettier": "^3.0.3",
     "typescript": "^5.2.2",
     "unzipit": "^1.4.3",
-    "vitest": "^0.34.4"
+    "vitest": "^0.34.5"
   },
   "dependencies": {
     "gosub-goproxy": "link:../src"

@@ -12,8 +12,8 @@
   },
   "devDependencies": {
     "@commander-js/extra-typings": "^11.0.0",
-    "@types/node": "^20.6.3",
-    "bun": "^1.0.2",
+    "@types/node": "^20.7.0",
+    "bun": "^1.0.3",
     "commander": "^11.0.0",
     "deno-bin": "^1.37.0",
     "esbuild": "^0.19.3",
@@ -23,6 +23,6 @@
   },
   "dependencies": {
     "client-zip": "^2.4.4",
-    "valibot": "^0.17.0"
+    "valibot": "^0.17.1"
   }
 }

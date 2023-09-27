@@ -30,8 +30,8 @@ importers:
   website:
     dependencies:
       gosub-goproxy:
-        specifier: ^0.0.7
-        version: 0.0.7
+        specifier: ^0.0.8
+        version: 0.0.8
       utf64:
         specifier: link:../js
         version: link:../js
@@ -1150,8 +1150,8 @@ packages:
     resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
     dev: true
 
-  /gosub-goproxy@0.0.7:
-    resolution: {integrity: sha512-pDlLc87kZIvH7fdrDoWFmTJRvz23rho7G5oZXgZ+K9//Jm76Xf5orpw+9+GBvJHkKH7aKt9wWRAg/LTxJ/jAYA==}
+  /gosub-goproxy@0.0.8:
+    resolution: {integrity: sha512-F9SDutv8I6X7Myh4GqQFE7V+FpKVOEE9zVzQTzDxlQhadIqPCCwJqiATfXWbDKbg9mYSrGXctaoF0eYCA2A3Ow==}
     dependencies:
       client-zip: 2.4.4
       valibot: 0.17.1

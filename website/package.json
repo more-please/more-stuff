@@ -24,7 +24,7 @@
     "wrangler": "^3.10.0"
   },
   "dependencies": {
-    "gosub-goproxy": "^0.0.7",
+    "gosub-goproxy": "^0.0.8",
     "utf64": "link:../js"
   }
 }

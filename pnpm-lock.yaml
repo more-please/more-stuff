@@ -63,6 +63,19 @@ importers:
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
+
+  test:
+    dependencies:
+      gosub-goproxy:
+        specifier: link:../src
+        version: link:../src
+    devDependencies:
+      prettier:
+        specifier: ^3.0.3
+        version: 3.0.3
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
       vitest:
         specifier: ^0.34.4
         version: 0.34.4

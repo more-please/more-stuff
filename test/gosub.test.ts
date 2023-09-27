@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
-import { gosub, gosubDecode, gosubEncode } from "./gosub.ts";
+import { gosub, gosubDecode, gosubEncode } from "gosub-goproxy";
 
-import type { GoproxyConfig } from "./goproxy.ts";
+import type { GoproxyConfig } from "gosub-goproxy";
 
 type Test = {
   encoded: string;

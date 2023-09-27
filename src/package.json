@@ -11,8 +11,8 @@
   "author": "Iain Merrick <iain@moreplease.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/more-please/gosub.git",
-    "directory": "goproxy"
+    "url": "https://github.com/more-please/gosub-goproxy.git",
+    "directory": "src"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

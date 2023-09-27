@@ -30,9 +30,9 @@
     "prepare": "tsc && cp -f ../README.md ../LICENSE ."
   },
   "devDependencies": {
-    "@types/node": "^20.6.0",
+    "@types/node": "^20.7.0",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2",
-    "vitest": "^0.34.4"
+    "vitest": "^0.34.5"
   }
 }

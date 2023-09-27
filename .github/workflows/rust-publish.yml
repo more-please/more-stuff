@@ -1,0 +1,25 @@
+name: Rust publish
+
+on:
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build
+        working-directory: ./rust
+        run: cargo build --verbose
+      - name: Run tests
+        working-directory: ./rust
+        run: cargo test --verbose
+      - name: Publish
+        working-directory: ./rust
+        run: cargo publish --dry-run
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}

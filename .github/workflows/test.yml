@@ -14,9 +14,11 @@ jobs:
           version: 8.0.0
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
           cache: "pnpm"
       - name: Install
         run: pnpm install
       - name: Test
         run: pnpm test
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

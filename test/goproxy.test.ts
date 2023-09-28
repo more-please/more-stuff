@@ -18,20 +18,24 @@ const TESTS: Test[] = [
   {
     config: {
       url: "https://github.com/more-please/gosub-goproxy",
+      module: "example",
       directory: "test/example",
       tagPrefix: "example-",
-      githubToken:
-        process.env["GITHUB_TOKEN"] ??
-        fail("GITHUB_TOKEN env variable required"),
+      githubToken: process.env["GITHUB_TOKEN"],
     },
     text: {
-      "example/@v/list": "v0.0.1\n",
+      "example/@v/list": "v0.0.2\nv0.0.1\n",
       "example/@v/v0.0.1.mod": "module example\n\ngo 1.21.1\n",
+      "example/@v/v0.0.2.mod": "module example\n\ngo 1.21.1\n",
     },
     json: {
       "example/@v/v0.0.1.info": {
-        Time: "2023-09-26T12:22:15Z",
+        Time: "2023-09-27T17:23:33Z",
         Version: "v0.0.1",
+      },
+      "example/@v/v0.0.2.info": {
+        Version: "v0.0.2",
+        Time: "2023-09-28T10:42:43Z",
       },
     },
     zip: {
@@ -46,6 +50,49 @@ func main() {
 `,
         "example@v0.0.1/go.mod": "module example\n\ngo 1.21.1\n",
       },
+      "example/@v/v0.0.2.zip": {
+        "example@v0.0.2/example.go": `package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Trivial example module. Should NOT include nested module.")
+}
+`,
+        "example@v0.0.2/go.mod": "module example\n\ngo 1.21.1\n",
+      },
+    },
+  },
+  {
+    config: {
+      url: "https://github.com/more-please/gosub-goproxy",
+      module: "nested",
+      directory: "test/example/nested",
+      tagPrefix: "nested-",
+      githubToken: process.env["GITHUB_TOKEN"],
+    },
+    text: {
+      "nested/@v/list": "v0.0.1\n",
+      "nested/@v/v0.0.1.mod": "module nested\n\ngo 1.21.1\n",
+    },
+    json: {
+      "nested/@v/v0.0.1.info": {
+        Version: "v0.0.1",
+        Time: "2023-09-28T10:42:53Z",
+      },
+    },
+    zip: {
+      "nested/@v/v0.0.1.zip": {
+        "nested@v0.0.1/go.mod": "module nested\n\ngo 1.21.1\n",
+        "nested@v0.0.1/nested.go": `package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("This nested module shouldn't be included in example.zip")
+}
+`,
+      },
     },
   },
 ];
@@ -57,6 +104,7 @@ describe("goproxy", async () => {
       test(name, async () => {
         const request = new Request(`https://foo.bar/${name}`);
         const response = (await proxy(request)) ?? fail("Expected a response");
+        expect(response.ok).toBeTruthy();
         expect(response.headers.get("Content-Type")).toEqual(
           "text/plain; charset=utf-8",
         );
@@ -68,6 +116,7 @@ describe("goproxy", async () => {
       test(name, async () => {
         const request = new Request(`https://foo.bar/${name}`);
         const response = (await proxy(request)) ?? fail("Expected a response");
+        expect(response.ok).toBeTruthy();
         expect(response.headers.get("Content-Type")).toEqual(
           "application/json",
         );
@@ -79,6 +128,7 @@ describe("goproxy", async () => {
       describe(name, async () => {
         const request = new Request(`https://foo.bar/${name}`);
         const response = (await proxy(request)) ?? fail("Expected a response");
+        expect(response.ok).toBeTruthy();
         expect(response.headers.get("Content-Type")).toEqual("application/zip");
         const blob = await response.blob();
         const { entries } = await unzip(blob);

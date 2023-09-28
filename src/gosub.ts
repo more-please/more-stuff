@@ -8,10 +8,10 @@ import {
 import { type GoproxyConfig, goproxy } from "./goproxy.ts";
 
 export function gosubEncode(config: GoproxyConfig): string {
-  const { url: repo, directory, tagPrefix, tagSuffix } = config;
+  const { url: repo, directory, module, tagPrefix, tagSuffix } = config;
   const path = removePrefix(
     "github.com/",
-    removeOptionalPrefix("https://", removeOptionalSuffix("/", repo)),
+    removeOptionalPrefix("https://", removeOptionalSuffix("/", repo))
   );
   if (!path) {
     throw new Error("Only github.com URLs are supported");
@@ -23,6 +23,9 @@ export function gosubEncode(config: GoproxyConfig): string {
   const params = new URLSearchParams();
   if (directory) {
     params.set("d", directory);
+  }
+  if (module) {
+    params.set("m", module);
   }
   if (tagPrefix) {
     params.set("p", tagPrefix);
@@ -52,6 +55,7 @@ export function gosubDecode(path: string): GoproxyConfig | undefined {
   if (args) {
     const params = new URLSearchParams(args);
     config.directory = params.get("d") ?? undefined;
+    config.module = params.get("m") ?? undefined;
     config.tagPrefix = params.get("p") ?? undefined;
     config.tagSuffix = params.get("s") ?? undefined;
   }
@@ -64,7 +68,7 @@ export type GosubConfig = {
 
 export function gosub(
   base: string = "/",
-  config: Partial<GosubConfig> = {},
+  config: Partial<GosubConfig> = {}
 ): (request: Request) => Promise<Response | undefined> {
   const args: GosubConfig = {
     goproxy,

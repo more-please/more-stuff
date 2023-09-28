@@ -1,6 +1,6 @@
 {
   "name": "gosub-goproxy",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "GOPROXY implementation that allows Go modules to live in subdirectories",
   "keywords": [
     "golang",

@@ -29,7 +29,7 @@
     "format": "prettier --log-level warn -w .",
     "test": "tsc",
     "build": "esbuild index.ts --outdir=dist --format=esm --bundle --minify",
-    "prepare": "tsc && pnpm run build && cp -f ../LICENSE ."
+    "prepare": "tsc && pnpm run build && cp -f ../README.md ../LICENSE ."
   },
   "devDependencies": {
     "esbuild": "^0.19.3",

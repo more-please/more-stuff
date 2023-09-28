@@ -3,6 +3,7 @@ import * as github from "./github.ts";
 import {
   ensurePrefix,
   ensureSuffix,
+  isDefined,
   removePrefix,
   removeSuffix,
 } from "./utils.ts";
@@ -167,10 +168,19 @@ export function goproxy(
           size: i.size,
           url: i.url,
         }));
-      // TODO: skip subdirectories containing nested go.mod files
+      // Find subdirectories with nested go.mod files
+      const nestedModules = metadata
+        .map((m) => removeSuffix("/go.mod", m.name))
+        .filter(isDefined);
       // Build zip file
       async function* data() {
-        for (const m of metadata) {
+        nextFile: for (const m of metadata) {
+          // Skip contents of nested modules
+          for (const n of nestedModules) {
+            if (m.name.startsWith(n)) {
+              continue nextFile;
+            }
+          }
           const input = await fetch(m.url, {
             signal,
             headers: { ...headers, Accept: "application/vnd.github.v3.raw" },

@@ -41,3 +41,7 @@ export function ensurePrefix(prefix: string, on: string): string {
 export function ensureSuffix(suffix: string, on: string): string {
   return on.endsWith(suffix) ? on : on + suffix;
 }
+
+export function isDefined<T>(t: T | null | undefined): t is T {
+  return t !== null && t !== undefined;
+}

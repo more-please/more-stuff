@@ -3,5 +3,5 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Trivial example to test gosub-goproxy")
+	fmt.Println("Trivial example module. Should NOT include nested module.")
 }

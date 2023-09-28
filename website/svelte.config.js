@@ -1,5 +1,5 @@
-import adapter from "@sveltejs/adapter-cloudflare";
 import { importAssets } from "svelte-preprocess-import-assets";
+import netlify from "@sveltejs/adapter-netlify";
 import { vitePreprocess } from "@sveltejs/kit/vite";
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -9,12 +9,8 @@ const config = {
   preprocess: [importAssets(), vitePreprocess()],
 
   kit: {
-    adapter: adapter({
-      // See below for an explanation of these options
-      routes: {
-        include: ["/*"],
-        exclude: ["<all>"],
-      },
+    adapter: netlify({
+      edge: true,
     }),
   },
 };

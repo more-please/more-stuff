@@ -3,7 +3,6 @@ import * as github from "./github.ts";
 import {
   ensurePrefix,
   ensureSuffix,
-  removeOptionalPrefix,
   removePrefix,
   removeSuffix,
 } from "./utils.ts";
@@ -86,8 +85,8 @@ export function goproxy(
 
     const { signal, abort } = new AbortController();
 
-    const v = removePrefix("/@v/", path.substring(cmdStart));
-    if (v === "list") {
+    const cmd = path.substring(cmdStart);
+    if (cmd === "/@v/list") {
       let stream = new ReadableStream({
         async start(controller) {
           for await (const page of github.paginate(
@@ -118,6 +117,7 @@ export function goproxy(
       return new Response(stream, { headers: textHeaders });
     }
 
+    const v = removePrefix("/@v/v", cmd);
     const info = removeSuffix(".info", v);
     if (info) {
       const refData = await fetch(
@@ -128,7 +128,7 @@ export function goproxy(
       const tagData = await fetch(ref.object.url, { headers });
       const tag = parse(github.Tag, await tagData.json());
       const result = {
-        Version: info,
+        Version: `v${info}`,
         Time: tag.tagger.date,
       };
       return Response.json(result);
@@ -176,7 +176,7 @@ export function goproxy(
             headers: { ...headers, Accept: "application/vnd.github.v3.raw" },
           });
           yield {
-            name: `${module}@${zip}/${m.name}`,
+            name: `${module}@v${zip}/${m.name}`,
             input,
           };
         }

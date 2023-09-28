@@ -15,6 +15,7 @@
 </svelte:head>
 
 <div class="content">
+  <h1><img src="$lib/gosub.svg" alt="GOSUB" width="236" height="64" /></h1>
   <form method="get">
     <label>
       GitHub URL: <input name="url" type="text" bind:value={url} />

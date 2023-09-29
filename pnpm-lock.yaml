@@ -28,10 +28,6 @@ importers:
         version: 5.2.2
 
   test:
-    dependencies:
-      gosub-goproxy:
-        specifier: link:../src
-        version: link:../src
     devDependencies:
       prettier:
         specifier: ^3.0.3
@@ -51,15 +47,9 @@ importers:
       '@sveltejs/adapter-netlify':
         specifier: ^2.0.8
         version: 2.0.8(@sveltejs/kit@1.25.1)
-      gosub-goproxy:
-        specifier: link:../src
-        version: link:../src
       svelte:
         specifier: ^4.2.1
         version: 4.2.1
-      valibot:
-        specifier: ^0.17.1
-        version: 0.17.1
     devDependencies:
       '@sveltejs/kit':
         specifier: ^1.25.1
@@ -85,9 +75,6 @@ importers:
       vite:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@20.7.0)
-      vitest:
-        specifier: ^0.34.5
-        version: 0.34.5
 
 packages:
 

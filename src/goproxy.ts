@@ -26,7 +26,7 @@ export type GoproxyConfig = {
 
 export function goproxy(
   base: string,
-  config: GoproxyConfig
+  config: GoproxyConfig,
 ): (request: Request) => Promise<Response | undefined> {
   const url = new URL(config.url);
   if (url.hostname !== "github.com") {
@@ -88,7 +88,7 @@ export function goproxy(
         async start(controller) {
           for await (const page of github.paginate(
             `${github.API}/repos/${owner}/${repo}/tags`,
-            { signal, headers }
+            { signal, headers },
           )) {
             const json = await page.text();
             const tags = parse(github.Tags, JSON.parse(json));
@@ -119,7 +119,7 @@ export function goproxy(
     if (info) {
       const refData = await fetch(
         `${github.API}/repos/${owner}/${repo}/git/ref/tags/${prefix}${info}${suffix}`,
-        { signal, headers }
+        { signal, headers },
       );
       const ref = parse(github.Ref, await refData.json());
       const tagData = await fetch(ref.object.url, { headers });
@@ -145,14 +145,14 @@ export function goproxy(
       // Get tag SHA
       const refData = await fetch(
         `${github.API}/repos/${owner}/${repo}/git/ref/tags/${prefix}${zip}${suffix}`,
-        { signal, headers }
+        { signal, headers },
       );
       const ref = parse(github.Ref, await refData.json());
       // Get subdirectory tree
       const dir = config.directory ?? "";
       const treeData = await fetch(
         `${github.API}/repos/${owner}/${repo}/git/trees/${ref.object.sha}:${dir}?recursive=1`,
-        { signal, headers }
+        { signal, headers },
       );
       // Extract the metadata we care about
       const metadata = parse(github.Tree, await treeData.json())

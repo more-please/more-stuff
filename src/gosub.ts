@@ -11,7 +11,7 @@ export function gosubEncode(config: GoproxyConfig): string {
   const { url: repo, directory, module, tagPrefix, tagSuffix } = config;
   const path = removePrefix(
     "github.com/",
-    removeOptionalPrefix("https://", removeOptionalSuffix("/", repo))
+    removeOptionalPrefix("https://", removeOptionalSuffix("/", repo)),
   );
   if (!path) {
     throw new Error("Only github.com URLs are supported");
@@ -68,7 +68,7 @@ export type GosubConfig = {
 
 export function gosub(
   base: string = "/",
-  config: Partial<GosubConfig> = {}
+  config: Partial<GosubConfig> = {},
 ): (request: Request) => Promise<Response | undefined> {
   const args: GosubConfig = {
     goproxy,

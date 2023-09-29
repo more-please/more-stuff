@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "strict": true,
+    "composite": true,
     "emitDeclarationOnly": true,
     "outDir": "dist",
     "allowImportingTsExtensions": true,

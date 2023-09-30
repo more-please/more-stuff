@@ -16,10 +16,13 @@
     "svelte-preprocess-import-assets": "^1.0.1",
     "tslib": "^2.6.2",
     "typescript": "^5.2.2",
-    "vite": "^4.4.9"
+    "vite": "^4.4.9",
+    "vitest": "^0.34.5"
   },
   "dependencies": {
     "@sveltejs/adapter-netlify": "^2.0.8",
-    "svelte": "^4.2.1"
+    "gosub-goproxy": "link:../src",
+    "svelte": "^4.2.1",
+    "valibot": "^0.17.1"
   }
 }

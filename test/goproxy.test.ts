@@ -1,4 +1,4 @@
-import { GoproxyConfig, goproxy } from "../src";
+import { GoproxyConfig, goproxy } from "gosub-goproxy";
 import { describe, expect, test } from "vitest";
 
 import { unzip } from "unzipit";

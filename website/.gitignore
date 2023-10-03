@@ -1,8 +1,0 @@
-/build
-/.svelte-kit
-/.netlify
-/package
-.env
-.env.*
-!.env.example
-vite.config.js.timestamp-*

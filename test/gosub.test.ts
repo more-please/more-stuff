@@ -73,7 +73,7 @@ describe("gosub", async () => {
         encoded = `${base}${encoded}`;
         test(encoded, async () => {
           const badRequest = new Request(
-            `https://foo.bar/wrong${encoded}${extra}so/ignore/it`
+            `https://foo.bar/wrong${encoded}${extra}so/ignore/it`,
           );
           const goodRequest = new Request(`https://foo.bar${encoded}${extra}`);
           const goodResponse = new Response();

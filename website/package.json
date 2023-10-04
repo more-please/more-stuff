@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "solid-start dev",
     "build": "solid-start build",
-    "start": "solid-start start"
+    "start": "solid-start start",
+    "test": "tsc"
   },
   "type": "module",
   "devDependencies": {
@@ -18,6 +19,7 @@
   "dependencies": {
     "@solidjs/meta": "^0.28.6",
     "@solidjs/router": "^0.8.3",
+    "gosub-goproxy": "link:../src",
     "solid-js": "^1.7.12",
     "solid-start": "^0.3.6",
     "solid-start-netlify": "^0.3.6"

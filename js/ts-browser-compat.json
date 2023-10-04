@@ -1,0 +1,11 @@
+{
+  "browsers": {
+    "chrome": "43",
+    "firefox": "36",
+    "opera": "30",
+    "safari": "10",
+    "safari_ios": "10",
+    "deno": "1",
+    "nodejs": "4"
+  }
+}

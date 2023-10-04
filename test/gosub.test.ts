@@ -43,6 +43,13 @@ const TESTS: Test[] = [
       tagSuffix: "-post",
     },
   },
+  {
+    encoded: "github.com/more-please/gosub:p=;",
+    config: {
+      url: "https://github.com/more-please/gosub",
+      tagPrefix: "",
+    },
+  },
 ];
 
 describe("encode", () => {

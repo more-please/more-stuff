@@ -27,10 +27,10 @@ export function gosubEncode(config: GoproxyConfig): string {
   if (module) {
     params.set("m", module);
   }
-  if (tagPrefix) {
+  if (tagPrefix !== undefined) {
     params.set("p", tagPrefix);
   }
-  if (tagSuffix) {
+  if (tagSuffix !== undefined) {
     params.set("s", tagSuffix);
   }
   const paramStr = params.toString();

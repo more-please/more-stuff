@@ -26,13 +26,14 @@
   ],
   "scripts": {
     "format": "prettier --log-level warn -w .",
-    "test": "vitest run",
+    "test": "ts-browser-compat && vitest run",
     "prepare": "tsc && cp -f ../README.md ../LICENSE ."
   },
   "devDependencies": {
-    "@types/node": "^20.7.0",
+    "@journeyapps/ts-browser-compat": "github:more-please/ts-browser-compat",
+    "@types/node": "^20.8.2",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2",
-    "vitest": "^0.34.5"
+    "vitest": "^0.34.6"
   }
 }

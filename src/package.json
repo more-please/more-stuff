@@ -32,7 +32,7 @@
     "prepare": "tsc && pnpm run build && cp -f ../README.md ../LICENSE ."
   },
   "devDependencies": {
-    "@journeyapps/ts-browser-compat": "^0.1.2",
+    "@journeyapps/ts-browser-compat": "github:more-please/ts-browser-compat",
     "esbuild": "^0.19.3",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2"

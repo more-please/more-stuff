@@ -18,8 +18,8 @@ importers:
         version: 0.17.1
     devDependencies:
       '@journeyapps/ts-browser-compat':
-        specifier: ^0.1.2
-        version: 0.1.2(typescript@5.2.2)
+        specifier: github:more-please/ts-browser-compat
+        version: github.com/more-please/ts-browser-compat/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.2.2)
       esbuild:
         specifier: ^0.19.3
         version: 0.19.3
@@ -1965,20 +1965,6 @@ packages:
       '@sinclair/typebox': 0.27.8
     dev: true
 
-  /@journeyapps/ts-browser-compat@0.1.2(typescript@5.2.2):
-    resolution: {integrity: sha512-igZzWq/YV+oywT68pM8rmWJ14cebJxL2jMamEaF0Pa5cwn5ovSTtt4Dk3q+/V6moxlwg5WQhOIQmdSKTlxvIaw==}
-    hasBin: true
-    peerDependencies:
-      typescript: ^4.5.0
-    dependencies:
-      '@mdn/browser-compat-data': 5.3.20
-      cmd-ts: 0.11.0
-      strip-json-comments: 3.1.1
-      typescript: 5.2.2
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /@jridgewell/gen-mapping@0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}
     engines: {node: '>=6.0.0'}
@@ -2468,8 +2454,8 @@ packages:
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
 
-  /cmd-ts@0.11.0:
-    resolution: {integrity: sha512-6RvjD+f9oGPeWoMS53oavafmQ9qC839PjP3CyvPkAIfqMEXTbrclni7t3fnyVJFNWxuBexnLshcotY0RuNrI8Q==}
+  /cmd-ts@0.13.0:
+    resolution: {integrity: sha512-nsnxf6wNIM/JAS7T/x/1JmbEsjH0a8tezXqqpaL0O6+eV0/aDEnRxwjxpu0VzDdRcaC1ixGSbRlUuf/IU59I4g==}
     dependencies:
       chalk: 4.1.2
       debug: 4.3.4
@@ -4144,4 +4130,22 @@ packages:
   /yocto-queue@1.0.0:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
+    dev: true
+
+  github.com/more-please/ts-browser-compat/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.2.2):
+    resolution: {tarball: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5}
+    id: github.com/more-please/ts-browser-compat/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5
+    name: '@journeyapps/ts-browser-compat'
+    version: 0.1.2
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      typescript: '>=4.5.0'
+    dependencies:
+      '@mdn/browser-compat-data': 5.3.20
+      cmd-ts: 0.13.0
+      strip-json-comments: 3.1.1
+      typescript: 5.2.2
+    transitivePeerDependencies:
+      - supports-color
     dev: true

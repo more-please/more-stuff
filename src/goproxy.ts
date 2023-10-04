@@ -107,6 +107,7 @@ export function goproxy(
       });
       if (typeof TextEncoderStream === "function") {
         // Explicitly encode output as text - required by Deno
+        // @tsbc-ignore
         stream = stream.pipeThrough(new TextEncoderStream());
       } else {
         // No TextEncoderStream, send raw output - required by Bun

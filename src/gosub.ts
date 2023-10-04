@@ -20,7 +20,7 @@ export function gosubEncode(config: GoproxyConfig): string {
   if (!ghOwner || !ghRepo || ghExtra !== undefined) {
     throw new Error("Repo URL must be https://github.com/[owner]/[repo]");
   }
-  const params = new URLSearchParams();
+  const params = new URLSearchParams("");
   if (directory) {
     params.set("d", directory);
   }
@@ -33,7 +33,8 @@ export function gosubEncode(config: GoproxyConfig): string {
   if (tagSuffix) {
     params.set("s", tagSuffix);
   }
-  return `github.com/${path}${params.size ? `:${params}` : ""};`;
+  const paramStr = params.toString();
+  return `github.com/${path}${paramStr ? `:${paramStr}` : ""};`;
 }
 
 export function gosubDecode(path: string): GoproxyConfig | undefined {

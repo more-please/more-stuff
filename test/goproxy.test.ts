@@ -1,11 +1,8 @@
-import { GoproxyConfig, goproxy } from "gosub-goproxy";
+import { GoproxyConfig, goproxy } from "gosub-goproxy/goproxy.ts";
 import { describe, expect, test } from "vitest";
 
+import { fatal } from "gosub-goproxy/result.ts";
 import { unzip } from "unzipit";
-
-function fail<T>(message: string): NonNullable<T> {
-  throw new Error(message);
-}
 
 type Test = {
   config: GoproxyConfig;
@@ -103,7 +100,7 @@ describe("goproxy", async () => {
     for (const [name, expected] of Object.entries(text)) {
       test(name, async () => {
         const request = new Request(`https://foo.bar/${name}`);
-        const response = (await proxy(request)) ?? fail("Expected a response");
+        const response = (await proxy(request)) ?? fatal("Expected a response");
         expect(response.ok).toBeTruthy();
         expect(response.headers.get("Content-Type")).toEqual(
           "text/plain; charset=utf-8",
@@ -115,7 +112,7 @@ describe("goproxy", async () => {
     for (const [name, expected] of Object.entries(json)) {
       test(name, async () => {
         const request = new Request(`https://foo.bar/${name}`);
-        const response = (await proxy(request)) ?? fail("Expected a response");
+        const response = (await proxy(request)) ?? fatal("Expected a response");
         expect(response.ok).toBeTruthy();
         expect(response.headers.get("Content-Type")).toEqual(
           "application/json",
@@ -127,7 +124,7 @@ describe("goproxy", async () => {
     for (const [name, expected] of Object.entries(zip)) {
       describe(name, async () => {
         const request = new Request(`https://foo.bar/${name}`);
-        const response = (await proxy(request)) ?? fail("Expected a response");
+        const response = (await proxy(request)) ?? fatal("Expected a response");
         expect(response.ok).toBeTruthy();
         expect(response.headers.get("Content-Type")).toEqual("application/zip");
         const blob = await response.blob();

@@ -6,6 +6,7 @@ import {
   removePrefix,
 } from "./utils.ts";
 import { type GoproxyConfig, goproxy } from "./goproxy.ts";
+import { Result, err, ok } from "./result.ts";
 
 const DEFAULTS: Partial<GoproxyConfig> = {
   directory: "",
@@ -14,14 +15,14 @@ const DEFAULTS: Partial<GoproxyConfig> = {
   tagSuffix: "",
 };
 
-export function gosubEncode(config: GoproxyConfig): string {
+export function gosubEncode(config: GoproxyConfig): Result<string> {
   config = { ...DEFAULTS, ...config };
   const path = removePrefix(
     "github.com/",
     removeOptionalPrefix("https://", removeOptionalSuffix("/", config.url)),
   );
   if (!path) {
-    throw new Error("Only github.com URLs are supported");
+    return err("Only github.com URLs are supported");
   }
   const [ghOwner, ghRepo, ghExtra] = path.split("/");
   if (!ghOwner || !ghRepo || ghExtra !== undefined) {
@@ -39,10 +40,15 @@ export function gosubEncode(config: GoproxyConfig): string {
   maybeSet("p", "tagPrefix");
   maybeSet("s", "tagSuffix");
   const paramStr = params.toString();
-  return `github.com/${path}${paramStr ? `:${paramStr}` : ""};`;
+  return ok(`github.com/${path}${paramStr ? `:${paramStr}` : ""};`);
 }
 
-export function gosubDecode(path: string): GoproxyConfig | undefined {
+export type GosubDecode = {
+  config: GoproxyConfig;
+  used: string;
+};
+
+export function gosubDecode(path: string): GosubDecode | undefined {
   const [spec] = path.split(";");
   if (!spec) {
     return;
@@ -71,7 +77,10 @@ export function gosubDecode(path: string): GoproxyConfig | undefined {
     maybeSet("p", "tagPrefix");
     maybeSet("s", "tagSuffix");
   }
-  return config;
+  return {
+    config,
+    used: `${spec};`,
+  };
 }
 
 export type GosubConfig = {
@@ -90,12 +99,11 @@ export function gosub(
   return async (request: Request) => {
     const url = new URL(request.url);
     const subpath = removePrefix(base, url.pathname);
-    const config = subpath && gosubDecode(subpath);
-    if (!config) {
+    const decode = subpath && gosubDecode(subpath);
+    if (!decode) {
       return;
     }
-    const base2 = gosubEncode(config);
-    const handler = args.goproxy(`${base}${base2}/`, config);
+    const handler = args.goproxy(`${base}${decode.used}/`, decode.config);
     return handler(request);
   };
 }

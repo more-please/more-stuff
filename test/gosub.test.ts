@@ -1,7 +1,8 @@
 import { describe, expect, test } from "vitest";
-import { gosub, gosubDecode, gosubEncode } from "gosub-goproxy";
+import { gosub, gosubDecode, gosubEncode } from "gosub-goproxy/gosub.ts";
 
-import type { GoproxyConfig } from "gosub-goproxy";
+import type { GoproxyConfig } from "gosub-goproxy/goproxy.ts";
+import { unwrap } from "gosub-goproxy/result";
 
 type Test = {
   encoded: string;
@@ -56,7 +57,7 @@ describe("encode", () => {
   for (const { config, encoded } of TESTS) {
     test(encoded, () => {
       const actualEncoded = gosubEncode(config);
-      expect(actualEncoded).toEqual(encoded);
+      expect(unwrap(actualEncoded)).toEqual(encoded);
     });
   }
 });
@@ -64,10 +65,10 @@ describe("encode", () => {
 describe("decode", () => {
   for (let { config, encoded } of TESTS) {
     for (const extra of ["", "ignore;", "/extra/stuff/"]) {
-      encoded += extra;
-      test(encoded, () => {
-        const actualConfig = gosubDecode(encoded);
-        expect(actualConfig).toEqual(config);
+      test(encoded + extra, () => {
+        const decode = gosubDecode(encoded + extra);
+        expect(decode?.used).toEqual(encoded);
+        expect(decode?.config).toEqual(config);
       });
     }
   }

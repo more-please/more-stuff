@@ -41,20 +41,14 @@ export function goproxy(
   const prefix = config.tagPrefix ?? "v";
   const suffix = config.tagSuffix ?? "";
 
-  type Version = { major: number; minor: number; patch: number };
-
-  function decodeVersion(str: string): Version | undefined {
-    const VERSION = /^(?<major>[0-9]+)\.(?<minor>[0-9]+)\.(?<patch>[0-9]+)$/;
+  function tagToVersion(str: string): string | undefined {
+    const VERSION = /^[0-9]+\.[0-9]+\.[0-9]+$/;
     const v = removePrefix(prefix, removeSuffix(suffix, str));
-    const g = v && v.match(VERSION)?.groups;
-    if (!g) {
-      return;
+    if (v && v.match(VERSION)) {
+      return `v${v}`;
+    } else {
+      return undefined;
     }
-    return {
-      major: parseInt(g.major!),
-      minor: parseInt(g.minor!),
-      patch: parseInt(g.patch!),
-    };
   }
 
   return async (request: Request) => {
@@ -83,7 +77,8 @@ export function goproxy(
     const { signal, abort } = new AbortController();
 
     const cmd = path.substring(cmdStart);
-    if (cmd === "/@v/list") {
+
+    if (cmd === "/@v/list" || cmd === "/@gosub/tags") {
       let stream = new ReadableStream({
         async start(controller) {
           for await (const page of github.paginate(
@@ -93,9 +88,9 @@ export function goproxy(
             const json = await page.text();
             const tags = parse(github.Tags, JSON.parse(json));
             for (const tag of tags) {
-              const v = decodeVersion(tag.name);
+              const v = cmd === "/@v/list" ? tagToVersion(tag.name) : tag.name;
               if (v) {
-                controller.enqueue(`v${v.major}.${v.minor}.${v.patch}\n`);
+                controller.enqueue(`${v}\n`);
               }
             }
           }

@@ -21,6 +21,7 @@ const TESTS: Test[] = [
       githubToken: process.env["GITHUB_TOKEN"],
     },
     text: {
+      "example/@gosub/tags": "nested-0.0.1\nexample-0.0.2\nexample-0.0.1\n",
       "example/@v/list": "v0.0.2\nv0.0.1\n",
       "example/@v/v0.0.1.mod": "module example\n\ngo 1.21.1\n",
       "example/@v/v0.0.2.mod": "module example\n\ngo 1.21.1\n",
@@ -69,6 +70,7 @@ func main() {
       githubToken: process.env["GITHUB_TOKEN"],
     },
     text: {
+      "nested/@gosub/tags": "nested-0.0.1\nexample-0.0.2\nexample-0.0.1\n",
       "nested/@v/list": "v0.0.1\n",
       "nested/@v/v0.0.1.mod": "module nested\n\ngo 1.21.1\n",
     },

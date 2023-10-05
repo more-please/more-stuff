@@ -29,6 +29,10 @@ const Input: ParentComponent<{
   </Col>
 );
 
+function getAsset(path: string): string {
+  return new URL(`../../../${path}`, import.meta.url).href;
+}
+
 export default function Home() {
   const [config, setConfig] = createStore<GoproxyConfig>({
     url: "",
@@ -38,7 +42,7 @@ export default function Home() {
   return (
     <main>
       <h1>
-        <img src={gosub_svg} alt="GOSUB" width="236" height="64" />
+        <img src={getAsset("gosub.svg")} alt="GOSUB" width="236" height="64" />
       </h1>
       <h2>Serve Go modules from a GitHub repo subdirectory</h2>
 

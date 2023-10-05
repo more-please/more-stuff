@@ -7,11 +7,18 @@ import {
 } from "./utils.ts";
 import { type GoproxyConfig, goproxy } from "./goproxy.ts";
 
+const DEFAULTS: Partial<GoproxyConfig> = {
+  directory: "",
+  module: "",
+  tagPrefix: "v",
+  tagSuffix: "",
+};
+
 export function gosubEncode(config: GoproxyConfig): string {
-  const { url: repo, directory, module, tagPrefix, tagSuffix } = config;
+  config = { ...DEFAULTS, ...config };
   const path = removePrefix(
     "github.com/",
-    removeOptionalPrefix("https://", removeOptionalSuffix("/", repo)),
+    removeOptionalPrefix("https://", removeOptionalSuffix("/", config.url)),
   );
   if (!path) {
     throw new Error("Only github.com URLs are supported");
@@ -21,18 +28,16 @@ export function gosubEncode(config: GoproxyConfig): string {
     throw new Error("Repo URL must be https://github.com/[owner]/[repo]");
   }
   const params = new URLSearchParams("");
-  if (directory) {
-    params.set("d", directory);
+  function maybeSet<K extends keyof GoproxyConfig>(param: string, key: K) {
+    const value = config[key];
+    if (value !== undefined && value !== DEFAULTS[key]) {
+      params.set(param, value);
+    }
   }
-  if (module) {
-    params.set("m", module);
-  }
-  if (tagPrefix !== undefined) {
-    params.set("p", tagPrefix);
-  }
-  if (tagSuffix !== undefined) {
-    params.set("s", tagSuffix);
-  }
+  maybeSet("d", "directory");
+  maybeSet("m", "module");
+  maybeSet("p", "tagPrefix");
+  maybeSet("s", "tagSuffix");
   const paramStr = params.toString();
   return `github.com/${path}${paramStr ? `:${paramStr}` : ""};`;
 }
@@ -55,10 +60,16 @@ export function gosubDecode(path: string): GoproxyConfig | undefined {
   };
   if (args) {
     const params = new URLSearchParams(args);
-    config.directory = params.get("d") ?? undefined;
-    config.module = params.get("m") ?? undefined;
-    config.tagPrefix = params.get("p") ?? undefined;
-    config.tagSuffix = params.get("s") ?? undefined;
+    function maybeSet<K extends keyof GoproxyConfig>(param: string, key: K) {
+      const value = params.get(param) ?? undefined;
+      if (value !== undefined && value !== DEFAULTS[key]) {
+        config[key] = value;
+      }
+    }
+    maybeSet("d", "directory");
+    maybeSet("m", "module");
+    maybeSet("p", "tagPrefix");
+    maybeSet("s", "tagSuffix");
   }
   return config;
 }

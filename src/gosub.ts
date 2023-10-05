@@ -17,16 +17,17 @@ const DEFAULTS: Partial<GoproxyConfig> = {
 
 export function gosubEncode(config: GoproxyConfig): Result<string> {
   config = { ...DEFAULTS, ...config };
-  const path = removePrefix(
+  const domain = removePrefix(
     "github.com/",
-    removeOptionalPrefix("https://", removeOptionalSuffix("/", config.url)),
+    removeOptionalPrefix("https://", config.url),
   );
-  if (!path) {
-    return err("Only github.com URLs are supported");
+  if (domain === undefined) {
+    return err("Repo URL must be on github.com");
   }
+  const path = removeOptionalSuffix("/", domain);
   const [ghOwner, ghRepo, ghExtra] = path.split("/");
   if (!ghOwner || !ghRepo || ghExtra !== undefined) {
-    throw new Error("Repo URL must be https://github.com/[owner]/[repo]");
+    return err("Repo URL must be github.com/[owner]/[repo]");
   }
   const params = new URLSearchParams("");
   function maybeSet<K extends keyof GoproxyConfig>(param: string, key: K) {

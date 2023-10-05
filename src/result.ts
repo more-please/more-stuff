@@ -25,3 +25,11 @@ export function fatal<T>(message: string): NonNullable<T> & never {
 export function unwrap<T>(result: Result<T>): T {
   return result.ok ? result.value : fatal(result.err);
 }
+
+export function isOK<T>(result: Result<T>): ResultOK<T> | undefined {
+  return result.ok ? result : undefined;
+}
+
+export function isErr<T>(result: Result<T>): ResultErr | undefined {
+  return result.ok ? undefined : result;
+}

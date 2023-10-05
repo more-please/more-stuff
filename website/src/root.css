@@ -7,6 +7,7 @@ main {
   flex-flow: column nowrap;
   align-items: center;
   margin: 0 0 4em;
+  min-width: 0;
 }
 
 h1,
@@ -43,4 +44,39 @@ pre {
   background-color: floralwhite;
   border: 1px solid lightgray;
   padding: 0.5em;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  align-items: stretch;
+  min-width: 0;
+  max-width: 100%;
+  flex: 1 1 auto;
+  position: relative;
+}
+
+input {
+  font-family: monospace;
+  padding: 0.3em 0.5em;
+  font-size: 120%;
+  border: 1px solid black;
+  min-width: 0;
+  max-width: 100%;
+  width: 50rem;
+  flex: 0 1 auto;
+}
+
+label {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 1em 0 0.25em;
 }

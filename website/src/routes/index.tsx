@@ -1,78 +1,40 @@
-import { ParentComponent, Signal, createSignal } from "solid-js";
+import { ParentComponent, Show, children } from "solid-js";
+import { Result, isErr, isOK } from "gosub-goproxy/result.ts";
 
 import { GoproxyConfig } from "gosub-goproxy/goproxy.ts";
+import { createStore } from "solid-js/store";
 import { gosubEncode } from "gosub-goproxy/gosub.ts";
 import { gosub_svg } from "../assets.ts";
+
+const Row: ParentComponent = (props) => <div class="row">{props.children}</div>;
+const Col: ParentComponent = (props) => <div class="col">{props.children}</div>;
 
 const Input: ParentComponent<{
   id: string;
   placeholder: string;
-  value: Signal<string>;
-}> = (props) => {
-  const [get, set] = props.value;
-  return (
-    <>
-      <label for={props.id}>{props.children}</label>
-      <input
-        id={props.id}
-        name={props.id}
-        type="text"
-        size="40"
-        placeholder={props.placeholder}
-        value={get()}
-        onInput={(e) => set(e.currentTarget.value)}
-      />
-    </>
-  );
-};
-
-const InputWithCheckbox: ParentComponent<{
-  id: string;
-  placeholder: string;
-  value: Signal<string | undefined>;
-}> = (props) => {
-  const [get, set] = props.value;
-  return (
-    <>
-      <label for={props.id}>{props.children}</label>
-      <input
-        type="checkbox"
-        checked={get() !== undefined}
-        onChange={(e) => set(e.currentTarget.checked ? "" : undefined)}
-      />
-      <input
-        type="text"
-        size="40"
-        placeholder={props.placeholder}
-        value={get() ?? ""}
-        onInput={(e) => set(e.currentTarget.value)}
-      />
-    </>
-  );
-};
+  value: string | undefined;
+  setValue: (value: string) => void;
+}> = (props) => (
+  <Col>
+    <label for={props.id}>{props.children}</label>
+    <input
+      id={props.id}
+      name={props.id}
+      type="text"
+      size="80"
+      placeholder={props.placeholder}
+      value={props.value ?? ""}
+      onInput={(e) => props.setValue(e.currentTarget.value)}
+    />
+  </Col>
+);
 
 export default function Home() {
-  const [url, setUrl] = createSignal("https://github.com/more-please/utf64");
-  const [dir, setDir] = createSignal("");
-  const [module, setModule] = createSignal("");
-  const [prefix, setPrefix] = createSignal<string>();
-  const [suffix, setSuffix] = createSignal<string>();
-  function config(): GoproxyConfig {
-    return {
-      url: url(),
-      directory: dir(),
-      tagPrefix: prefix(),
-      tagSuffix: suffix(),
-    };
-  }
-  function encoded() {
-    try {
-      debugger;
-      return gosubEncode(config());
-    } catch (e) {
-      return `${e}`;
-    }
-  }
+  const [config, setConfig] = createStore<GoproxyConfig>({
+    url: "",
+    tagPrefix: "v",
+  });
+  const encoded = () => gosubEncode(config);
   return (
     <main>
       <h1>
@@ -83,40 +45,57 @@ export default function Home() {
       <Input
         id="url"
         placeholder="https://github.com/<user>/<repo>"
-        value={[url, setUrl]}
+        value={config.url}
+        setValue={(url) => setConfig("url", url)}
       >
-        GitHub URL
+        GitHub URL for your Go module:
       </Input>
+
+      <Show
+        when={isErr(encoded())}
+        keyed
+        fallback={<p>Looks good! Now let's locate your module…</p>}
+      >
+        {(result) => (
+          <p>
+            <em>{result.err}</em>
+          </p>
+        )}
+      </Show>
 
       <Input
         id="directory"
         placeholder="optional/sub/directory"
-        value={[dir, setDir]}
+        value={config.directory}
+        setValue={(dir) => setConfig("directory", dir)}
       >
-        Subdirectory
+        Subdirectory:
       </Input>
-
-      <Input id="module" placeholder="my.module" value={[module, setModule]}>
-        Go module name
-      </Input>
-
-      <InputWithCheckbox
+      <Input
         id="prefix"
         placeholder="prefix-"
-        value={[prefix, setPrefix]}
+        value={config.tagPrefix}
+        setValue={(p) => setConfig("tagPrefix", p)}
       >
-        Version tag prefix (default: <code>v</code>)
-      </InputWithCheckbox>
-
-      <InputWithCheckbox
+        Version tag prefix:
+      </Input>
+      <Input
         id="suffix"
         placeholder="-suffix"
-        value={[suffix, setSuffix]}
+        value={config.tagSuffix}
+        setValue={(s) => setConfig("tagSuffix", s)}
       >
-        Version tag suffix
-      </InputWithCheckbox>
+        Version tag suffix:
+      </Input>
 
-      <p>{encoded()}</p>
+      <Show when={isOK(encoded())} keyed>
+        {(result) => (
+          <>
+            <h2>Result</h2>
+            <p>{result.value}</p>
+          </>
+        )}
+      </Show>
     </main>
   );
 }

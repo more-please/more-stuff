@@ -3,7 +3,8 @@ import { gosub } from "gosub-goproxy/gosub";
 
 const handler = gosub("/");
 
-export async function GET(args: APIEvent): Promise<Response> {
-  const result = await handler(args.request);
-  return result ?? new Response("Not found", { status: 404 });
+export function GET(args: APIEvent): Response {
+  return Response.json("Success");
+  // const result = await handler(args.request);
+  // return result ?? new Response("Not found", { status: 404 });
 }

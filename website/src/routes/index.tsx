@@ -1,10 +1,10 @@
-import { ParentComponent, Show, children } from "solid-js";
-import { Result, isErr, isOK } from "gosub-goproxy/result.ts";
+import { ParentComponent, Show } from "solid-js";
+import { isErr, isOK } from "gosub-goproxy/result.ts";
 
 import { GoproxyConfig } from "gosub-goproxy/goproxy.ts";
 import { createStore } from "solid-js/store";
 import { gosubEncode } from "gosub-goproxy/gosub.ts";
-import { gosub_svg } from "../assets.ts";
+import gosub_svg from "assets/gosub.svg?url";
 
 const Row: ParentComponent = (props) => <div class="row">{props.children}</div>;
 const Col: ParentComponent = (props) => <div class="col">{props.children}</div>;
@@ -29,10 +29,6 @@ const Input: ParentComponent<{
   </Col>
 );
 
-function getAsset(path: string): string {
-  return new URL(`../../../${path}`, import.meta.url).href;
-}
-
 export default function Home() {
   const [config, setConfig] = createStore<GoproxyConfig>({
     url: "",
@@ -42,7 +38,7 @@ export default function Home() {
   return (
     <main>
       <h1>
-        <img src={getAsset("gosub.svg")} alt="GOSUB" width="236" height="64" />
+        <img src={gosub_svg} alt="GOSUB" width="236" height="64" />
       </h1>
       <h2>Serve Go modules from a GitHub repo subdirectory</h2>
 

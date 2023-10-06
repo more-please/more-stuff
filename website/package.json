@@ -1,12 +1,13 @@
 {
-  "name": "website2",
+  "private": true,
+  "name": "website",
+  "type": "module",
   "scripts": {
     "dev": "solid-start dev",
     "build": "solid-start build",
     "start": "solid-start start",
     "test": "tsc"
   },
-  "type": "module",
   "devDependencies": {
     "@types/node": "^20.8.2",
     "esbuild": "^0.19.4",
@@ -19,10 +20,11 @@
   "dependencies": {
     "@solidjs/meta": "^0.28.6",
     "@solidjs/router": "^0.8.3",
+    "assets": "link:../assets",
     "gosub-goproxy": "link:../src",
     "solid-js": "^1.7.12",
-    "solid-start": "^0.3.6",
-    "solid-start-netlify": "^0.3.6"
+    "solid-start-netlify": "^0.3.6",
+    "solid-start": "^0.3.6"
   },
   "engines": {
     "node": ">=18"

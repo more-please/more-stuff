@@ -24,7 +24,7 @@
     "gosub-goproxy": "link:../src",
     "solid-js": "^1.7.12",
     "solid-start": "^0.3.6",
-    "solid-start-netlify": "^0.3.6"
+    "solid-start-netlify": "https://gitpkg.now.sh/iainmerrick/solid-start/packages/start-netlify?netlify"
   },
   "engines": {
     "node": ">=18"

@@ -72,12 +72,12 @@ importers:
         specifier: ^0.3.6
         version: 0.3.6(@solidjs/meta@0.28.6)(@solidjs/router@0.8.3)(solid-js@1.7.12)(solid-start-netlify@0.3.6)(solid-start-node@0.3.6)(vite@4.4.11)
       solid-start-netlify:
-        specifier: ^0.3.6
-        version: 0.3.6(solid-start@0.3.6)
+        specifier: https://gitpkg.now.sh/iainmerrick/solid-start/packages/start-netlify?netlify
+        version: '@gitpkg.now.sh/iainmerrick/solid-start/packages/start-netlify?netlify(solid-start@0.3.6)'
     devDependencies:
       '@types/node':
         specifier: ^20.8.2
-        version: 20.8.2
+        version: 20.8.3
       esbuild:
         specifier: ^0.19.4
         version: 0.19.4
@@ -92,7 +92,7 @@ importers:
         version: 5.2.2
       vite:
         specifier: ^4.4.11
-        version: 4.4.11(@types/node@20.8.2)
+        version: 4.4.11(@types/node@20.8.3)
       vite-tsconfig-paths:
         specifier: ^4.2.1
         version: 4.2.1(typescript@5.2.2)(vite@4.4.11)
@@ -2185,8 +2185,8 @@ packages:
   /@types/ms@0.7.32:
     resolution: {integrity: sha512-xPSg0jm4mqgEkNhowKgZFBNtwoEwF6gJ4Dhww+GFpm3IgtNseHQZ5IqdNwnquZEoANxyDAKDRAdVo4Z72VvD/g==}
 
-  /@types/node@20.8.2:
-    resolution: {integrity: sha512-Vvycsc9FQdwhxE3y3DzeIxuEJbWGDsnrxvMADzTDF/lcdR9/K+AQIeAghTQsHtotg/q0j3WEOYS/jQgSdWue3w==}
+  /@types/node@20.8.3:
+    resolution: {integrity: sha512-jxiZQFpb+NlH5kjW49vXxvxTjeeqlbsnTAdBTKpzEdPs9itay7MscYXz3Fo9VYFEsfQ6LJFitHad3faerLAjCw==}
 
   /@types/resolve@1.20.2:
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
@@ -3530,25 +3530,6 @@ packages:
       '@babel/types': 7.23.0
       solid-js: 1.7.12
 
-  /solid-start-netlify@0.3.6(solid-start@0.3.6):
-    resolution: {integrity: sha512-Qbjj69XuxkSCfHVqwp79jQYRuKyed1MQIuf0FRbHNX2L1xs1/nYjVGP+8/aQEsLlBuXozhxB+8BOC0TBDzhScA==}
-    peerDependencies:
-      solid-start: '*'
-    dependencies:
-      '@babel/core': 7.23.0
-      '@babel/preset-env': 7.22.20(@babel/core@7.23.0)
-      '@rollup/plugin-babel': 6.0.4(@babel/core@7.23.0)(rollup@3.29.4)
-      '@rollup/plugin-commonjs': 24.1.0(rollup@3.29.4)
-      '@rollup/plugin-json': 6.0.1(rollup@3.29.4)
-      '@rollup/plugin-node-resolve': 15.2.2(rollup@3.29.4)
-      encoding: 0.1.13
-      rollup: 3.29.4
-      solid-start: 0.3.6(@solidjs/meta@0.28.6)(@solidjs/router@0.8.3)(solid-js@1.7.12)(solid-start-netlify@0.3.6)(solid-start-node@0.3.6)(vite@4.4.11)
-      terser: 5.21.0
-    transitivePeerDependencies:
-      - '@types/babel__core'
-      - supports-color
-
   /solid-start-node@0.3.6(solid-start@0.3.6)(vite@4.4.11):
     resolution: {integrity: sha512-UqLXb4/EscJnC/k8cXpeo+kCNqYC2f/J+DIdhrH4KLx4i1OfrJqyVqUx1onQIjDbrZlI2QlU7ec/h7Xaj7K5rQ==}
     peerDependencies:
@@ -3564,7 +3545,7 @@ packages:
       sirv: 2.0.3
       solid-start: 0.3.6(@solidjs/meta@0.28.6)(@solidjs/router@0.8.3)(solid-js@1.7.12)(solid-start-netlify@0.3.6)(solid-start-node@0.3.6)(vite@4.4.11)
       terser: 5.21.0
-      vite: 4.4.11(@types/node@20.8.2)
+      vite: 4.4.11(@types/node@20.8.3)
     transitivePeerDependencies:
       - supports-color
 
@@ -3633,11 +3614,11 @@ packages:
       set-cookie-parser: 2.6.0
       sirv: 2.0.3
       solid-js: 1.7.12
-      solid-start-netlify: 0.3.6(solid-start@0.3.6)
+      solid-start-netlify: '@gitpkg.now.sh/iainmerrick/solid-start/packages/start-netlify?netlify(solid-start@0.3.6)'
       solid-start-node: 0.3.6(solid-start@0.3.6)(vite@4.4.11)
       terser: 5.21.0
       undici: 5.25.4
-      vite: 4.4.11(@types/node@20.8.2)
+      vite: 4.4.11(@types/node@20.8.3)
       vite-plugin-inspect: 0.7.40(rollup@3.29.4)(vite@4.4.11)
       vite-plugin-solid: 2.7.0(solid-js@1.7.12)(vite@4.4.11)
       wait-on: 6.0.1(debug@4.3.4)
@@ -3877,7 +3858,7 @@ packages:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
 
-  /vite-node@0.34.5(@types/node@20.8.2):
+  /vite-node@0.34.5(@types/node@20.8.3):
     resolution: {integrity: sha512-RNZ+DwbCvDoI5CbCSQSyRyzDTfFvFauvMs6Yq4ObJROKlIKuat1KgSX/Ako5rlDMfVCyMcpMRMTkJBxd6z8YRA==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -3887,7 +3868,7 @@ packages:
       mlly: 1.4.2
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 4.4.11(@types/node@20.8.2)
+      vite: 4.4.11(@types/node@20.8.3)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -3917,7 +3898,7 @@ packages:
       open: 9.1.0
       picocolors: 1.0.0
       sirv: 2.0.3
-      vite: 4.4.11(@types/node@20.8.2)
+      vite: 4.4.11(@types/node@20.8.3)
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -3935,7 +3916,7 @@ packages:
       merge-anything: 5.1.7
       solid-js: 1.7.12
       solid-refresh: 0.5.3(solid-js@1.7.12)
-      vite: 4.4.11(@types/node@20.8.2)
+      vite: 4.4.11(@types/node@20.8.3)
       vitefu: 0.2.4(vite@4.4.11)
     transitivePeerDependencies:
       - supports-color
@@ -3951,13 +3932,13 @@ packages:
       debug: 4.3.4
       globrex: 0.1.2
       tsconfck: 2.1.2(typescript@5.2.2)
-      vite: 4.4.11(@types/node@20.8.2)
+      vite: 4.4.11(@types/node@20.8.3)
     transitivePeerDependencies:
       - supports-color
       - typescript
     dev: true
 
-  /vite@4.4.11(@types/node@20.8.2):
+  /vite@4.4.11(@types/node@20.8.3):
     resolution: {integrity: sha512-ksNZJlkcU9b0lBwAGZGGaZHCMqHsc8OpgtoYhsQ4/I2v5cnpmmmqe5pM4nv/4Hn6G/2GhTdj0DhZh2e+Er1q5A==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -3985,7 +3966,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.8.2
+      '@types/node': 20.8.3
       esbuild: 0.18.20
       postcss: 8.4.31
       rollup: 3.29.4
@@ -4000,7 +3981,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.4.11(@types/node@20.8.2)
+      vite: 4.4.11(@types/node@20.8.3)
 
   /vitest@0.34.5:
     resolution: {integrity: sha512-CPI68mmnr2DThSB3frSuE5RLm9wo5wU4fbDrDwWQQB1CWgq9jQVoQwnQSzYAjdoBOPoH2UtXpOgHVge/uScfZg==}
@@ -4035,7 +4016,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.6
       '@types/chai-subset': 1.3.3
-      '@types/node': 20.8.2
+      '@types/node': 20.8.3
       '@vitest/expect': 0.34.5
       '@vitest/runner': 0.34.5
       '@vitest/snapshot': 0.34.5
@@ -4054,8 +4035,8 @@ packages:
       strip-literal: 1.3.0
       tinybench: 2.5.1
       tinypool: 0.7.0
-      vite: 4.4.11(@types/node@20.8.2)
-      vite-node: 0.34.5(@types/node@20.8.2)
+      vite: 4.4.11(@types/node@20.8.3)
+      vite-node: 0.34.5(@types/node@20.8.3)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
@@ -4134,6 +4115,28 @@ packages:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
     dev: true
+
+  '@gitpkg.now.sh/iainmerrick/solid-start/packages/start-netlify?netlify(solid-start@0.3.6)':
+    resolution: {tarball: https://gitpkg.now.sh/iainmerrick/solid-start/packages/start-netlify?netlify}
+    id: '@gitpkg.now.sh/iainmerrick/solid-start/packages/start-netlify?netlify'
+    name: solid-start-netlify
+    version: 0.3.6
+    peerDependencies:
+      solid-start: '*'
+    dependencies:
+      '@babel/core': 7.23.0
+      '@babel/preset-env': 7.22.20(@babel/core@7.23.0)
+      '@rollup/plugin-babel': 6.0.4(@babel/core@7.23.0)(rollup@3.29.4)
+      '@rollup/plugin-commonjs': 24.1.0(rollup@3.29.4)
+      '@rollup/plugin-json': 6.0.1(rollup@3.29.4)
+      '@rollup/plugin-node-resolve': 15.2.2(rollup@3.29.4)
+      encoding: 0.1.13
+      rollup: 3.29.4
+      solid-start: 0.3.6(@solidjs/meta@0.28.6)(@solidjs/router@0.8.3)(solid-js@1.7.12)(solid-start-netlify@0.3.6)(solid-start-node@0.3.6)(vite@4.4.11)
+      terser: 5.21.0
+    transitivePeerDependencies:
+      - '@types/babel__core'
+      - supports-color
 
   github.com/more-please/ts-browser-compat/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.2.2):
     resolution: {tarball: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5}

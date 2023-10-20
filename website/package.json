@@ -9,7 +9,7 @@
     "test": "tsc"
   },
   "devDependencies": {
-    "@types/node": "^20.8.2",
+    "@types/node": "^20.8.7",
     "esbuild": "^0.19.5",
     "postcss": "^8.4.31",
     "solid-start-node": "^0.3.6",

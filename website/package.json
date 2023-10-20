@@ -22,7 +22,7 @@
     "@solidjs/router": "^0.8.3",
     "assets": "link:../assets",
     "gosub-goproxy": "link:../src",
-    "solid-js": "^1.7.12",
+    "solid-js": "^1.8.3",
     "solid-start": "^0.3.6",
     "solid-start-netlify": "https://gitpkg.now.sh/iainmerrick/solid-start/packages/start-netlify?netlify"
   },

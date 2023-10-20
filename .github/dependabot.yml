@@ -12,3 +12,7 @@ updates:
     directory: "/py"
     schedule:
       interval: "weekly"
+  - package-ecosystem: "cargo"
+    directory: "/rust"
+    schedule:
+      interval: "weekly"

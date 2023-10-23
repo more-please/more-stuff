@@ -12,7 +12,7 @@
     "@types/node": "^20.8.7",
     "esbuild": "^0.19.5",
     "postcss": "^8.4.31",
-    "solid-start-node": "^0.3.6",
+    "solid-start-node": "^0.3.7",
     "typescript": "^5.2.2",
     "vite": "^4.4.11",
     "vite-tsconfig-paths": "^4.2.1"

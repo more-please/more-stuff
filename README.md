@@ -75,7 +75,7 @@ func main() {
 
 ### Rust
 
-Kindly contributed by @mjmusante
+Kindly contributed by Mark Musante ([@mjmusante](https://github.com/mjmusante))
 
 ```
 cargo add utf64

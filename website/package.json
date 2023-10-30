@@ -9,22 +9,22 @@
     "test": "tsc"
   },
   "devDependencies": {
-    "@types/node": "^20.8.7",
+    "@types/node": "^20.8.9",
     "esbuild": "^0.19.5",
     "postcss": "^8.4.31",
-    "solid-start-node": "^0.3.7",
+    "solid-start-node": "^0.3.8",
     "typescript": "^5.2.2",
     "vite": "^4.5.0",
     "vite-tsconfig-paths": "^4.2.1"
   },
   "dependencies": {
-    "@solidjs/meta": "^0.28.6",
+    "@solidjs/meta": "^0.28.7",
     "@solidjs/router": "^0.8.3",
     "assets": "link:../assets",
     "gosub-goproxy": "link:../src",
-    "solid-js": "^1.8.3",
-    "solid-start": "^0.3.7",
-    "solid-start-netlify": "https://gitpkg.now.sh/iainmerrick/solid-start/packages/start-netlify?netlify"
+    "solid-js": "^1.8.4",
+    "solid-start": "^0.3.8",
+    "solid-start-netlify": "^0.3.8"
   },
   "engines": {
     "node": ">=18"

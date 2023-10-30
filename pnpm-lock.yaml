@@ -34,10 +34,10 @@ importers:
     dependencies:
       '@sveltejs/adapter-netlify':
         specifier: ^2.0.8
-        version: 2.0.8(@sveltejs/kit@1.26.0)
+        version: 2.0.8(@sveltejs/kit@1.27.2)
       '@sveltejs/kit':
-        specifier: ^1.26.0
-        version: 1.26.0(svelte@4.2.2)(vite@4.5.0)
+        specifier: ^1.27.2
+        version: 1.27.2(svelte@4.2.2)(vite@4.5.0)
       gosub-goproxy:
         specifier: ^0.0.9
         version: 0.0.9
@@ -329,19 +329,19 @@ packages:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
     dev: true
 
-  /@sveltejs/adapter-netlify@2.0.8(@sveltejs/kit@1.26.0):
+  /@sveltejs/adapter-netlify@2.0.8(@sveltejs/kit@1.27.2):
     resolution: {integrity: sha512-kfsoSsZth5CZHEIjr4TL4Cb6NmVul7/XNu5rJ04EbIOjYD1bnA4U7Sk1BmoRVyJae7UtUwG6Gkh01RFQSaIeNQ==}
     peerDependencies:
       '@sveltejs/kit': ^1.5.0
     dependencies:
       '@iarna/toml': 2.2.5
-      '@sveltejs/kit': 1.26.0(svelte@4.2.2)(vite@4.5.0)
+      '@sveltejs/kit': 1.27.2(svelte@4.2.2)(vite@4.5.0)
       esbuild: 0.18.20
       set-cookie-parser: 2.6.0
     dev: false
 
-  /@sveltejs/kit@1.26.0(svelte@4.2.2)(vite@4.5.0):
-    resolution: {integrity: sha512-CV/AlTziC05yrz7UjVqEd0pH6+2dnrbmcnHGr2d3jXtmOgzNnlDkXtX8g3BfJ6nntsPD+0jtS2PzhvRHblRz4A==}
+  /@sveltejs/kit@1.27.2(svelte@4.2.2)(vite@4.5.0):
+    resolution: {integrity: sha512-2w2VbPpK8DI3QCSVa2UNAv5sKNks1LT8GsEdpk41ffOyO2znGx2ZwcRWacsqlvh3d9lncZuDdANvCbTbuKvy3Q==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true

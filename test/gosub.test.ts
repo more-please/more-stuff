@@ -88,7 +88,7 @@ describe("gosub", async () => {
           const mockProxy = (proxyBase: string, proxyConfig: GoproxyConfig) => {
             expect(proxyBase).toEqual(encoded + "/");
             expect(proxyConfig).toEqual(config);
-            return async (request: Request) => {
+            return async (request: string | Request) => {
               expect(request).toBe(goodRequest);
               return goodResponse;
             };

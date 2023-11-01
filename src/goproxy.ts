@@ -26,7 +26,7 @@ export type GoproxyConfig = {
 export function goproxy(
   base: string,
   config: GoproxyConfig,
-): (request: Request) => Promise<Response | undefined> {
+): (request: string | Request) => Promise<Response | undefined> {
   const url = new URL(config.url);
   if (url.hostname !== "github.com") {
     throw new Error("Only github.com URLs are supported");
@@ -50,9 +50,10 @@ export function goproxy(
     }
   }
 
-  return async (request: Request) => {
-    const url = new URL(request.url);
-    const path = removePrefix(base, url.pathname);
+  return async (request: string | Request) => {
+    const url =
+      typeof request === "string" ? request : new URL(request.url).pathname;
+    const path = removePrefix(base, url);
     if (!path) {
       return;
     }

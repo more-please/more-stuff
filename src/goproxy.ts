@@ -9,7 +9,6 @@ import {
 } from "./utils.ts";
 
 import { downloadZip } from "client-zip";
-import { parse } from "valibot";
 
 const textHeaders = {
   "content-type": "text/plain; charset=utf-8",
@@ -110,7 +109,7 @@ export function goproxy(
         for await (const page of githubPaginate(
           `/repos/${owner}/${repo}/tags`,
         )) {
-          const tags = parse(github.Tags, await page.json());
+          const tags = (await page.json()) as github.Tags;
           for (const tag of tags) {
             const v = cmd === "/@v/list" ? tagToVersion(tag.name) : tag.name;
             if (v) {
@@ -127,12 +126,12 @@ export function goproxy(
         const refData = await githubFetch(
           `/repos/${owner}/${repo}/git/ref/tags/${prefix}${info}${suffix}`,
         );
-        const ref = parse(github.Ref, await refData.json());
+        const ref = (await refData.json()) as github.Ref;
         const tagData = await githubFetch(ref.object.url);
         if (!tagData.ok) {
           throw new Error(tagData.statusText);
         }
-        const tag = parse(github.Tag, await tagData.json());
+        const tag = (await tagData.json()) as github.Tag;
         const result = {
           Version: `v${info}`,
           Time: tag.tagger.date,
@@ -156,7 +155,7 @@ export function goproxy(
         const refData = await githubFetch(
           `/repos/${owner}/${repo}/git/ref/tags/${prefix}${zip}${suffix}`,
         );
-        const ref = parse(github.Ref, await refData.json());
+        const ref = (await refData.json()) as github.Ref;
         // Get subdirectory tree
         const dir = config.directory ?? "";
         const treeData = await githubFetch(
@@ -166,8 +165,8 @@ export function goproxy(
           throw new Error(treeData.statusText);
         }
         // Extract the metadata we care about
-        const metadata = parse(github.Tree, await treeData.json())
-          .tree.filter(github.isBlob)
+        const metadata = ((await treeData.json()) as github.Tree).tree
+          .filter(github.isBlob)
           // Results are probably sorted by path already, but just in case...
           .sort((a, b) => (a.path < b.path ? -1 : a.path > b.path ? 1 : 0))
           .map((i) => ({

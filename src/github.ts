@@ -1,61 +1,46 @@
-import {
-  Output,
-  array,
-  literal,
-  merge,
-  number,
-  object,
-  string,
-  union,
-} from "valibot";
+// GitHub API response types (just the ones we need)
+// Note that we don't do any runtime type validation:
+// - integration test ensures that normal usage is correct;
+// - schema errors result in runtime exceptions, as desired.
 
-export const Tags = array(
-  object({
-    name: string(),
-  }),
-);
+export type Tags = { name: string }[];
 
-export const Tag = object({
-  tagger: object({
-    date: string(),
-  }),
-});
+export type Tag = {
+  tagger: {
+    date: string;
+  };
+};
 
-export const Ref = object({
-  object: object({
-    sha: string(),
-    url: string(),
-  }),
-});
+export type Ref = {
+  object: {
+    sha: string;
+    url: string;
+  };
+};
 
-const TreeItemCommon = object({
-  mode: string(),
-  path: string(),
-  type: string(),
-  sha: string(),
-  url: string(),
-});
+type TreeItemCommon = {
+  mode: string;
+  path: string;
+  type: string;
+  sha: string;
+  url: string;
+};
 
-export const TreeItemBlob = merge([
-  TreeItemCommon,
-  object({ type: literal("blob"), size: number() }),
-]);
-export type TreeItemBlob = Output<typeof TreeItemBlob>;
+export type TreeItemBlob = TreeItemCommon & {
+  type: "blob";
+  size: number;
+};
 
-export const TreeItemTree = merge([
-  TreeItemCommon,
-  object({ type: literal("tree") }),
-]);
-export type TreeItemTree = Output<typeof TreeItemTree>;
+export type TreeItemTree = TreeItemCommon & {
+  type: "tree";
+};
 
-export const TreeItem = union([TreeItemBlob, TreeItemTree]);
-export type TreeItem = Output<typeof TreeItem>;
+export type TreeItem = TreeItemBlob | TreeItemTree;
 
-export const Tree = object({
-  sha: string(),
-  tree: array(TreeItem),
-});
-export type Tree = Output<typeof Tree>;
+export type Tree = {
+  sha: string;
+  tree: TreeItem[];
+};
 
 export function isBlob(i: TreeItem): i is TreeItemBlob {
   return i.type === "blob";

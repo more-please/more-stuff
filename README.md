@@ -38,7 +38,7 @@ type GoproxyConfig = {
   url: string; // Repo URL (currently only Github is supported)
   module?: string; // If set, Go module must match this
   directory?: string; // Subdirectory within the git repo
-  tagPrefix?: string; // Prefix for version tags in git
+  tagPrefix?: string; // Prefix for version tags in git (default is "V")
   tagSuffix?: string; // Suffix for version tags in git
   githubToken?: string; // Optional GitHub API token
 };

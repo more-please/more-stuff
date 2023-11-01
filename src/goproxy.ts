@@ -85,8 +85,7 @@ export function goproxy(
             `${github.API}/repos/${owner}/${repo}/tags`,
             { signal, headers },
           )) {
-            const json = await page.text();
-            const tags = parse(github.Tags, JSON.parse(json));
+            const tags = parse(github.Tags, await page.json());
             for (const tag of tags) {
               const v = cmd === "/@v/list" ? tagToVersion(tag.name) : tag.name;
               if (v) {

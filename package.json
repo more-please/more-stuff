@@ -4,5 +4,8 @@
     "hooks": "rm -f .git/hooks/pre-commit && ln -s ../../.githooks/pre-commit .git/hooks/pre-commit",
     "format": "pnpm run -r format",
     "test": "pnpm run -r test"
+  },
+  "prettier": {
+    "trailingComma": "all"
   }
 }

@@ -1,10 +1,18 @@
-import { ParentComponent, Show } from "solid-js";
-import { isErr, isOK } from "gosub-goproxy/result.ts";
+import {
+  For,
+  ParentComponent,
+  Show,
+  Suspense,
+  createResource,
+  createSignal,
+  resetErrorBoundaries,
+} from "solid-js";
+import { GoproxyConfig, goproxy } from "gosub-goproxy/goproxy.ts";
+import { Result, err, isErr, isOK, ok } from "gosub-goproxy/result.ts";
 
-import { GoproxyConfig } from "gosub-goproxy/goproxy.ts";
-import { createStore } from "solid-js/store";
-import { gosubEncode } from "gosub-goproxy/gosub.ts";
+import { gosubEncode } from "gosub-goproxy/gosub";
 import gosub_svg from "assets/gosub.svg?url";
+import server$ from "solid-start/server";
 
 const Row: ParentComponent = (props) => <div class="row">{props.children}</div>;
 const Col: ParentComponent = (props) => <div class="col">{props.children}</div>;
@@ -29,12 +37,38 @@ const Input: ParentComponent<{
   </Col>
 );
 
+async function serverGetTags(config: GoproxyConfig): Promise<Result<string[]>> {
+  const proxy = goproxy("/", config);
+  const response = await proxy("/module/@gosub/tags");
+  if (!response) {
+    return err("Sorry, an unknown server-side error occurred");
+  }
+  if (response.status === 404) {
+    return err("Repo not found");
+  }
+  if (!response.ok) {
+    return err(`Internal error: ${response.status} ${response.statusText}`);
+  }
+  const text = await response.text();
+  const tags = text.split("\n").filter((s) => s);
+  if (tags.length < 1) {
+    return err("No tags found in this repo");
+  }
+  return ok(tags);
+}
+
+async function getTags(url: string): Promise<Result<string[]>> {
+  const config: GoproxyConfig = { url };
+  const preflight = gosubEncode(config);
+  if (!preflight.ok) {
+    return preflight;
+  }
+  return server$(async (config) => serverGetTags(config))(config);
+}
+
 export default function Home() {
-  const [config, setConfig] = createStore<GoproxyConfig>({
-    url: "",
-    tagPrefix: "v",
-  });
-  const encoded = () => gosubEncode(config);
+  const [url, setUrl] = createSignal("https://github.com/more-please/utf64");
+  const [tags] = createResource(url, getTags);
   return (
     <main>
       <h1>
@@ -45,57 +79,25 @@ export default function Home() {
       <Input
         id="url"
         placeholder="https://github.com/<user>/<repo>"
-        value={config.url}
-        setValue={(url) => setConfig("url", url)}
+        value={url()}
+        setValue={(url) => {
+          setUrl(url);
+          resetErrorBoundaries();
+        }}
       >
         GitHub URL for your Go module:
       </Input>
 
-      <Show
-        when={isErr(encoded())}
-        keyed
-        fallback={<p>Looks good! Now let's locate your module…</p>}
-      >
-        {(result) => (
-          <p>
-            <em>{result.err}</em>
-          </p>
-        )}
-      </Show>
-
-      <Input
-        id="directory"
-        placeholder="optional/sub/directory"
-        value={config.directory}
-        setValue={(dir) => setConfig("directory", dir)}
-      >
-        Subdirectory:
-      </Input>
-      <Input
-        id="prefix"
-        placeholder="prefix-"
-        value={config.tagPrefix}
-        setValue={(p) => setConfig("tagPrefix", p)}
-      >
-        Version tag prefix:
-      </Input>
-      <Input
-        id="suffix"
-        placeholder="-suffix"
-        value={config.tagSuffix}
-        setValue={(s) => setConfig("tagSuffix", s)}
-      >
-        Version tag suffix:
-      </Input>
-
-      <Show when={isOK(encoded())} keyed>
-        {(result) => (
-          <>
-            <h2>Result</h2>
-            <p>{result.value}</p>
-          </>
-        )}
-      </Show>
+      <Suspense fallback={<p>Loading...</p>}>
+        <Show when={url() !== "" && isErr(tags())} keyed>
+          {(e) => (
+            <p>
+              <em>{e.message}</em>
+            </p>
+          )}
+        </Show>
+        <For each={isOK(tags())?.value}>{(tag) => <p>{tag}</p>}</For>
+      </Suspense>
     </main>
   );
 }

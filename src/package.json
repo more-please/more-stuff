@@ -29,7 +29,7 @@
   "scripts": {
     "format": "prettier --log-level warn -w .",
     "test": "tsc && ts-browser-compat",
-    "build": "esbuild index.ts --outdir=dist --format=esm --bundle --minify",
+    "build": "esbuild index.ts --outdir=dist --format=esm --bundle --minify --external:client-zip",
     "prepare": "tsc && pnpm run build && cp -f ../README.md ../LICENSE ."
   },
   "devDependencies": {

@@ -65,8 +65,6 @@ export function goproxy(
       return;
     }
 
-    const { signal, abort } = new AbortController();
-
     const API = "https://api.github.com";
     const NEXT_LINK = /(?<=<)([\S]*)(?=>; rel="Next")/i;
 
@@ -85,7 +83,7 @@ export function goproxy(
       for (const [k, v] of Object.entries(extraHeaders)) {
         headers.set(k, v);
       }
-      const response = await fetch(url.href, { signal, headers });
+      const response = await fetch(url.href, { headers });
       if (!response.ok) {
         throw response;
       }

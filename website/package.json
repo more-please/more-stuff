@@ -3,6 +3,7 @@
   "name": "website",
   "type": "module",
   "scripts": {
+    "getenv": "netlify env:list --plain > .env",
     "dev": "solid-start dev",
     "build": "solid-start build",
     "start": "solid-start start",

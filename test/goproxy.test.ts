@@ -1,4 +1,4 @@
-import { GoproxyConfig, goproxy } from "gosub-goproxy/goproxy.ts";
+import { GoproxyConfig, GoproxyEnv, goproxy } from "gosub-goproxy/goproxy.ts";
 import { describe, expect, test } from "vitest";
 
 import { fatal } from "gosub-goproxy/result.ts";
@@ -19,11 +19,14 @@ const TAGS = [
   "example-0.0.1\n",
 ].join("");
 
+const ENV: GoproxyEnv = {
+  githubToken: process.env["GITHUB_TOKEN"],
+};
+
 const TESTS: Test[] = [
   {
     config: {
       url: "https://github.com/more-please/no-such-repo",
-      githubToken: process.env["GITHUB_TOKEN"],
     },
     error: {
       "invalid-path": undefined,
@@ -40,7 +43,6 @@ const TESTS: Test[] = [
       module: "example",
       directory: "test/example",
       tagPrefix: "example-",
-      githubToken: process.env["GITHUB_TOKEN"],
     },
     error: {
       "invalid-path": undefined,
@@ -97,7 +99,6 @@ func main() {
       module: "nested",
       directory: "test/example/nested",
       tagPrefix: "nested-",
-      githubToken: process.env["GITHUB_TOKEN"],
     },
     text: {
       "nested/@gosub/tags": TAGS,
@@ -128,7 +129,7 @@ func main() {
 
 describe("goproxy", async () => {
   for (const { config, error, text, json, zip } of TESTS) {
-    const proxy = goproxy("/", config);
+    const proxy = goproxy("/", config, ENV);
     for (const [name, status] of Object.entries(error ?? {})) {
       test(`error > ${name}`, async () => {
         const request = new Request(`https://foo.bar/${name}`);

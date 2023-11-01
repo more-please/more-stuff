@@ -37,7 +37,7 @@ const Input: ParentComponent<{
   </Col>
 );
 
-async function serverGetTags(config: GoproxyConfig): Promise<Result<string[]>> {
+const serverGetTags = server$(async (config: GoproxyConfig) => {
   const proxy = goproxy("/", config);
   const response = await proxy("/module/@gosub/tags");
   if (!response) {
@@ -55,7 +55,7 @@ async function serverGetTags(config: GoproxyConfig): Promise<Result<string[]>> {
     return err("No tags found in this repo");
   }
   return ok(tags);
-}
+});
 
 async function getTags(url: string): Promise<Result<string[]>> {
   const config: GoproxyConfig = { url };
@@ -63,7 +63,7 @@ async function getTags(url: string): Promise<Result<string[]>> {
   if (!preflight.ok) {
     return preflight;
   }
-  return server$(async (config) => serverGetTags(config))(config);
+  return serverGetTags(config);
 }
 
 export default function Home() {

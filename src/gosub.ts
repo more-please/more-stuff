@@ -5,7 +5,7 @@ import {
   removeOptionalSuffix,
   removePrefix,
 } from "./utils.ts";
-import { type GoproxyConfig, goproxy } from "./goproxy.ts";
+import { type GoproxyConfig, goproxy, GoproxyEnv } from "./goproxy.ts";
 import { Result, err, ok } from "./result.ts";
 
 const DEFAULTS: Partial<GoproxyConfig> = {
@@ -86,6 +86,7 @@ export function gosubDecode(path: string): GosubDecode | undefined {
 
 export type GosubConfig = {
   goproxy: typeof goproxy;
+  env?: GoproxyEnv;
 };
 
 export function gosub(
@@ -104,7 +105,11 @@ export function gosub(
     if (!decode) {
       return;
     }
-    const handler = args.goproxy(`${base}${decode.used}/`, decode.config);
+    const handler = args.goproxy(
+      `${base}${decode.used}/`,
+      decode.config,
+      args.env,
+    );
     return handler(request);
   };
 }

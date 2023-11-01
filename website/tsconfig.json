@@ -11,6 +11,7 @@
     "moduleResolution": "node",
     "jsxImportSource": "solid-js",
     "jsx": "preserve",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["vite/client"]
   }
 }

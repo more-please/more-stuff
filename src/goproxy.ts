@@ -14,18 +14,22 @@ const textHeaders = {
   "content-type": "text/plain; charset=utf-8",
 };
 
+export type GoproxyEnv = {
+  githubToken?: string;
+};
+
 export type GoproxyConfig = {
   url: string; // Git repo URL - currently only Github is supported
   module?: string; // If set, Go module is required to match this
   directory?: string; // Subdirectory within the git repo
   tagPrefix?: string; // Prefix for version tags in git (default is "v")
   tagSuffix?: string; // Suffix for version tags in git
-  githubToken?: string;
 };
 
 export function goproxy(
   base: string,
   config: GoproxyConfig,
+  env: GoproxyEnv = {},
 ): (request: string | Request) => Promise<Response | undefined> {
   const url = new URL(config.url);
   if (url.hostname !== "github.com") {
@@ -78,8 +82,8 @@ export function goproxy(
         "User-Agent": "gosub-goproxy",
         "X-GitHub-Api-Version": "2022-11-28",
       });
-      if (config.githubToken) {
-        headers.set("Authorization", `Bearer ${config.githubToken}`);
+      if (env.githubToken) {
+        headers.set("Authorization", `Bearer ${env.githubToken}`);
       }
       for (const [k, v] of Object.entries(extraHeaders)) {
         headers.set(k, v);

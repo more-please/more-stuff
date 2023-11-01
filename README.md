@@ -10,7 +10,7 @@ Gosub is a [module proxy server](https://go.dev/ref/mod#goproxy-protocol) for th
 
 - [cmd/go: allow serving module under the subdirectory of git repository](https://github.com/golang/go/issues/34055)
 
-It's a small (~13KB) standalone JS module, ideal for an edge runtime like Cloudflare, Netlify or Vercel. You're also welcome to use my shared server at [gosub.moreplease.com](https://gosub.moreplease.com).
+It's a small (~10KB) standalone JS module, ideal for an edge runtime like Cloudflare, Netlify or Vercel. You're also welcome to use my shared server at [gosub.moreplease.com](https://gosub.moreplease.com).
 
 Gosub currently only supports Github, but if you're interested in using it on Gitlab, Bitbucket, etc, please get in touch.
 

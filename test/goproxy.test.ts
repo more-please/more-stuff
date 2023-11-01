@@ -6,12 +6,27 @@ import { unzip } from "unzipit";
 
 type Test = {
   config: GoproxyConfig;
-  text: Record<string, string>;
-  json: Record<string, any>;
-  zip: Record<string, Record<string, string>>;
+  error?: Record<string, number | undefined>;
+  text?: Record<string, string>;
+  json?: Record<string, any>;
+  zip?: Record<string, Record<string, string>>;
 };
 
 const TESTS: Test[] = [
+  {
+    config: {
+      url: "https://github.com/more-please/no-such-repo",
+      githubToken: process.env["GITHUB_TOKEN"],
+    },
+    error: {
+      "invalid-path": undefined,
+      "example/@gosub/tags": 404,
+      "example/@v/list": 404,
+      "example/@v/v1.2.3.info": 404,
+      "example/@v/v1.2.3.mod": 404,
+      "example/@v/v1.2.3.zip": 404,
+    },
+  },
   {
     config: {
       url: "https://github.com/more-please/gosub-goproxy",
@@ -19,6 +34,12 @@ const TESTS: Test[] = [
       directory: "test/example",
       tagPrefix: "example-",
       githubToken: process.env["GITHUB_TOKEN"],
+    },
+    error: {
+      "invalid-path": undefined,
+      "example/@v/v1.2.3.info": 404,
+      "example/@v/v1.2.3.mod": 404,
+      "example/@v/v1.2.3.zip": 404,
     },
     text: {
       "example/@gosub/tags": "nested-0.0.1\nexample-0.0.2\nexample-0.0.1\n",
@@ -97,10 +118,22 @@ func main() {
 ];
 
 describe("goproxy", async () => {
-  for (const { config, text, json, zip } of TESTS) {
+  for (const { config, error, text, json, zip } of TESTS) {
     const proxy = goproxy("/", config);
-    for (const [name, expected] of Object.entries(text)) {
-      test(name, async () => {
+    for (const [name, status] of Object.entries(error ?? {})) {
+      test(`error > ${name}`, async () => {
+        const request = new Request(`https://foo.bar/${name}`);
+        const response = await proxy(request);
+        if (!response) {
+          expect(status).toBeUndefined();
+        } else {
+          expect(response.ok).toBeFalsy();
+          expect(response.status).toEqual(status);
+        }
+      });
+    }
+    for (const [name, expected] of Object.entries(text ?? {})) {
+      test(`text > ${name}`, async () => {
         const request = new Request(`https://foo.bar/${name}`);
         const response = (await proxy(request)) ?? fatal("Expected a response");
         expect(response.ok).toBeTruthy();
@@ -111,8 +144,8 @@ describe("goproxy", async () => {
         expect(actual).toEqual(expected);
       });
     }
-    for (const [name, expected] of Object.entries(json)) {
-      test(name, async () => {
+    for (const [name, expected] of Object.entries(json ?? {})) {
+      test(`json > ${name}`, async () => {
         const request = new Request(`https://foo.bar/${name}`);
         const response = (await proxy(request)) ?? fatal("Expected a response");
         expect(response.ok).toBeTruthy();
@@ -123,8 +156,8 @@ describe("goproxy", async () => {
         expect(actual).toEqual(expected);
       });
     }
-    for (const [name, expected] of Object.entries(zip)) {
-      describe(name, async () => {
+    for (const [name, expected] of Object.entries(zip ?? {})) {
+      describe(`zip > ${name}`, async () => {
         const request = new Request(`https://foo.bar/${name}`);
         const response = (await proxy(request)) ?? fatal("Expected a response");
         expect(response.ok).toBeTruthy();

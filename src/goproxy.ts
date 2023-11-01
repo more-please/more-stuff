@@ -66,125 +66,146 @@ export function goproxy(
       return;
     }
 
-    const headers = new Headers({
-      "User-Agent": "gosub-goproxy",
-      "X-GitHub-Api-Version": "2022-11-28",
-    });
-    if (config.githubToken) {
-      headers.set("authorization", `Bearer ${config.githubToken}`);
-    }
-
     const { signal, abort } = new AbortController();
 
-    const cmd = path.substring(cmdStart);
+    const API = "https://api.github.com";
+    const NEXT_LINK = /(?<=<)([\S]*)(?=>; rel="Next")/i;
 
-    if (cmd === "/@v/list" || cmd === "/@gosub/tags") {
-      let stream = new ReadableStream({
-        async start(controller) {
-          for await (const page of github.paginate(
-            `${github.API}/repos/${owner}/${repo}/tags`,
-            { signal, headers },
-          )) {
-            const tags = parse(github.Tags, await page.json());
-            for (const tag of tags) {
-              const v = cmd === "/@v/list" ? tagToVersion(tag.name) : tag.name;
-              if (v) {
-                controller.enqueue(`${v}\n`);
+    async function githubFetch(
+      path: string,
+      extraHeaders: Record<string, string> = {},
+    ): Promise<Response> {
+      const url = new URL(path, API);
+      const headers = new Headers({
+        "User-Agent": "gosub-goproxy",
+        "X-GitHub-Api-Version": "2022-11-28",
+      });
+      if (config.githubToken) {
+        headers.set("Authorization", `Bearer ${config.githubToken}`);
+      }
+      for (const [k, v] of Object.entries(extraHeaders)) {
+        headers.set(k, v);
+      }
+      const response = await fetch(url.href, { signal, headers });
+      if (!response.ok) {
+        throw response;
+      }
+      return response;
+    }
+
+    async function* githubPaginate(url: string): AsyncGenerator<Response> {
+      while (url) {
+        const response = await githubFetch(url);
+        const link = response.headers.get("link");
+        yield response;
+        url = (link && link.match(NEXT_LINK)?.[0]) ?? "";
+      }
+    }
+
+    try {
+      const cmd = path.substring(cmdStart);
+
+      if (cmd === "/@v/list" || cmd === "/@gosub/tags") {
+        const results: string[] = [];
+        for await (const page of githubPaginate(
+          `/repos/${owner}/${repo}/tags`,
+        )) {
+          const tags = parse(github.Tags, await page.json());
+          for (const tag of tags) {
+            const v = cmd === "/@v/list" ? tagToVersion(tag.name) : tag.name;
+            if (v) {
+              results.push(`${v}\n`);
+            }
+          }
+        }
+        return new Response(results.join(""), { headers: textHeaders });
+      }
+
+      const v = removePrefix("/@v/v", cmd);
+      const info = removeSuffix(".info", v);
+      if (info) {
+        const refData = await githubFetch(
+          `/repos/${owner}/${repo}/git/ref/tags/${prefix}${info}${suffix}`,
+        );
+        const ref = parse(github.Ref, await refData.json());
+        const tagData = await githubFetch(ref.object.url);
+        if (!tagData.ok) {
+          throw new Error(tagData.statusText);
+        }
+        const tag = parse(github.Tag, await tagData.json());
+        const result = {
+          Version: `v${info}`,
+          Time: tag.tagger.date,
+        };
+        return Response.json(result);
+      }
+
+      const mod = removeSuffix(".mod", v);
+      if (mod) {
+        const path = config.directory ? `${config.directory}/go.mod` : "go.mod";
+        const result = await githubFetch(
+          `https://raw.githubusercontent.com/${owner}/${repo}/${prefix}${mod}${suffix}/${path}`,
+        );
+        const text = await result.text();
+        return new Response(text, { headers: textHeaders });
+      }
+
+      const zip = removeSuffix(".zip", v);
+      if (zip) {
+        // Get tag SHA
+        const refData = await githubFetch(
+          `/repos/${owner}/${repo}/git/ref/tags/${prefix}${zip}${suffix}`,
+        );
+        const ref = parse(github.Ref, await refData.json());
+        // Get subdirectory tree
+        const dir = config.directory ?? "";
+        const treeData = await githubFetch(
+          `/repos/${owner}/${repo}/git/trees/${ref.object.sha}:${dir}?recursive=1`,
+        );
+        if (!treeData.ok) {
+          throw new Error(treeData.statusText);
+        }
+        // Extract the metadata we care about
+        const metadata = parse(github.Tree, await treeData.json())
+          .tree.filter(github.isBlob)
+          // Results are probably sorted by path already, but just in case...
+          .sort((a, b) => (a.path < b.path ? -1 : a.path > b.path ? 1 : 0))
+          .map((i) => ({
+            name: i.path,
+            size: i.size,
+            url: i.url,
+          }));
+        // Find subdirectories with nested go.mod files
+        const nestedModules = metadata
+          .map((m) => removeSuffix("/go.mod", m.name))
+          .filter(isDefined);
+        // Build zip file
+        async function* data() {
+          nextFile: for (const m of metadata) {
+            // Skip contents of nested modules
+            for (const n of nestedModules) {
+              if (m.name.startsWith(n)) {
+                continue nextFile;
               }
             }
+            const input = await githubFetch(m.url, {
+              Accept: "application/vnd.github.v3.raw",
+            });
+            yield {
+              name: `${module}@v${zip}/${m.name}`,
+              input,
+            };
           }
-          controller.close();
-        },
-        cancel(e) {
-          abort(e);
-        },
-      });
-      if (typeof TextEncoderStream === "function") {
-        // Explicitly encode output as text - required by Deno
-        // @tsbc-ignore
-        stream = stream.pipeThrough(new TextEncoderStream());
-      } else {
-        // No TextEncoderStream, send raw output - required by Bun
-      }
-      return new Response(stream, { headers: textHeaders });
-    }
-
-    const v = removePrefix("/@v/v", cmd);
-    const info = removeSuffix(".info", v);
-    if (info) {
-      const refData = await fetch(
-        `${github.API}/repos/${owner}/${repo}/git/ref/tags/${prefix}${info}${suffix}`,
-        { signal, headers },
-      );
-      const ref = parse(github.Ref, await refData.json());
-      const tagData = await fetch(ref.object.url, { headers });
-      const tag = parse(github.Tag, await tagData.json());
-      const result = {
-        Version: `v${info}`,
-        Time: tag.tagger.date,
-      };
-      return Response.json(result);
-    }
-
-    const mod = removeSuffix(".mod", v);
-    if (mod) {
-      const path = config.directory ? `${config.directory}/go.mod` : "go.mod";
-      const url = `https://raw.githubusercontent.com/${owner}/${repo}/${prefix}${mod}${suffix}/${path}`;
-      const result = await fetch(url, { signal, headers });
-      const text = await result.text();
-      return new Response(text, { headers: textHeaders });
-    }
-
-    const zip = removeSuffix(".zip", v);
-    if (zip) {
-      // Get tag SHA
-      const refData = await fetch(
-        `${github.API}/repos/${owner}/${repo}/git/ref/tags/${prefix}${zip}${suffix}`,
-        { signal, headers },
-      );
-      const ref = parse(github.Ref, await refData.json());
-      // Get subdirectory tree
-      const dir = config.directory ?? "";
-      const treeData = await fetch(
-        `${github.API}/repos/${owner}/${repo}/git/trees/${ref.object.sha}:${dir}?recursive=1`,
-        { signal, headers },
-      );
-      // Extract the metadata we care about
-      const metadata = parse(github.Tree, await treeData.json())
-        .tree.filter(github.isBlob)
-        // Results are probably sorted by path already, but just in case...
-        .sort((a, b) => (a.path < b.path ? -1 : a.path > b.path ? 1 : 0))
-        .map((i) => ({
-          name: i.path,
-          size: i.size,
-          url: i.url,
-        }));
-      // Find subdirectories with nested go.mod files
-      const nestedModules = metadata
-        .map((m) => removeSuffix("/go.mod", m.name))
-        .filter(isDefined);
-      // Build zip file
-      async function* data() {
-        nextFile: for (const m of metadata) {
-          // Skip contents of nested modules
-          for (const n of nestedModules) {
-            if (m.name.startsWith(n)) {
-              continue nextFile;
-            }
-          }
-          const input = await fetch(m.url, {
-            signal,
-            headers: { ...headers, Accept: "application/vnd.github.v3.raw" },
-          });
-          yield {
-            name: `${module}@v${zip}/${m.name}`,
-            input,
-          };
         }
+        return downloadZip(data(), { metadata });
       }
-      return downloadZip(data(), { metadata });
-    }
 
-    return new Response("Not found", { status: 404 });
+      return new Response("Not found", { status: 404 });
+    } catch (err) {
+      if (err instanceof Response) {
+        return err;
+      }
+      return new Response(`${err}`, { status: 500 });
+    }
   };
 }

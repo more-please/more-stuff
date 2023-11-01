@@ -64,19 +64,3 @@ export function isBlob(i: TreeItem): i is TreeItemBlob {
 export function isTree(i: TreeItem): i is TreeItemTree {
   return i.type === "tree";
 }
-
-const NEXT_LINK = /(?<=<)([\S]*)(?=>; rel="Next")/i;
-
-export const API = "https://api.github.com";
-
-export async function* paginate(
-  url: string,
-  options?: RequestInit,
-): AsyncGenerator<Response> {
-  while (url) {
-    const response = await fetch(url, options);
-    const link = response.headers.get("link");
-    yield response;
-    url = (link && link.match(NEXT_LINK)?.[0]) ?? "";
-  }
-}

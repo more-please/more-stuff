@@ -67,10 +67,10 @@ importers:
         version: 1.8.5
       solid-start:
         specifier: ^0.3.8
-        version: 0.3.8(@solidjs/meta@0.28.7)(@solidjs/router@0.8.3)(solid-js@1.8.5)(solid-start-netlify@0.3.8)(solid-start-node@0.3.8)(vite@4.5.0)
+        version: 0.3.8(@solidjs/meta@0.28.7)(@solidjs/router@0.8.3)(solid-js@1.8.5)(solid-start-netlify@0.3.6)(solid-start-node@0.3.8)(vite@4.5.0)
       solid-start-netlify:
-        specifier: ^0.3.8
-        version: 0.3.8(solid-start@0.3.8)
+        specifier: https://gitpkg.now.sh/iainmerrick/solid-start/packages/start-netlify?netlify
+        version: '@gitpkg.now.sh/iainmerrick/solid-start/packages/start-netlify?netlify(solid-start@0.3.8)'
     devDependencies:
       '@types/node':
         specifier: ^20.8.9
@@ -3312,25 +3312,6 @@ packages:
       '@babel/types': 7.23.0
       solid-js: 1.8.5
 
-  /solid-start-netlify@0.3.8(solid-start@0.3.8):
-    resolution: {integrity: sha512-I5MQg0LNq1jDEpGJOrPBB3mC4hOapcqU1i5Hc+ZsdU7ss4VcNLOKANVuG4yzYlSCbJIGzzzdc959BPTZP2FhfQ==}
-    peerDependencies:
-      solid-start: '*'
-    dependencies:
-      '@babel/core': 7.23.2
-      '@babel/preset-env': 7.23.2(@babel/core@7.23.2)
-      '@rollup/plugin-babel': 6.0.4(@babel/core@7.23.2)(rollup@3.29.4)
-      '@rollup/plugin-commonjs': 24.1.0(rollup@3.29.4)
-      '@rollup/plugin-json': 6.0.1(rollup@3.29.4)
-      '@rollup/plugin-node-resolve': 15.2.3(rollup@3.29.4)
-      encoding: 0.1.13
-      rollup: 3.29.4
-      solid-start: 0.3.8(@solidjs/meta@0.28.7)(@solidjs/router@0.8.3)(solid-js@1.8.5)(solid-start-netlify@0.3.8)(solid-start-node@0.3.8)(vite@4.5.0)
-      terser: 5.22.0
-    transitivePeerDependencies:
-      - '@types/babel__core'
-      - supports-color
-
   /solid-start-node@0.3.8(solid-start@0.3.8)(vite@4.5.0):
     resolution: {integrity: sha512-zIaGkP3U+PEQuQXe5ixQpSeioyKXQ1l0CpzC/oEW0TNodQdOC/0zgnvy9ffQMe8uoshVDnArKvomVXz/4E3m6Q==}
     peerDependencies:
@@ -3344,13 +3325,13 @@ packages:
       polka: 1.0.0-next.22
       rollup: 3.29.4
       sirv: 2.0.3
-      solid-start: 0.3.8(@solidjs/meta@0.28.7)(@solidjs/router@0.8.3)(solid-js@1.8.5)(solid-start-netlify@0.3.8)(solid-start-node@0.3.8)(vite@4.5.0)
+      solid-start: 0.3.8(@solidjs/meta@0.28.7)(@solidjs/router@0.8.3)(solid-js@1.8.5)(solid-start-netlify@0.3.6)(solid-start-node@0.3.8)(vite@4.5.0)
       terser: 5.22.0
       vite: 4.5.0(@types/node@20.8.9)
     transitivePeerDependencies:
       - supports-color
 
-  /solid-start@0.3.8(@solidjs/meta@0.28.7)(@solidjs/router@0.8.3)(solid-js@1.8.5)(solid-start-netlify@0.3.8)(solid-start-node@0.3.8)(vite@4.5.0):
+  /solid-start@0.3.8(@solidjs/meta@0.28.7)(@solidjs/router@0.8.3)(solid-js@1.8.5)(solid-start-netlify@0.3.6)(solid-start-node@0.3.8)(vite@4.5.0):
     resolution: {integrity: sha512-tTk2FHrSJHz0Kmx2jwvaThn1CRGgcjditWAXoBk3is92ik34zcm5Qdx0olLf+hszP54IPi02/k/V+68RrYlDoQ==}
     hasBin: true
     peerDependencies:
@@ -3415,7 +3396,7 @@ packages:
       set-cookie-parser: 2.6.0
       sirv: 2.0.3
       solid-js: 1.8.5
-      solid-start-netlify: 0.3.8(solid-start@0.3.8)
+      solid-start-netlify: '@gitpkg.now.sh/iainmerrick/solid-start/packages/start-netlify?netlify(solid-start@0.3.8)'
       solid-start-node: 0.3.8(solid-start@0.3.8)(vite@4.5.0)
       terser: 5.22.0
       undici: 5.27.0
@@ -3915,6 +3896,28 @@ packages:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
     dev: true
+
+  '@gitpkg.now.sh/iainmerrick/solid-start/packages/start-netlify?netlify(solid-start@0.3.8)':
+    resolution: {tarball: https://gitpkg.now.sh/iainmerrick/solid-start/packages/start-netlify?netlify}
+    id: '@gitpkg.now.sh/iainmerrick/solid-start/packages/start-netlify?netlify'
+    name: solid-start-netlify
+    version: 0.3.6
+    peerDependencies:
+      solid-start: '*'
+    dependencies:
+      '@babel/core': 7.23.2
+      '@babel/preset-env': 7.23.2(@babel/core@7.23.2)
+      '@rollup/plugin-babel': 6.0.4(@babel/core@7.23.2)(rollup@3.29.4)
+      '@rollup/plugin-commonjs': 24.1.0(rollup@3.29.4)
+      '@rollup/plugin-json': 6.0.1(rollup@3.29.4)
+      '@rollup/plugin-node-resolve': 15.2.3(rollup@3.29.4)
+      encoding: 0.1.13
+      rollup: 3.29.4
+      solid-start: 0.3.8(@solidjs/meta@0.28.7)(@solidjs/router@0.8.3)(solid-js@1.8.5)(solid-start-netlify@0.3.6)(solid-start-node@0.3.8)(vite@4.5.0)
+      terser: 5.22.0
+    transitivePeerDependencies:
+      - '@types/babel__core'
+      - supports-color
 
   github.com/more-please/ts-browser-compat/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.2.2):
     resolution: {tarball: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5}

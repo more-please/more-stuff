@@ -1,21 +1,6 @@
 import { APIEvent } from "solid-start";
 import { gosub } from "gosub-goproxy/gosub";
 
-const Netlify = (globalThis as any).Netlify;
-
-if (Netlify && process === undefined) {
-  console.log("Installing polyfill for process.env...");
-  const env = new Proxy(
-    {},
-    {
-      get(target, prop, receiver) {
-        return Netlify.env.get(prop);
-      },
-    },
-  );
-  globalThis.process = { env } as any;
-}
-
 const env = {
   githubToken: process.env.GITHUB_TOKEN,
 };

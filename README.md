@@ -129,6 +129,8 @@ The only advantage of setting `module` explicitly is that it blocks nonsense loo
 
 As noted above, you're welcome to use the `gosub` server at [gosub.moreplease.com](https://gosub.moreplease.com). That site also has a handy web form where you can plug in your repo URL and other config details to generate the proxy path.
 
+That site uses a GitHub API key that is rate-limited to 5000 requests per hour, so it may get overloaded. However, once your Go module has been cached by [proxy.golang.org](https://proxy.golang.org) your users mostly won't be hitting my site directly.
+
 ## Acknowledgements
 
 Partly [inspired by](https://mastodon.scot/@iainmerrick/111069329750890072) stumbling across [GitPkg](https://gitpkg.vercel.app), which solves a very similar problem in the NPM ecosystem. In particular, I copied the nifty idea of having a shared server that's programmable via URL parameters.

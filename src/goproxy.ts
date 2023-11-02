@@ -61,11 +61,11 @@ export function goproxy(
     if (!path) {
       return;
     }
-    const cmdStart = path.lastIndexOf("/@");
+    const cmdStart = path.lastIndexOf("@");
     if (cmdStart < 0) {
       return;
     }
-    const module = path.substring(0, cmdStart);
+    const module = path.substring(0, cmdStart - 1);
     if (config.module && config.module !== module) {
       return;
     }
@@ -107,14 +107,19 @@ export function goproxy(
     try {
       const cmd = path.substring(cmdStart);
 
-      if (cmd === "/@v/list" || cmd === "/@gosub/tags") {
+      if (cmd === "@gosub/rate_limit") {
+        const result = await githubFetch("/rate_limit");
+        return Response.json(await result.json());
+      }
+
+      if (cmd === "@v/list" || cmd === "@gosub/tags") {
         const results: string[] = [];
         for await (const page of githubPaginate(
           `/repos/${owner}/${repo}/tags`,
         )) {
           const tags = (await page.json()) as github.Tags;
           for (const tag of tags) {
-            const v = cmd === "/@v/list" ? tagToVersion(tag.name) : tag.name;
+            const v = cmd === "@v/list" ? tagToVersion(tag.name) : tag.name;
             if (v) {
               results.push(`${v}\n`);
             }
@@ -123,7 +128,7 @@ export function goproxy(
         return new Response(results.join(""), { headers: textHeaders });
       }
 
-      const v = removePrefix("/@v/v", cmd);
+      const v = removePrefix("@v/v", cmd);
       const info = removeSuffix(".info", v);
       if (info) {
         const refData = await githubFetch(
@@ -153,7 +158,7 @@ export function goproxy(
       }
 
       const zip = removeSuffix(".zip", v);
-      if (zip) {
+      if (module && zip) {
         // Get tag SHA
         const refData = await githubFetch(
           `/repos/${owner}/${repo}/git/ref/tags/${prefix}${zip}${suffix}`,

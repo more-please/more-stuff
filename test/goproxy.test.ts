@@ -5,6 +5,7 @@ import { fatal } from "gosub-goproxy/result.ts";
 import { unzip } from "unzipit";
 
 type Test = {
+  description: string;
   config: GoproxyConfig;
   error?: Record<string, number | undefined>;
   text?: Record<string, string>;
@@ -25,19 +26,7 @@ const ENV: GoproxyEnv = {
 
 const TESTS: Test[] = [
   {
-    config: {
-      url: "https://github.com/more-please/no-such-repo",
-    },
-    error: {
-      "invalid-path": undefined,
-      "example/@gosub/tags": 404,
-      "example/@v/list": 404,
-      "example/@v/v1.2.3.info": 404,
-      "example/@v/v1.2.3.mod": 404,
-      "example/@v/v1.2.3.zip": 404,
-    },
-  },
-  {
+    description: "test/example",
     config: {
       url: "https://github.com/more-please/gosub-goproxy",
       module: "example",
@@ -94,6 +83,7 @@ func main() {
     },
   },
   {
+    description: "test/example/nested",
     config: {
       url: "https://github.com/more-please/gosub-goproxy",
       module: "nested",
@@ -125,10 +115,46 @@ func main() {
       },
     },
   },
+  {
+    description: "Module unspecified",
+    config: {
+      url: "https://github.com/more-please/gosub-goproxy",
+      directory: "test/example",
+      tagPrefix: "example-",
+    },
+    error: {
+      // Can't download zip without a module name
+      "@v/v0.0.1.zip": 404,
+    },
+    text: {
+      // Module can be omitted - handy for @gosub/tags etc
+      "@gosub/tags": TAGS,
+      "@v/list": "v0.0.2\nv0.0.1\n",
+      "@v/v0.0.1.mod": "module example\n\ngo 1.21.1\n",
+      // Module can be anything at all, and it will be ignored
+      "anything/goes/@gosub/tags": TAGS,
+      "module/ignored/@v/list": "v0.0.2\nv0.0.1\n",
+      "anything/goes/@v/v0.0.1.mod": "module example\n\ngo 1.21.1\n",
+    },
+  },
+  {
+    description: "Missing repo",
+    config: {
+      url: "https://github.com/more-please/no-such-repo",
+    },
+    error: {
+      "invalid-path": undefined,
+      "@gosub/tags": 404,
+      "example/@v/list": 404,
+      "example/@v/v1.2.3.info": 404,
+      "example/@v/v1.2.3.mod": 404,
+      "example/@v/v1.2.3.zip": 404,
+    },
+  },
 ];
 
-describe("goproxy", async () => {
-  for (const { config, error, text, json, zip } of TESTS) {
+for (const { description, config, error, text, json, zip } of TESTS) {
+  describe(description, async () => {
     const proxy = goproxy("/", config, ENV);
     for (const [name, status] of Object.entries(error ?? {})) {
       test(`error > ${name}`, async () => {
@@ -183,5 +209,5 @@ describe("goproxy", async () => {
         }
       });
     }
-  }
-});
+  });
+}

@@ -13,13 +13,6 @@ type Test = {
   zip?: Record<string, Record<string, string>>;
 };
 
-const TAGS = [
-  "v0.0.11\n",
-  "nested-0.0.1\n",
-  "example-0.0.2\n",
-  "example-0.0.1\n",
-].join("");
-
 const ENV: GoproxyEnv = {
   githubToken: process.env["GITHUB_TOKEN"],
 };
@@ -42,7 +35,6 @@ const TESTS: Test[] = [
       "example/@v/v0.0.11.zip": 404,
     },
     text: {
-      "example/@gosub/tags": TAGS,
       "example/@v/list": "v0.0.2\nv0.0.1\n",
       "example/@v/v0.0.1.mod": "module example\n\ngo 1.21.1\n",
       "example/@v/v0.0.2.mod": "module example\n\ngo 1.21.1\n",
@@ -91,7 +83,6 @@ func main() {
       tagPrefix: "nested-",
     },
     text: {
-      "nested/@gosub/tags": TAGS,
       "nested/@v/list": "v0.0.1\n",
       "nested/@v/v0.0.1.mod": "module nested\n\ngo 1.21.1\n",
     },
@@ -128,11 +119,9 @@ func main() {
     },
     text: {
       // Module can be omitted - handy for @gosub/tags etc
-      "@gosub/tags": TAGS,
       "@v/list": "v0.0.2\nv0.0.1\n",
       "@v/v0.0.1.mod": "module example\n\ngo 1.21.1\n",
       // Module can be anything at all, and it will be ignored
-      "anything/goes/@gosub/tags": TAGS,
       "module/ignored/@v/list": "v0.0.2\nv0.0.1\n",
       "anything/goes/@v/v0.0.1.mod": "module example\n\ngo 1.21.1\n",
     },

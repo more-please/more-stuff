@@ -67,6 +67,39 @@ export function goproxy(
   }
 
   const { GITHUB_TOKEN } = env ?? goproxyEnv();
+  const API = "https://api.github.com";
+  const NEXT_LINK = /(?<=<)([\S]*)(?=>; rel="Next")/i;
+
+  async function githubFetch(
+    path: string,
+    extraHeaders: Record<string, string> = {},
+  ): Promise<Response> {
+    const url = new URL(path, API);
+    const headers = new Headers({
+      "User-Agent": "gosub-goproxy",
+      "X-GitHub-Api-Version": "2022-11-28",
+    });
+    if (GITHUB_TOKEN) {
+      headers.set("Authorization", `Bearer ${GITHUB_TOKEN}`);
+    }
+    for (const [k, v] of Object.entries(extraHeaders)) {
+      headers.set(k, v);
+    }
+    const response = await fetch(url.href, { headers });
+    if (!response.ok) {
+      throw response;
+    }
+    return response;
+  }
+
+  async function* githubPaginate(url: string): AsyncGenerator<Response> {
+    while (url) {
+      const response = await githubFetch(url);
+      const link = response.headers.get("link");
+      yield response;
+      url = (link && link.match(NEXT_LINK)?.[0]) ?? "";
+    }
+  }
 
   return async (request: string | Request) => {
     const url =
@@ -82,40 +115,6 @@ export function goproxy(
     const module = path.substring(0, cmdStart - 1);
     if (config.module && config.module !== module) {
       return;
-    }
-
-    const API = "https://api.github.com";
-    const NEXT_LINK = /(?<=<)([\S]*)(?=>; rel="Next")/i;
-
-    async function githubFetch(
-      path: string,
-      extraHeaders: Record<string, string> = {},
-    ): Promise<Response> {
-      const url = new URL(path, API);
-      const headers = new Headers({
-        "User-Agent": "gosub-goproxy",
-        "X-GitHub-Api-Version": "2022-11-28",
-      });
-      if (GITHUB_TOKEN) {
-        headers.set("Authorization", `Bearer ${GITHUB_TOKEN}`);
-      }
-      for (const [k, v] of Object.entries(extraHeaders)) {
-        headers.set(k, v);
-      }
-      const response = await fetch(url.href, { headers });
-      if (!response.ok) {
-        throw response;
-      }
-      return response;
-    }
-
-    async function* githubPaginate(url: string): AsyncGenerator<Response> {
-      while (url) {
-        const response = await githubFetch(url);
-        const link = response.headers.get("link");
-        yield response;
-        url = (link && link.match(NEXT_LINK)?.[0]) ?? "";
-      }
     }
 
     try {

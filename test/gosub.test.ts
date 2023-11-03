@@ -1,5 +1,5 @@
-import { describe, expect, test } from "vitest";
-import { gosub, gosubDecode, gosubEncode } from "gosub-goproxy/gosub.ts";
+import { deps, gosub, gosubDecode, gosubEncode } from "gosub-goproxy/gosub.ts";
+import { describe, expect, test, vi } from "vitest";
 
 import type { GoproxyConfig } from "gosub-goproxy/goproxy.ts";
 import { unwrap } from "gosub-goproxy/result";
@@ -85,7 +85,7 @@ describe("gosub", async () => {
           );
           const goodRequest = new Request(`https://foo.bar${encoded}${extra}`);
           const goodResponse = new Response();
-          const mockProxy = (proxyBase: string, proxyConfig: GoproxyConfig) => {
+          deps.goproxy = (proxyBase: string, proxyConfig: GoproxyConfig) => {
             expect(proxyBase).toEqual(encoded + "/");
             expect(proxyConfig).toEqual(config);
             return async (request: string | Request) => {
@@ -93,7 +93,7 @@ describe("gosub", async () => {
               return goodResponse;
             };
           };
-          const handler = gosub(base, { goproxy: mockProxy });
+          const handler = gosub(base);
           expect(await handler(goodRequest)).toBe(goodResponse);
           expect(await handler(badRequest)).toBeUndefined();
         });

@@ -15,6 +15,11 @@ const DEFAULTS: Partial<GoproxyConfig> = {
   tagSuffix: "",
 };
 
+// Expose dependencies to allow mocking in tests
+export const deps = {
+  goproxy,
+};
+
 export function gosubEncode(config: GoproxyConfig): Result<string> {
   config = { ...DEFAULTS, ...config };
   const domain = removePrefix(
@@ -84,19 +89,12 @@ export function gosubDecode(path: string): GosubDecode | undefined {
   };
 }
 
-export type GosubConfig = {
-  goproxy: typeof goproxy;
-  env?: GoproxyEnv;
-};
+export type GosubEnv = GoproxyEnv;
 
 export function gosub(
   base: string = "/",
-  config: Partial<GosubConfig> = {},
+  env?: GosubEnv,
 ): (request: Request) => Promise<Response | undefined> {
-  const args: GosubConfig = {
-    goproxy,
-    ...config,
-  };
   base = ensurePrefix("/", ensureSuffix("/", base));
   return async (request: Request) => {
     const url = new URL(request.url);
@@ -105,11 +103,7 @@ export function gosub(
     if (!decode) {
       return;
     }
-    const handler = args.goproxy(
-      `${base}${decode.used}/`,
-      decode.config,
-      args.env,
-    );
+    const handler = deps.goproxy(`${base}${decode.used}/`, decode.config, env);
     return handler(request);
   };
 }

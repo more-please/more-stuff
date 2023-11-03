@@ -40,12 +40,21 @@ type GoproxyConfig = {
   directory?: string; // Subdirectory within the git repo
   tagPrefix?: string; // Prefix for version tags in git (default is "V")
   tagSuffix?: string; // Suffix for version tags in git
-  githubToken?: string; // Optional GitHub API token
 };
+
+type GoproxyEnv = {
+  GITHUB_TOKEN?: string; // Optional API token for GitHub
+}
 
 type Goproxy = (request: Request) => Promise<Response | undefined>
 
-function goproxy(base: string, config: GoproxyConfig): Goproxy;
+function goproxyEnv(): GoproxyEnv;
+
+function goproxy(
+  base: string,
+  config: GoproxyConfig,
+  env: GoproxyEnv = goproxyEnv()
+): Goproxy;
 ```
 
 The `goproxy` factory returns an async handler function for a Request (from the Fetch API). The handler returns:
@@ -53,6 +62,10 @@ The `goproxy` factory returns an async handler function for a Request (from the 
 - `undefined` on requests that don't match its base path;
 - 404 on matching but invalid requests;
 - GOPROXY data on valid requests.
+
+We call the GitHub API internally to fetch data. Any GitHub error responses are passed through without modification.
+
+To avoid being rate-limited, you should pass a [GitHub API token](https://docs.github.com/en/rest/overview/authenticating-to-the-rest-api?apiVersion=2022-11-28) in `env.GITHUB_TOKEN`. In most cases this will be picked up automatically (the default `goproxyEnv()` tries both `process.env` and `Deno.env`). You can also set the environment manually, or use `{}` to prevent any environment lookup.
 
 #### Example / demo
 
@@ -89,7 +102,7 @@ The GOPROXY path to list module versions is `$base/$module/@v/list`, or in this 
 ```TypeScript
 function gosubEncode(config: GoproxyConfig): string;
 function gosubDecode(path: string): GoproxyConfig | undefined;
-function gosub(base: string = "/"): Goproxy;
+function gosub(base: string = "/", env?: GoproxyEnv): Goproxy;
 ```
 
 This is a wrapper for `goproxy` that takes its configuration from the URL. Call the `gosubEncode` function to convert a config struct into a URL pathname that `gosub` understands.
@@ -113,23 +126,23 @@ This encodes to:
 github.com/more-please/utf64:d=go&m=utf64.moreplease.com&p=go-;
 ```
 
-Note that we can omit `module`, in which case we get:
+Note that we can omit `module` from the config, in which case we get:
 
 ```
 github.com/more-please/utf64:d=go&p=go-;
 ```
 
-Putting it all together, the module proxy path for `utf64.moreplease.com` using my `gosub` server deployed at `gosub.moreplease.com` is:
-
-- [gosub.moreplease.com/github.com/more-please/utf64:d=go&p=go-;](https://gosub.moreplease.com/github.com/more-please/utf64:d=go&p=go-;)
-
 The only advantage of setting `module` explicitly is that it blocks nonsense lookups like `wrong-module-name/@v/list`.
+
+Putting it all together, the `@v/list` command for `utf64.moreplease.com` using my `gosub` server deployed at [gosub.moreplease.com](https://gosub.moreplease.com) is:
+
+- [gosub.moreplease.com/github.com/more-please/utf64:d=go&p=go-;/utf64.moreplease.com/@v/list](https://gosub.moreplease.com/github.com/more-please/utf64:d=go&p=go-;/utf64.moreplease.com/@v/list)
 
 ### Shared server
 
 As noted above, you're welcome to use the `gosub` server at [gosub.moreplease.com](https://gosub.moreplease.com). That site also has a handy web form where you can plug in your repo URL and other config details to generate the proxy path.
 
-That site uses a GitHub API key that is rate-limited to 5000 requests per hour, so it may get overloaded. However, once your Go module has been cached by [proxy.golang.org](https://proxy.golang.org) your users mostly won't be hitting my site directly.
+All users share the same GitHub API key, so it may get overloaded. However, once your Go module has been cached by [proxy.golang.org](https://proxy.golang.org) your users mostly won't be hitting my site directly.
 
 ## Acknowledgements
 

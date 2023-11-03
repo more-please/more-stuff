@@ -1,2 +1,2 @@
-export { type GoproxyConfig, goproxy } from "./goproxy.ts";
-export { type GosubConfig, gosub, gosubEncode, gosubDecode } from "./gosub.ts";
+export { type GoproxyConfig, type GoproxyEnv, goproxy } from "./goproxy.ts";
+export { type GosubEnv, gosub, gosubEncode, gosubDecode } from "./gosub.ts";

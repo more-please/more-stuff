@@ -1,4 +1,4 @@
-import { GoproxyConfig, GoproxyEnv, goproxy } from "gosub-goproxy/goproxy.ts";
+import { GoproxyConfig, goproxy } from "gosub-goproxy/goproxy.ts";
 import { describe, expect, test } from "vitest";
 
 import { fatal } from "gosub-goproxy/result.ts";
@@ -11,10 +11,6 @@ type Test = {
   text?: Record<string, string>;
   json?: Record<string, any>;
   zip?: Record<string, Record<string, string>>;
-};
-
-const ENV: GoproxyEnv = {
-  githubToken: process.env["GITHUB_TOKEN"],
 };
 
 const TESTS: Test[] = [
@@ -144,7 +140,7 @@ func main() {
 
 for (const { description, config, error, text, json, zip } of TESTS) {
   describe(description, async () => {
-    const proxy = goproxy("/", config, ENV);
+    const proxy = goproxy("/", config);
     for (const [name, status] of Object.entries(error ?? {})) {
       test(`error > ${name}`, async () => {
         const request = new Request(`https://foo.bar/${name}`);

@@ -1,5 +1,6 @@
 import { error, type RequestHandler } from "@sveltejs/kit";
 import { goproxy } from "gosub-goproxy";
+import { env } from "$env/dynamic/private";
 
 const config = {
   url: "https://github.com/more-please/utf64",
@@ -8,11 +9,11 @@ const config = {
   tagPrefix: "go-",
 };
 
-const env = {
-  githubToken: process.env.GITHUB_TOKEN,
+const ENV = {
+  githubToken: env.GITHUB_TOKEN,
 };
 
-const handler = goproxy("/go", config, env);
+const handler = goproxy("/go", config, ENV);
 
 export const GET: RequestHandler = async (event) => {
   const response = await handler(event.request);

@@ -39,8 +39,8 @@ importers:
         specifier: ^1.27.2
         version: 1.27.2(svelte@4.2.2)(vite@4.5.0)
       gosub-goproxy:
-        specifier: ^0.0.13
-        version: 0.0.13
+        specifier: ^0.0.14
+        version: 0.0.14
       svelte:
         specifier: ^4.2.2
         version: 4.2.2
@@ -805,8 +805,8 @@ packages:
     resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
     dev: false
 
-  /gosub-goproxy@0.0.13:
-    resolution: {integrity: sha512-dJWJTgrHcqZCRrDr3M8lZMFBhPMvxtoN60LDebQc/czCskacdVe+5ObFi6/cnxbJrzVg4uXvAHCALcz90X6daA==}
+  /gosub-goproxy@0.0.14:
+    resolution: {integrity: sha512-wQ0PUzrk3JyB+nW3y/k+8s93DNRPRG5J+ZX92hLZ/WHzR4VD0nsoNECEpiYIU0YqY8NnNKqrr+QI0R1GlnUhMA==}
     dependencies:
       client-zip: 2.4.4
     dev: false

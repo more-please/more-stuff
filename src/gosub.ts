@@ -89,11 +89,9 @@ export function gosubDecode(path: string): GosubDecode | undefined {
   };
 }
 
-export type GosubEnv = GoproxyEnv;
-
 export function gosub(
   base: string = "/",
-  env?: GosubEnv,
+  env?: GoproxyEnv,
 ): (request: Request) => Promise<Response | undefined> {
   base = ensurePrefix("/", ensureSuffix("/", base));
   return async (request: Request) => {

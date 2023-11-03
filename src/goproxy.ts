@@ -26,22 +26,22 @@ export type GoproxyConfig = {
   tagSuffix?: string; // Suffix for version tags in git
 };
 
-export function goproxyEnv(): GoproxyEnv {
+function goproxyEnv(): GoproxyEnv {
   // Assume that process.env or Deno.env are usable if they exist.
   // They may or may not be declared, so work locally to avoid any
   // fiddly TypeScript declaration clashes.
   type Global = {
     process: undefined | { env?: GoproxyEnv };
-    Deno: undefined | { env?: { getObject?(): GoproxyEnv } };
+    Deno: undefined | { env?: { toObject?(): GoproxyEnv } };
   };
   const global: Global = globalThis as any;
-  return global.process?.env ?? global.Deno?.env?.getObject?.() ?? {};
+  return global.process?.env ?? global.Deno?.env?.toObject?.() ?? {};
 }
 
 export function goproxy(
   base: string,
   config: GoproxyConfig,
-  env: GoproxyEnv = goproxyEnv(),
+  env?: GoproxyEnv,
 ): (request: string | Request) => Promise<Response | undefined> {
   const url = new URL(config.url);
   if (url.hostname !== "github.com") {
@@ -65,6 +65,8 @@ export function goproxy(
       return undefined;
     }
   }
+
+  const { GITHUB_TOKEN } = env ?? goproxyEnv();
 
   return async (request: string | Request) => {
     const url =
@@ -94,8 +96,8 @@ export function goproxy(
         "User-Agent": "gosub-goproxy",
         "X-GitHub-Api-Version": "2022-11-28",
       });
-      if (env.GITHUB_TOKEN) {
-        headers.set("Authorization", `Bearer ${env.GITHUB_TOKEN}`);
+      if (GITHUB_TOKEN) {
+        headers.set("Authorization", `Bearer ${GITHUB_TOKEN}`);
       }
       for (const [k, v] of Object.entries(extraHeaders)) {
         headers.set(k, v);

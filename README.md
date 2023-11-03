@@ -48,12 +48,10 @@ type GoproxyEnv = {
 
 type Goproxy = (request: Request) => Promise<Response | undefined>
 
-function goproxyEnv(): GoproxyEnv;
-
 function goproxy(
   base: string,
   config: GoproxyConfig,
-  env: GoproxyEnv = goproxyEnv()
+  env?: GoproxyEnv
 ): Goproxy;
 ```
 
@@ -65,7 +63,7 @@ The `goproxy` factory returns an async handler function for a Request (from the 
 
 We call the GitHub API internally to fetch data. Any GitHub error responses are passed through without modification.
 
-To avoid being rate-limited, you should pass a [GitHub API token](https://docs.github.com/en/rest/overview/authenticating-to-the-rest-api?apiVersion=2022-11-28) in `env.GITHUB_TOKEN`. In most cases this will be picked up automatically (the default `goproxyEnv()` tries both `process.env` and `Deno.env`). You can also set the environment manually, or use `{}` to prevent any environment lookup.
+To avoid being rate-limited, you should pass a [GitHub API token](https://docs.github.com/en/rest/overview/authenticating-to-the-rest-api?apiVersion=2022-11-28) in the `GITHUB_TOKEN` environment variable. By default we'll try to use the system environment (we try both `process.env` and `Deno.env`). To set the environment explicitly, use the `env` parameter; to prevent any environment lookup, use the value `{}`.
 
 #### Example / demo
 

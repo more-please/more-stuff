@@ -21,13 +21,14 @@
   },
   "files": [
     "README.md",
+    "utf64.svg",
     "LICENSE",
     "dist/*"
   ],
   "scripts": {
     "format": "prettier --log-level warn -w .",
     "test": "ts-browser-compat && vitest run",
-    "prepare": "tsc && cp -f ../README.md ../LICENSE ."
+    "prepare": "tsc && cp -f ../README.md ../utf64.svg ../LICENSE ."
   },
   "devDependencies": {
     "@journeyapps/ts-browser-compat": "github:more-please/ts-browser-compat",

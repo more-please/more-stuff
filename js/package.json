@@ -1,6 +1,6 @@
 {
   "name": "utf64",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Encoder/decoder for UTF-64, a URL-safe encoding for JSONish strings",
   "keywords": [
     "utf64",

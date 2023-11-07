@@ -1,4 +1,4 @@
-![utf-64](utf64.svg)
+![utf-64](https://raw.githubusercontent.com/more-please/utf64/main/utf64.svg)
 
 A terse, human-readable, URL-safe encoding for JSONish strings.
 

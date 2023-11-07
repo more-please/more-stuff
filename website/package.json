@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "format": "prettier --plugin prettier-plugin-svelte --log-level warn -w .",
-    "test": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "test": "concurrently -n vite,curl -s command-curl -k 'vite dev --port 4500' 'svelte-kit sync && svelte-check && curl -f http://localhost:4500'",
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview"
@@ -20,6 +20,7 @@
   "dependencies": {
     "@sveltejs/adapter-netlify": "^2.0.8",
     "@sveltejs/kit": "^1.27.3",
+    "concurrently": "^8.2.2",
     "gosub-goproxy": "^0.0.14",
     "svelte": "^4.2.2",
     "utf64": "link:../js"

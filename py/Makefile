@@ -6,19 +6,14 @@ MAKEFLAGS += --no-builtin-variables
 ENV = env
 PYTHON3 = $(ENV)/bin/python3
 README = README.md
-LOGO = utf64.svg
 
-TARGETS = $(PYTHON3) $(README) $(LOGO)
+TARGETS = $(PYTHON3) $(README)
 
 all: $(TARGETS)
 
 $(PYTHON3): $(ENV)
 
 $(README): ../$(README)
-	rm -f $@
-	cp $< $@
-
-$(LOGO): ../$(LOGO)
 	rm -f $@
 	cp $< $@
 
@@ -30,7 +25,7 @@ $(ENV): dev_requirements.txt
 .PHONY: clean test format publish
 
 clean:
-	rm -f $(README) $(LOGO)
+	rm -f $(README)
 	rm -rf $(ENV)
 
 test: $(PYTHON3)

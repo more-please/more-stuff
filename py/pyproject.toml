@@ -18,4 +18,4 @@ classifiers = [
 Home = "https://github.com/more-please/utf64"
 
 [tool.flit.sdist]
-include = ["README.md", "utf64.svg"]
+include = ["README.md"]

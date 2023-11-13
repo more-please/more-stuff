@@ -11,7 +11,7 @@
   "devDependencies": {
     "prettier": "^3.0.3",
     "prettier-plugin-svelte": "^3.0.3",
-    "svelte-check": "^3.5.2",
+    "svelte-check": "^3.6.0",
     "svelte-preprocess-import-assets": "^1.0.1",
     "tslib": "^2.6.2",
     "typescript": "^5.2.2",

@@ -21,7 +21,7 @@
     "@sveltejs/adapter-netlify": "^2.0.8",
     "@sveltejs/kit": "^1.27.3",
     "concurrently": "^8.2.2",
-    "gosub-goproxy": "^0.0.14",
+    "gosub-goproxy": "^0.0.15",
     "svelte": "^4.2.2",
     "utf64": "link:../js"
   }

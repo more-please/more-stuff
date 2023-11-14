@@ -25,7 +25,7 @@
     "concurrently": "^8.2.2",
     "gosub-goproxy": "link:../src",
     "solid-js": "^1.8.5",
-    "solid-start": "^0.3.9",
+    "solid-start": "^0.3.10",
     "solid-start-netlify": "^0.3.9"
   },
   "engines": {

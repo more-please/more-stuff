@@ -36,7 +36,7 @@
     "@journeyapps/ts-browser-compat": "github:more-please/ts-browser-compat",
     "esbuild": "^0.19.7",
     "prettier": "^3.1.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.2"
   },
   "dependencies": {
     "client-zip": "^2.4.4"

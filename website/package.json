@@ -14,7 +14,7 @@
     "esbuild": "^0.19.7",
     "postcss": "^8.4.31",
     "solid-start-node": "^0.3.9",
-    "typescript": "^5.2.2",
+    "typescript": "^5.3.2",
     "vite": "^5.0.0",
     "vite-tsconfig-paths": "^4.2.1"
   },

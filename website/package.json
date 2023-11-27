@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "prettier": "^3.1.0",
-    "prettier-plugin-svelte": "^3.1.0",
+    "prettier-plugin-svelte": "^3.1.2",
     "svelte-check": "^3.6.0",
     "svelte-preprocess-import-assets": "^1.1.0",
     "tslib": "^2.6.2",

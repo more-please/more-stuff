@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@sveltejs/adapter-netlify": "^2.0.8",
-    "@sveltejs/kit": "^1.28.0",
+    "@sveltejs/kit": "^2.0.2",
     "concurrently": "^8.2.2",
     "gosub-goproxy": "^0.0.15",
     "svelte": "^4.2.8",

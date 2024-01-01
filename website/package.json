@@ -19,7 +19,7 @@
     "vite-tsconfig-paths": "^4.2.3"
   },
   "dependencies": {
-    "@solidjs/meta": "^0.29.1",
+    "@solidjs/meta": "^0.29.3",
     "@solidjs/router": "^0.9.1",
     "assets": "link:../assets",
     "concurrently": "^8.2.2",

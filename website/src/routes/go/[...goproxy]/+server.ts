@@ -13,7 +13,7 @@ const handler = goproxy("/go", config);
 export const GET: RequestHandler = async (event) => {
   const response = await handler(event.request);
   if (!response) {
-    throw error(404);
+    error(404);
   }
   return response;
 };

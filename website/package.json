@@ -15,7 +15,7 @@
     "postcss": "^8.4.32",
     "solid-start-node": "^0.3.10",
     "typescript": "^5.3.3",
-    "vite": "^5.0.5",
+    "vite": "^5.0.11",
     "vite-tsconfig-paths": "^4.2.3"
   },
   "dependencies": {

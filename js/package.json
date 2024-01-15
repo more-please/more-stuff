@@ -32,7 +32,7 @@
   "devDependencies": {
     "@journeyapps/ts-browser-compat": "github:more-please/ts-browser-compat",
     "@types/node": "^20.11.2",
-    "prettier": "^3.1.1",
+    "prettier": "^3.2.2",
     "typescript": "^5.3.3",
     "vitest": "^1.2.0"
   }

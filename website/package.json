@@ -10,7 +10,7 @@
     "test": "concurrently -n vite,curl -s command-curl -k 'solid-start dev -p 4500' 'tsc && curl -f http://localhost:4500'"
   },
   "devDependencies": {
-    "@types/node": "^20.11.2",
+    "@types/node": "^20.11.5",
     "esbuild": "^0.19.11",
     "postcss": "^8.4.33",
     "solid-start-node": "^0.3.10",

@@ -18,7 +18,7 @@
     "vite": "^5.0.11"
   },
   "dependencies": {
-    "@sveltejs/adapter-netlify": "^3.0.1",
+    "@sveltejs/adapter-netlify": "^4.1.0",
     "@sveltejs/kit": "^2.4.1",
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
     "concurrently": "^8.2.2",

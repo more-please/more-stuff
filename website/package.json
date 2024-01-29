@@ -20,7 +20,7 @@
   "dependencies": {
     "@sveltejs/adapter-netlify": "^4.1.0",
     "@sveltejs/kit": "^2.4.1",
-    "@sveltejs/vite-plugin-svelte": "^3.0.0",
+    "@sveltejs/vite-plugin-svelte": "^3.0.2",
     "concurrently": "^8.2.2",
     "gosub-goproxy": "^0.0.15",
     "svelte": "^4.2.9",

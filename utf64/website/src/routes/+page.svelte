@@ -136,7 +136,7 @@
       <h4>Other languages</h4>
       <p>
         Contributions welcome! Please feel free to send a pull request or file
-        an issue on <a href="https://github.com/more-please/more-stuff">GitHub</a>.
+        an issue on <a href="https://github.com/more-please/more-stuff/utf64">GitHub</a>.
       </p>
     </div>
   </div>
@@ -146,7 +146,7 @@
       <p>
         UTF-64 is by <a href="mailto:iain@moreplease.com">Iain Merrick</a>. It's
         free to use for any purpose. (See
-        <a href="https://github.com/more-please/more-stuff/blob/main/LICENSE"
+        <a href="https://github.com/more-please/more-stuff/blob/main/utf64/LICENSE"
           >LICENSE</a
         > on GitHub.)
       </p>

@@ -23,7 +23,7 @@
     "@sveltejs/vite-plugin-svelte": "^3.0.2",
     "concurrently": "^8.2.2",
     "gosub-goproxy": "^0.0.15",
-    "svelte": "^4.2.9",
+    "svelte": "^4.2.10",
     "utf64": "workspace:*"
   }
 }

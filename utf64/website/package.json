@@ -24,6 +24,6 @@
     "concurrently": "^8.2.2",
     "gosub-goproxy": "^0.0.15",
     "svelte": "^4.2.9",
-    "utf64": "link:../js"
+    "utf64": "workspace:*"
   }
 }

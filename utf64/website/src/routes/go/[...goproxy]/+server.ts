@@ -4,7 +4,7 @@ import { goproxy } from "gosub-goproxy";
 const config = {
   url: "https://github.com/more-please/utf64",
   module: "utf64.moreplease.com",
-  directory: "go",
+  directory: "utf64/go",
   tagPrefix: "go-",
 };
 

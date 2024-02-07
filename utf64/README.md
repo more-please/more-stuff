@@ -2,11 +2,6 @@
 
 A terse, human-readable, URL-safe encoding for JSONish strings.
 
-[![JS](https://github.com/more-please/more-stuff/actions/workflows/js.yml/badge.svg)](https://github.com/more-please/more-stuff/actions/workflows/js.yml)
-[![Python](https://github.com/more-please/more-stuff/actions/workflows/py.yml/badge.svg)](https://github.com/more-please/more-stuff/actions/workflows/py.yml)
-[![Go](https://github.com/more-please/more-stuff/actions/workflows/go.yml/badge.svg)](https://github.com/more-please/more-stuff/actions/workflows/go.yml)
-[![Rust](https://github.com/more-please/more-stuff/actions/workflows/rust.yml/badge.svg)](https://github.com/more-please/more-stuff/actions/workflows/rust.yml)
-
 ## Overview
 
 Use this when you need to encode a string to make it URL-safe, but you also want to keep it as small and readable as possible (unlike base64). For example:

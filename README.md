@@ -7,6 +7,6 @@
 
 I'm consolidating my open source code into a monorepo (as maintaining even two separate repos is a lot of admin work).
 
-[![utf-64](https://raw.githubusercontent.com/more-please/more-stuff/main/utf64.svg)](utf64)
+[![utf-64](https://raw.githubusercontent.com/more-please/more-stuff/main/utf64/utf64.svg)](utf64)
 
 A terse, human-readable, URL-safe encoding for JSONish strings.

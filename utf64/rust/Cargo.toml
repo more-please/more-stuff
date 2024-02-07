@@ -8,7 +8,7 @@ license-file = "../LICENSE"
 description = "A utility to encode utf-8 strings into utf-64, and decode them back."
 homepage = "https://utf64.moreplease.com/"
 documentation = "https://docs.rs/utf64"
-repository = "https://github.com/more-please/utf64"
+repository = "https://github.com/more-please/more-stuff"
 readme = "../README.md"
 
 [dev-dependencies]

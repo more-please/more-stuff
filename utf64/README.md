@@ -1,11 +1,11 @@
-![utf-64](https://raw.githubusercontent.com/more-please/utf64/main/utf64.svg)
+![utf-64](https://raw.githubusercontent.com/more-please/more-stuff/main/utf64.svg)
 
 A terse, human-readable, URL-safe encoding for JSONish strings.
 
-[![JS](https://github.com/more-please/utf64/actions/workflows/js.yml/badge.svg)](https://github.com/more-please/utf64/actions/workflows/js.yml)
-[![Python](https://github.com/more-please/utf64/actions/workflows/py.yml/badge.svg)](https://github.com/more-please/utf64/actions/workflows/py.yml)
-[![Go](https://github.com/more-please/utf64/actions/workflows/go.yml/badge.svg)](https://github.com/more-please/utf64/actions/workflows/go.yml)
-[![Rust](https://github.com/more-please/utf64/actions/workflows/rust.yml/badge.svg)](https://github.com/more-please/utf64/actions/workflows/rust.yml)
+[![JS](https://github.com/more-please/more-stuff/actions/workflows/js.yml/badge.svg)](https://github.com/more-please/more-stuff/actions/workflows/js.yml)
+[![Python](https://github.com/more-please/more-stuff/actions/workflows/py.yml/badge.svg)](https://github.com/more-please/more-stuff/actions/workflows/py.yml)
+[![Go](https://github.com/more-please/more-stuff/actions/workflows/go.yml/badge.svg)](https://github.com/more-please/more-stuff/actions/workflows/go.yml)
+[![Rust](https://github.com/more-please/more-stuff/actions/workflows/rust.yml/badge.svg)](https://github.com/more-please/more-stuff/actions/workflows/rust.yml)
 
 ## Overview
 

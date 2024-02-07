@@ -15,7 +15,7 @@ classifiers = [
 ]
 
 [project.urls]
-Home = "https://github.com/more-please/utf64"
+Home = "https://github.com/more-please/more-stuff"
 
 [tool.flit.sdist]
 include = ["README.md"]

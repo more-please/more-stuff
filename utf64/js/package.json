@@ -11,7 +11,7 @@
   "author": "Iain Merrick <iain@moreplease.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/more-please/utf64.git",
+    "url": "https://github.com/more-please/more-stuff.git",
     "directory": "utf64/js"
   },
   "main": "dist/utf64.js",

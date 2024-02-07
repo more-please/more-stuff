@@ -10,6 +10,5 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version-file: "utf64/go/go.mod"
-      - name: Test
-        working-directory: ./utf64/go
+      - working-directory: ./utf64/go
         run: go test

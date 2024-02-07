@@ -1,11 +1,8 @@
 name: Rust publish
-
 on:
   workflow_dispatch:
-
 env:
   CARGO_TERM_COLOR: always
-
 jobs:
   utf64:
     runs-on: ubuntu-latest

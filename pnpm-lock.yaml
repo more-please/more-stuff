@@ -8,9 +8,9 @@ importers:
 
   .: {}
 
-  go: {}
+  utf64/go: {}
 
-  js:
+  utf64/js:
     devDependencies:
       '@journeyapps/ts-browser-compat':
         specifier: github:more-please/ts-browser-compat
@@ -28,9 +28,9 @@ importers:
         specifier: ^1.2.2
         version: 1.2.2(@types/node@20.11.16)
 
-  py: {}
+  utf64/py: {}
 
-  website:
+  utf64/website:
     dependencies:
       '@sveltejs/adapter-netlify':
         specifier: ^4.1.0

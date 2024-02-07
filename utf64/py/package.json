@@ -1,7 +1,6 @@
 {
   "private": true,
   "scripts": {
-    "format": "make format",
-    "test": "make test"
+    "format": "make format"
   }
 }

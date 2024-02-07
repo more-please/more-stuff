@@ -10,15 +10,13 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build:
-
+  utf64:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
     - name: Build
-      working-directory: ./rust
+      working-directory: ./utf64/rust
       run: cargo build --verbose
     - name: Run tests
-      working-directory: ./rust
+      working-directory: ./utf64/rust
       run: cargo test --verbose

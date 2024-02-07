@@ -5,12 +5,13 @@ on:
   pull_request:
     branches: ["main"]
 jobs:
-  test-py:
+  utf64:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version-file: "go/go.mod"
+          go-version-file: "utf64/go/go.mod"
       - name: Test
-        run: cd go && go test
+        working-directory: ./utf64/go
+        run: go test

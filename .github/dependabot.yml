@@ -9,10 +9,10 @@ updates:
     schedule:
       interval: "weekly"
   - package-ecosystem: "pip"
-    directory: "/py"
+    directory: "/utf64/py"
     schedule:
       interval: "weekly"
   - package-ecosystem: "cargo"
-    directory: "/rust"
+    directory: "/utf64/rust"
     schedule:
       interval: "weekly"

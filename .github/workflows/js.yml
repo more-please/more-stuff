@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: ["main"]
 jobs:
-  test-js:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,4 +19,4 @@ jobs:
       - name: Install
         run: pnpm install
       - name: Test
-        run: cd js && pnpm test
+        run: pnpm -r test

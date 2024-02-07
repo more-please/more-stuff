@@ -1,7 +1,6 @@
 {
   "private": true,
   "scripts": {
-    "format": "gofmt -w -s .",
-    "test": "go test"
+    "format": "gofmt -w -s ."
   }
 }

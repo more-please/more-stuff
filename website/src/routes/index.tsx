@@ -67,7 +67,7 @@ async function getTags(url: string): Promise<Result<string[]>> {
 }
 
 export default function Home() {
-  const [url, setUrl] = createSignal("https://github.com/more-please/utf64");
+  const [url, setUrl] = createSignal("https://github.com/more-please/more-stuff");
   const [tags] = createResource(url, getTags);
   return (
     <main>

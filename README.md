@@ -1,3 +1,4 @@
+
 ![GOSUB](https://raw.githubusercontent.com/more-please/gosub-goproxy/main/assets/gosub.svg)
 
 GOPROXY implementation that allows Go modules to live in subdirectories
@@ -29,7 +30,7 @@ Note that by default, all Go modules are cached by [proxy.golang.org](https://pr
 I'll use my own "UTF-64" module as a worked example:
 
 - Module name: [utf64.moreplease.com](https://utf64.moreplease.com)
-- Go source: [github.com/more-please/utf64/go](https://github.com/more-please/utf64/tree/main/go)
+- Go source: [github.com/more-please/more-stuff/utf64/go](https://github.com/more-please/more-stuff/tree/main/utf64/go)
 
 ### `goproxy` mode (static config)
 
@@ -67,7 +68,7 @@ To avoid being rate-limited, you should pass a [GitHub API token](https://docs.g
 
 #### Example / demo
 
-The [root page](https://github.com/more-please/utf64/blob/main/website/src/routes/%2Bpage.svelte) for my module's domain has the "vanity import" tag:
+The [root page](https://github.com/more-please/more-stuff/blob/main/website/src/routes/%2Bpage.svelte) for my module's domain has the "vanity import" tag:
 
 ```HTML
   <meta
@@ -76,20 +77,20 @@ The [root page](https://github.com/more-please/utf64/blob/main/website/src/route
   />
 ```
 
-This instructs the Go toolchain to look for a `mod` (module server) at `/go` on the same domain. I [deploy the `goproxy` function](https://github.com/more-please/utf64/blob/main/website/src/routes/go/%5B...goproxy%5D/%2Bserver.ts) as follows:
+This instructs the Go toolchain to look for a `mod` (module server) at `/go` on the same domain. I [deploy the `goproxy` function](https://github.com/more-please/more-stuff/blob/main/website/src/routes/go/%5B...goproxy%5D/%2Bserver.ts) as follows:
 
 ```JavaScript
 import { goproxy } from "gosub-goproxy";
 
 const handler = goproxy("/go", {
-  url: "https://github.com/more-please/utf64",
+  url: "https://github.com/more-please/more-stuff",
   module: "utf64.moreplease.com",
-  directory: "go",
-  tagPrefix: "go-",
+  directory: "utf64/go",
+  tagPrefix: "utf64-go-",
 });
 ```
 
-The repo has version tags like `go-0.0.11`, etc. Goproxy ignores tags without the `go-` prefix.
+The repo has version tags like `utf64-go-0.0.11`, etc. Goproxy ignores tags without the `utf64-go-` prefix.
 
 The GOPROXY path to list module versions is `$base/$module/@v/list`, or in this case:
 
@@ -111,7 +112,7 @@ Recall the configuration for `utf64.moreplease.com`:
 
 ```TypeScript
 {
-  url: "https://github.com/more-please/utf64",
+  url: "https://github.com/more-please/more-stuff",
   module: "utf64.moreplease.com",
   directory: "go",
   tagPrefix: "go-",
@@ -121,20 +122,20 @@ Recall the configuration for `utf64.moreplease.com`:
 This encodes to:
 
 ```
-github.com/more-please/utf64:d=go&m=utf64.moreplease.com&p=go-;
+github.com/more-please/more-stuff:d=go&m=utf64.moreplease.com&p=go-;
 ```
 
 Note that we can omit `module` from the config, in which case we get:
 
 ```
-github.com/more-please/utf64:d=go&p=go-;
+github.com/more-please/more-stuff:d=go&p=go-;
 ```
 
 The only advantage of setting `module` explicitly is that it blocks nonsense lookups like `wrong-module-name/@v/list`.
 
 Putting it all together, the `@v/list` command for `utf64.moreplease.com` using my `gosub` server deployed at [gosub.moreplease.com](https://gosub.moreplease.com) is:
 
-- [gosub.moreplease.com/github.com/more-please/utf64:d=go&p=go-;/utf64.moreplease.com/@v/list](https://gosub.moreplease.com/github.com/more-please/utf64:d=go&p=go-;/utf64.moreplease.com/@v/list)
+- [gosub.moreplease.com/github.com/more-please/more-stuff:d=go&p=go-;/utf64.moreplease.com/@v/list](https://gosub.moreplease.com/github.com/more-please/more-stuff:d=go&p=go-;/utf64.moreplease.com/@v/list)
 
 ### Shared server
 

@@ -128,7 +128,7 @@ importers:
         specifier: ^8.2.2
         version: 8.2.2
       gosub-goproxy:
-        specifier: ^0.0.15
+        specifier: workspace:*
         version: link:../../gosub/src
       svelte:
         specifier: ^4.2.10

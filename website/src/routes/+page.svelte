@@ -51,17 +51,6 @@
     padding: 1em 0 0.25em;
     max-width: 16em;
   }
-  p,
-  li {
-    margin: 0;
-    padding: 0.75em 0 0.25em;
-    max-width: 24rem;
-  }
-  ul {
-    max-width: 24rem;
-    padding-left: 2rem;
-    margin: 0;
-  }
   h1 {
     font-size: 3em;
     font-weight: bolder;
@@ -71,37 +60,5 @@
     font-size: 1.5em;
     font-weight: normal;
     text-align: center;
-  }
-  .cols {
-    display: flex;
-    flex-flow: row wrap;
-    column-gap: 2em;
-    margin: 0 1em;
-    align-items: flex-start;
-  }
-  .col {
-    margin: 0 auto;
-  }
-  div.col {
-    max-width: 24em;
-  }
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5em;
-    padding: 1em 0;
-  }
-  pre {
-    background-color: floralwhite;
-    border: 1px solid lightgray;
-    padding: 0.5em;
-  }
-  span.error {
-    font-weight: bold;
-    color: red;
-  }
-  textarea.error {
-    background-color: rgba(255, 0, 0, 25%);
   }
 </style>

@@ -1,24 +1,18 @@
 name: Test
 on:
-  push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
+  - push
+  - pull_request
 jobs:
-  test:
+  gosub:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
+      - run: corepack enable
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: "pnpm"
-      - name: Install
-        run: pnpm install
-      - name: Test
-        run: pnpm test
+      - run: pnpm install
+      - run: pnpm -r test
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

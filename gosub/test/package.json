@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "name": "test",
+  "type": "module",
+  "scripts": {
+    "format": "prettier --log-level warn -w .",
+    "test": "vitest run && tsc"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.4",
+    "typescript": "^5.3.3",
+    "unzipit": "^1.4.3",
+    "vitest": "^1.2.2"
+  },
+  "dependencies": {
+    "gosub-goproxy": "link:../src"
+  }
+}

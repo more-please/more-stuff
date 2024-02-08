@@ -1,0 +1,10 @@
+{
+  "browsers": {
+    "chrome": "66",
+    "firefox": "65",
+    "opera": "67",
+    "safari": "12.1",
+    "safari_ios": "12.2",
+    "deno": "6"
+  }
+}

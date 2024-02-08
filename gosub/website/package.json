@@ -1,0 +1,32 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "format": "prettier --plugin prettier-plugin-svelte --log-level warn -w .",
+    "test": "concurrently -n vite,curl -s command-curl -k 'vite dev --port 4500' 'svelte-kit sync && svelte-check && curl -f http://localhost:4500 -o /dev/null'",
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "getenv": "netlify env:list --plain > .env"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.2",
+    "prettier-plugin-svelte": "^3.1.2",
+    "svelte-check": "^3.6.3",
+    "svelte-preprocess-import-assets": "^1.1.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12"
+  },
+  "dependencies": {
+    "@sveltejs/adapter-netlify": "^4.1.0",
+    "@sveltejs/kit": "^2.5.0",
+    "@sveltejs/vite-plugin-svelte": "^3.0.2",
+    "concurrently": "^8.2.2",
+    "gosub-goproxy": "workspace:*",
+    "svelte": "^4.2.10"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

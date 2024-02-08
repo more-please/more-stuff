@@ -1,0 +1,44 @@
+{
+  "name": "gosub-goproxy",
+  "version": "0.0.15",
+  "description": "GOPROXY implementation that allows Go modules to live in subdirectories",
+  "keywords": [
+    "golang",
+    "goproxy",
+    "gosub"
+  ],
+  "license": "0BSD",
+  "author": "Iain Merrick <iain@moreplease.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/more-please/gosub-goproxy.git",
+    "directory": "src"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "files": [
+    "README.md",
+    "LICENSE",
+    "dist/index.js",
+    "dist/index.d.ts",
+    "dist/goproxy.d.ts",
+    "dist/gosub.d.ts",
+    "dist/result.d.ts"
+  ],
+  "scripts": {
+    "format": "prettier --log-level warn -w .",
+    "test": "tsc && ts-browser-compat",
+    "build": "esbuild index.ts --outdir=dist --format=esm --bundle --minify --external:client-zip",
+    "prepare": "tsc && pnpm run build && cp -f ../README.md ../LICENSE ."
+  },
+  "devDependencies": {
+    "@journeyapps/ts-browser-compat": "github:more-please/ts-browser-compat",
+    "esbuild": "^0.20.0",
+    "prettier": "^3.2.4",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "client-zip": "^2.4.4"
+  }
+}

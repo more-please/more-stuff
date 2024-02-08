@@ -1,2 +1,3 @@
 packages:
+  - "gosub/*"
   - "utf64/*"

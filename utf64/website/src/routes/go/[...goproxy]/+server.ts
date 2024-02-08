@@ -5,7 +5,7 @@ const config = {
   url: "https://github.com/more-please/more-stuff",
   module: "utf64.moreplease.com",
   directory: "utf64/go",
-  tagPrefix: "go-",
+  tagPrefix: "utf64-go-",
 };
 
 const handler = goproxy("/go", config);

@@ -114,28 +114,28 @@ Recall the configuration for `utf64.moreplease.com`:
 {
   url: "https://github.com/more-please/more-stuff",
   module: "utf64.moreplease.com",
-  directory: "go",
-  tagPrefix: "go-",
+  directory: "utf64/go",
+  tagPrefix: "utf64-go-",
 }
 ```
 
 This encodes to:
 
 ```
-github.com/more-please/more-stuff:d=go&m=utf64.moreplease.com&p=go-;
+github.com/more-please/more-stuff:d=utf64%2Fgo&m=utf64.moreplease.com&p=utf64-go-;
 ```
 
 Note that we can omit `module` from the config, in which case we get:
 
 ```
-github.com/more-please/more-stuff:d=go&p=go-;
+github.com/more-please/more-stuff:d=utf64%2Fgo&p=go-;
 ```
 
 The only advantage of setting `module` explicitly is that it blocks nonsense lookups like `wrong-module-name/@v/list`.
 
 Putting it all together, the `@v/list` command for `utf64.moreplease.com` using my `gosub` server deployed at [gosub.moreplease.com](https://gosub.moreplease.com) is:
 
-- [gosub.moreplease.com/github.com/more-please/more-stuff:d=go&p=go-;/utf64.moreplease.com/@v/list](https://gosub.moreplease.com/github.com/more-please/more-stuff:d=go&p=go-;/utf64.moreplease.com/@v/list)
+- [gosub.moreplease.com/github.com/more-please/more-stuff:d=utf64%2Fgo&p=utf64-go-;/utf64.moreplease.com/@v/list](https://gosub.moreplease.com/github.com/more-please/more-stuff:d=utf64%2Fgo&p=utf64-go-;/utf64.moreplease.com/@v/list)
 
 ### Shared server
 

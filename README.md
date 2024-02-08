@@ -10,3 +10,7 @@ I'm consolidating my open source code into a monorepo (as maintaining even two s
 [![utf-64](https://raw.githubusercontent.com/more-please/more-stuff/main/utf64/utf64.svg)](utf64)
 
 A terse, human-readable, URL-safe encoding for JSONish strings.
+
+[![GOSUB](https://raw.githubusercontent.com/more-please/gosub-goproxy/main/assets/gosub.svg)](gosub)
+
+GOPROXY implementation that allows Go modules to live in subdirectories.

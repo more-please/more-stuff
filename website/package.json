@@ -1,32 +1,30 @@
 {
   "private": true,
-  "name": "website",
   "type": "module",
   "scripts": {
-    "getenv": "netlify env:list --plain > .env",
-    "dev": "solid-start dev",
-    "build": "solid-start build",
-    "start": "solid-start start",
-    "test": "concurrently -n vite,curl -s command-curl -k 'solid-start dev -p 4500' 'tsc && curl -f http://localhost:4500'"
+    "format": "prettier --plugin prettier-plugin-svelte --log-level warn -w .",
+    "test": "concurrently -n vite,curl -s command-curl -k 'vite dev --port 4500' 'svelte-kit sync && svelte-check && curl -f http://localhost:4500 -o /dev/null'",
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "getenv": "netlify env:list --plain > .env"
   },
   "devDependencies": {
-    "@types/node": "^20.11.16",
-    "esbuild": "^0.20.0",
-    "postcss": "^8.4.33",
-    "solid-start-node": "^0.3.10",
+    "prettier": "^3.2.2",
+    "prettier-plugin-svelte": "^3.1.2",
+    "svelte-check": "^3.6.3",
+    "svelte-preprocess-import-assets": "^1.1.0",
+    "tslib": "^2.6.2",
     "typescript": "^5.3.3",
-    "vite": "^5.0.12",
-    "vite-tsconfig-paths": "^4.3.1"
+    "vite": "^5.0.12"
   },
   "dependencies": {
-    "@solidjs/meta": "^0.29.3",
-    "@solidjs/router": "^0.11.5",
-    "assets": "link:../assets",
+    "@sveltejs/adapter-netlify": "^4.1.0",
+    "@sveltejs/kit": "^2.5.0",
+    "@sveltejs/vite-plugin-svelte": "^3.0.2",
     "concurrently": "^8.2.2",
-    "gosub-goproxy": "link:../src",
-    "solid-js": "^1.8.14",
-    "solid-start": "^0.3.10",
-    "solid-start-netlify": "^0.3.10"
+    "gosub-goproxy": "workspace:*",
+    "svelte": "^4.2.10"
   },
   "engines": {
     "node": ">=18"

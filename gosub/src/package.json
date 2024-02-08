@@ -1,6 +1,6 @@
 {
   "name": "gosub-goproxy",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "GOPROXY implementation that allows Go modules to live in subdirectories",
   "keywords": [
     "golang",
@@ -11,8 +11,8 @@
   "author": "Iain Merrick <iain@moreplease.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/more-please/gosub-goproxy.git",
-    "directory": "src"
+    "url": "https://github.com/more-please/more-stuff.git",
+    "directory": "gosub/src"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

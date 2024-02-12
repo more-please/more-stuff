@@ -1,9 +1,7 @@
 
-![GOSUB](https://raw.githubusercontent.com/more-please/gosub-goproxy/main/assets/gosub.svg)
+![GOSUB](https://raw.githubusercontent.com/more-please/more-stuff/main/gosub/assets/gosub.svg)
 
 GOPROXY implementation that allows Go modules to live in subdirectories
-
-[![Test](https://github.com/more-please/gosub-goproxy/actions/workflows/test.yml/badge.svg)](https://github.com/more-please/gosub-goproxy/actions/workflows/test.yml)
 
 ## Overview
 

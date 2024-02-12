@@ -76,8 +76,8 @@ importers:
         specifier: ^3.1.2
         version: 3.1.2(prettier@3.2.5)(svelte@4.2.10)
       svelte-check:
-        specifier: ^3.6.3
-        version: 3.6.3(svelte@4.2.10)
+        specifier: ^3.6.4
+        version: 3.6.4(svelte@4.2.10)
       svelte-preprocess-import-assets:
         specifier: ^1.1.0
         version: 1.1.0(svelte@4.2.10)
@@ -144,8 +144,8 @@ importers:
         specifier: ^3.1.2
         version: 3.1.2(prettier@3.2.2)(svelte@4.2.10)
       svelte-check:
-        specifier: ^3.6.3
-        version: 3.6.3(svelte@4.2.10)
+        specifier: ^3.6.4
+        version: 3.6.4(svelte@4.2.10)
       svelte-preprocess-import-assets:
         specifier: ^1.1.0
         version: 1.1.0(svelte@4.2.10)
@@ -1812,8 +1812,8 @@ packages:
       has-flag: 4.0.0
     dev: false
 
-  /svelte-check@3.6.3(svelte@4.2.10):
-    resolution: {integrity: sha512-Q2nGnoysxUnB9KjnjpQLZwdjK62DHyW6nuH/gm2qteFnDk0lCehe/6z8TsIvYeKjC6luKaWxiNGyOcWiLLPSwA==}
+  /svelte-check@3.6.4(svelte@4.2.10):
+    resolution: {integrity: sha512-mY/dqucqm46p72M8yZmn81WPZx9mN6uuw8UVfR3ZKQeLxQg5HDGO3HHm5AZuWZPYNMLJ+TRMn+TeN53HfQ/vsw==}
     hasBin: true
     peerDependencies:
       svelte: ^3.55.0 || ^4.0.0-next.0 || ^4.0.0 || ^5.0.0-next.0

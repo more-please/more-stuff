@@ -2,9 +2,7 @@
 import { Image } from "astro:assets";
 import "../index.css";
 import svg from "../../utf64.svg";
-import { Forms } from "../Forms.tsx";
-
-const url = new URL(Astro.request.url);
+import { Demo } from "../Demo.tsx";
 ---
 
 <html>
@@ -26,7 +24,7 @@ const url = new URL(Astro.request.url);
       <h1><Image src={svg} alt="utf-64" /></h1>
       <h2>A terse, human-readable, URL-safe encoding for JSONish strings</h2>
       <div class="cols">
-        <Forms client:load params={url.searchParams} />
+        <Demo client:load url={Astro.request.url} />
       </div>
       <div class="cols">
         <div class="col">
@@ -119,3 +117,4 @@ const url = new URL(Astro.request.url);
     </main>
   </body>
 </html>
+../Demo.tsx

@@ -1,13 +1,14 @@
 import { createSignal, type Component, Show } from "solid-js";
 import * as utf64 from "utf64";
 
-export type FormsProps = {
-  params: URLSearchParams,
+export type DemoProps = {
+  url: string,
 };
 
-export const Forms: Component<FormsProps> = (props) => {
-  const [src, setSrc] = createSignal(props.params.get("encode"));
-  const [dest, setDest] = createSignal(props.params.get("decode"));
+export const Demo: Component<DemoProps> = (props) => {
+  const args = new URL(props.url).searchParams;
+  const [src, setSrc] = createSignal(args.get("encode"));
+  const [dest, setDest] = createSignal(args.get("decode"));
   const [error, setError] = createSignal<string>();
 
   function encode(src: string) {

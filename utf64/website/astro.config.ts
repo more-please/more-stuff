@@ -9,10 +9,10 @@ export default defineConfig({
   outDir: "./build",
   output: "server",
   adapter: cloudflare({
-    imageService: "passthrough"
+    imageService: "passthrough",
   }),
   build: {
     assets: "assets",
   },
-  integrations: [solid()]
+  integrations: [solid()],
 });

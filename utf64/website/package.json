@@ -2,11 +2,15 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "astro check",
+    "format": "prettier --plugin prettier-plugin-astro --log-level warn -w .",
+    "test": "concurrently -n astro,curl -s command-curl -k 'astro dev --port 4510' 'astro check && curl -f http://localhost:4510 -o /dev/null'",
     "dev": "astro dev",
-    "build": "astro build"
+    "build": "astro build",
+    "push": "wrangler pages deploy --project-name utf64 build"
   },
   "devDependencies": {
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0",
     "typescript": "^5.3.3"
   },
   "dependencies": {
@@ -14,6 +18,7 @@
     "@astrojs/cloudflare": "^9.0.2",
     "@astrojs/solid-js": "^4.0.1",
     "astro": "^4.4.5",
+    "concurrently": "^8.2.2",
     "solid-js": "^1.8.15",
     "utf64": "workspace:^",
     "wrangler": "^3.29.0"

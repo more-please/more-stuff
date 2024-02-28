@@ -7,7 +7,7 @@ import { Demo } from "../Demo.tsx";
 <html>
   <head>
     <title>UTF-64</title>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <meta
       name="description"
       content="A terse, human-readable, URL-safe encoding for JSONish strings"
@@ -20,7 +20,9 @@ import { Demo } from "../Demo.tsx";
   </head>
   <body>
     <main>
-      <h1><img src={svg.src} width={svg.width} height={svg.height} alt="utf-64" /></h1>
+      <h1>
+        <img src={svg.src} width={svg.width} height={svg.height} alt="utf-64" />
+      </h1>
       <h2>A terse, human-readable, URL-safe encoding for JSONish strings</h2>
       <div class="cols">
         <Demo client:load url={Astro.request.url} />

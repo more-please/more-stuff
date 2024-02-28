@@ -2,7 +2,7 @@ import { createSignal, type Component, Show } from "solid-js";
 import * as utf64 from "utf64";
 
 export type DemoProps = {
-  url: string,
+  url: string;
 };
 
 export const Demo: Component<DemoProps> = (props) => {

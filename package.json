@@ -5,5 +5,8 @@
     "format": "pnpm run -r format",
     "test": "pnpm run -r test",
     "build": "pnpm run -r build"
+  },
+  "dependencies": {
+    "turbo": "^1.12.4"
   }
 }

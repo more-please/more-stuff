@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import "../index.css";
 import svg from "../../utf64.svg";
 import { Demo } from "../Demo.tsx";
@@ -21,7 +20,7 @@ import { Demo } from "../Demo.tsx";
   </head>
   <body>
     <main>
-      <h1><Image src={svg} alt="utf-64" /></h1>
+      <h1><img src={svg.src} width={svg.width} height={svg.height} alt="utf-64" /></h1>
       <h2>A terse, human-readable, URL-safe encoding for JSONish strings</h2>
       <div class="cols">
         <Demo client:load url={Astro.request.url} />

@@ -40,6 +40,7 @@ export const Demo: Component<DemoProps> = (props) => {
       <form class="col" method="get">
         <label for="encode">Try it! Type anything here:</label>
         <textarea
+          id="encode"
           name="encode"
           onInput={(e) => encode(e.currentTarget.value)}
           rows="8"

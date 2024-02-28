@@ -1,17 +1,16 @@
 ---
 import { Image } from "astro:assets";
-import "./index.css";
+import "../index.css";
 import svg from "../../utf64.svg";
 import { Forms } from "../Forms.tsx";
 
 const url = new URL(Astro.request.url);
-const args = url.searchParams;
-console.log(args);
 ---
 
 <html>
   <head>
     <title>UTF-64</title>
+    <meta charset="UTF-8"/>
     <meta
       name="description"
       content="A terse, human-readable, URL-safe encoding for JSONish strings"
@@ -26,13 +25,8 @@ console.log(args);
     <main>
       <h1><Image src={svg} alt="utf-64" /></h1>
       <h2>A terse, human-readable, URL-safe encoding for JSONish strings</h2>
-      <p>Received a {Astro.request.method} request to "{Astro.request.url}".</p>
-      <p>
-        Received request headers: <code
-          >{JSON.stringify(Object.fromEntries(Astro.request.headers))}</code>
-      </p>
       <div class="cols">
-        <Forms client:load src={args.get("src")} dest={args.get("dest")} />
+        <Forms client:load params={url.searchParams} />
       </div>
       <div class="cols">
         <div class="col">

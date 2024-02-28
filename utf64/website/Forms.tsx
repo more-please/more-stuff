@@ -2,36 +2,57 @@ import { createSignal, type Component, Show } from "solid-js";
 import * as utf64 from "utf64";
 
 export type FormsProps = {
-  src?: string | null;
-  dest?: string | null;
-  error?: string | null;
+  params: URLSearchParams,
 };
 
 export const Forms: Component<FormsProps> = (props) => {
-  const [src, setSrc] = createSignal(props.src ?? "");
-  const [dest, setDest] = createSignal(props.dest ?? "");
-  const [error, setError] = createSignal(props.error);
+  const [src, setSrc] = createSignal(props.params.get("encode"));
+  const [dest, setDest] = createSignal(props.params.get("decode"));
+  const [error, setError] = createSignal<string>();
+
+  function encode(src: string) {
+    setSrc(src);
+    setDest(utf64.encode(src));
+    setError(undefined);
+  }
+
+  function decode(dest: string) {
+    try {
+      setDest(dest);
+      setSrc(utf64.decode(dest));
+      setError(undefined);
+    } catch (err) {
+      const e = err as Error;
+      setError(e.message);
+    }
+  }
+
+  const [s, d] = [src(), dest()];
+  if (s) {
+    encode(s);
+  } else if (d) {
+    decode(d);
+  }
+
   return (
     <>
       <form class="col" method="get">
         <label for="encode">Try it! Type anything here:</label>
         <textarea
           name="encode"
-          value={src()}
-          onInput={(e) => {
-            const src = setSrc(e.currentTarget.value);
-            setDest(utf64.encode(src));
-          }}
+          onInput={(e) => encode(e.currentTarget.value)}
           rows="8"
           cols="40"
-        />
+        >
+          {src()}
+        </textarea>
         <noscript>
           <button>Encode »</button>
         </noscript>
       </form>
       <form class="col" method="get">
         <label for="decode">
-          <Show when={error()} fallback="Encoded as UTF-64:">
+          <Show when={error()} fallback="Encoded as UTF-64:" keyed>
             {(e) => <span class="error">{e}</span>}
           </Show>
         </label>
@@ -39,22 +60,14 @@ export const Forms: Component<FormsProps> = (props) => {
           id="decode"
           name="decode"
           classList={{
-            error: !!error()
+            error: !!error(),
           }}
-          value={dest()}
-          onInput={(e) => {
-            const dest = setDest(e.currentTarget.value);
-            try {
-              setSrc(utf64.decode(dest));
-              setError(undefined);
-            } catch (err) {
-              const e = err as Error;
-              setError(e.message);
-            }
-          }}
+          onInput={(e) => decode(e.currentTarget.value)}
           rows="8"
           cols="40"
-        />
+        >
+          {dest()}
+        </textarea>
         <noscript>
           <button>« Decode</button>
         </noscript>

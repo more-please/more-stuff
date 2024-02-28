@@ -2,6 +2,11 @@
 import { Image } from "astro:assets";
 import "./index.css";
 import svg from "../../utf64.svg";
+import { Forms } from "../Forms.tsx";
+
+const url = new URL(Astro.request.url);
+const args = url.searchParams;
+console.log(args);
 ---
 
 <html>
@@ -18,40 +23,16 @@ import svg from "../../utf64.svg";
     />
   </head>
   <body>
-    <script>
-      import * as utf64 from "utf64";
-      const src = document.getElementById("encode") as HTMLTextAreaElement;
-      const dest = document.getElementById("decode") as HTMLTextAreaElement;
-      src.addEventListener("input", () => {
-        dest.value = utf64.encode(src.value);
-      });
-      dest.addEventListener("input", () => {
-        try {
-          src.value = utf64.decode(dest.value);
-        } catch (err) {
-          const e = err as Error;
-          console.error(e);
-        }
-      });
-    </script>
     <main>
       <h1><Image src={svg} alt="utf-64" /></h1>
       <h2>A terse, human-readable, URL-safe encoding for JSONish strings</h2>
+      <p>Received a {Astro.request.method} request to "{Astro.request.url}".</p>
+      <p>
+        Received request headers: <code
+          >{JSON.stringify(Object.fromEntries(Astro.request.headers))}</code>
+      </p>
       <div class="cols">
-        <form class="col" method="get">
-          <label for="encode">Try it! Type anything here:</label>
-          <textarea id="encode" name="encode" rows="8" cols="40"></textarea>
-          <noscript>
-            <button>Encode »</button>
-          </noscript>
-        </form>
-        <form class="col" method="get">
-          <label for="decode">Try it! Type anything here:</label>
-          <textarea id="decode" name="decode" rows="8" cols="40"></textarea>
-          <noscript>
-            <button>« Decode</button>
-          </noscript>
-        </form>
+        <Forms client:load src={args.get("src")} dest={args.get("dest")} />
       </div>
       <div class="cols">
         <div class="col">

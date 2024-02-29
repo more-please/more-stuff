@@ -1,32 +1,28 @@
 {
+  "name": "gosub.website",
   "private": true,
   "type": "module",
   "scripts": {
-    "format": "prettier --plugin prettier-plugin-svelte --log-level warn -w .",
-    "test": "concurrently -n vite,curl -s command-curl -k 'vite dev --port 4500' 'svelte-kit sync && svelte-check && curl -f http://localhost:4500 -o /dev/null'",
-    "dev": "vite dev",
-    "build": "vite build",
-    "preview": "vite preview",
-    "getenv": "netlify env:list --plain > .env"
+    "format": "prettier --plugin prettier-plugin-astro --log-level warn -w .",
+    "test": "concurrently -n astro,curl -s command-curl -k 'astro dev --port 4500' 'astro check && curl -f http://localhost:4500 -o /dev/null'",
+    "dev": "astro dev",
+    "build": "astro build",
+    "push": "wrangler pages deploy --project-name gosub build"
   },
   "devDependencies": {
-    "prettier": "^3.2.2",
-    "prettier-plugin-svelte": "^3.2.1",
-    "svelte-check": "^3.6.4",
-    "svelte-preprocess-import-assets": "^1.1.0",
-    "tslib": "^2.6.2",
-    "typescript": "^5.3.3",
-    "vite": "^5.1.4"
+    "@astrojs/check": "^0.5.6",
+    "concurrently": "^8.2.2",
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0",
+    "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@sveltejs/adapter-netlify": "^4.1.0",
-    "@sveltejs/kit": "^2.5.1",
-    "@sveltejs/vite-plugin-svelte": "^3.0.2",
-    "concurrently": "^8.2.2",
+    "@astrojs/cloudflare": "^9.0.2",
+    "@astrojs/solid-js": "^4.0.1",
+    "astro": "^4.4.5",
     "gosub-goproxy": "workspace:*",
-    "svelte": "^4.2.11"
-  },
-  "engines": {
-    "node": ">=18"
+    "solid-js": "^1.8.15",
+    "utf64": "workspace:^",
+    "wrangler": "^3.29.0"
   }
 }

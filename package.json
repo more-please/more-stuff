@@ -2,11 +2,14 @@
   "private": true,
   "scripts": {
     "hooks": "rm -f .git/hooks/pre-commit && ln -s ../../.githooks/pre-commit .git/hooks/pre-commit",
+    "codegen": "runfig",
     "format": "pnpm run -r format",
     "test": "pnpm run -r test",
     "build": "pnpm run -r build"
   },
   "dependencies": {
-    "turbo": "^1.12.4"
+    "runfig": "^0.0.4",
+    "turbo": "^1.12.4",
+    "walk-sync": "^3.0.0"
   }
 }

@@ -1,4 +1,5 @@
 {
+  "name": "utf64.go",
   "private": true,
   "scripts": {
     "format": "gofmt -w -s ."

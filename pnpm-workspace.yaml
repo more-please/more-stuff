@@ -1,3 +1,10 @@
+# Auto-generated from pnpm-workspace.yaml.ts
+
 packages:
-  - "gosub/*"
-  - "utf64/*"
+  - gosub/src
+  - gosub/test
+  - gosub/website
+  - utf64/go
+  - utf64/js
+  - utf64/py
+  - utf64/website

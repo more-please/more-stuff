@@ -1,0 +1,42 @@
+---
+import "../index.css";
+import gosub_svg from "../../gosub.svg";
+import github_mark_svg from "../assets/github-mark.svg";
+import under_construction_svg from "../assets/under-construction.svg";
+ ---
+<html lang="en">
+  <head>
+    <title>GOSUB</title>
+    <meta
+      name="description"
+      content="Serve Go modules from a GitHub repo subdirectory"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <main>
+      <h1>
+        <img src={gosub_svg.src} alt="GOSUB" width={gosub_svg.width} height={gosub_svg.height} />
+      </h1>
+      <h2>Serve Go modules from a GitHub repo subdirectory</h2>
+
+      <h3>
+        <img
+          src={under_construction_svg.src}
+          alt="Under construction"
+          width={128}
+          height={128}
+        />
+      </h3>
+      <h3>Under construction</h3>
+
+      <h3>
+        <a href="https://github.com/more-please/gosub-goproxy">
+          <img src={github_mark_svg.src} alt="GitHub" width={20} height={20} />
+          more-please/gosub-gproxy
+        </a>
+      </h3>
+    </main>
+  </body>
+</html>

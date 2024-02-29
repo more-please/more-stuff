@@ -1,4 +1,5 @@
 {
+  "name": "utf64.website",
   "private": true,
   "type": "module",
   "scripts": {

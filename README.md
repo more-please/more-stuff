@@ -11,6 +11,6 @@ I'm consolidating my open source code into a monorepo (as maintaining even two s
 
 A terse, human-readable, URL-safe encoding for JSONish strings.
 
-[![GOSUB](https://raw.githubusercontent.com/more-please/more-stuff/main/gosub/assets/gosub.svg)](gosub)
+[![GOSUB](https://raw.githubusercontent.com/more-please/more-stuff/main/gosub/gosub.svg)](gosub)
 
 GOPROXY implementation that allows Go modules to live in subdirectories.

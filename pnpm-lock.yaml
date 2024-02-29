@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       runfig:
-        specifier: ^0.0.4
-        version: 0.0.4
+        specifier: workspace:*
+        version: link:runfig
       turbo:
         specifier: ^1.12.4
         version: 1.12.4
@@ -92,6 +92,28 @@ importers:
       prettier-plugin-astro:
         specifier: ^0.13.0
         version: 0.13.0
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
+
+  runfig:
+    dependencies:
+      bun:
+        specifier: ^1.0.29
+        version: 1.0.29
+      smol-toml:
+        specifier: ^1.1.4
+        version: 1.1.4
+      yaml:
+        specifier: ^2.3.4
+        version: 2.4.0
+    devDependencies:
+      '@types/node':
+        specifier: ^20.11.21
+        version: 20.11.21
+      bun-types:
+        specifier: ^1.0.29
+        version: 1.0.29
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -1579,6 +1601,12 @@ packages:
     resolution: {integrity: sha512-dqId9J8K/vGi5Zr7oo212BGii5m3q5Hxlkwy3WpYuKPklmBEvsbMYYyLxAQpSffdLl/gdW0XUpKWFvYmyoWCoQ==}
     dev: false
 
+  /@types/ws@8.5.10:
+    resolution: {integrity: sha512-vmQSUcfalpIq0R9q7uTo2lXs6eGIpt9wtnLdMv9LVpIjCA/+ufZRozlVoVelIYixx1ugCBKDhn89vnsEGOCx9A==}
+    dependencies:
+      '@types/node': 20.11.21
+    dev: true
+
   /@ungap/structured-clone@1.2.0:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: false
@@ -2036,6 +2064,13 @@ packages:
       base64-js: 1.5.1
       ieee754: 1.2.1
     dev: false
+
+  /bun-types@1.0.29:
+    resolution: {integrity: sha512-Z+U1ORr/2UCwxelIZxE83pyPLclviYL9UewQCNEUmGeLObY8ao+3WF3D8N1+NMv2+S+hUWsdBJam+4GoPEz35g==}
+    dependencies:
+      '@types/node': 20.11.21
+      '@types/ws': 8.5.10
+    dev: true
 
   /bun@1.0.29:
     resolution: {integrity: sha512-OQfMWb+UxgBA5Fnne/6GPmk3kh9HmECOIGG2P/m97QYmCthKMJlFBF8Q5TC+ayL5TvfVEXZxw7V4yHr1cqGK6w==}
@@ -4272,15 +4307,6 @@ packages:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
     dependencies:
       queue-microtask: 1.2.3
-
-  /runfig@0.0.4:
-    resolution: {integrity: sha512-h6RQVkjNkxBP6aNmGLF+nMjryuZNZ8RtavTk13rKNS2t5wKWLq6Hhfbxy0XYwT7VsvZxDoF/DnksYwBVoBWENQ==}
-    hasBin: true
-    dependencies:
-      bun: 1.0.29
-      smol-toml: 1.1.4
-      yaml: 2.4.0
-    dev: false
 
   /rxjs@7.8.1:
     resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}

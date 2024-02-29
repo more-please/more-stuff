@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "preserveSymlinks": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "bundler",
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["esnext"],
+    "typeRoots": ["./node_modules/@types", "./node_modules"],
+    "types": ["bun-types", "node"]
+  },
+  "files": ["./runfig.ts"]
+}

@@ -8,7 +8,7 @@
     "build": "pnpm run -r build"
   },
   "dependencies": {
-    "runfig": "^0.0.4",
+    "runfig": "workspace:*",
     "turbo": "^1.12.4",
     "walk-sync": "^3.0.0"
   }

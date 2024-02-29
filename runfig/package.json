@@ -1,0 +1,34 @@
+{
+  "name": "runfig",
+  "version": "0.0.5",
+  "description": "Down with YAML and TOML! Generate your config files from code, the way nature intended",
+  "keywords": [
+    "configuration",
+    "toml",
+    "yaml"
+  ],
+  "license": "0BSD",
+  "author": "Iain Merrick <iain@moreplease.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/more-please/more-stuff.git",
+    "directory": "runfig"
+  },
+  "type": "module",
+  "bin": {
+    "runfig": "launcher.sh"
+  },
+  "scripts": {
+    "test": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.21",
+    "bun-types": "^1.0.29",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "bun": "^1.0.29",
+    "smol-toml": "^1.1.4",
+    "yaml": "^2.3.4"
+  }
+}

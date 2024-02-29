@@ -114,6 +114,9 @@ importers:
       bun-types:
         specifier: ^1.0.29
         version: 1.0.29
+      prettier:
+        specifier: ^3.2.2
+        version: 3.2.5
       typescript:
         specifier: ^5.3.3
         version: 5.3.3

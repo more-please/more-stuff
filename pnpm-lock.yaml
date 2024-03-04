@@ -60,13 +60,13 @@ importers:
     dependencies:
       '@astrojs/cloudflare':
         specifier: ^9.0.2
-        version: 9.0.2(astro@4.4.5)
+        version: 9.0.2(astro@4.4.10)
       '@astrojs/solid-js':
         specifier: ^4.0.1
         version: 4.0.1(solid-js@1.8.15)(vite@5.1.4)
       astro:
-        specifier: ^4.4.5
-        version: 4.4.5(typescript@5.3.3)
+        specifier: ^4.4.10
+        version: 4.4.10(typescript@5.3.3)
       gosub-goproxy:
         specifier: workspace:*
         version: link:../src
@@ -147,13 +147,13 @@ importers:
     dependencies:
       '@astrojs/cloudflare':
         specifier: ^9.0.2
-        version: 9.0.2(astro@4.4.5)
+        version: 9.0.2(astro@4.4.10)
       '@astrojs/solid-js':
         specifier: ^4.0.1
         version: 4.0.1(solid-js@1.8.15)(vite@5.1.4)
       astro:
-        specifier: ^4.4.5
-        version: 4.4.5(typescript@5.3.3)
+        specifier: ^4.4.10
+        version: 4.4.10(typescript@5.3.3)
       gosub-goproxy:
         specifier: workspace:*
         version: link:../../gosub/src
@@ -210,7 +210,7 @@ packages:
       - prettier-plugin-astro
     dev: true
 
-  /@astrojs/cloudflare@9.0.2(astro@4.4.5):
+  /@astrojs/cloudflare@9.0.2(astro@4.4.10):
     resolution: {integrity: sha512-5nJbI4+HW7SJYBkLIfhKaOA+D1rkxjcXB7Z3uIYHIK98Cqf7KYbmVM5o7f66A0OKWmcEI9EJXlle7IPFvKQUuQ==}
     peerDependencies:
       astro: ^4.2.0
@@ -218,7 +218,7 @@ packages:
       '@astrojs/underscore-redirects': 0.3.3
       '@cloudflare/workers-types': 4.20240222.0
       '@iarna/toml': 2.2.5
-      astro: 4.4.5(typescript@5.3.3)
+      astro: 4.4.10(typescript@5.3.3)
       dotenv: 16.4.5
       esbuild: 0.19.11
       find-up: 6.3.0
@@ -1820,8 +1820,8 @@ packages:
     resolution: {integrity: sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==}
     dev: true
 
-  /astro@4.4.5(typescript@5.3.3):
-    resolution: {integrity: sha512-ccat42P5qr281JExywVsK/BLeKgwSL+oLxJP195s4Wvj3nL32djw+WNJNctuDDTJ5XWgvPdHZjBtSDNO5OgagQ==}
+  /astro@4.4.10(typescript@5.3.3):
+    resolution: {integrity: sha512-8ASYlHPNKJg7F+1mlQts7nU1jZPQGE2xluB4fcdAUvH33BYLEBz/bCxJwLOmfC8Ai2gzs/wTwofwDzqbwjx6Ug==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
@@ -2264,6 +2264,7 @@ packages:
 
   /color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
+    requiresBuild: true
 
   /color-string@1.9.1:
     resolution: {integrity: sha512-shrVawQFojnZv6xM40anx4CkoDP+fZsw/ZerEMsW/pyzsRbElpsL/DBVW7q3ExxwusdNXI3lXpuhEZkzs8p5Eg==}

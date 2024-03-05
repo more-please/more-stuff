@@ -29,7 +29,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "bun": "^1.0.29",
+    "bun": "^1.0.30",
     "smol-toml": "^1.1.4",
     "yaml": "^2.3.4"
   }

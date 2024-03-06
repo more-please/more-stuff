@@ -25,13 +25,14 @@
     "dist/*"
   ],
   "scripts": {
-    "format": "prettier --log-level warn -w .",
+    "format": "prettier --log-level warn -w . && markdown-toc -i ../README.md",
     "test": "ts-browser-compat && vitest run",
     "prepare": "tsc && cp -f ../README.md ../LICENSE ."
   },
   "devDependencies": {
     "@journeyapps/ts-browser-compat": "github:more-please/ts-browser-compat",
     "@types/node": "^20.11.24",
+    "markdown-toc": "^1.2.0",
     "prettier": "^3.2.2",
     "typescript": "^5.3.3",
     "vitest": "^1.3.1"

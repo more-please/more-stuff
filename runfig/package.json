@@ -19,11 +19,12 @@
     "runfig": "launcher.sh"
   },
   "scripts": {
-    "format": "prettier --log-level warn -w .",
+    "format": "prettier --log-level warn -w . && markdown-toc -i README.md",
     "test": "tsc"
   },
   "devDependencies": {
     "@types/node": "^20.11.24",
+    "markdown-toc": "^1.2.0",
     "prettier": "^3.2.2",
     "typescript": "^5.3.3"
   },

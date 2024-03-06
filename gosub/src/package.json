@@ -27,7 +27,7 @@
     "dist/result.d.ts"
   ],
   "scripts": {
-    "format": "prettier --log-level warn -w .",
+    "format": "prettier --log-level warn -w . && markdown-toc -i ../README.md",
     "test": "tsc && ts-browser-compat",
     "build": "esbuild index.ts --outdir=dist --format=esm --bundle --minify --external:client-zip",
     "prepare": "tsc && pnpm run build && cp -f ../README.md ../LICENSE ."
@@ -35,6 +35,7 @@
   "devDependencies": {
     "@journeyapps/ts-browser-compat": "github:more-please/ts-browser-compat",
     "esbuild": "^0.20.1",
+    "markdown-toc": "^1.2.0",
     "prettier": "^3.2.4",
     "typescript": "^5.3.3"
   },

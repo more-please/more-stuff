@@ -1,7 +1,21 @@
-
 ![GOSUB](https://raw.githubusercontent.com/more-please/more-stuff/main/gosub/gosub.svg)
 
 GOPROXY implementation that allows Go modules to live in subdirectories
+
+## Contents
+
+<!-- toc -->
+
+- [Overview](#overview)
+- [Installation & usage](#installation--usage)
+  * [`goproxy` mode (static config)](#goproxy-mode-static-config)
+    + [Example / demo](#example--demo)
+  * [`gosub` mode (dynamic config)](#gosub-mode-dynamic-config)
+    + [Example / demo](#example--demo-1)
+  * [Shared server](#shared-server)
+- [Acknowledgements](#acknowledgements)
+
+<!-- tocstop -->
 
 ## Overview
 

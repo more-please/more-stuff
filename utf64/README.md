@@ -2,6 +2,21 @@
 
 A terse, human-readable, URL-safe encoding for JSONish strings.
 
+## Contents
+
+<!-- toc -->
+
+- [Overview](#overview)
+- [Installation & usage](#installation--usage)
+  * [JavaScript](#javascript)
+  * [Python](#python)
+  * [Go](#go)
+  * [Rust](#rust)
+  * [Command-line tool](#command-line-tool)
+- [Specification](#specification)
+
+<!-- tocstop -->
+
 ## Overview
 
 Use this when you need to encode a string to make it URL-safe, but you also want to keep it as small and readable as possible (unlike base64). For example:

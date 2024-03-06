@@ -2,10 +2,7 @@
   "private": true,
   "scripts": {
     "hooks": "rm -f .git/hooks/pre-commit && ln -s ../../.githooks/pre-commit .git/hooks/pre-commit",
-    "codegen": "runfig",
-    "format": "pnpm run -r format",
-    "test": "pnpm run -r test",
-    "build": "pnpm run -r build"
+    "codegen": "runfig"
   },
   "dependencies": {
     "runfig": "workspace:*",

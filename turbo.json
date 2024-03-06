@@ -8,6 +8,9 @@
     "codegen": {
       "dependsOn": ["^codegen", "build"]
     },
+    "//#codegen": {
+      "dependsOn": []
+    },
     "test": {
       "dependsOn": ["^test", "build", "codegen"]
     },

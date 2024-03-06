@@ -1,13 +1,16 @@
-#!/usr/bin/env bun
+#!/usr/bin/env tsx
 
 import * as TOML from "smol-toml";
 import * as YAML from "yaml";
-import { Glob } from "bun";
 import { parseArgs } from "node:util";
 import { join } from "node:path";
+import walkSync from "walk-sync";
+import { writeFileSync } from "node:fs";
+import { resolve } from "import-meta-resolve";
+import { pathToFileURL } from "node:url";
 
 const { values } = parseArgs({
-  args: Bun.argv.slice(2),
+  args: process.argv.slice(2),
   options: {
     dir: { type: "string", short: "d" },
     out: { type: "string", short: "o" },
@@ -35,11 +38,11 @@ const CONVERTERS: Record<string, Converter> = {
   yml: yaml,
 };
 
-const glob = new Glob(
-  `${values.recursive ? "**/*" : "*"}.{json,toml,yaml,yml}.{js,ts}`,
-);
+const GLOB = `${values.recursive ? "**/*" : "*"}.{json,toml,yaml,yml}.{js,ts}`;
 
-for await (const module of glob.scan(dir)) {
+const ROOT = pathToFileURL(process.cwd()).href + "/";
+
+for await (const module of walkSync(dir, { globs: [GLOB] })) {
   const config = module.substring(0, module.lastIndexOf("."));
   const ext = config.substring(config.lastIndexOf(".") + 1);
   const converter = CONVERTERS[ext];
@@ -47,10 +50,10 @@ for await (const module of glob.scan(dir)) {
     continue;
   }
   const path = join(dir, module);
-  const resolved = Bun.resolveSync(`./${path}`, process.cwd());
+  const resolved = resolve(`./${path}`, ROOT);
   const { default: obj } = await import(resolved);
   const output = converter({ module, obj });
   const outputPath = join(out, config);
-  await Bun.write(outputPath, output);
+  writeFileSync(outputPath, output);
   console.log(outputPath);
 }

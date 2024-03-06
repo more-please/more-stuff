@@ -3,6 +3,6 @@
 SELF="$(readlink -f -- "${0}")"
 ROOT="$(dirname -- "${SELF}")"
 
-BUN="${ROOT}/node_modules/.bin/bun"
+TSX="${ROOT}/node_modules/.bin/tsx"
 
-exec ${BUN} "${ROOT}/runfig.ts" "${@}"
+exec ${TSX} "${ROOT}/runfig.ts" "${@}"

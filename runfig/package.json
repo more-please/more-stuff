@@ -1,6 +1,6 @@
 {
   "name": "runfig",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "Down with YAML and TOML! Generate your config files from code, the way nature intended",
   "keywords": [
     "configuration",
@@ -24,13 +24,14 @@
   },
   "devDependencies": {
     "@types/node": "^20.11.24",
-    "bun-types": "^1.0.30",
     "prettier": "^3.2.2",
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "bun": "^1.0.30",
+    "import-meta-resolve": "^4.0.0",
     "smol-toml": "^1.1.4",
+    "tsx": "^4.7.1",
+    "walk-sync": "^3.0.0",
     "yaml": "^2.3.4"
   }
 }

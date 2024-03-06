@@ -14,3 +14,7 @@ A terse, human-readable, URL-safe encoding for JSONish strings.
 [![GOSUB](https://raw.githubusercontent.com/more-please/more-stuff/main/gosub/gosub.svg)](gosub)
 
 GOPROXY implementation that allows Go modules to live in subdirectories.
+
+[![runfig](https://raw.githubusercontent.com/more-please/more-stuff/main/runfig/runfig.svg)](runfig)
+
+Down with YAML and TOML! Generate your config files from code, the way nature intended.

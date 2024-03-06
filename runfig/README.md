@@ -1,4 +1,4 @@
-# Runfig
+![runfig](https://raw.githubusercontent.com/more-please/more-stuff/main/runfig/runfig.svg)
 
 Down with YAML and TOML! Generate your config files from code, the way nature intended.
 

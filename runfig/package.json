@@ -1,6 +1,6 @@
 {
   "name": "runfig",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Down with YAML and TOML! Generate your config files from code, the way nature intended",
   "keywords": [
     "configuration",
@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "import-meta-resolve": "^4.0.0",
+    "json5": "^2.2.3",
     "smol-toml": "^1.1.4",
     "tsx": "^4.7.1",
     "walk-sync": "^3.0.0",

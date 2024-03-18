@@ -37,7 +37,7 @@
     "esbuild": "^0.20.1",
     "markdown-toc": "^1.2.0",
     "prettier": "^3.2.4",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.2"
   },
   "dependencies": {
     "client-zip": "^2.4.4"

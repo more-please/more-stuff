@@ -23,6 +23,6 @@
     "gosub-goproxy": "workspace:*",
     "solid-js": "^1.8.16",
     "utf64": "workspace:^",
-    "wrangler": "^3.34.2"
+    "wrangler": "^3.37.0"
   }
 }

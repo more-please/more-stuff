@@ -26,7 +26,7 @@ importers:
     devDependencies:
       '@journeyapps/ts-browser-compat':
         specifier: github:more-please/ts-browser-compat
-        version: github.com/more-please/ts-browser-compat/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.4.2)
+        version: github.com/more-please/ts-browser-compat/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.4.3)
       esbuild:
         specifier: ^0.20.2
         version: 0.20.2
@@ -37,8 +37,8 @@ importers:
         specifier: ^3.2.4
         version: 3.2.5
       typescript:
-        specifier: ^5.4.2
-        version: 5.4.2
+        specifier: ^5.4.3
+        version: 5.4.3
 
   gosub/test:
     dependencies:
@@ -50,8 +50,8 @@ importers:
         specifier: ^3.2.4
         version: 3.2.5
       typescript:
-        specifier: ^5.4.2
-        version: 5.4.2
+        specifier: ^5.4.3
+        version: 5.4.3
       unzipit:
         specifier: ^1.4.3
         version: 1.4.3
@@ -69,7 +69,7 @@ importers:
         version: 4.0.1(solid-js@1.8.16)(vite@5.1.4)
       astro:
         specifier: ^4.5.5
-        version: 4.5.5(typescript@5.4.2)
+        version: 4.5.5(typescript@5.4.3)
       gosub-goproxy:
         specifier: workspace:*
         version: link:../src
@@ -85,7 +85,7 @@ importers:
     devDependencies:
       '@astrojs/check':
         specifier: ^0.5.6
-        version: 0.5.6(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.4.2)
+        version: 0.5.6(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.4.3)
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
@@ -96,8 +96,8 @@ importers:
         specifier: ^0.13.0
         version: 0.13.0
       typescript:
-        specifier: ^5.4.2
-        version: 5.4.2
+        specifier: ^5.4.3
+        version: 5.4.3
 
   runfig:
     dependencies:
@@ -130,8 +130,8 @@ importers:
         specifier: ^3.2.2
         version: 3.2.5
       typescript:
-        specifier: ^5.4.2
-        version: 5.4.2
+        specifier: ^5.4.3
+        version: 5.4.3
 
   utf64/go: {}
 
@@ -139,7 +139,7 @@ importers:
     devDependencies:
       '@journeyapps/ts-browser-compat':
         specifier: github:more-please/ts-browser-compat
-        version: github.com/more-please/ts-browser-compat/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.4.2)
+        version: github.com/more-please/ts-browser-compat/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.4.3)
       '@types/node':
         specifier: ^20.11.25
         version: 20.11.25
@@ -150,8 +150,8 @@ importers:
         specifier: ^3.2.2
         version: 3.2.2
       typescript:
-        specifier: ^5.4.2
-        version: 5.4.2
+        specifier: ^5.4.3
+        version: 5.4.3
       vitest:
         specifier: ^1.4.0
         version: 1.4.0(@types/node@20.11.25)
@@ -168,7 +168,7 @@ importers:
         version: 4.0.1(solid-js@1.8.16)(vite@5.1.4)
       astro:
         specifier: ^4.5.5
-        version: 4.5.5(typescript@5.4.2)
+        version: 4.5.5(typescript@5.4.3)
       gosub-goproxy:
         specifier: workspace:*
         version: link:../../gosub/src
@@ -184,7 +184,7 @@ importers:
     devDependencies:
       '@astrojs/check':
         specifier: ^0.5.6
-        version: 0.5.6(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.4.2)
+        version: 0.5.6(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.4.3)
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
@@ -195,8 +195,8 @@ importers:
         specifier: ^0.13.0
         version: 0.13.0
       typescript:
-        specifier: ^5.4.2
-        version: 5.4.2
+        specifier: ^5.4.3
+        version: 5.4.3
 
 packages:
 
@@ -208,17 +208,17 @@ packages:
       '@jridgewell/trace-mapping': 0.3.20
     dev: false
 
-  /@astrojs/check@0.5.6(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.4.2):
+  /@astrojs/check@0.5.6(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.4.3):
     resolution: {integrity: sha512-i7j5ogoSg/Bu2NV5zVvwCo9R4kGWXWsJDejxpCu9F7iNNlR333u8EwpP4bpeKASDtjOA1rXKo9ogUTEVlIAHqA==}
     hasBin: true
     peerDependencies:
       typescript: ^5.0.0
     dependencies:
-      '@astrojs/language-server': 2.7.6(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.4.2)
+      '@astrojs/language-server': 2.7.6(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.4.3)
       chokidar: 3.5.3
       fast-glob: 3.3.2
       kleur: 4.1.5
-      typescript: 5.4.2
+      typescript: 5.4.3
       yargs: 17.7.2
     transitivePeerDependencies:
       - prettier
@@ -233,7 +233,7 @@ packages:
       '@astrojs/underscore-redirects': 0.3.3
       '@cloudflare/workers-types': 4.20240222.0
       '@iarna/toml': 2.2.5
-      astro: 4.5.5(typescript@5.4.2)
+      astro: 4.5.5(typescript@5.4.3)
       dotenv: 16.4.5
       esbuild: 0.19.11
       find-up: 6.3.0
@@ -261,7 +261,7 @@ packages:
     resolution: {integrity: sha512-tGmHvrhpzuz0JBHaJX8GywN9g4rldVNHtkoVDC3m/DdzBO70jGoVuc0uuNVglRYnsdwkbG0K02Iw3nOOR3/Y4g==}
     dev: false
 
-  /@astrojs/language-server@2.7.6(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.4.2):
+  /@astrojs/language-server@2.7.6(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.4.3):
     resolution: {integrity: sha512-NhMSmMAuKBMXnvpfn9eYPR7R6zOasAjRb+ta8L+rCHHuKzUc0lBgAF5M6rx01FJqlpGqeqao13eYt4287Ze49g==}
     hasBin: true
     peerDependencies:
@@ -275,7 +275,7 @@ packages:
     dependencies:
       '@astrojs/compiler': 2.6.0
       '@jridgewell/sourcemap-codec': 1.4.15
-      '@volar/kit': 2.0.4(typescript@5.4.2)
+      '@volar/kit': 2.0.4(typescript@5.4.3)
       '@volar/language-core': 2.0.4
       '@volar/language-server': 2.0.4
       '@volar/language-service': 2.0.4
@@ -1623,7 +1623,7 @@ packages:
       pretty-format: 29.7.0
     dev: true
 
-  /@volar/kit@2.0.4(typescript@5.4.2):
+  /@volar/kit@2.0.4(typescript@5.4.3):
     resolution: {integrity: sha512-USRx/o0jKz7o8+lEKWMxWqbqvC46XFrf3IE6CZBYzRo9kM7RERQLwUYaoT2bOcHt5DQWublpnTgdgHMm37Gysg==}
     peerDependencies:
       typescript: '*'
@@ -1631,7 +1631,7 @@ packages:
       '@volar/language-service': 2.0.4
       '@volar/typescript': 2.0.4
       typesafe-path: 0.2.2
-      typescript: 5.4.2
+      typescript: 5.4.3
       vscode-languageserver-textdocument: 1.0.11
       vscode-uri: 3.0.8
     dev: true
@@ -1801,7 +1801,7 @@ packages:
     resolution: {integrity: sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==}
     dev: true
 
-  /astro@4.5.5(typescript@5.4.2):
+  /astro@4.5.5(typescript@5.4.3):
     resolution: {integrity: sha512-gZ3jR06dLmY9/SMkKMr+3pRSrUjhuwjnXt+9abFJV3WGwhCnLZbSNsTBrLMsaFHpAS1ReJChcTWyKRCvs/jCIQ==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
@@ -1859,7 +1859,7 @@ packages:
       shiki: 1.1.7
       string-width: 7.1.0
       strip-ansi: 7.1.0
-      tsconfck: 3.0.2(typescript@5.4.2)
+      tsconfck: 3.0.2(typescript@5.4.3)
       unist-util-visit: 5.0.0
       vfile: 6.0.1
       vite: 5.1.4(@types/node@20.11.25)
@@ -5029,7 +5029,7 @@ packages:
     resolution: {integrity: sha512-tmMpK00BjZiUyVyvrBK7knerNgmgvcV/KLVyuma/SC+TQN167GrMRciANTz09+k3zW8L8t60jWO1GpfkZdjTaw==}
     dev: false
 
-  /tsconfck@3.0.2(typescript@5.4.2):
+  /tsconfck@3.0.2(typescript@5.4.3):
     resolution: {integrity: sha512-6lWtFjwuhS3XI4HsX4Zg0izOI3FU/AI9EGVlPEUMDIhvLPMD4wkiof0WCoDgW7qY+Dy198g4d9miAqUHWHFH6Q==}
     engines: {node: ^18 || >=20}
     hasBin: true
@@ -5039,7 +5039,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      typescript: 5.4.2
+      typescript: 5.4.3
     dev: false
 
   /tslib@2.6.2:
@@ -5148,8 +5148,8 @@ packages:
       semver: 7.6.0
     dev: true
 
-  /typescript@5.4.2:
-    resolution: {integrity: sha512-+2/g0Fds1ERlP6JsakQQDXjZdZMM+rqpamFZJEKh4kwTIn3iDkgKtby0CeNd5ATNZ4Ry1ax15TMx0W2V+miizQ==}
+  /typescript@5.4.3:
+    resolution: {integrity: sha512-KrPd3PKaCLr78MalgiwJnA25Nm8HAmdwN3mYUYZgG/wizIo9EainNVQI9/yDavtVFRN2h3k8uf3GLHuhDMgEHg==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -5867,7 +5867,7 @@ packages:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: false
 
-  github.com/more-please/ts-browser-compat/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.4.2):
+  github.com/more-please/ts-browser-compat/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.4.3):
     resolution: {tarball: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5}
     id: github.com/more-please/ts-browser-compat/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5
     name: '@journeyapps/ts-browser-compat'
@@ -5880,7 +5880,7 @@ packages:
       '@mdn/browser-compat-data': 5.3.20
       cmd-ts: 0.13.0
       strip-json-comments: 3.1.1
-      typescript: 5.4.2
+      typescript: 5.4.3
     transitivePeerDependencies:
       - supports-color
     dev: true

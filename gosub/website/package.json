@@ -17,7 +17,7 @@
     "typescript": "^5.4.3"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^9.1.0",
+    "@astrojs/cloudflare": "^10.0.2",
     "@astrojs/solid-js": "^4.0.1",
     "astro": "^4.5.15",
     "gosub-goproxy": "workspace:*",

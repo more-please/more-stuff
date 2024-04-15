@@ -65,8 +65,8 @@ importers:
         specifier: ^10.0.2
         version: 10.0.2(astro@4.5.15)
       '@astrojs/solid-js':
-        specifier: ^4.0.1
-        version: 4.0.1(solid-js@1.8.16)(vite@5.1.4)
+        specifier: ^4.1.0
+        version: 4.1.0(solid-js@1.8.16)(vite@5.1.4)
       astro:
         specifier: ^4.5.15
         version: 4.5.15(typescript@5.4.4)
@@ -164,8 +164,8 @@ importers:
         specifier: ^10.0.2
         version: 10.0.2(astro@4.5.15)
       '@astrojs/solid-js':
-        specifier: ^4.0.1
-        version: 4.0.1(solid-js@1.8.16)(vite@5.1.4)
+        specifier: ^4.1.0
+        version: 4.1.0(solid-js@1.8.16)(vite@5.1.4)
       astro:
         specifier: ^4.5.15
         version: 4.5.15(typescript@5.4.4)
@@ -330,9 +330,9 @@ packages:
       prismjs: 1.29.0
     dev: false
 
-  /@astrojs/solid-js@4.0.1(solid-js@1.8.16)(vite@5.1.4):
-    resolution: {integrity: sha512-XjViecwQDEO/e3OWCCORPYtYLS7MUNWvAWGVvNkzhAyVYZbM2fzckp94WkhX/qPu1rPUyNxSMXnN6IXkiVRTwA==}
-    engines: {node: '>=18.14.1'}
+  /@astrojs/solid-js@4.1.0(solid-js@1.8.16)(vite@5.1.4):
+    resolution: {integrity: sha512-q7zZF1P/zaCHYbE3KyA7be31VSlH3FGUiU/1xutifrYRdk+kbiELUW3Z2DjEGf05lJ2GKtZyHmFufxX8tvMoQA==}
+    engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
     peerDependencies:
       solid-js: ^1.8.5
     dependencies:

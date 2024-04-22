@@ -62,8 +62,8 @@ importers:
   gosub/website:
     dependencies:
       '@astrojs/cloudflare':
-        specifier: ^10.1.0
-        version: 10.1.0(astro@4.5.15)
+        specifier: ^10.2.2
+        version: 10.2.2(astro@4.5.15)
       '@astrojs/solid-js':
         specifier: ^4.1.0
         version: 4.1.0(solid-js@1.8.16)(vite@5.1.4)
@@ -161,8 +161,8 @@ importers:
   utf64/website:
     dependencies:
       '@astrojs/cloudflare':
-        specifier: ^10.1.0
-        version: 10.1.0(astro@4.5.15)
+        specifier: ^10.2.2
+        version: 10.2.2(astro@4.5.15)
       '@astrojs/solid-js':
         specifier: ^4.1.0
         version: 4.1.0(solid-js@1.8.16)(vite@5.1.4)
@@ -225,8 +225,8 @@ packages:
       - prettier-plugin-astro
     dev: true
 
-  /@astrojs/cloudflare@10.1.0(astro@4.5.15):
-    resolution: {integrity: sha512-26+mkkMNQ7lHQ9wEwPxNS/zUEZj/emYkHTmlmvgzkEq9J/vFI5QVtTur2R/ZIZ8SimpLqZJtsn584716Jqq1Nw==}
+  /@astrojs/cloudflare@10.2.2(astro@4.5.15):
+    resolution: {integrity: sha512-e4FZUnlKrV10YWEYoLd59PcrECb0lcUw9Co6Cp+6UoqM+C8I/A8zGWk7sbhNJOy/KswUBTLFxN8UXbgdbQaW8g==}
     peerDependencies:
       astro: ^4.2.0
     dependencies:
@@ -235,6 +235,8 @@ packages:
       '@cloudflare/workers-types': 4.20240403.0
       astro: 4.5.15(typescript@5.4.4)
       esbuild: 0.19.11
+      estree-walker: 3.0.3
+      magic-string: 0.30.10
       miniflare: 3.20240405.1
       tiny-glob: 0.2.9
       wrangler: 3.50.0(@cloudflare/workers-types@4.20240403.0)
@@ -3311,6 +3313,12 @@ packages:
     resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==}
     dependencies:
       sourcemap-codec: 1.4.8
+    dev: false
+
+  /magic-string@0.30.10:
+    resolution: {integrity: sha512-iIRwTIf0QKV3UAnYK4PU8uiEc4SRh5jX0mwpIwETPpHdhVM4f53RSwS/vXvN1JhGX+Cs7B8qIq3d6AH49O5fAQ==}
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.4.15
     dev: false
 
   /magic-string@0.30.5:

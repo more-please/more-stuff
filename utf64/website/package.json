@@ -21,7 +21,7 @@
     "@astrojs/solid-js": "^4.1.0",
     "astro": "^4.6.3",
     "gosub-goproxy": "workspace:*",
-    "solid-js": "^1.8.16",
+    "solid-js": "^1.8.17",
     "utf64": "workspace:^",
     "wrangler": "^3.52.0"
   }

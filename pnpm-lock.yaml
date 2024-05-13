@@ -62,8 +62,8 @@ importers:
   gosub/website:
     dependencies:
       '@astrojs/cloudflare':
-        specifier: ^10.2.5
-        version: 10.2.5(astro@4.7.1)
+        specifier: ^10.2.6
+        version: 10.2.6(astro@4.7.1)
       '@astrojs/solid-js':
         specifier: ^4.1.0
         version: 4.1.0(solid-js@1.8.17)(vite@5.2.11)
@@ -161,8 +161,8 @@ importers:
   utf64/website:
     dependencies:
       '@astrojs/cloudflare':
-        specifier: ^10.2.5
-        version: 10.2.5(astro@4.7.1)
+        specifier: ^10.2.6
+        version: 10.2.6(astro@4.7.1)
       '@astrojs/solid-js':
         specifier: ^4.1.0
         version: 4.1.0(solid-js@1.8.17)(vite@5.2.11)
@@ -225,8 +225,8 @@ packages:
       - prettier-plugin-astro
     dev: true
 
-  /@astrojs/cloudflare@10.2.5(astro@4.7.1):
-    resolution: {integrity: sha512-5tKPU5m/zYwz2CU9vCSKo4tgWsdD7xwpUlDkVbKPwgSkfVB6ZuXb8ffLYnahtUc1Gvh7HgaBSaagPVHGCp73WQ==}
+  /@astrojs/cloudflare@10.2.6(astro@4.7.1):
+    resolution: {integrity: sha512-pgAT9+D866T/ER/L1+t2HvTtJzWhnZF7h7g2ur2ssv3AriJsXrS+Pny6ZTLYY11tuCx7GNxjY4H0jz1AOxuLig==}
     peerDependencies:
       astro: ^4.2.0
     dependencies:
@@ -4007,7 +4007,7 @@ packages:
       workerd: 1.20240419.0
       ws: 8.16.0
       youch: 3.3.3
-      zod: 3.22.4
+      zod: 3.23.6
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -5862,10 +5862,6 @@ packages:
       zod: ^3.23.3
     dependencies:
       zod: 3.23.6
-    dev: false
-
-  /zod@3.22.4:
-    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
     dev: false
 
   /zod@3.23.6:

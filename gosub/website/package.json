@@ -10,7 +10,7 @@
     "push": "wrangler pages deploy --project-name gosub build"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.5.10",
+    "@astrojs/check": "^0.6.0",
     "concurrently": "^8.2.2",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",

@@ -63,13 +63,13 @@ importers:
     dependencies:
       '@astrojs/cloudflare':
         specifier: ^10.2.6
-        version: 10.2.6(astro@4.8.3)
+        version: 10.2.6(astro@4.8.6)
       '@astrojs/solid-js':
         specifier: ^4.2.0
         version: 4.2.0(solid-js@1.8.17)(vite@5.2.11)
       astro:
-        specifier: ^4.8.3
-        version: 4.8.3(typescript@5.4.5)
+        specifier: ^4.8.6
+        version: 4.8.6(typescript@5.4.5)
       gosub-goproxy:
         specifier: workspace:*
         version: link:../src
@@ -162,13 +162,13 @@ importers:
     dependencies:
       '@astrojs/cloudflare':
         specifier: ^10.2.6
-        version: 10.2.6(astro@4.8.3)
+        version: 10.2.6(astro@4.8.6)
       '@astrojs/solid-js':
         specifier: ^4.2.0
         version: 4.2.0(solid-js@1.8.17)(vite@5.2.11)
       astro:
-        specifier: ^4.8.3
-        version: 4.8.3(typescript@5.4.5)
+        specifier: ^4.8.6
+        version: 4.8.6(typescript@5.4.5)
       gosub-goproxy:
         specifier: workspace:*
         version: link:../../gosub/src
@@ -225,7 +225,7 @@ packages:
       - prettier-plugin-astro
     dev: true
 
-  /@astrojs/cloudflare@10.2.6(astro@4.8.3):
+  /@astrojs/cloudflare@10.2.6(astro@4.8.6):
     resolution: {integrity: sha512-pgAT9+D866T/ER/L1+t2HvTtJzWhnZF7h7g2ur2ssv3AriJsXrS+Pny6ZTLYY11tuCx7GNxjY4H0jz1AOxuLig==}
     peerDependencies:
       astro: ^4.2.0
@@ -233,7 +233,7 @@ packages:
       '@astrojs/internal-helpers': 0.3.0
       '@astrojs/underscore-redirects': 0.3.3
       '@cloudflare/workers-types': 4.20240403.0
-      astro: 4.8.3(typescript@5.4.5)
+      astro: 4.8.6(typescript@5.4.5)
       esbuild: 0.19.11
       estree-walker: 3.0.3
       magic-string: 0.30.10
@@ -2291,8 +2291,8 @@ packages:
     resolution: {integrity: sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==}
     dev: true
 
-  /astro@4.8.3(typescript@5.4.5):
-    resolution: {integrity: sha512-pgIKopkmAUXY3EJHdG7zQpudtBzYAsd94A1R7jmLpH2LFZvzHEkAdHnunmSVmgikJCNqtEo3bUCHgLnCPQaN1g==}
+  /astro@4.8.6(typescript@5.4.5):
+    resolution: {integrity: sha512-psHIfK+e+bMPhRwghV9yCGH/uc1jvY4DHmDZdoEepax9yA7kzYH0wt3dpkqlcrO2zxl5jzSC3DmqZfkD6wnW9A==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
     dependencies:
@@ -4200,7 +4200,7 @@ packages:
       workerd: 1.20240419.0
       ws: 8.16.0
       youch: 3.3.3
-      zod: 3.23.6
+      zod: 3.23.8
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -6050,10 +6050,6 @@ packages:
       zod: ^3.23.3
     dependencies:
       zod: 3.23.8
-    dev: false
-
-  /zod@3.23.6:
-    resolution: {integrity: sha512-RTHJlZhsRbuA8Hmp/iNL7jnfc4nZishjsanDAfEY1QpDQZCahUp3xDzl+zfweE9BklxMUcgBgS1b7Lvie/ZVwA==}
     dev: false
 
   /zod@3.23.8:

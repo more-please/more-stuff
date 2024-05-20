@@ -19,7 +19,7 @@
   "dependencies": {
     "@astrojs/cloudflare": "^10.2.6",
     "@astrojs/solid-js": "^4.2.0",
-    "astro": "^4.8.3",
+    "astro": "^4.8.6",
     "gosub-goproxy": "workspace:*",
     "solid-js": "^1.8.17",
     "utf64": "workspace:^",

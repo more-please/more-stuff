@@ -15,4 +15,9 @@ export default defineConfig({
     assets: "assets",
   },
   integrations: [solid()],
+  vite: {
+    build: {
+      sourcemap: true,
+    },
+  },
 });

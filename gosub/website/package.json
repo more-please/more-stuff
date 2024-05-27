@@ -13,7 +13,7 @@
     "@astrojs/check": "^0.7.0",
     "concurrently": "^8.2.2",
     "prettier": "^3.2.5",
-    "prettier-plugin-astro": "^0.13.0",
+    "prettier-plugin-astro": "^0.14.0",
     "typescript": "^5.4.5"
   },
   "dependencies": {

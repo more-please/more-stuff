@@ -81,7 +81,7 @@ To avoid being rate-limited, you should pass a [GitHub API token](https://docs.g
 
 #### Example / demo
 
-The [root page](https://github.com/more-please/more-stuff/blob/main/utf64/website/pages/index.astro) for my module's domain has the "vanity import" tag:
+The [root page](https://github.com/more-please/more-stuff/blob/main/utf64/website/src/routes/index.tsx) for my module's domain has the "vanity import" tag:
 
 ```HTML
   <meta
@@ -90,7 +90,7 @@ The [root page](https://github.com/more-please/more-stuff/blob/main/utf64/websit
   />
 ```
 
-This instructs the Go toolchain to look for a `mod` (module server) at `/go` on the same domain. I [deploy the `goproxy` function](https://github.com/more-please/more-stuff/blob/main/utf64/website/pages/go/%5B...goproxy%5D.ts) as follows:
+This instructs the Go toolchain to look for a `mod` (module server) at `/go` on the same domain. I [deploy the `goproxy` function](https://github.com/more-please/more-stuff/blob/main/utf64/website/src/routes/go/%5B...goproxy%5D.ts) as follows:
 
 ```JavaScript
 import { goproxy } from "gosub-goproxy";

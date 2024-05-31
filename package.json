@@ -1,5 +1,6 @@
 {
   "private": true,
+  "packageManager": "pnpm@9.1.4",
   "scripts": {
     "hooks": "rm -f .git/hooks/pre-commit && ln -s ../../.githooks/pre-commit .git/hooks/pre-commit",
     "codegen": "runfig"

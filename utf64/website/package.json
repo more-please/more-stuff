@@ -2,6 +2,7 @@
   "name": "utf64.website",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@9.1.4",
   "scripts": {
     "format": "prettier --log-level warn -w .",
     "dev": "vinxi dev",

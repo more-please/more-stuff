@@ -7,8 +7,7 @@
     "format": "prettier --log-level warn -w .",
     "dev": "vinxi dev",
     "build": "vinxi build",
-    "start": "vinxi start",
-    "test": "concurrently -n vinxi,curl -s command-curl -k 'vinxi start --port 4510' 'tsc && curl -f http://localhost:4510 -o /dev/null'",
+    "test": "concurrently -n vinxi,curl -s command-curl -k 'vinxi dev --port 4510' 'tsc && curl -f http://localhost:4510 -o /dev/null'",
     "push": "wrangler pages deploy --project-name utf64 build"
   },
   "devDependencies": {

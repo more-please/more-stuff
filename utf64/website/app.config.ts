@@ -9,12 +9,12 @@ export default defineConfig({
   server: {
     preset: "cloudflare-pages",
     output: {
-      dir: "build"
+      dir: "build",
     },
     esbuild: {
       options: {
-        target: "esnext"
-      }
-    }
+        target: "esnext",
+      },
+    },
   },
 });

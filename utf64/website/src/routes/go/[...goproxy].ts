@@ -19,4 +19,4 @@ export const GET: APIHandler = async ({ request }) => {
     return new Response("Not Found", { status: 404 });
   }
   return response;
-}
+};

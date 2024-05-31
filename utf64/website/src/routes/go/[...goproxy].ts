@@ -1,4 +1,4 @@
-import type { APIRoute } from "astro";
+import type { APIHandler } from "@solidjs/start/server";
 import { goproxy } from "gosub-goproxy";
 
 const config = {
@@ -10,10 +10,13 @@ const config = {
 
 const handler = goproxy("/go", config);
 
-export const GET: APIRoute = async ({ request }) => {
+export const GET: APIHandler = async ({ request }) => {
   const response = await handler(request);
+  for (const k of Object.values(request)) {
+    console.log(k);
+  }
   if (!response) {
     return new Response("Not Found", { status: 404 });
   }
   return response;
-};
+}

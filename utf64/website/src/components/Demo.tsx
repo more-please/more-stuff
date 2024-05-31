@@ -1,14 +1,12 @@
-import { createSignal, type Component, Show } from "solid-js";
+import { useSearchParams } from "@solidjs/router";
+import { createSignal, Show, createEffect, onMount } from "solid-js";
 import * as utf64 from "utf64";
 
-export type DemoProps = {
-  url: string;
-};
+export const Demo = () => {
+  const [args] = useSearchParams();
 
-export const Demo: Component<DemoProps> = (props) => {
-  const args = new URL(props.url).searchParams;
-  const [src, setSrc] = createSignal(args.get("encode"));
-  const [dest, setDest] = createSignal(args.get("decode"));
+  const [src, setSrc] = createSignal("");
+  const [dest, setDest] = createSignal("");
   const [error, setError] = createSignal<string>();
 
   function encode(src: string) {
@@ -28,18 +26,25 @@ export const Demo: Component<DemoProps> = (props) => {
     }
   }
 
-  const [s, d] = [src(), dest()];
-  if (s) {
-    encode(s);
-  } else if (d) {
-    decode(d);
+  if (args.encode) {
+    encode(args.encode);
+  } else if (args.decode) {
+    decode(args.decode);
   }
+
+  let srcField!: HTMLTextAreaElement;
+  let destField!: HTMLTextAreaElement;
+  onMount(() => {
+    createEffect(() => (srcField.value = src()));
+    createEffect(() => (destField.value = dest()));
+  });
 
   return (
     <>
       <form class="col" method="get">
         <label for="encode">Try it! Type anything here:</label>
         <textarea
+          ref={srcField}
           id="encode"
           name="encode"
           onInput={(e) => encode(e.currentTarget.value)}
@@ -59,6 +64,7 @@ export const Demo: Component<DemoProps> = (props) => {
           </Show>
         </label>
         <textarea
+          ref={destField}
           id="decode"
           name="decode"
           classList={{

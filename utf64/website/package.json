@@ -3,26 +3,27 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "format": "prettier --plugin prettier-plugin-astro --log-level warn -w .",
-    "test": "concurrently -n astro,curl -s command-curl -k 'astro dev --port 4510' 'astro check && curl -f http://localhost:4510 -o /dev/null'",
-    "dev": "astro dev",
-    "build": "astro build",
+    "format": "prettier --log-level warn -w .",
+    "dev": "vinxi dev",
+    "build": "vinxi build",
+    "start": "vinxi start",
+    "test": "concurrently -n vinxi,curl -s command-curl -k 'vinxi start --port 4510' 'tsc && curl -f http://localhost:4510 -o /dev/null'",
     "push": "wrangler pages deploy --project-name utf64 build"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.7.0",
     "concurrently": "^8.2.2",
     "prettier": "^3.2.5",
-    "prettier-plugin-astro": "^0.14.0",
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^10.2.6",
-    "@astrojs/solid-js": "^4.2.0",
-    "astro": "^4.9.2",
+    "@solidjs/meta": "^0.29.4",
+    "@solidjs/router": "^0.13.3",
+    "@solidjs/start": "^1.0.0",
     "gosub-goproxy": "workspace:*",
     "solid-js": "^1.8.17",
-    "utf64": "workspace:^",
+    "utf64": "workspace:*",
+    "utf64.website2": "link:",
+    "vinxi": "^0.3.11",
     "wrangler": "^3.57.1"
   }
 }

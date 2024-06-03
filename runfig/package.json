@@ -31,7 +31,7 @@
   "dependencies": {
     "import-meta-resolve": "^4.1.0",
     "json5": "^2.2.3",
-    "smol-toml": "^1.2.0",
+    "smol-toml": "^1.2.1",
     "tsx": "^4.11.0",
     "walk-sync": "^3.0.0",
     "yaml": "^2.4.2"

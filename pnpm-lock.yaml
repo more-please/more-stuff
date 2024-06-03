@@ -26,7 +26,7 @@ importers:
     devDependencies:
       '@journeyapps/ts-browser-compat':
         specifier: github:more-please/ts-browser-compat
-        version: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.4.5)
+        version: git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.4.5)
       esbuild:
         specifier: ^0.21.4
         version: 0.21.4
@@ -139,7 +139,7 @@ importers:
     devDependencies:
       '@journeyapps/ts-browser-compat':
         specifier: github:more-please/ts-browser-compat
-        version: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.4.5)
+        version: git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.4.5)
       '@types/node':
         specifier: ^20.12.12
         version: 20.12.12
@@ -164,8 +164,8 @@ importers:
         specifier: ^0.29.4
         version: 0.29.4(solid-js@1.8.17)
       '@solidjs/router':
-        specifier: ^0.13.3
-        version: 0.13.3(solid-js@1.8.17)
+        specifier: ^0.13.5
+        version: 0.13.5(solid-js@1.8.17)
       '@solidjs/start':
         specifier: ^1.0.0
         version: 1.0.0(rollup@4.18.0)(solid-js@1.8.17)(vinxi@0.3.11(@opentelemetry/api@1.8.0)(@types/node@20.12.12)(ioredis@5.4.1)(terser@5.31.0))(vite@5.2.11(@types/node@20.12.12)(terser@5.31.0))
@@ -1516,8 +1516,8 @@ packages:
   '@johnsoncodehk/vscode-html-languageservice@5.2.0-34a5462':
     resolution: {integrity: sha512-etqLfpSJ5zaw76KUNF603be6d6QsiQPmaHr9FKEp4zhLZJzWCCMH6Icak7MtLUFLZLMpL761mZNImi/joBo1ZA==}
 
-  '@journeyapps/ts-browser-compat@https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5':
-    resolution: {tarball: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5}
+  '@journeyapps/ts-browser-compat@git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5':
+    resolution: {commit: 5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5, repo: git@github.com:more-please/ts-browser-compat.git, type: git}
     version: 0.1.2
     hasBin: true
     peerDependencies:
@@ -1975,8 +1975,8 @@ packages:
     peerDependencies:
       solid-js: '>=1.8.4'
 
-  '@solidjs/router@0.13.3':
-    resolution: {integrity: sha512-p8zznlvnN3KySMXqT8irhubgDNTETNa/guaGHU/cZl7kuiPO3PmkWNYfoNCygtEpoxLmLpf62/ZKeyhFdZexsw==}
+  '@solidjs/router@0.13.5':
+    resolution: {integrity: sha512-I/bR5ZHCz2Dx80qL+6uGwSdclqXRqoT49SJ5cvLbOuT3HnYysSIxSfULCTWUMLFVcgPh5GrdHV6KwEoyrbPZZA==}
     peerDependencies:
       solid-js: ^1.8.6
 
@@ -6130,7 +6130,7 @@ snapshots:
       vscode-languageserver-types: 3.17.5
       vscode-uri: 3.0.8
 
-  '@journeyapps/ts-browser-compat@https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.4.5)':
+  '@journeyapps/ts-browser-compat@git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.4.5)':
     dependencies:
       '@mdn/browser-compat-data': 5.3.20
       cmd-ts: 0.13.0
@@ -6520,7 +6520,7 @@ snapshots:
     dependencies:
       solid-js: 1.8.17
 
-  '@solidjs/router@0.13.3(solid-js@1.8.17)':
+  '@solidjs/router@0.13.5(solid-js@1.8.17)':
     dependencies:
       solid-js: 1.8.17
 

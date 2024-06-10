@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "runfig": "workspace:*",
-    "turbo": "^1.13.3",
+    "turbo": "^2.0.3",
     "walk-sync": "^3.0.0"
   }
 }

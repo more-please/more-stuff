@@ -1,6 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "pipeline": {
+  "tasks": {
     "//#codegen": {
       "dependsOn": []
     },
@@ -8,19 +8,40 @@
       "dependsOn": []
     },
     "build": {
-      "dependsOn": ["^build", "^prepare", "format", "//#codegen"],
-      "outputs": ["build/**"]
+      "dependsOn": [
+        "^build",
+        "^prepare",
+        "format",
+        "//#codegen"
+      ],
+      "outputs": [
+        "build/**"
+      ]
     },
     "test": {
-      "dependsOn": ["^test", "build"]
+      "dependsOn": [
+        "^test",
+        "build"
+      ]
     },
     "prepare": {
-      "dependsOn": ["^prepare", "build", "test"],
-      "outputs": ["dist/**"]
+      "dependsOn": [
+        "^prepare",
+        "build",
+        "test"
+      ],
+      "outputs": [
+        "dist/**"
+      ]
     },
     "push": {
-      "inputs": ["build/**"],
-      "dependsOn": ["^push", "test"]
+      "inputs": [
+        "build/**"
+      ],
+      "dependsOn": [
+        "^push",
+        "test"
+      ]
     }
   }
 }

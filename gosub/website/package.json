@@ -12,17 +12,17 @@
   "devDependencies": {
     "@astrojs/check": "^0.7.0",
     "concurrently": "^8.2.2",
-    "prettier": "^3.3.1",
+    "prettier": "^3.3.2",
     "prettier-plugin-astro": "^0.14.0",
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^10.3.0",
+    "@astrojs/cloudflare": "^10.4.1",
     "@astrojs/solid-js": "^4.3.0",
-    "astro": "^4.10.1",
+    "astro": "^4.10.2",
     "gosub-goproxy": "workspace:*",
     "solid-js": "^1.8.17",
     "utf64": "workspace:^",
-    "wrangler": "^3.60.0"
+    "wrangler": "^3.60.3"
   }
 }

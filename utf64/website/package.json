@@ -17,13 +17,13 @@
   },
   "dependencies": {
     "@solidjs/meta": "^0.29.4",
-    "@solidjs/router": "^0.13.5",
-    "@solidjs/start": "^1.0.1",
+    "@solidjs/router": "^0.13.6",
+    "@solidjs/start": "^1.0.2",
     "gosub-goproxy": "workspace:*",
     "solid-js": "^1.8.17",
     "utf64": "workspace:*",
     "utf64.website2": "link:",
-    "vinxi": "^0.3.11",
-    "wrangler": "^3.60.3"
+    "vinxi": "^0.3.12",
+    "wrangler": "^3.61.0"
   }
 }

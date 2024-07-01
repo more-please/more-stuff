@@ -26,7 +26,7 @@ importers:
     devDependencies:
       '@journeyapps/ts-browser-compat':
         specifier: github:more-please/ts-browser-compat
-        version: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.4.5)
+        version: git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.4.5)
       esbuild:
         specifier: ^0.21.5
         version: 0.21.5
@@ -62,8 +62,8 @@ importers:
   gosub/website:
     dependencies:
       '@astrojs/cloudflare':
-        specifier: ^10.4.1
-        version: 10.4.1(astro@4.10.3(@types/node@20.14.5)(terser@5.31.1)(typescript@5.4.5))
+        specifier: ^11.0.1
+        version: 11.0.1(astro@4.10.3(@types/node@20.14.5)(terser@5.31.1)(typescript@5.4.5))
       '@astrojs/solid-js':
         specifier: ^4.4.0
         version: 4.4.0(solid-js@1.8.17)(vite@5.3.1(@types/node@20.14.5)(terser@5.31.1))
@@ -139,7 +139,7 @@ importers:
     devDependencies:
       '@journeyapps/ts-browser-compat':
         specifier: github:more-please/ts-browser-compat
-        version: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.4.5)
+        version: git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.4.5)
       '@types/node':
         specifier: ^20.14.5
         version: 20.14.5
@@ -213,10 +213,10 @@ packages:
     peerDependencies:
       typescript: ^5.0.0
 
-  '@astrojs/cloudflare@10.4.1':
-    resolution: {integrity: sha512-kwAUsFtBO8fOiklQpUHBS3AD1CdZ4n6qz7vIjWz3Ecrvhlvx6FiXTl4rYtLoz6XTrZsVXPlntOyNOfqPbBeuLw==}
+  '@astrojs/cloudflare@11.0.1':
+    resolution: {integrity: sha512-VuUSFS2ZhxWIfo7RgHvAvaMff3iqeWFVCgh+0WHywjWvJle2J5jlpdUK5seR3NkTWr9yYOPSSr1tP34C8E/w0w==}
     peerDependencies:
-      astro: ^4.2.0
+      astro: ^4.10.3
 
   '@astrojs/compiler@1.8.2':
     resolution: {integrity: sha512-o/ObKgtMzl8SlpIdzaxFnt7SATKPxu4oIP/1NL+HDJRzxfJcAkOTAb/ZKMRyULbz4q+1t2/DAebs2Z1QairkZw==}
@@ -1145,8 +1145,8 @@ packages:
   '@johnsoncodehk/vscode-html-languageservice@5.2.0-34a5462':
     resolution: {integrity: sha512-etqLfpSJ5zaw76KUNF603be6d6QsiQPmaHr9FKEp4zhLZJzWCCMH6Icak7MtLUFLZLMpL761mZNImi/joBo1ZA==}
 
-  '@journeyapps/ts-browser-compat@https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5':
-    resolution: {tarball: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5}
+  '@journeyapps/ts-browser-compat@git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5':
+    resolution: {commit: 5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5, repo: git@github.com:more-please/ts-browser-compat.git, type: git}
     version: 0.1.2
     hasBin: true
     peerDependencies:
@@ -4700,7 +4700,7 @@ snapshots:
       - prettier
       - prettier-plugin-astro
 
-  '@astrojs/cloudflare@10.4.1(astro@4.10.3(@types/node@20.14.5)(terser@5.31.1)(typescript@5.4.5))':
+  '@astrojs/cloudflare@11.0.1(astro@4.10.3(@types/node@20.14.5)(terser@5.31.1)(typescript@5.4.5))':
     dependencies:
       '@astrojs/internal-helpers': 0.3.0
       '@astrojs/underscore-redirects': 0.3.3
@@ -5409,7 +5409,7 @@ snapshots:
       vscode-languageserver-types: 3.17.5
       vscode-uri: 3.0.8
 
-  '@journeyapps/ts-browser-compat@https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.4.5)':
+  '@journeyapps/ts-browser-compat@git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.4.5)':
     dependencies:
       '@mdn/browser-compat-data': 5.5.32
       cmd-ts: 0.13.0

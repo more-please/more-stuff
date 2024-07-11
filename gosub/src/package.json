@@ -34,10 +34,10 @@
   },
   "devDependencies": {
     "@journeyapps/ts-browser-compat": "github:more-please/ts-browser-compat",
-    "esbuild": "^0.21.5",
+    "esbuild": "^0.23.0",
     "markdown-toc": "^1.2.0",
     "prettier": "^3.3.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.5.3"
   },
   "dependencies": {
     "client-zip": "^2.4.5"

@@ -10,19 +10,19 @@
     "push": "wrangler pages deploy --project-name gosub build"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.7.0",
+    "@astrojs/check": "^0.8.1",
     "concurrently": "^8.2.2",
     "prettier": "^3.3.2",
     "prettier-plugin-astro": "^0.14.0",
-    "typescript": "^5.4.5"
+    "typescript": "^5.5.3"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^10.4.1",
+    "@astrojs/cloudflare": "^11.0.1",
     "@astrojs/solid-js": "^4.4.0",
-    "astro": "^4.10.3",
+    "astro": "^4.11.5",
     "gosub-goproxy": "workspace:*",
-    "solid-js": "^1.8.17",
+    "solid-js": "^1.8.18",
     "utf64": "workspace:^",
-    "wrangler": "^3.61.0"
+    "wrangler": "^3.63.2"
   }
 }

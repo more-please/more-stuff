@@ -26,7 +26,7 @@ importers:
     devDependencies:
       '@journeyapps/ts-browser-compat':
         specifier: github:more-please/ts-browser-compat
-        version: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.5.3)
+        version: git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.5.3)
       esbuild:
         specifier: ^0.23.0
         version: 0.23.0
@@ -34,8 +34,8 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0
       prettier:
-        specifier: ^3.3.2
-        version: 3.3.2
+        specifier: ^3.3.3
+        version: 3.3.3
       typescript:
         specifier: ^5.5.3
         version: 5.5.3
@@ -47,8 +47,8 @@ importers:
         version: link:../src
     devDependencies:
       prettier:
-        specifier: ^3.3.2
-        version: 3.3.2
+        specifier: ^3.3.3
+        version: 3.3.3
       typescript:
         specifier: ^5.5.3
         version: 5.5.3
@@ -85,13 +85,13 @@ importers:
     devDependencies:
       '@astrojs/check':
         specifier: ^0.8.1
-        version: 0.8.1(prettier-plugin-astro@0.14.0)(prettier@3.3.2)(typescript@5.5.3)
+        version: 0.8.1(prettier-plugin-astro@0.14.0)(prettier@3.3.3)(typescript@5.5.3)
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
       prettier:
-        specifier: ^3.3.2
-        version: 3.3.2
+        specifier: ^3.3.3
+        version: 3.3.3
       prettier-plugin-astro:
         specifier: ^0.14.0
         version: 0.14.0
@@ -127,8 +127,8 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0
       prettier:
-        specifier: ^3.3.2
-        version: 3.3.2
+        specifier: ^3.3.3
+        version: 3.3.3
       typescript:
         specifier: ^5.5.3
         version: 5.5.3
@@ -139,7 +139,7 @@ importers:
     devDependencies:
       '@journeyapps/ts-browser-compat':
         specifier: github:more-please/ts-browser-compat
-        version: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.5.3)
+        version: git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.5.3)
       '@types/node':
         specifier: ^20.14.10
         version: 20.14.10
@@ -147,8 +147,8 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0
       prettier:
-        specifier: ^3.3.2
-        version: 3.3.2
+        specifier: ^3.3.3
+        version: 3.3.3
       typescript:
         specifier: ^5.5.3
         version: 5.5.3
@@ -192,8 +192,8 @@ importers:
         specifier: ^8.2.2
         version: 8.2.2
       prettier:
-        specifier: ^3.3.2
-        version: 3.3.2
+        specifier: ^3.3.3
+        version: 3.3.3
       typescript:
         specifier: ^5.5.3
         version: 5.5.3
@@ -1282,8 +1282,8 @@ packages:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
     engines: {node: '>=12'}
 
-  '@journeyapps/ts-browser-compat@https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5':
-    resolution: {tarball: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5}
+  '@journeyapps/ts-browser-compat@git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5':
+    resolution: {commit: 5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5, repo: git@github.com:more-please/ts-browser-compat.git, type: git}
     version: 0.1.2
     hasBin: true
     peerDependencies:
@@ -3533,8 +3533,8 @@ packages:
     resolution: {integrity: sha512-7jRGJsexaRIyUzTk8uzXlP45cw6DQ5Ci4bTe0xCBCcuO1Fff8jJy9oI+kRCQKSdDFTSAArMSg8GpvzlKBtSaZA==}
     engines: {node: ^14.15.0 || >=16.0.0}
 
-  prettier@3.3.2:
-    resolution: {integrity: sha512-rAVeHYMcv8ATV5d508CFdn+8/pHPpXeIid1DdrPwXnaAdH7cqjVbpJaT5eq4yRAFU/lsbwYwSF/n5iNrdJHPQA==}
+  prettier@3.3.3:
+    resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -4669,9 +4669,9 @@ snapshots:
 
   '@antfu/utils@0.7.10': {}
 
-  '@astrojs/check@0.8.1(prettier-plugin-astro@0.14.0)(prettier@3.3.2)(typescript@5.5.3)':
+  '@astrojs/check@0.8.1(prettier-plugin-astro@0.14.0)(prettier@3.3.3)(typescript@5.5.3)':
     dependencies:
-      '@astrojs/language-server': 2.11.1(prettier-plugin-astro@0.14.0)(prettier@3.3.2)(typescript@5.5.3)
+      '@astrojs/language-server': 2.11.1(prettier-plugin-astro@0.14.0)(prettier@3.3.3)(typescript@5.5.3)
       chokidar: 3.6.0
       fast-glob: 3.3.2
       kleur: 4.1.5
@@ -4706,7 +4706,7 @@ snapshots:
 
   '@astrojs/internal-helpers@0.4.1': {}
 
-  '@astrojs/language-server@2.11.1(prettier-plugin-astro@0.14.0)(prettier@3.3.2)(typescript@5.5.3)':
+  '@astrojs/language-server@2.11.1(prettier-plugin-astro@0.14.0)(prettier@3.3.3)(typescript@5.5.3)':
     dependencies:
       '@astrojs/compiler': 2.8.2
       '@jridgewell/sourcemap-codec': 1.5.0
@@ -4720,13 +4720,13 @@ snapshots:
       volar-service-css: 0.0.59(@volar/language-service@2.4.0-alpha.15)
       volar-service-emmet: 0.0.59(@volar/language-service@2.4.0-alpha.15)
       volar-service-html: 0.0.59(@volar/language-service@2.4.0-alpha.15)
-      volar-service-prettier: 0.0.59(@volar/language-service@2.4.0-alpha.15)(prettier@3.3.2)
+      volar-service-prettier: 0.0.59(@volar/language-service@2.4.0-alpha.15)(prettier@3.3.3)
       volar-service-typescript: 0.0.59(@volar/language-service@2.4.0-alpha.15)
       volar-service-typescript-twoslash-queries: 0.0.59(@volar/language-service@2.4.0-alpha.15)
       vscode-html-languageservice: 5.3.0
       vscode-uri: 3.0.8
     optionalDependencies:
-      prettier: 3.3.2
+      prettier: 3.3.3
       prettier-plugin-astro: 0.14.0
     transitivePeerDependencies:
       - typescript
@@ -5452,7 +5452,7 @@ snapshots:
       wrap-ansi: 8.1.0
       wrap-ansi-cjs: wrap-ansi@7.0.0
 
-  '@journeyapps/ts-browser-compat@https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.5.3)':
+  '@journeyapps/ts-browser-compat@git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.5.3)':
     dependencies:
       '@mdn/browser-compat-data': 5.5.38
       cmd-ts: 0.13.0
@@ -8224,10 +8224,10 @@ snapshots:
   prettier-plugin-astro@0.14.0:
     dependencies:
       '@astrojs/compiler': 1.8.2
-      prettier: 3.3.2
+      prettier: 3.3.3
       sass-formatter: 0.7.9
 
-  prettier@3.3.2: {}
+  prettier@3.3.3: {}
 
   pretty-bytes@6.1.1: {}
 
@@ -9294,12 +9294,12 @@ snapshots:
     optionalDependencies:
       '@volar/language-service': 2.4.0-alpha.15
 
-  volar-service-prettier@0.0.59(@volar/language-service@2.4.0-alpha.15)(prettier@3.3.2):
+  volar-service-prettier@0.0.59(@volar/language-service@2.4.0-alpha.15)(prettier@3.3.3):
     dependencies:
       vscode-uri: 3.0.8
     optionalDependencies:
       '@volar/language-service': 2.4.0-alpha.15
-      prettier: 3.3.2
+      prettier: 3.3.3
 
   volar-service-typescript-twoslash-queries@0.0.59(@volar/language-service@2.4.0-alpha.15):
     dependencies:

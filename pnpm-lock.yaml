@@ -26,7 +26,7 @@ importers:
     devDependencies:
       '@journeyapps/ts-browser-compat':
         specifier: github:more-please/ts-browser-compat
-        version: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.5.3)
+        version: git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.5.3)
       esbuild:
         specifier: ^0.23.0
         version: 0.23.0
@@ -139,7 +139,7 @@ importers:
     devDependencies:
       '@journeyapps/ts-browser-compat':
         specifier: github:more-please/ts-browser-compat
-        version: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.5.3)
+        version: git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.5.3)
       '@types/node':
         specifier: ^20.14.10
         version: 20.14.10
@@ -167,8 +167,8 @@ importers:
         specifier: ^0.14.1
         version: 0.14.1(solid-js@1.8.18)
       '@solidjs/start':
-        specifier: ^1.0.3
-        version: 1.0.3(rollup@4.18.1)(solid-js@1.8.18)(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))(vite@5.3.3(@types/node@20.14.10)(terser@5.31.2))
+        specifier: ^1.0.4
+        version: 1.0.4(rollup@4.18.1)(solid-js@1.8.18)(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))(vite@5.3.3(@types/node@20.14.10)(terser@5.31.2))
       gosub-goproxy:
         specifier: workspace:*
         version: link:../../gosub/src
@@ -1282,8 +1282,8 @@ packages:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
     engines: {node: '>=12'}
 
-  '@journeyapps/ts-browser-compat@https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5':
-    resolution: {tarball: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5}
+  '@journeyapps/ts-browser-compat@git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5':
+    resolution: {commit: 5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5, repo: git@github.com:more-please/ts-browser-compat.git, type: git}
     version: 0.1.2
     hasBin: true
     peerDependencies:
@@ -1612,8 +1612,8 @@ packages:
     peerDependencies:
       solid-js: ^1.8.6
 
-  '@solidjs/start@1.0.3':
-    resolution: {integrity: sha512-kblEYxg3VtkSKhVTGFpYVClmBZyoZG+nIIugnOyWXkTC1rY8m0roHDQ5psh+MFuHMqkroQXzdnxZ+hIVueo+6w==}
+  '@solidjs/start@1.0.4':
+    resolution: {integrity: sha512-r+2gENJ+nIdbLR2QcFxw92PBYLBr8a7DBHc1Wy2/eAbW9uIddPz/ZHyHsWjFewrADcvfjLGG+bBGqM/vCTrpAw==}
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -5452,7 +5452,7 @@ snapshots:
       wrap-ansi: 8.1.0
       wrap-ansi-cjs: wrap-ansi@7.0.0
 
-  '@journeyapps/ts-browser-compat@https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.5.3)':
+  '@journeyapps/ts-browser-compat@git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.5.3)':
     dependencies:
       '@mdn/browser-compat-data': 5.5.38
       cmd-ts: 0.13.0
@@ -5731,7 +5731,7 @@ snapshots:
     dependencies:
       solid-js: 1.8.18
 
-  '@solidjs/start@1.0.3(rollup@4.18.1)(solid-js@1.8.18)(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))(vite@5.3.3(@types/node@20.14.10)(terser@5.31.2))':
+  '@solidjs/start@1.0.4(rollup@4.18.1)(solid-js@1.8.18)(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))(vite@5.3.3(@types/node@20.14.10)(terser@5.31.2))':
     dependencies:
       '@vinxi/plugin-directives': 0.3.1(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))
       '@vinxi/server-components': 0.3.3(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))

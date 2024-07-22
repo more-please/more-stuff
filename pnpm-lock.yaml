@@ -26,7 +26,7 @@ importers:
     devDependencies:
       '@journeyapps/ts-browser-compat':
         specifier: github:more-please/ts-browser-compat
-        version: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.5.3)
+        version: git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.5.3)
       esbuild:
         specifier: ^0.23.0
         version: 0.23.0
@@ -139,7 +139,7 @@ importers:
     devDependencies:
       '@journeyapps/ts-browser-compat':
         specifier: github:more-please/ts-browser-compat
-        version: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.5.3)
+        version: git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.5.3)
       '@types/node':
         specifier: ^20.14.10
         version: 20.14.10
@@ -167,8 +167,8 @@ importers:
         specifier: ^0.14.1
         version: 0.14.1(solid-js@1.8.18)
       '@solidjs/start':
-        specifier: ^1.0.3
-        version: 1.0.3(rollup@4.18.1)(solid-js@1.8.18)(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))(vite@5.3.3(@types/node@20.14.10)(terser@5.31.2))
+        specifier: ^1.0.6
+        version: 1.0.6(rollup@4.18.1)(solid-js@1.8.18)(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))(vite@5.3.3(@types/node@20.14.10)(terser@5.31.2))
       gosub-goproxy:
         specifier: workspace:*
         version: link:../../gosub/src
@@ -1282,8 +1282,8 @@ packages:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
     engines: {node: '>=12'}
 
-  '@journeyapps/ts-browser-compat@https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5':
-    resolution: {tarball: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5}
+  '@journeyapps/ts-browser-compat@git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5':
+    resolution: {commit: 5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5, repo: git@github.com:more-please/ts-browser-compat.git, type: git}
     version: 0.1.2
     hasBin: true
     peerDependencies:
@@ -1612,8 +1612,8 @@ packages:
     peerDependencies:
       solid-js: ^1.8.6
 
-  '@solidjs/start@1.0.3':
-    resolution: {integrity: sha512-kblEYxg3VtkSKhVTGFpYVClmBZyoZG+nIIugnOyWXkTC1rY8m0roHDQ5psh+MFuHMqkroQXzdnxZ+hIVueo+6w==}
+  '@solidjs/start@1.0.6':
+    resolution: {integrity: sha512-O5knaeqDBx+nKLJRm5ZJurnXZtIYBOwOreQ10APaVtVjKIKKRC5HxJ1Kwqg7atOQNNDgsF0pzhW218KseaZ1UA==}
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -1684,20 +1684,20 @@ packages:
     resolution: {integrity: sha512-WSN1z931BtasZJlgPp704zJFnQFRg7yzSjkm3MzAWQYe4uXFXlFr1hc5Ac2zae5/HDOz5x1/zDM5Cb54vTCnWw==}
     hasBin: true
 
-  '@vinxi/plugin-directives@0.3.1':
-    resolution: {integrity: sha512-4qz5WifjmJ864VS8Ik9nUG0wAkt/xIcxFpP29RXogGLgccRnceBpWQi+ghw5rm0F6LP/YMAhhO5iFORXclWd0Q==}
+  '@vinxi/plugin-directives@0.4.1':
+    resolution: {integrity: sha512-NsHCDyqU00i4RKGBoNNcBuONEirg/XfGgPCLFK1CZw3AYBE19haFSgvuo21Bx+BFGcwdRU3BRtaBMvwjLrUCnw==}
     peerDependencies:
-      vinxi: ^0.3.10
+      vinxi: ^0.4.0
 
-  '@vinxi/server-components@0.3.3':
-    resolution: {integrity: sha512-xaW92nj9HUMLyswPcCmsIXOsS3TJll0m9u3WEjWjLrtZWheHggina6+kTCSeltp/Qe8WlUfNU5G02Xy8L4xQxA==}
+  '@vinxi/server-components@0.4.1':
+    resolution: {integrity: sha512-rMS+RCGr1tujO1xWgILMLpOWIyw2OwDO46EtkuhTfqaVgLLt/w7+hxzOnh4s3O9sXoKKuUswtj9/MpQQkFoMOQ==}
     peerDependencies:
-      vinxi: ^0.3.10
+      vinxi: ^0.4.0
 
-  '@vinxi/server-functions@0.3.3':
-    resolution: {integrity: sha512-yUrHov1gc+NM/YCEOekM1DCdu2tNSH1/j0mZPyIOhPZH/yAZKWA+t3dP79Q3g4QLDHchf6xf8z9u1INEADTlXw==}
+  '@vinxi/server-functions@0.4.1':
+    resolution: {integrity: sha512-dj5v9V+DurXK8w/nBDgJof+UsK3bkcgk6K/xBUg+WVmn7sUrLTurDTGRkCaknC6tQCyadNzj4FWGGc+qlrWf9g==}
     peerDependencies:
-      vinxi: ^0.3.12
+      vinxi: ^0.4.0
 
   '@vitest/expect@2.0.2':
     resolution: {integrity: sha512-nKAvxBYqcDugYZ4nJvnm5OR8eDJdgWjk4XM9owQKUjzW70q0icGV2HVnQOyYsp906xJaBDUXw0+9EHw2T8e0mQ==}
@@ -3831,9 +3831,11 @@ packages:
 
   shikiji-core@0.9.19:
     resolution: {integrity: sha512-AFJu/vcNT21t0e6YrfadZ+9q86gvPum6iywRyt1OtIPjPFe25RQnYJyxHQPMLKCCWA992TPxmEmbNcOZCAJclw==}
+    deprecated: Shikiji is merged back to Shiki v1.0, please migrate over to get the latest updates
 
   shikiji@0.9.19:
     resolution: {integrity: sha512-Kw2NHWktdcdypCj1GkKpXH4o6Vxz8B8TykPlPuLHOGSV8VkhoCLcFOH4k19K4LXAQYRQmxg+0X/eM+m2sLhAkg==}
+    deprecated: Shikiji is merged back to Shiki v1.0, please migrate over to get the latest updates
 
   siginfo@2.0.0:
     resolution: {integrity: sha512-ybx0WO1/8bSBLEWXZvEd7gMW3Sn3JFlW3TvX1nREbDLRNQNaeNN8WK0meBwPdAaOI7TtRRRJn/Es1zhrrCHu7g==}
@@ -5452,7 +5454,7 @@ snapshots:
       wrap-ansi: 8.1.0
       wrap-ansi-cjs: wrap-ansi@7.0.0
 
-  '@journeyapps/ts-browser-compat@https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.5.3)':
+  '@journeyapps/ts-browser-compat@git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.5.3)':
     dependencies:
       '@mdn/browser-compat-data': 5.5.38
       cmd-ts: 0.13.0
@@ -5731,11 +5733,11 @@ snapshots:
     dependencies:
       solid-js: 1.8.18
 
-  '@solidjs/start@1.0.3(rollup@4.18.1)(solid-js@1.8.18)(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))(vite@5.3.3(@types/node@20.14.10)(terser@5.31.2))':
+  '@solidjs/start@1.0.6(rollup@4.18.1)(solid-js@1.8.18)(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))(vite@5.3.3(@types/node@20.14.10)(terser@5.31.2))':
     dependencies:
-      '@vinxi/plugin-directives': 0.3.1(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))
-      '@vinxi/server-components': 0.3.3(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))
-      '@vinxi/server-functions': 0.3.3(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))
+      '@vinxi/plugin-directives': 0.4.1(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))
+      '@vinxi/server-components': 0.4.1(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))
+      '@vinxi/server-functions': 0.4.1(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))
       defu: 6.1.4
       error-stack-parser: 2.1.4
       glob: 10.4.5
@@ -5866,7 +5868,7 @@ snapshots:
     transitivePeerDependencies:
       - uWebSockets.js
 
-  '@vinxi/plugin-directives@0.3.1(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))':
+  '@vinxi/plugin-directives@0.4.1(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))':
     dependencies:
       '@babel/parser': 7.24.7
       acorn: 8.12.1
@@ -5879,9 +5881,9 @@ snapshots:
       tslib: 2.6.3
       vinxi: 0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2)
 
-  '@vinxi/server-components@0.3.3(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))':
+  '@vinxi/server-components@0.4.1(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))':
     dependencies:
-      '@vinxi/plugin-directives': 0.3.1(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))
+      '@vinxi/plugin-directives': 0.4.1(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))
       acorn: 8.12.1
       acorn-loose: 8.4.0
       acorn-typescript: 1.4.13(acorn@8.12.1)
@@ -5890,9 +5892,9 @@ snapshots:
       recast: 0.23.9
       vinxi: 0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2)
 
-  '@vinxi/server-functions@0.3.3(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))':
+  '@vinxi/server-functions@0.4.1(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))':
     dependencies:
-      '@vinxi/plugin-directives': 0.3.1(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))
+      '@vinxi/plugin-directives': 0.4.1(vinxi@0.3.14(@types/node@20.14.10)(ioredis@5.4.1)(terser@5.31.2))
       acorn: 8.12.1
       acorn-loose: 8.4.0
       acorn-typescript: 1.4.13(acorn@8.12.1)

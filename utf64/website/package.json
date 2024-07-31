@@ -12,18 +12,18 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
-    "prettier": "^3.3.2",
-    "typescript": "^5.5.3"
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4"
   },
   "dependencies": {
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.14.1",
-    "@solidjs/start": "^1.0.3",
+    "@solidjs/start": "^1.0.6",
     "gosub-goproxy": "workspace:*",
-    "solid-js": "^1.8.18",
+    "solid-js": "^1.8.19",
     "utf64": "workspace:*",
     "utf64.website2": "link:",
-    "vinxi": "^0.3.14",
-    "wrangler": "^3.63.2"
+    "vinxi": "^0.4.1",
+    "wrangler": "^3.67.1"
   }
 }

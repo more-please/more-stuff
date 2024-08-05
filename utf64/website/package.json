@@ -24,6 +24,6 @@
     "utf64": "workspace:*",
     "utf64.website2": "link:",
     "vinxi": "^0.4.1",
-    "wrangler": "^3.67.1"
+    "wrangler": "^3.68.0"
   }
 }

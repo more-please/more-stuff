@@ -31,10 +31,10 @@
   },
   "devDependencies": {
     "@journeyapps/ts-browser-compat": "github:more-please/ts-browser-compat",
-    "@types/node": "^22.0.0",
+    "@types/node": "^22.2.0",
     "markdown-toc": "^1.2.0",
     "prettier": "^3.3.3",
     "typescript": "^5.5.4",
-    "vitest": "^2.0.4"
+    "vitest": "^2.0.5"
   }
 }

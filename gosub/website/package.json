@@ -4,25 +4,24 @@
   "type": "module",
   "scripts": {
     "format": "prettier --plugin prettier-plugin-astro --log-level warn -w .",
-    "test": "concurrently -n astro,curl -s command-curl -k 'astro dev --port 4500' 'astro check && curl -f http://localhost:4500 -o /dev/null'",
+    "lint": "astro check",
+    "test": "vitest --pool=threads run",
     "dev": "astro dev",
     "build": "astro build",
     "push": "wrangler pages deploy --project-name gosub build"
   },
-  "devDependencies": {
-    "@astrojs/check": "^0.9.2",
-    "concurrently": "^8.2.2",
-    "prettier": "^3.3.3",
-    "prettier-plugin-astro": "^0.14.1",
-    "typescript": "^5.5.4"
-  },
   "dependencies": {
+    "@astrojs/check": "^0.9.2",
     "@astrojs/cloudflare": "^11.0.4",
     "@astrojs/solid-js": "^4.4.1",
     "astro": "^4.13.3",
     "gosub-goproxy": "workspace:*",
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.1",
     "solid-js": "^1.8.20",
+    "typescript": "^5.5.4",
     "utf64": "workspace:^",
+    "vitest": "^2.0.5",
     "wrangler": "^3.70.0"
   }
 }

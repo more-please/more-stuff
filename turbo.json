@@ -8,41 +8,26 @@
     "format": {
       "dependsOn": []
     },
+    "codegen": {
+      "dependsOn": ["^codegen", "^build"]
+    },
     "build": {
-      "dependsOn": [
-        "^build",
-        "^prepare",
-        "format",
-        "//#codegen"
-      ],
-      "outputs": [
-        "build/**"
-      ]
+      "dependsOn": ["^build", "^prepare", "codegen"],
+      "outputs": ["build/**"]
+    },
+    "lint": {
+      "dependsOn": ["^lint", "build"]
     },
     "test": {
-      "dependsOn": [
-        "^test",
-        "build"
-      ]
+      "dependsOn": ["^test", "lint"]
     },
     "prepare": {
-      "dependsOn": [
-        "^prepare",
-        "build",
-        "test"
-      ],
-      "outputs": [
-        "dist/**"
-      ]
+      "dependsOn": ["^prepare", "test"],
+      "outputs": ["dist/**"]
     },
     "push": {
-      "inputs": [
-        "build/**"
-      ],
-      "dependsOn": [
-        "^push",
-        "test"
-      ]
+      "inputs": ["build/**"],
+      "dependsOn": ["^push", "build", "test"]
     }
   }
 }

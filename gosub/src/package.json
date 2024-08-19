@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@journeyapps/ts-browser-compat": "github:more-please/ts-browser-compat",
-    "esbuild": "^0.23.0",
+    "esbuild": "^0.23.1",
     "markdown-toc": "^1.2.0",
     "prettier": "^3.3.3",
     "typescript": "^5.5.4"

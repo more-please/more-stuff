@@ -20,10 +20,10 @@
     "@solidjs/router": "^0.14.3",
     "@solidjs/start": "^1.0.6",
     "gosub-goproxy": "workspace:*",
-    "solid-js": "^1.8.21",
+    "solid-js": "^1.8.22",
     "utf64": "workspace:*",
     "utf64.website2": "link:",
-    "vinxi": "^0.4.1",
-    "wrangler": "^3.72.0"
+    "vinxi": "^0.4.2",
+    "wrangler": "^3.72.3"
   }
 }

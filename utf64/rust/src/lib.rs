@@ -166,13 +166,13 @@ mod test {
 
         let valid_utf64 = v["valid_utf64"].take();
         let valid_utf64 = valid_utf64.as_object().unwrap();
-        assert!(valid_utf64.len() > 0);
+        assert!(!valid_utf64.is_empty());
 
         let mut success = 0;
         let mut failure = 0;
         for (k, v) in valid_utf64 {
             let enc = v.as_str().unwrap().encode_utf64().unwrap();
-            if k == &enc.as_str() {
+            if k == enc.as_str() {
                 success += 1;
             } else {
                 failure += 1;
@@ -186,7 +186,7 @@ mod test {
         for (k, v) in valid_utf64 {
             match k.decode_utf64() {
                 Ok(dec) => {
-                    if v == &dec.as_str() {
+                    if v == dec.as_str() {
                         success += 1;
                     } else {
                         failure += 1;
@@ -212,11 +212,11 @@ mod test {
 
         let invalid_utf64 = v["invalid_utf64"].take();
         let invalid_utf64 = invalid_utf64.as_object().unwrap();
-        assert!(invalid_utf64.len() > 0);
+        assert!(!invalid_utf64.is_empty());
 
         let mut failure = 0;
         for (k, _) in invalid_utf64 {
-            if !k.decode_utf64().is_err() {
+            if k.decode_utf64().is_ok() {
                 failure += 1;
                 println!("failed to report '{k}' as invalid utf64");
             }

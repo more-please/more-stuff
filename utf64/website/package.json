@@ -11,7 +11,7 @@
     "push": "wrangler pages deploy --project-name utf64 build"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2",
+    "concurrently": "^9.0.0",
     "prettier": "^3.3.3",
     "typescript": "^5.5.4"
   },
@@ -24,6 +24,6 @@
     "utf64": "workspace:*",
     "utf64.website2": "link:",
     "vinxi": "^0.4.2",
-    "wrangler": "^3.72.3"
+    "wrangler": "^3.75.0"
   }
 }

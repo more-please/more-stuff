@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@solidjs/meta": "^0.29.4",
-    "@solidjs/router": "^0.14.3",
+    "@solidjs/router": "^0.14.5",
     "@solidjs/start": "^1.0.6",
     "gosub-goproxy": "workspace:*",
     "solid-js": "^1.8.22",

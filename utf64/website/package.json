@@ -11,19 +11,19 @@
     "push": "wrangler pages deploy --project-name utf64 build"
   },
   "devDependencies": {
-    "concurrently": "^9.0.0",
+    "concurrently": "^9.0.1",
     "prettier": "^3.3.3",
-    "typescript": "^5.5.4"
+    "typescript": "^5.6.2"
   },
   "dependencies": {
     "@solidjs/meta": "^0.29.4",
-    "@solidjs/router": "^0.14.3",
+    "@solidjs/router": "^0.14.5",
     "@solidjs/start": "^1.0.6",
     "gosub-goproxy": "workspace:*",
     "solid-js": "^1.8.22",
     "utf64": "workspace:*",
     "utf64.website2": "link:",
-    "vinxi": "^0.4.2",
-    "wrangler": "^3.75.0"
+    "vinxi": "^0.4.3",
+    "wrangler": "^3.78.3"
   }
 }

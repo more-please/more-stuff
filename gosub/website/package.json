@@ -12,16 +12,16 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
-    "@astrojs/cloudflare": "^11.0.4",
-    "@astrojs/solid-js": "^4.4.1",
-    "astro": "^4.15.6",
+    "@astrojs/cloudflare": "^11.1.0",
+    "@astrojs/solid-js": "^4.4.2",
+    "astro": "^4.15.9",
     "gosub-goproxy": "workspace:*",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
-    "solid-js": "^1.8.22",
+    "solid-js": "^1.8.23",
     "typescript": "^5.6.2",
     "utf64": "workspace:^",
     "vitest": "^2.1.1",
-    "wrangler": "^3.78.3"
+    "wrangler": "^3.78.8"
   }
 }

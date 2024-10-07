@@ -11,7 +11,7 @@
     "push": "wrangler pages deploy --project-name gosub build"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.3",
+    "@astrojs/check": "^0.9.4",
     "@astrojs/cloudflare": "^11.1.0",
     "@astrojs/solid-js": "^4.4.2",
     "astro": "^4.15.9",

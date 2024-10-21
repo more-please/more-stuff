@@ -26,9 +26,9 @@ export const Demo = () => {
     }
   }
 
-  if (args.encode) {
+  if (typeof args.encode === "string") {
     encode(args.encode);
-  } else if (args.decode) {
+  } else if (typeof args.decode === "string") {
     decode(args.decode);
   }
 

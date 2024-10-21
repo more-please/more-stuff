@@ -13,17 +13,17 @@
   "devDependencies": {
     "concurrently": "^9.0.1",
     "prettier": "^3.3.3",
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.3"
   },
   "dependencies": {
     "@solidjs/meta": "^0.29.4",
-    "@solidjs/router": "^0.14.7",
-    "@solidjs/start": "^1.0.8",
+    "@solidjs/router": "^0.14.10",
+    "@solidjs/start": "^1.0.9",
     "gosub-goproxy": "workspace:*",
-    "solid-js": "^1.9.1",
+    "solid-js": "^1.9.2",
     "utf64": "workspace:*",
     "utf64.website2": "link:",
     "vinxi": "^0.4.3",
-    "wrangler": "^3.78.12"
+    "wrangler": "^3.81.0"
   }
 }

@@ -18,7 +18,7 @@
     "gosub-goproxy": "workspace:*",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
-    "solid-js": "^1.9.2",
+    "solid-js": "^1.9.3",
     "typescript": "^5.6.3",
     "utf64": "workspace:^",
     "vitest": "^2.1.3",

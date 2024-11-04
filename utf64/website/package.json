@@ -11,7 +11,7 @@
     "push": "wrangler pages deploy --project-name utf64 build"
   },
   "devDependencies": {
-    "concurrently": "^9.0.1",
+    "concurrently": "^9.1.0",
     "prettier": "^3.3.3",
     "typescript": "^5.6.3"
   },

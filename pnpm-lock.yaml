@@ -26,7 +26,7 @@ importers:
     devDependencies:
       '@journeyapps/ts-browser-compat':
         specifier: github:more-please/ts-browser-compat
-        version: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.6.3)
+        version: git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.6.3)
       esbuild:
         specifier: ^0.24.0
         version: 0.24.0
@@ -57,7 +57,7 @@ importers:
         version: 1.4.3
       vitest:
         specifier: ^2.1.4
-        version: 2.1.4(@types/node@22.8.7)(jsdom@25.0.1)(terser@5.36.0)
+        version: 2.1.4(@types/node@22.9.0)(jsdom@25.0.1)(terser@5.36.0)
 
   gosub/website:
     dependencies:
@@ -66,13 +66,13 @@ importers:
         version: 0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.3.3)(typescript@5.6.3)
       '@astrojs/cloudflare':
         specifier: ^11.2.0
-        version: 11.2.0(astro@4.16.9(@types/node@22.8.7)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3))
+        version: 11.2.0(astro@4.16.9(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3))
       '@astrojs/solid-js':
         specifier: ^4.4.2
-        version: 4.4.2(solid-js@1.9.3)(vite@5.4.10(@types/node@22.8.7)(terser@5.36.0))
+        version: 4.4.2(solid-js@1.9.3)(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))
       astro:
         specifier: ^4.16.9
-        version: 4.16.9(@types/node@22.8.7)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)
+        version: 4.16.9(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)
       gosub-goproxy:
         specifier: workspace:*
         version: link:../src
@@ -93,7 +93,7 @@ importers:
         version: link:../../utf64/js
       vitest:
         specifier: ^2.1.4
-        version: 2.1.4(@types/node@22.8.7)(jsdom@25.0.1)(terser@5.36.0)
+        version: 2.1.4(@types/node@22.9.0)(jsdom@25.0.1)(terser@5.36.0)
       wrangler:
         specifier: ^3.84.1
         version: 3.84.1(@cloudflare/workers-types@4.20241022.0)
@@ -120,8 +120,8 @@ importers:
         version: 2.6.0
     devDependencies:
       '@types/node':
-        specifier: ^22.8.7
-        version: 22.8.7
+        specifier: ^22.9.0
+        version: 22.9.0
       markdown-toc:
         specifier: ^1.2.0
         version: 1.2.0
@@ -138,10 +138,10 @@ importers:
     devDependencies:
       '@journeyapps/ts-browser-compat':
         specifier: github:more-please/ts-browser-compat
-        version: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.6.3)
+        version: git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.6.3)
       '@types/node':
-        specifier: ^22.8.7
-        version: 22.8.7
+        specifier: ^22.9.0
+        version: 22.9.0
       markdown-toc:
         specifier: ^1.2.0
         version: 1.2.0
@@ -153,7 +153,7 @@ importers:
         version: 5.6.3
       vitest:
         specifier: ^2.1.4
-        version: 2.1.4(@types/node@22.8.7)(jsdom@25.0.1)(terser@5.36.0)
+        version: 2.1.4(@types/node@22.9.0)(jsdom@25.0.1)(terser@5.36.0)
 
   utf64/py: {}
 
@@ -167,7 +167,7 @@ importers:
         version: 0.15.0(solid-js@1.9.3)
       '@solidjs/start':
         specifier: ^1.0.10
-        version: 1.0.10(solid-js@1.9.3)(vinxi@0.4.3(@types/node@22.8.7)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3))(vite@5.4.10(@types/node@22.8.7)(terser@5.36.0))
+        version: 1.0.10(solid-js@1.9.3)(vinxi@0.4.3(@types/node@22.9.0)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3))(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))
       gosub-goproxy:
         specifier: workspace:*
         version: link:../../gosub/src
@@ -182,7 +182,7 @@ importers:
         version: 'link:'
       vinxi:
         specifier: ^0.4.3
-        version: 0.4.3(@types/node@22.8.7)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3)
+        version: 0.4.3(@types/node@22.9.0)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3)
       wrangler:
         specifier: ^3.84.1
         version: 3.84.1(@cloudflare/workers-types@4.20241022.0)
@@ -1258,8 +1258,8 @@ packages:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
     engines: {node: '>=12'}
 
-  '@journeyapps/ts-browser-compat@https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5':
-    resolution: {tarball: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5}
+  '@journeyapps/ts-browser-compat@git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5':
+    resolution: {commit: 5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5, repo: git@github.com:more-please/ts-browser-compat.git, type: git}
     version: 0.1.2
     hasBin: true
     peerDependencies:
@@ -1677,8 +1677,8 @@ packages:
   '@types/node-forge@1.3.11':
     resolution: {integrity: sha512-FQx220y22OKNTqaByeBGqHWYz4cl94tpcxeFdvBo3wjG6XPBuZ0BNgNZRV5J5TFmmcsJ4IzsLkmGRiQbnYsBEQ==}
 
-  '@types/node@22.8.7':
-    resolution: {integrity: sha512-LidcG+2UeYIWcMuMUpBKOnryBWG/rnmOHQR5apjn8myTQcx3rinFRn7DcIFhMnS0PPFSC6OafdIKEad0lj6U0Q==}
+  '@types/node@22.9.0':
+    resolution: {integrity: sha512-vuyHg81vvWA1Z1ELfvLko2c8f34gyA0zaic0+Rllc5lbCnbSyuvb2Oxpm6TAUAC/2xZN3QGqxBNggD1nNR2AfQ==}
 
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
@@ -3941,6 +3941,7 @@ packages:
 
   shikiji-core@0.9.19:
     resolution: {integrity: sha512-AFJu/vcNT21t0e6YrfadZ+9q86gvPum6iywRyt1OtIPjPFe25RQnYJyxHQPMLKCCWA992TPxmEmbNcOZCAJclw==}
+    deprecated: Shikiji is merged back to Shiki v1.0, please migrate over to get the latest updates
 
   shikiji@0.9.19:
     resolution: {integrity: sha512-Kw2NHWktdcdypCj1GkKpXH4o6Vxz8B8TykPlPuLHOGSV8VkhoCLcFOH4k19K4LXAQYRQmxg+0X/eM+m2sLhAkg==}
@@ -4866,13 +4867,13 @@ snapshots:
       - prettier
       - prettier-plugin-astro
 
-  '@astrojs/cloudflare@11.2.0(astro@4.16.9(@types/node@22.8.7)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3))':
+  '@astrojs/cloudflare@11.2.0(astro@4.16.9(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3))':
     dependencies:
       '@astrojs/internal-helpers': 0.4.1
       '@astrojs/underscore-redirects': 0.3.4
       '@cloudflare/workers-types': 4.20241022.0
-      '@inox-tools/astro-when': 0.2.4(astro@4.16.9(@types/node@22.8.7)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3))
-      astro: 4.16.9(@types/node@22.8.7)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)
+      '@inox-tools/astro-when': 0.2.4(astro@4.16.9(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3))
+      astro: 4.16.9(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)
       esbuild: 0.21.5
       estree-walker: 3.0.3
       magic-string: 0.30.12
@@ -4941,10 +4942,10 @@ snapshots:
     dependencies:
       prismjs: 1.29.0
 
-  '@astrojs/solid-js@4.4.2(solid-js@1.9.3)(vite@5.4.10(@types/node@22.8.7)(terser@5.36.0))':
+  '@astrojs/solid-js@4.4.2(solid-js@1.9.3)(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))':
     dependencies:
       solid-js: 1.9.3
-      vite-plugin-solid: 2.10.2(solid-js@1.9.3)(vite@5.4.10(@types/node@22.8.7)(terser@5.36.0))
+      vite-plugin-solid: 2.10.2(solid-js@1.9.3)(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))
     transitivePeerDependencies:
       - '@testing-library/jest-dom'
       - supports-color
@@ -5599,10 +5600,10 @@ snapshots:
   '@img/sharp-win32-x64@0.33.5':
     optional: true
 
-  '@inox-tools/astro-when@0.2.4(astro@4.16.9(@types/node@22.8.7)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3))':
+  '@inox-tools/astro-when@0.2.4(astro@4.16.9(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3))':
     dependencies:
-      astro: 4.16.9(@types/node@22.8.7)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)
-      astro-integration-kit: 0.16.1(astro@4.16.9(@types/node@22.8.7)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3))
+      astro: 4.16.9(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)
+      astro-integration-kit: 0.16.1(astro@4.16.9(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3))
       debug: 4.3.7(supports-color@9.4.0)
     transitivePeerDependencies:
       - supports-color
@@ -5618,7 +5619,7 @@ snapshots:
       wrap-ansi: 8.1.0
       wrap-ansi-cjs: wrap-ansi@7.0.0
 
-  '@journeyapps/ts-browser-compat@https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.6.3)':
+  '@journeyapps/ts-browser-compat@git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.6.3)':
     dependencies:
       '@mdn/browser-compat-data': 5.6.12
       cmd-ts: 0.13.0
@@ -5954,11 +5955,11 @@ snapshots:
     dependencies:
       solid-js: 1.9.3
 
-  '@solidjs/start@1.0.10(solid-js@1.9.3)(vinxi@0.4.3(@types/node@22.8.7)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3))(vite@5.4.10(@types/node@22.8.7)(terser@5.36.0))':
+  '@solidjs/start@1.0.10(solid-js@1.9.3)(vinxi@0.4.3(@types/node@22.9.0)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3))(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))':
     dependencies:
-      '@vinxi/plugin-directives': 0.4.3(vinxi@0.4.3(@types/node@22.8.7)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3))
-      '@vinxi/server-components': 0.4.3(vinxi@0.4.3(@types/node@22.8.7)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3))
-      '@vinxi/server-functions': 0.4.3(vinxi@0.4.3(@types/node@22.8.7)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3))
+      '@vinxi/plugin-directives': 0.4.3(vinxi@0.4.3(@types/node@22.9.0)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3))
+      '@vinxi/server-components': 0.4.3(vinxi@0.4.3(@types/node@22.9.0)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3))
+      '@vinxi/server-functions': 0.4.3(vinxi@0.4.3(@types/node@22.9.0)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3))
       defu: 6.1.4
       error-stack-parser: 2.1.4
       html-to-image: 1.11.11
@@ -5969,7 +5970,7 @@ snapshots:
       source-map-js: 1.2.1
       terracotta: 1.0.6(solid-js@1.9.3)
       tinyglobby: 0.2.10
-      vite-plugin-solid: 2.10.2(solid-js@1.9.3)(vite@5.4.10(@types/node@22.8.7)(terser@5.36.0))
+      vite-plugin-solid: 2.10.2(solid-js@1.9.3)(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))
     transitivePeerDependencies:
       - '@testing-library/jest-dom'
       - solid-js
@@ -6014,7 +6015,7 @@ snapshots:
 
   '@types/http-proxy@1.17.15':
     dependencies:
-      '@types/node': 22.8.7
+      '@types/node': 22.9.0
 
   '@types/mdast@4.0.4':
     dependencies:
@@ -6034,9 +6035,9 @@ snapshots:
 
   '@types/node-forge@1.3.11':
     dependencies:
-      '@types/node': 22.8.7
+      '@types/node': 22.9.0
 
-  '@types/node@22.8.7':
+  '@types/node@22.9.0':
     dependencies:
       undici-types: 6.19.8
 
@@ -6086,7 +6087,7 @@ snapshots:
     transitivePeerDependencies:
       - uWebSockets.js
 
-  '@vinxi/plugin-directives@0.4.3(vinxi@0.4.3(@types/node@22.8.7)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3))':
+  '@vinxi/plugin-directives@0.4.3(vinxi@0.4.3(@types/node@22.9.0)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3))':
     dependencies:
       '@babel/parser': 7.26.2
       acorn: 8.14.0
@@ -6097,29 +6098,29 @@ snapshots:
       magicast: 0.2.11
       recast: 0.23.9
       tslib: 2.8.1
-      vinxi: 0.4.3(@types/node@22.8.7)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3)
+      vinxi: 0.4.3(@types/node@22.9.0)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3)
 
-  '@vinxi/server-components@0.4.3(vinxi@0.4.3(@types/node@22.8.7)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3))':
+  '@vinxi/server-components@0.4.3(vinxi@0.4.3(@types/node@22.9.0)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3))':
     dependencies:
-      '@vinxi/plugin-directives': 0.4.3(vinxi@0.4.3(@types/node@22.8.7)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3))
+      '@vinxi/plugin-directives': 0.4.3(vinxi@0.4.3(@types/node@22.9.0)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3))
       acorn: 8.14.0
       acorn-loose: 8.4.0
       acorn-typescript: 1.4.13(acorn@8.14.0)
       astring: 1.9.0
       magicast: 0.2.11
       recast: 0.23.9
-      vinxi: 0.4.3(@types/node@22.8.7)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3)
+      vinxi: 0.4.3(@types/node@22.9.0)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3)
 
-  '@vinxi/server-functions@0.4.3(vinxi@0.4.3(@types/node@22.8.7)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3))':
+  '@vinxi/server-functions@0.4.3(vinxi@0.4.3(@types/node@22.9.0)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3))':
     dependencies:
-      '@vinxi/plugin-directives': 0.4.3(vinxi@0.4.3(@types/node@22.8.7)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3))
+      '@vinxi/plugin-directives': 0.4.3(vinxi@0.4.3(@types/node@22.9.0)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3))
       acorn: 8.14.0
       acorn-loose: 8.4.0
       acorn-typescript: 1.4.13(acorn@8.14.0)
       astring: 1.9.0
       magicast: 0.2.11
       recast: 0.23.9
-      vinxi: 0.4.3(@types/node@22.8.7)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3)
+      vinxi: 0.4.3(@types/node@22.9.0)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3)
 
   '@vitest/expect@2.1.4':
     dependencies:
@@ -6128,13 +6129,13 @@ snapshots:
       chai: 5.1.2
       tinyrainbow: 1.2.0
 
-  '@vitest/mocker@2.1.4(vite@5.4.10(@types/node@22.8.7)(terser@5.36.0))':
+  '@vitest/mocker@2.1.4(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))':
     dependencies:
       '@vitest/spy': 2.1.4
       estree-walker: 3.0.3
       magic-string: 0.30.12
     optionalDependencies:
-      vite: 5.4.10(@types/node@22.8.7)(terser@5.36.0)
+      vite: 5.4.10(@types/node@22.9.0)(terser@5.36.0)
 
   '@vitest/pretty-format@2.1.4':
     dependencies:
@@ -6334,13 +6335,13 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro-integration-kit@0.16.1(astro@4.16.9(@types/node@22.8.7)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)):
+  astro-integration-kit@0.16.1(astro@4.16.9(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)):
     dependencies:
-      astro: 4.16.9(@types/node@22.8.7)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)
+      astro: 4.16.9(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)
       pathe: 1.1.2
       recast: 0.23.9
 
-  astro@4.16.9(@types/node@22.8.7)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3):
+  astro@4.16.9(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3):
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/internal-helpers': 0.4.1
@@ -6396,8 +6397,8 @@ snapshots:
       tsconfck: 3.1.4(typescript@5.6.3)
       unist-util-visit: 5.0.0
       vfile: 6.0.3
-      vite: 5.4.10(@types/node@22.8.7)(terser@5.36.0)
-      vitefu: 1.0.3(vite@5.4.10(@types/node@22.8.7)(terser@5.36.0))
+      vite: 5.4.10(@types/node@22.9.0)(terser@5.36.0)
+      vitefu: 1.0.3(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))
       which-pm: 3.0.0
       xxhash-wasm: 1.0.2
       yargs-parser: 21.1.1
@@ -9443,7 +9444,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.2
 
-  vinxi@0.4.3(@types/node@22.8.7)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3):
+  vinxi@0.4.3(@types/node@22.9.0)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)(webpack-sources@3.2.3):
     dependencies:
       '@babel/core': 7.26.0
       '@babel/plugin-syntax-jsx': 7.25.9(@babel/core@7.26.0)
@@ -9477,7 +9478,7 @@ snapshots:
       unctx: 2.3.1(webpack-sources@3.2.3)
       unenv: 1.10.0
       unstorage: 1.13.1(ioredis@5.4.1)
-      vite: 5.4.10(@types/node@22.8.7)(terser@5.36.0)
+      vite: 5.4.10(@types/node@22.9.0)(terser@5.36.0)
       zod: 3.23.8
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -9514,12 +9515,12 @@ snapshots:
       - webpack-sources
       - xml2js
 
-  vite-node@2.1.4(@types/node@22.8.7)(terser@5.36.0):
+  vite-node@2.1.4(@types/node@22.9.0)(terser@5.36.0):
     dependencies:
       cac: 6.7.14
       debug: 4.3.7(supports-color@9.4.0)
       pathe: 1.1.2
-      vite: 5.4.10(@types/node@22.8.7)(terser@5.36.0)
+      vite: 5.4.10(@types/node@22.9.0)(terser@5.36.0)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -9531,7 +9532,7 @@ snapshots:
       - supports-color
       - terser
 
-  vite-plugin-solid@2.10.2(solid-js@1.9.3)(vite@5.4.10(@types/node@22.8.7)(terser@5.36.0)):
+  vite-plugin-solid@2.10.2(solid-js@1.9.3)(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0)):
     dependencies:
       '@babel/core': 7.26.0
       '@types/babel__core': 7.20.5
@@ -9539,33 +9540,33 @@ snapshots:
       merge-anything: 5.1.7
       solid-js: 1.9.3
       solid-refresh: 0.6.3(solid-js@1.9.3)
-      vite: 5.4.10(@types/node@22.8.7)(terser@5.36.0)
-      vitefu: 0.2.5(vite@5.4.10(@types/node@22.8.7)(terser@5.36.0))
+      vite: 5.4.10(@types/node@22.9.0)(terser@5.36.0)
+      vitefu: 0.2.5(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))
     transitivePeerDependencies:
       - supports-color
 
-  vite@5.4.10(@types/node@22.8.7)(terser@5.36.0):
+  vite@5.4.10(@types/node@22.9.0)(terser@5.36.0):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.47
       rollup: 4.24.4
     optionalDependencies:
-      '@types/node': 22.8.7
+      '@types/node': 22.9.0
       fsevents: 2.3.3
       terser: 5.36.0
 
-  vitefu@0.2.5(vite@5.4.10(@types/node@22.8.7)(terser@5.36.0)):
+  vitefu@0.2.5(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0)):
     optionalDependencies:
-      vite: 5.4.10(@types/node@22.8.7)(terser@5.36.0)
+      vite: 5.4.10(@types/node@22.9.0)(terser@5.36.0)
 
-  vitefu@1.0.3(vite@5.4.10(@types/node@22.8.7)(terser@5.36.0)):
+  vitefu@1.0.3(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0)):
     optionalDependencies:
-      vite: 5.4.10(@types/node@22.8.7)(terser@5.36.0)
+      vite: 5.4.10(@types/node@22.9.0)(terser@5.36.0)
 
-  vitest@2.1.4(@types/node@22.8.7)(jsdom@25.0.1)(terser@5.36.0):
+  vitest@2.1.4(@types/node@22.9.0)(jsdom@25.0.1)(terser@5.36.0):
     dependencies:
       '@vitest/expect': 2.1.4
-      '@vitest/mocker': 2.1.4(vite@5.4.10(@types/node@22.8.7)(terser@5.36.0))
+      '@vitest/mocker': 2.1.4(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))
       '@vitest/pretty-format': 2.1.4
       '@vitest/runner': 2.1.4
       '@vitest/snapshot': 2.1.4
@@ -9581,11 +9582,11 @@ snapshots:
       tinyexec: 0.3.1
       tinypool: 1.0.1
       tinyrainbow: 1.2.0
-      vite: 5.4.10(@types/node@22.8.7)(terser@5.36.0)
-      vite-node: 2.1.4(@types/node@22.8.7)(terser@5.36.0)
+      vite: 5.4.10(@types/node@22.9.0)(terser@5.36.0)
+      vite-node: 2.1.4(@types/node@22.9.0)(terser@5.36.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
-      '@types/node': 22.8.7
+      '@types/node': 22.9.0
       jsdom: 25.0.1
     transitivePeerDependencies:
       - less

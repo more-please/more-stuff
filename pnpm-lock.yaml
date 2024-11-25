@@ -26,7 +26,7 @@ importers:
     devDependencies:
       '@journeyapps/ts-browser-compat':
         specifier: github:more-please/ts-browser-compat
-        version: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.6.3)
+        version: git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.6.3)
       esbuild:
         specifier: ^0.24.0
         version: 0.24.0
@@ -68,8 +68,8 @@ importers:
         specifier: ^11.2.0
         version: 11.2.0(astro@4.16.13(@types/node@22.9.1)(rollup@4.27.3)(terser@5.36.0)(typescript@5.6.3))
       '@astrojs/solid-js':
-        specifier: ^4.4.3
-        version: 4.4.3(solid-js@1.9.3)(vite@5.4.11(@types/node@22.9.1)(terser@5.36.0))
+        specifier: ^4.4.4
+        version: 4.4.4(@types/node@22.9.1)(solid-js@1.9.3)(terser@5.36.0)
       astro:
         specifier: ^4.16.13
         version: 4.16.13(@types/node@22.9.1)(rollup@4.27.3)(terser@5.36.0)(typescript@5.6.3)
@@ -138,7 +138,7 @@ importers:
     devDependencies:
       '@journeyapps/ts-browser-compat':
         specifier: github:more-please/ts-browser-compat
-        version: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.6.3)
+        version: git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.6.3)
       '@types/node':
         specifier: ^22.9.1
         version: 22.9.1
@@ -239,8 +239,8 @@ packages:
     resolution: {integrity: sha512-Z9IYjuXSArkAUx3N6xj6+Bnvx8OdUSHA8YoOgyepp3+zJmtVYJIl/I18GozdJVW1p5u/CNpl3Km7/gwTJK85cw==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
 
-  '@astrojs/solid-js@4.4.3':
-    resolution: {integrity: sha512-9yNVQsyerz6T+jiAT8bqBGrhvPpMjweKUHdRp9FACKTHnqR3oLDUzCRf0/Lejh6dEkLT9XVAMhy9INgVYU87CA==}
+  '@astrojs/solid-js@4.4.4':
+    resolution: {integrity: sha512-6zu9gFWEb+4V8SumlzMG3UbnXP2tVSy3eLI8cKNNPoMjcMMHK39efxHP38EPiCD0NnlTfyFh3KqaXp/2hmWh6Q==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
     peerDependencies:
       solid-devtools: ^0.30.1
@@ -1258,8 +1258,8 @@ packages:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
     engines: {node: '>=12'}
 
-  '@journeyapps/ts-browser-compat@https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5':
-    resolution: {tarball: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5}
+  '@journeyapps/ts-browser-compat@git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5':
+    resolution: {commit: 5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5, repo: git@github.com:more-please/ts-browser-compat.git, type: git}
     version: 0.1.2
     hasBin: true
     peerDependencies:
@@ -3950,6 +3950,7 @@ packages:
 
   shikiji-core@0.9.19:
     resolution: {integrity: sha512-AFJu/vcNT21t0e6YrfadZ+9q86gvPum6iywRyt1OtIPjPFe25RQnYJyxHQPMLKCCWA992TPxmEmbNcOZCAJclw==}
+    deprecated: Shikiji is merged back to Shiki v1.0, please migrate over to get the latest updates
 
   shikiji@0.9.19:
     resolution: {integrity: sha512-Kw2NHWktdcdypCj1GkKpXH4o6Vxz8B8TykPlPuLHOGSV8VkhoCLcFOH4k19K4LXAQYRQmxg+0X/eM+m2sLhAkg==}
@@ -4938,14 +4939,22 @@ snapshots:
     dependencies:
       prismjs: 1.29.0
 
-  '@astrojs/solid-js@4.4.3(solid-js@1.9.3)(vite@5.4.11(@types/node@22.9.1)(terser@5.36.0))':
+  '@astrojs/solid-js@4.4.4(@types/node@22.9.1)(solid-js@1.9.3)(terser@5.36.0)':
     dependencies:
       solid-js: 1.9.3
+      vite: 5.4.11(@types/node@22.9.1)(terser@5.36.0)
       vite-plugin-solid: 2.10.2(solid-js@1.9.3)(vite@5.4.11(@types/node@22.9.1)(terser@5.36.0))
     transitivePeerDependencies:
       - '@testing-library/jest-dom'
+      - '@types/node'
+      - less
+      - lightningcss
+      - sass
+      - sass-embedded
+      - stylus
+      - sugarss
       - supports-color
-      - vite
+      - terser
 
   '@astrojs/telemetry@3.1.0':
     dependencies:
@@ -5615,7 +5624,7 @@ snapshots:
       wrap-ansi: 8.1.0
       wrap-ansi-cjs: wrap-ansi@7.0.0
 
-  '@journeyapps/ts-browser-compat@https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.6.3)':
+  '@journeyapps/ts-browser-compat@git+https://git@github.com:more-please/ts-browser-compat.git#5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@5.6.3)':
     dependencies:
       '@mdn/browser-compat-data': 5.6.17
       cmd-ts: 0.13.0

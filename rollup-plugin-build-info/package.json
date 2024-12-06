@@ -2,9 +2,10 @@
   "name": "@moreplease/rollup-plugin-build-info",
   "type": "module",
   "keywords": ["rollup", "rollup-plugin", "vite", "vite-plugin"],
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "import { commit, timestamp } from \"build-info\"",
   "scripts": {
+    "test": "tsc",
     "prepare": "rollup --config rollup.config.ts --configPlugin typescript"
   },
   "files": [

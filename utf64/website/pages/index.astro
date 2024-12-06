@@ -1,7 +1,11 @@
 ---
+import { branch, commit, timestamp as t } from "build-info";
 import svg from "../../utf64.svg";
 import "./_index.css";
 import * as utf64 from "utf64";
+
+const nn = (n: number) => n.toString().padStart(2, "0");
+const timestamp = `${t.getUTCFullYear()}-${nn(t.getUTCMonth())}-${nn(t.getUTCDate())} ${nn(t.getUTCHours())}:${nn(t.getUTCMinutes())}`;
 
 const search = Astro.url.searchParams;
 let encode = search.get("encode");
@@ -28,6 +32,7 @@ try {
 
   <body>
     <main>
+      <div style={{ "flex-grow": 1 }}></div>
       <h1>
         <img src={svg.src} width={236} height={64} alt="utf-64" />
       </h1>
@@ -139,6 +144,12 @@ try {
           </p>
         </div>
       </div>
+      <div style={{ "flex-grow": 3 }}></div>
+      <footer>
+        <p><a href="https://github.com/more-please/more-stuff/blob/main/rollup-plugin-build-info/README.md">build-info</a></p>
+        <p>{timestamp}</p>
+        <p>{branch} <a href=`https://github.com/more-please/more-stuff/commit/${commit.hash}`>{commit.hash.slice(0, 10)}</a></p>
+      </footer>
     </main>
   </body>
 </html>

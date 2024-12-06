@@ -4,7 +4,15 @@ import type { Plugin } from "rollup";
 
 export type BuildInfo = {
   timestamp: Date;
-  commit: string;
+  branch: string;
+  commit: {
+    hash: string;
+    author: {
+      name: string;
+      email: string;
+      timestamp: Date;
+    };
+  };
 };
 
 export default function plugin(): Plugin;

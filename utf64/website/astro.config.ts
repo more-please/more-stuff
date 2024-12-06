@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import cloudflare from "@astrojs/cloudflare";
+import buildInfo from "@moreplease/rollup-plugin-build-info";
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,6 +15,7 @@ export default defineConfig({
     assets: "assets",
   },
   vite: {
+    plugins: [buildInfo()],
     build: {
       minify: false,
     },

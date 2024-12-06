@@ -5,7 +5,7 @@ Embed build metadata in your Rollup project (also compatible with Vite, Astro, e
 ## Installation
 
 ```sh
-npm install rollup-plugin-build-info
+npm install @moreplease/rollup-plugin-build-info
 ```
 
 ## Usage
@@ -13,12 +13,12 @@ npm install rollup-plugin-build-info
 Add the plugin to your [Rollup](https://rollupjs.org/command-line-interface/#configuration-files) or [Vite](https://vite.dev/config/) configuration file:
 
 ```js
-import rollupPluginBuildInfo from "rollup-plugin-build-info";
+import buildInfo from "@moreplease/rollup-plugin-build-info";
 
 export default {
 	...
   plugins: [
-    rollupPluginBuildInfo()
+    buildInfo()
   ],
 };
 ```
@@ -28,8 +28,16 @@ At build time, we fetch the current time and git commit (using `git rev-parse HE
 ```js
 import buildInfo from "build-info";
 // {
-//   commit: string;
 //   timestamp: Date;
+//   branch: string;
+//   commit: {
+//     hash: string;
+//     author: {
+//       name: string;
+//       email: string;
+//       timestamp: Date;
+//     }
+//   }
 // }
 
 // Or if you prefer, import each field separately

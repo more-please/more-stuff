@@ -1,0 +1,27 @@
+{
+  "name": "@moreplease/rollup-plugin-build-info",
+  "type": "module",
+  "keywords": ["rollup", "rollup-plugin", "vite", "vite-plugin"],
+  "version": "0.0.1",
+  "description": "import { commit, timestamp } from \"build-info\"",
+  "scripts": {
+    "prepare": "rollup --config rollup.config.ts --configPlugin typescript"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist/*"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^12.1.1",
+    "@types/node": "^22.10.1",
+    "rollup": "^4.28.1",
+    "tslib": "^2.8.1",
+    "typescript": "^5.7.2"
+  },
+  "peerDependencies": {
+    "rollup": "^4.0.0"
+  }
+}

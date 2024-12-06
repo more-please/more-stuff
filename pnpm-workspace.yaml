@@ -4,6 +4,7 @@ packages:
   - gosub/src
   - gosub/test
   - gosub/website
+  - rollup-plugin-build-info
   - runfig
   - utf64/go
   - utf64/js

@@ -8,7 +8,7 @@
     "test": "vitest --pool=threads run",
     "dev": "astro dev",
     "build": "astro build",
-    "push": "wrangler pages deploy --project-name gosub build"
+    "push": "wrangler pages deploy --project-name gosub --branch main build"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

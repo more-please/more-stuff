@@ -8,7 +8,7 @@
     "test": "vitest --pool=threads run",
     "dev": "astro dev",
     "build": "astro build",
-    "push": "wrangler pages deploy --project-name utf64 build"
+    "push": "wrangler pages deploy --project-name utf64 --branch main build"
   },
   "prettier": {
     "plugins": [

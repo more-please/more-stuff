@@ -6,6 +6,9 @@ const MODULE_NAME = "build-info";
 const LOAD_NAME = "\0build-info";
 
 export async function branch(): Promise<BuildInfo["branch"]> {
+  if (process.env.GITHUB_REF_NAME) {
+    return process.env.GITHUB_REF_NAME;
+  }
   return new Promise((resolve, reject) => {
     exec("git rev-parse --abbrev-ref HEAD", {}, (error, stdout, stderr) => {
       if (stderr) {
@@ -20,29 +23,20 @@ export async function branch(): Promise<BuildInfo["branch"]> {
 }
 
 export async function commit(): Promise<BuildInfo["commit"]> {
+  if (process.env.GITHUB_SHA) {
+    return process.env.GITHUB_SHA;
+  }
   return new Promise((resolve, reject) => {
-    const format = ["%H", "%an", "%ae", "%at"].join("%n");
-    exec(
-      `git show --format="${format}" -s HEAD`,
-      {},
-      (error, stdout, stderr) => {
-        if (stderr) {
-          console.warn(stderr);
-        }
-        if (error) {
-          reject(error);
-        }
-        const [hash, name, email, timestamp] = stdout.split("\n");
-        resolve({
-          hash: hash!,
-          author: {
-            name: name!,
-            email: email!,
-            timestamp: new Date(parseInt(timestamp!)),
-          },
-        });
-      },
-    );
+    exec(`git show --format="%H" -s HEAD`, {}, (error, stdout, stderr) => {
+      if (stderr) {
+        console.warn(stderr);
+      }
+      if (error) {
+        reject(error);
+      }
+      const commit = stdout.trim();
+      resolve(commit);
+    });
   });
 }
 

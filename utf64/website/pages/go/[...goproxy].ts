@@ -1,14 +1,12 @@
 import type { APIRoute } from "astro";
 import { goproxy } from "gosub-goproxy";
 
-const config = {
+const handler = goproxy("/go", {
   url: "https://github.com/more-please/more-stuff",
   module: "utf64.moreplease.com",
   directory: "utf64/go",
   tagPrefix: "utf64-go-",
-};
-
-const handler = goproxy("/go", config);
+});
 
 export const GET: APIRoute = async ({ request }) => {
   const response = await handler(request);

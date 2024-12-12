@@ -70,6 +70,9 @@ importers:
       '@astrojs/solid-js':
         specifier: ^5.0.0
         version: 5.0.0(@types/node@22.10.1)(jiti@2.4.1)(solid-js@1.9.3)(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1)
+      '@moreplease/rollup-plugin-build-info':
+        specifier: workspace:*
+        version: link:../../rollup-plugin-build-info
       astro:
         specifier: ^5.0.3
         version: 5.0.3(@types/node@22.10.1)(jiti@2.4.1)(rollup@4.28.1)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)

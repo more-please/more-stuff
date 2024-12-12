@@ -3,17 +3,32 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "format": "prettier --plugin prettier-plugin-astro --log-level warn -w .",
+    "format": "prettier --log-level warn -w .",
     "lint": "astro check",
     "test": "vitest --pool=threads run",
     "dev": "astro dev",
     "build": "astro build",
     "push": "wrangler pages deploy --project-name gosub --branch main build"
   },
+  "prettier": {
+    "plugins": [
+      "prettier-plugin-astro"
+    ],
+    "overrides": [
+      {
+        "files": "*.astro",
+        "options": {
+          "parser": "astro",
+          "printWidth": 1000
+        }
+      }
+    ]
+  },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/cloudflare": "^12.0.1",
     "@astrojs/solid-js": "^5.0.0",
+    "@moreplease/rollup-plugin-build-info": "workspace:*",
     "astro": "^5.0.3",
     "gosub-goproxy": "workspace:*",
     "prettier": "^3.4.2",

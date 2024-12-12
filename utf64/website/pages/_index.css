@@ -10,6 +10,16 @@ main {
   flex-flow: column nowrap;
   align-items: center;
 }
+footer {
+  padding: 1em;
+  font-size: small;
+  align-self: flex-end;
+  text-align: right;
+}
+footer p {
+  padding: 0;
+}
+
 h1,
 h2,
 h3,
@@ -71,18 +81,10 @@ span.error {
 textarea.error {
   background-color: rgba(255, 0, 0, 25%);
 }
+
 .show {
   display: unset;
 }
 .hide {
   display: none;
-}
-footer {
-  padding: 1em;
-  font-size: small;
-  align-self: flex-end;
-  text-align: right;
-}
-footer p {
-  padding: 0;
 }

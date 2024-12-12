@@ -1,39 +1,33 @@
 ---
-import "../index.css";
+import { branch, commit, timestamp as t } from "build-info";
+
 import gosub_svg from "../../gosub.svg";
 import github_mark_svg from "../assets/github-mark.svg";
 import under_construction_svg from "../assets/under-construction.svg";
+
+import "./_index.css";
+
+const nn = (n: number) => n.toString().padStart(2, "0");
+const timestamp = `${t.getUTCFullYear()}-${nn(t.getUTCMonth())}-${nn(t.getUTCDate())} ${nn(t.getUTCHours())}:${nn(t.getUTCMinutes())}`;
 ---
 
 <html lang="en">
   <head>
     <title>GOSUB</title>
-    <meta
-      name="description"
-      content="Serve Go modules from a GitHub repo subdirectory"
-    />
+    <meta name="description" content="Serve Go modules from a GitHub repo subdirectory" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
 
   <body>
     <main>
+      <div style={{ "flex-grow": 1 }}></div>
       <h1>
-        <img
-          src={gosub_svg.src}
-          alt="GOSUB"
-          width={gosub_svg.width}
-          height={gosub_svg.height}
-        />
+        <img src={gosub_svg.src} alt="GOSUB" width={gosub_svg.width} height={gosub_svg.height} />
       </h1>
       <h2>Serve Go modules from a GitHub repo subdirectory</h2>
 
       <h3>
-        <img
-          src={under_construction_svg.src}
-          alt="Under construction"
-          width={128}
-          height={128}
-        />
+        <img src={under_construction_svg.src} alt="Under construction" width={128} height={128} />
       </h3>
       <h3>Under construction</h3>
 
@@ -43,6 +37,18 @@ import under_construction_svg from "../assets/under-construction.svg";
           more-please/more-stuff/gosub
         </a>
       </h3>
+
+      <div style={{ "flex-grow": 3 }}></div>
+      <footer>
+        <p>
+          <a href="https://github.com/more-please/more-stuff/blob/main/rollup-plugin-build-info/README.md">build-info</a>
+        </p>
+        <p>{timestamp}</p>
+        <p>
+          {branch}
+          <a href=`https://github.com/more-please/more-stuff/commit/${commit.slice(0, 10)}`>{commit.slice(0, 10)}</a>
+        </p>
+      </footer>
     </main>
   </body>
 </html>

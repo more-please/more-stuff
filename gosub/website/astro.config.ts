@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import buildInfo from "@moreplease/rollup-plugin-build-info";
 import cloudflare from "@astrojs/cloudflare";
 import solid from "@astrojs/solid-js";
 
@@ -16,6 +17,7 @@ export default defineConfig({
   },
   integrations: [solid()],
   vite: {
+    plugins: [buildInfo()],
     build: {
       sourcemap: true,
     },

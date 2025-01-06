@@ -5,7 +5,7 @@ import "./_index.css";
 import * as utf64 from "utf64";
 
 const nn = (n: number) => n.toString().padStart(2, "0");
-const timestamp = `${t.getUTCFullYear()}-${nn(t.getUTCMonth())}-${nn(t.getUTCDate())} ${nn(t.getUTCHours())}:${nn(t.getUTCMinutes())}`;
+const timestamp = `${t.getUTCFullYear()}-${nn(t.getUTCMonth() + 1)}-${nn(t.getUTCDate())} ${nn(t.getUTCHours())}:${nn(t.getUTCMinutes())}`;
 
 const search = Astro.url.searchParams;
 let encode = search.get("encode");

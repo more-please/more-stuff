@@ -26,7 +26,7 @@
     "@types/node": "^22.10.5",
     "markdown-toc": "^1.2.0",
     "prettier": "^3.4.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.3"
   },
   "dependencies": {
     "import-meta-resolve": "^4.1.0",

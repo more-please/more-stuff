@@ -29,13 +29,13 @@
     "@astrojs/cloudflare": "^12.2.1",
     "@astrojs/solid-js": "^5.0.4",
     "@moreplease/rollup-plugin-build-info": "workspace:*",
-    "astro": "^5.2.5",
+    "astro": "^5.3.0",
     "gosub-goproxy": "workspace:*",
-    "prettier": "^3.4.2",
+    "prettier": "^3.5.1",
     "prettier-plugin-astro": "^0.14.1",
     "typescript": "^5.7.3",
     "utf64": "workspace:*",
-    "vitest": "^3.0.5",
-    "wrangler": "^3.107.3"
+    "vitest": "^3.0.6",
+    "wrangler": "^3.109.2"
   }
 }

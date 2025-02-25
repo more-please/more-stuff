@@ -22,8 +22,7 @@
       "dependsOn": ["^test", "lint"]
     },
     "prepare": {
-      "dependsOn": ["^prepare", "test"],
-      "outputs": ["dist/**"]
+      "dependsOn": ["^prepare", "test"]
     },
     "push": {
       "inputs": ["build/**"],

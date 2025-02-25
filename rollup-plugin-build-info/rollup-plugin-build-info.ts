@@ -1,5 +1,5 @@
 import type { Plugin } from "rollup";
-import type { BuildInfo } from "./dist/index";
+import type { BuildInfo } from "./build/index";
 import { exec } from "node:child_process";
 
 const MODULE_NAME = "build-info";

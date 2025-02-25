@@ -12,7 +12,7 @@
     "declaration": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "outDir": "dist"
+    "outDir": "build"
   },
   "files": ["utf64.ts", "utf64.tool.ts"]
 }

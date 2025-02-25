@@ -6,7 +6,7 @@ const config: RollupOptions = {
   plugins: [typescript()],
   external: ["node:child_process"],
   output: {
-    file: "dist/index.js",
+    file: "build/index.js",
     format: "esm",
   },
 };

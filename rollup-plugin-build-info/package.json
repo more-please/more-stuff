@@ -16,10 +16,10 @@
   "files": [
     "LICENSE",
     "README.md",
-    "dist/*"
+    "build/*"
   ],
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "devDependencies": {
     "@rollup/plugin-typescript": "^12.1.2",
     "@types/node": "^22.13.5",

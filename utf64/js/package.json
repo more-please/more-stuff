@@ -14,7 +14,7 @@
     "url": "https://github.com/more-please/more-stuff.git",
     "directory": "utf64/js"
   },
-  "main": "dist/utf64.js",
+  "main": "build/utf64.js",
   "type": "module",
   "bin": {
     "utf64": "utf64.sh"
@@ -22,7 +22,7 @@
   "files": [
     "README.md",
     "LICENSE",
-    "dist/*"
+    "build/*"
   ],
   "scripts": {
     "format": "prettier --log-level warn -w . && markdown-toc -i ../README.md",

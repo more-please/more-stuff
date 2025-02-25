@@ -23,9 +23,9 @@
     "test": "tsc"
   },
   "devDependencies": {
-    "@types/node": "^22.13.4",
+    "@types/node": "^22.13.5",
     "markdown-toc": "^1.2.0",
-    "prettier": "^3.5.1",
+    "prettier": "^3.5.2",
     "typescript": "^5.7.3"
   },
   "dependencies": {

@@ -23,10 +23,10 @@
     "test": "tsc"
   },
   "devDependencies": {
-    "@types/node": "^22.13.5",
+    "@types/node": "^22.13.9",
     "markdown-toc": "^1.2.0",
-    "prettier": "^3.5.2",
-    "typescript": "^5.7.3"
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2"
   },
   "dependencies": {
     "import-meta-resolve": "^4.1.0",

@@ -68,8 +68,8 @@ importers:
         specifier: ^12.2.2
         version: 12.2.2(@types/node@22.13.5)(astro@5.3.1(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.34.8)(terser@5.38.0)(tsx@4.19.3)(typescript@5.7.3)(yaml@2.7.0))(jiti@2.4.2)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.0)
       '@astrojs/solid-js':
-        specifier: ^5.0.4
-        version: 5.0.4(@types/node@22.13.5)(jiti@2.4.2)(solid-js@1.9.5)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.0)
+        specifier: ^5.0.5
+        version: 5.0.5(@types/node@22.13.5)(jiti@2.4.2)(solid-js@1.9.5)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.0)
       '@moreplease/rollup-plugin-build-info':
         specifier: workspace:*
         version: link:../../rollup-plugin-build-info
@@ -187,8 +187,8 @@ importers:
         specifier: ^12.2.2
         version: 12.2.2(@types/node@22.13.5)(astro@5.3.1(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.34.8)(terser@5.38.0)(tsx@4.19.3)(typescript@5.7.3)(yaml@2.7.0))(jiti@2.4.2)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.0)
       '@astrojs/solid-js':
-        specifier: ^5.0.4
-        version: 5.0.4(@types/node@22.13.5)(jiti@2.4.2)(solid-js@1.9.5)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.0)
+        specifier: ^5.0.5
+        version: 5.0.5(@types/node@22.13.5)(jiti@2.4.2)(solid-js@1.9.5)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.0)
       '@moreplease/rollup-plugin-build-info':
         specifier: workspace:*
         version: link:../../rollup-plugin-build-info
@@ -262,8 +262,8 @@ packages:
     resolution: {integrity: sha512-GilTHKGCW6HMq7y3BUv9Ac7GMe/MO9gi9GW62GzKtth0SwukCu/qp2wLiGpEujhY+VVhaG9v7kv/5vFzvf4NYw==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0}
 
-  '@astrojs/solid-js@5.0.4':
-    resolution: {integrity: sha512-UoSyxNoFEv/nYd945lpzpAaO9IN4c3GOmbd+eTuOeXXwpU6hcomZwbDIKdeh/hNUfDYGqpTUIkKJDP8b4pl7ww==}
+  '@astrojs/solid-js@5.0.5':
+    resolution: {integrity: sha512-i+hsqm5u4Jaf+2CznCMh/oHFiBlmZz3jpTqQS1x5gilCzX3SOtVMLmbHHEpQ3wiZF1QToa4gcgEDqmeUqwW2Ow==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0}
     peerDependencies:
       solid-devtools: ^0.30.1
@@ -1425,8 +1425,8 @@ packages:
     resolution: {integrity: sha512-8WB3Jcas3swSvjIeA2yvCJ+Miyz5l1ZmB6HFb9R1317dt9LCQoswg/BGrmAmkWVEszSrrg4RwmO46qIm2OEnSA==}
     engines: {node: '>=16'}
 
-  caniuse-lite@1.0.30001700:
-    resolution: {integrity: sha512-2S6XIXwaE7K7erT8dY+kLQcpa5ms63XlRkMkReXjle+kf6c5g38vyMl+Z5y8dSxOFDhcFe+nxnn261PLxBSQsQ==}
+  caniuse-lite@1.0.30001701:
+    resolution: {integrity: sha512-faRs/AW3jA9nTwmJBSO1PQ6L/EOgsB5HMQQq4iCu5zhPgVVgO/pZRHlmatwijZKetFw8/Pr4q6dEN8sJuq8qTw==}
 
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -1636,8 +1636,8 @@ packages:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
     engines: {node: '>= 0.4'}
 
-  electron-to-chromium@1.5.104:
-    resolution: {integrity: sha512-Us9M2L4cO/zMBqVkJtnj353nQhMju9slHm62NprKTmdF3HH8wYOtNvDFq/JB2+ZRoGLzdvYDiATlMHs98XBM1g==}
+  electron-to-chromium@1.5.109:
+    resolution: {integrity: sha512-AidaH9JETVRr9DIPGfp1kAarm/W6hRJTPuCnkF+2MqhF4KaAgRIcBc8nvjk+YMXZhwfISof/7WG29eS4iGxQLQ==}
 
   emmet@2.4.11:
     resolution: {integrity: sha512-23QPJB3moh/U9sT4rQzGgeyyGIrcM+GH5uVYg2C6wZIxAIJq7Ng3QLT79tl8FUwDXhyq9SusfknOrofAKqvgyQ==}
@@ -2360,8 +2360,8 @@ packages:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
     engines: {node: '>=0.10.0'}
 
-  nwsapi@2.2.16:
-    resolution: {integrity: sha512-F1I/bimDpj3ncaNDhfyMWuFqmQDBwDB0Fogc2qpL3BWvkQteFD/8BzWuIRl83rq0DXfm8SGt/HFhLXZyljTXcQ==}
+  nwsapi@2.2.18:
+    resolution: {integrity: sha512-p1TRH/edngVEHVbwqWnxUViEmq5znDvyB+Sik5cmuLpGOIfDf/39zLiq3swPF8Vakqn+gvNiOQAZu8djYlQILA==}
 
   object.pick@1.3.0:
     resolution: {integrity: sha512-tqa/UMy/CCoYmj+H5qc07qvSL9dqcs/WZENZ1JbtWBlATP+iVOe778gE6MSijnyCnORzDuX6hU+LA4SZ09YjFQ==}
@@ -2802,11 +2802,11 @@ packages:
     resolution: {integrity: sha512-n1cw8k1k0x4pgA2+9XrOkFydTerNcJ1zWCO5Nn9scWHTD+5tp8dghT2x1uduQePZTZgd3Tupf+x9BxJjeJi77Q==}
     engines: {node: '>=14.0.0'}
 
-  tldts-core@6.1.78:
-    resolution: {integrity: sha512-jS0svNsB99jR6AJBmfmEWuKIgz91Haya91Z43PATaeHJ24BkMoNRb/jlaD37VYjb0mYf6gRL/HOnvS1zEnYBiw==}
+  tldts-core@6.1.82:
+    resolution: {integrity: sha512-Jabl32m21tt/d/PbDO88R43F8aY98Piiz6BVH9ShUlOAiiAELhEqwrAmBocjAqnCfoUeIsRU+h3IEzZd318F3w==}
 
-  tldts@6.1.78:
-    resolution: {integrity: sha512-fSgYrW0ITH0SR/CqKMXIruYIPpNu5aDgUp22UhYoSrnUQwc7SBqifEBFNce7AAcygUPBo6a/gbtcguWdmko4RQ==}
+  tldts@6.1.82:
+    resolution: {integrity: sha512-KCTjNL9F7j8MzxgfTgjT+v21oYH38OidFty7dH00maWANAI2IsLw2AnThtTJi9HKALHZKQQWnNebYheadacD+g==}
     hasBin: true
 
   to-object-path@0.3.0:
@@ -2820,8 +2820,8 @@ packages:
   toml@2.3.6:
     resolution: {integrity: sha512-gVweAectJU3ebq//Ferr2JUY4WKSDe5N+z0FvjDncLGyHmIDoxgY/2Ie4qfEIDm4IS7OA6Rmdm7pdEEdMcV/xQ==}
 
-  tough-cookie@5.1.1:
-    resolution: {integrity: sha512-Ek7HndSVkp10hmHP9V4qZO1u+pn1RU5sI0Fw+jCU3lyvuMZcgqsNgc6CmJJZyByK4Vm/qotGRJlfgAX8q+4JiA==}
+  tough-cookie@5.1.2:
+    resolution: {integrity: sha512-FVDYdxtnj0G6Qm/DhNPSb8Ju59ULcup3tuJxkFb5K8Bv2pUXILbf0xZWU8PX8Ov19OXljbUyveOFwRMwkXzO+A==}
     engines: {node: '>=16'}
 
   tr46@5.0.0:
@@ -3016,8 +3016,8 @@ packages:
     resolution: {integrity: sha512-gsq2PdJIWWGhx5kcdWStvNWit9FVdTewm4SEG7gFskWs+XCVaULt9+BwuoBtJiRE8eo3L1IPAOrbByNLtLtIlg==}
     engines: {node: '>=12'}
 
-  update-browserslist-db@1.1.2:
-    resolution: {integrity: sha512-PPypAm5qvlD7XMZC3BujecnaOxwhrtoFR+Dqkk5Aa/6DssiH0ibKoketaj9w8LP7Bont1rYeoV5plxD7RTEPRg==}
+  update-browserslist-db@1.1.3:
+    resolution: {integrity: sha512-UxhIZQ+QInVdunkDAaiazvvT/+fXL5Osr0JZlJulepYu6Jd7qJtDZjlur0emRlT71EN3ScPoE7gvsuIKKNavKw==}
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
@@ -3045,8 +3045,8 @@ packages:
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
 
-  vite-plugin-solid@2.11.2:
-    resolution: {integrity: sha512-/OXVasW5OIRSFXnqzMgm8X3hPvf+JTbGecjQhmk7QnbDFq4hqdLssuYAWw9GsJGfzUPiMHM3ME2Y2XHPsTWmkw==}
+  vite-plugin-solid@2.11.6:
+    resolution: {integrity: sha512-Sl5CTqJTGyEeOsmdH6BOgalIZlwH3t4/y0RQuFLMGnvWMBvxb4+lq7x3BSiAw6etf0QexfNJW7HSOO/Qf7pigg==}
     peerDependencies:
       '@testing-library/jest-dom': ^5.16.6 || ^5.17.0 || ^6.*
       solid-js: ^1.7.2
@@ -3519,11 +3519,11 @@ snapshots:
     dependencies:
       prismjs: 1.29.0
 
-  '@astrojs/solid-js@5.0.4(@types/node@22.13.5)(jiti@2.4.2)(solid-js@1.9.5)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.0)':
+  '@astrojs/solid-js@5.0.5(@types/node@22.13.5)(jiti@2.4.2)(solid-js@1.9.5)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.0)':
     dependencies:
       solid-js: 1.9.5
       vite: 6.2.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.0)
-      vite-plugin-solid: 2.11.2(solid-js@1.9.5)(vite@6.2.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.0))
+      vite-plugin-solid: 2.11.6(solid-js@1.9.5)(vite@6.2.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.0))
     transitivePeerDependencies:
       - '@testing-library/jest-dom'
       - '@types/node'
@@ -4558,10 +4558,10 @@ snapshots:
 
   browserslist@4.24.4:
     dependencies:
-      caniuse-lite: 1.0.30001700
-      electron-to-chromium: 1.5.104
+      caniuse-lite: 1.0.30001701
+      electron-to-chromium: 1.5.109
       node-releases: 2.0.19
-      update-browserslist-db: 1.1.2(browserslist@4.24.4)
+      update-browserslist-db: 1.1.3(browserslist@4.24.4)
 
   buffer-from@1.1.2: {}
 
@@ -4575,7 +4575,7 @@ snapshots:
 
   camelcase@8.0.0: {}
 
-  caniuse-lite@1.0.30001700: {}
+  caniuse-lite@1.0.30001701: {}
 
   ccount@2.0.1: {}
 
@@ -4760,7 +4760,7 @@ snapshots:
       gopd: 1.2.0
     optional: true
 
-  electron-to-chromium@1.5.104: {}
+  electron-to-chromium@1.5.109: {}
 
   emmet@2.4.11:
     dependencies:
@@ -5273,12 +5273,12 @@ snapshots:
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.6
       is-potential-custom-element-name: 1.0.1
-      nwsapi: 2.2.16
+      nwsapi: 2.2.18
       parse5: 7.2.1
       rrweb-cssom: 0.8.0
       saxes: 6.0.0
       symbol-tree: 3.2.4
-      tough-cookie: 5.1.1
+      tough-cookie: 5.1.2
       w3c-xmlserializer: 5.0.0
       webidl-conversions: 7.0.0
       whatwg-encoding: 3.1.1
@@ -5791,7 +5791,7 @@ snapshots:
 
   normalize-path@3.0.0: {}
 
-  nwsapi@2.2.16:
+  nwsapi@2.2.18:
     optional: true
 
   object.pick@1.3.0:
@@ -6313,12 +6313,12 @@ snapshots:
 
   tinyspy@3.0.2: {}
 
-  tldts-core@6.1.78:
+  tldts-core@6.1.82:
     optional: true
 
-  tldts@6.1.78:
+  tldts@6.1.82:
     dependencies:
-      tldts-core: 6.1.78
+      tldts-core: 6.1.82
     optional: true
 
   to-object-path@0.3.0:
@@ -6331,9 +6331,9 @@ snapshots:
 
   toml@2.3.6: {}
 
-  tough-cookie@5.1.1:
+  tough-cookie@5.1.2:
     dependencies:
-      tldts: 6.1.78
+      tldts: 6.1.82
     optional: true
 
   tr46@5.0.0:
@@ -6484,7 +6484,7 @@ snapshots:
     dependencies:
       uzip-module: 1.0.3
 
-  update-browserslist-db@1.1.2(browserslist@4.24.4):
+  update-browserslist-db@1.1.3(browserslist@4.24.4):
     dependencies:
       browserslist: 4.24.4
       escalade: 3.2.0
@@ -6532,7 +6532,7 @@ snapshots:
       - tsx
       - yaml
 
-  vite-plugin-solid@2.11.2(solid-js@1.9.5)(vite@6.2.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.0)):
+  vite-plugin-solid@2.11.6(solid-js@1.9.5)(vite@6.2.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.0)):
     dependencies:
       '@babel/core': 7.26.9
       '@types/babel__core': 7.20.5

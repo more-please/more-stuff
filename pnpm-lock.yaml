@@ -65,8 +65,8 @@ importers:
         specifier: ^0.9.4
         version: 0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.5.2)(typescript@5.7.3)
       '@astrojs/cloudflare':
-        specifier: ^12.2.2
-        version: 12.2.2(@types/node@22.13.5)(astro@5.3.1(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.34.8)(terser@5.38.0)(tsx@4.19.3)(typescript@5.7.3)(yaml@2.7.0))(jiti@2.4.2)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.0)
+        specifier: ^12.2.3
+        version: 12.2.3(@types/node@22.13.5)(astro@5.3.1(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.34.8)(terser@5.38.0)(tsx@4.19.3)(typescript@5.7.3)(yaml@2.7.0))(jiti@2.4.2)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.0)
       '@astrojs/solid-js':
         specifier: ^5.0.4
         version: 5.0.4(@types/node@22.13.5)(jiti@2.4.2)(solid-js@1.9.5)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.0)
@@ -184,8 +184,8 @@ importers:
         specifier: ^0.9.4
         version: 0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.5.2)(typescript@5.7.3)
       '@astrojs/cloudflare':
-        specifier: ^12.2.2
-        version: 12.2.2(@types/node@22.13.5)(astro@5.3.1(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.34.8)(terser@5.38.0)(tsx@4.19.3)(typescript@5.7.3)(yaml@2.7.0))(jiti@2.4.2)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.0)
+        specifier: ^12.2.3
+        version: 12.2.3(@types/node@22.13.5)(astro@5.3.1(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.34.8)(terser@5.38.0)(tsx@4.19.3)(typescript@5.7.3)(yaml@2.7.0))(jiti@2.4.2)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.0)
       '@astrojs/solid-js':
         specifier: ^5.0.4
         version: 5.0.4(@types/node@22.13.5)(jiti@2.4.2)(solid-js@1.9.5)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.0)
@@ -232,8 +232,8 @@ packages:
     peerDependencies:
       typescript: ^5.0.0
 
-  '@astrojs/cloudflare@12.2.2':
-    resolution: {integrity: sha512-VB8jKeiJsbpyBPs7IAc4Os2GD2hDN6xWOumHo1QqA8ykQyA8oUeROC+8i8t3AhT2uULMR85KgCXbuxnCFs8uuQ==}
+  '@astrojs/cloudflare@12.2.3':
+    resolution: {integrity: sha512-NTsGHxRav7XyDaHRXTK0okfIc7jAklo0zecJbiZzYXAnX/IX+AWw9fLBP6FgLXa+Ywb8Aaddc6GPTlAGbGMIcw==}
     peerDependencies:
       astro: ^5.0.0
 
@@ -242,6 +242,9 @@ packages:
 
   '@astrojs/internal-helpers@0.5.1':
     resolution: {integrity: sha512-M7rAge1n2+aOSxNvKUFa0u/KFn0W+sZy7EW91KOSERotm2Ti8qs+1K0xx3zbOxtAVrmJb5/J98eohVvvEqtNkw==}
+
+  '@astrojs/internal-helpers@0.6.0':
+    resolution: {integrity: sha512-XgHIJDQaGlFnTr0sDp1PiJrtqsWzbHP2qkTU+JpQ8SnBewKP2IKOe/wqCkl0CyfyRXRu3TSWu4t/cpYMVfuBNA==}
 
   '@astrojs/language-server@2.15.4':
     resolution: {integrity: sha512-JivzASqTPR2bao9BWsSc/woPHH7OGSGc9aMxXL4U6egVTqBycB3ZHdBJPuOCVtcGLrzdWTosAqVPz1BVoxE0+A==}
@@ -2308,6 +2311,11 @@ packages:
     engines: {node: '>=16.13'}
     hasBin: true
 
+  miniflare@3.20250214.1:
+    resolution: {integrity: sha512-NE66QV+2n9ZndaP5jgPlcVref3Arvizb+l2QqhgeXtKM5Orhi8UU2mijoiN3mHEUexKaBES2S1VubT4LDPqkxQ==}
+    engines: {node: '>=16.13'}
+    hasBin: true
+
   minimatch@3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
 
@@ -2360,8 +2368,8 @@ packages:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
     engines: {node: '>=0.10.0'}
 
-  nwsapi@2.2.16:
-    resolution: {integrity: sha512-F1I/bimDpj3ncaNDhfyMWuFqmQDBwDB0Fogc2qpL3BWvkQteFD/8BzWuIRl83rq0DXfm8SGt/HFhLXZyljTXcQ==}
+  nwsapi@2.2.18:
+    resolution: {integrity: sha512-p1TRH/edngVEHVbwqWnxUViEmq5znDvyB+Sik5cmuLpGOIfDf/39zLiq3swPF8Vakqn+gvNiOQAZu8djYlQILA==}
 
   object.pick@1.3.0:
     resolution: {integrity: sha512-tqa/UMy/CCoYmj+H5qc07qvSL9dqcs/WZENZ1JbtWBlATP+iVOe778gE6MSijnyCnORzDuX6hU+LA4SZ09YjFQ==}
@@ -2802,11 +2810,11 @@ packages:
     resolution: {integrity: sha512-n1cw8k1k0x4pgA2+9XrOkFydTerNcJ1zWCO5Nn9scWHTD+5tp8dghT2x1uduQePZTZgd3Tupf+x9BxJjeJi77Q==}
     engines: {node: '>=14.0.0'}
 
-  tldts-core@6.1.78:
-    resolution: {integrity: sha512-jS0svNsB99jR6AJBmfmEWuKIgz91Haya91Z43PATaeHJ24BkMoNRb/jlaD37VYjb0mYf6gRL/HOnvS1zEnYBiw==}
+  tldts-core@6.1.82:
+    resolution: {integrity: sha512-Jabl32m21tt/d/PbDO88R43F8aY98Piiz6BVH9ShUlOAiiAELhEqwrAmBocjAqnCfoUeIsRU+h3IEzZd318F3w==}
 
-  tldts@6.1.78:
-    resolution: {integrity: sha512-fSgYrW0ITH0SR/CqKMXIruYIPpNu5aDgUp22UhYoSrnUQwc7SBqifEBFNce7AAcygUPBo6a/gbtcguWdmko4RQ==}
+  tldts@6.1.82:
+    resolution: {integrity: sha512-KCTjNL9F7j8MzxgfTgjT+v21oYH38OidFty7dH00maWANAI2IsLw2AnThtTJi9HKALHZKQQWnNebYheadacD+g==}
     hasBin: true
 
   to-object-path@0.3.0:
@@ -2820,8 +2828,8 @@ packages:
   toml@2.3.6:
     resolution: {integrity: sha512-gVweAectJU3ebq//Ferr2JUY4WKSDe5N+z0FvjDncLGyHmIDoxgY/2Ie4qfEIDm4IS7OA6Rmdm7pdEEdMcV/xQ==}
 
-  tough-cookie@5.1.1:
-    resolution: {integrity: sha512-Ek7HndSVkp10hmHP9V4qZO1u+pn1RU5sI0Fw+jCU3lyvuMZcgqsNgc6CmJJZyByK4Vm/qotGRJlfgAX8q+4JiA==}
+  tough-cookie@5.1.2:
+    resolution: {integrity: sha512-FVDYdxtnj0G6Qm/DhNPSb8Ju59ULcup3tuJxkFb5K8Bv2pUXILbf0xZWU8PX8Ov19OXljbUyveOFwRMwkXzO+A==}
     engines: {node: '>=16'}
 
   tr46@5.0.0:
@@ -3432,16 +3440,16 @@ snapshots:
       - prettier
       - prettier-plugin-astro
 
-  '@astrojs/cloudflare@12.2.2(@types/node@22.13.5)(astro@5.3.1(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.34.8)(terser@5.38.0)(tsx@4.19.3)(typescript@5.7.3)(yaml@2.7.0))(jiti@2.4.2)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.0)':
+  '@astrojs/cloudflare@12.2.3(@types/node@22.13.5)(astro@5.3.1(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.34.8)(terser@5.38.0)(tsx@4.19.3)(typescript@5.7.3)(yaml@2.7.0))(jiti@2.4.2)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.0)':
     dependencies:
-      '@astrojs/internal-helpers': 0.5.1
+      '@astrojs/internal-helpers': 0.6.0
       '@astrojs/underscore-redirects': 0.6.0
       '@cloudflare/workers-types': 4.20250224.0
       astro: 5.3.1(@types/node@22.13.5)(jiti@2.4.2)(rollup@4.34.8)(terser@5.38.0)(tsx@4.19.3)(typescript@5.7.3)(yaml@2.7.0)
-      esbuild: 0.24.2
+      esbuild: 0.25.0
       estree-walker: 3.0.3
       magic-string: 0.30.17
-      miniflare: 3.20250214.0
+      miniflare: 3.20250214.1
       tinyglobby: 0.2.12
       vite: 6.2.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.0)
       wrangler: 3.109.3(@cloudflare/workers-types@4.20250224.0)
@@ -3463,6 +3471,8 @@ snapshots:
   '@astrojs/compiler@2.10.4': {}
 
   '@astrojs/internal-helpers@0.5.1': {}
+
+  '@astrojs/internal-helpers@0.6.0': {}
 
   '@astrojs/language-server@2.15.4(prettier-plugin-astro@0.14.1)(prettier@3.5.2)(typescript@5.7.3)':
     dependencies:
@@ -5273,12 +5283,12 @@ snapshots:
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.6
       is-potential-custom-element-name: 1.0.1
-      nwsapi: 2.2.16
+      nwsapi: 2.2.18
       parse5: 7.2.1
       rrweb-cssom: 0.8.0
       saxes: 6.0.0
       symbol-tree: 3.2.4
-      tough-cookie: 5.1.1
+      tough-cookie: 5.1.2
       w3c-xmlserializer: 5.0.0
       webidl-conversions: 7.0.0
       whatwg-encoding: 3.1.1
@@ -5749,6 +5759,23 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
+  miniflare@3.20250214.1:
+    dependencies:
+      '@cspotcode/source-map-support': 0.8.1
+      acorn: 8.14.0
+      acorn-walk: 8.3.2
+      exit-hook: 2.2.1
+      glob-to-regexp: 0.4.1
+      stoppable: 1.1.0
+      undici: 5.28.5
+      workerd: 1.20250214.0
+      ws: 8.18.0
+      youch: 3.2.3
+      zod: 3.22.3
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
   minimatch@3.1.2:
     dependencies:
       brace-expansion: 1.1.11
@@ -5791,7 +5818,7 @@ snapshots:
 
   normalize-path@3.0.0: {}
 
-  nwsapi@2.2.16:
+  nwsapi@2.2.18:
     optional: true
 
   object.pick@1.3.0:
@@ -6313,12 +6340,12 @@ snapshots:
 
   tinyspy@3.0.2: {}
 
-  tldts-core@6.1.78:
+  tldts-core@6.1.82:
     optional: true
 
-  tldts@6.1.78:
+  tldts@6.1.82:
     dependencies:
-      tldts-core: 6.1.78
+      tldts-core: 6.1.82
     optional: true
 
   to-object-path@0.3.0:
@@ -6331,9 +6358,9 @@ snapshots:
 
   toml@2.3.6: {}
 
-  tough-cookie@5.1.1:
+  tough-cookie@5.1.2:
     dependencies:
-      tldts: 6.1.78
+      tldts: 6.1.82
     optional: true
 
   tr46@5.0.0:

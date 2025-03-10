@@ -37,6 +37,6 @@
     "typescript": "^5.8.2",
     "utf64": "workspace:^",
     "vitest": "^3.0.7",
-    "wrangler": "^3.111.0"
+    "wrangler": "^3.112.0"
   }
 }

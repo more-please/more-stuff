@@ -40,6 +40,6 @@
     "typescript": "^5.8.2"
   },
   "dependencies": {
-    "client-zip": "^2.4.6"
+    "client-zip": "^2.5.0"
   }
 }

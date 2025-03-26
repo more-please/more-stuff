@@ -26,16 +26,16 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/cloudflare": "^12.2.4",
-    "@astrojs/solid-js": "^5.0.5",
+    "@astrojs/cloudflare": "^12.3.1",
+    "@astrojs/solid-js": "^5.0.6",
     "@moreplease/rollup-plugin-build-info": "workspace:*",
-    "astro": "^5.5.3",
+    "astro": "^5.5.5",
     "gosub-goproxy": "workspace:*",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
     "typescript": "^5.8.2",
     "utf64": "workspace:*",
     "vitest": "^3.0.9",
-    "wrangler": "^4.2.0"
+    "wrangler": "^4.5.0"
   }
 }

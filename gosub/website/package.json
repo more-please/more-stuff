@@ -8,7 +8,7 @@
     "test": "vitest --pool=threads run",
     "dev": "astro dev",
     "build": "astro build",
-    "push": "wrangler pages deploy --project-name gosub --branch main build"
+    "push": "wrangler deploy"
   },
   "prettier": {
     "plugins": [

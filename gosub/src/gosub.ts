@@ -1,3 +1,7 @@
+import type { GoproxyConfig, GoproxyEnv, GoproxyOptions } from "./types.ts";
+import { goproxy, goproxyEnv } from "./goproxy.ts";
+import { goproxyConsole } from "./logging.ts";
+import { Result, err, ok } from "./result.ts";
 import {
   ensurePrefix,
   ensureSuffix,
@@ -5,16 +9,6 @@ import {
   removeOptionalSuffix,
   removePrefix,
 } from "./utils.ts";
-import {
-  type GoproxyConfig,
-  goproxy,
-  goproxyConsole,
-  GoproxyConsole,
-  goproxyEnv,
-  GoproxyEnv,
-  GoproxyOptions,
-} from "./goproxy.ts";
-import { Result, err, ok } from "./result.ts";
 
 const DEFAULTS: Partial<GoproxyConfig> = {
   directory: "",

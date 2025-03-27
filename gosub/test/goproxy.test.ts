@@ -1,4 +1,5 @@
-import { GoproxyConfig, goproxy } from "gosub-goproxy/goproxy.ts";
+import type { GoproxyConfig } from "gosub-goproxy/types.ts";
+import { goproxy } from "gosub-goproxy/goproxy.ts";
 import { describe, expect, test } from "vitest";
 
 import { fatal } from "gosub-goproxy/result.ts";

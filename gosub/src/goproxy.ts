@@ -1,3 +1,5 @@
+import type { GoproxyConfig, GoproxyEnv, GoproxyOptions } from "./types.ts";
+import { goproxyConsole } from "./logging.ts";
 import * as github from "./github.ts";
 
 import {
@@ -14,30 +16,6 @@ const textHeaders = {
   "content-type": "text/plain; charset=utf-8",
 };
 
-export type GoproxyEnv = Record<string, string | undefined> & {
-  GITHUB_TOKEN?: string;
-  GOSUB_VERBOSE?: string;
-};
-
-export type GoproxyLogObj = Record<string, any> & {
-  message: string;
-};
-
-export type GoproxyConsole = {
-  info: (obj: GoproxyLogObj) => void;
-  log: (obj: GoproxyLogObj) => void;
-  warn: (obj: GoproxyLogObj) => void;
-  error: (obj: GoproxyLogObj) => void;
-};
-
-export type GoproxyConfig = {
-  url: string; // Git repo URL - currently only Github is supported
-  module?: string; // If set, Go module is required to match this
-  directory?: string; // Subdirectory within the git repo
-  tagPrefix?: string; // Prefix for version tags in git (default is "v")
-  tagSuffix?: string; // Suffix for version tags in git
-};
-
 export function goproxyEnv(): GoproxyEnv {
   // Assume that process.env or Deno.env are usable if they exist.
   // They may or may not be declared, so work locally to avoid any
@@ -48,34 +26,6 @@ export function goproxyEnv(): GoproxyEnv {
   };
   const global: Global = globalThis as any;
   return global.process?.env ?? global.Deno?.env?.toObject?.() ?? {};
-}
-
-export type GoproxyOptions = {
-  console?: GoproxyConsole;
-  verbose?: boolean;
-};
-
-function noop() {}
-
-export function goproxyConsole(
-  env: GoproxyEnv,
-  options: GoproxyOptions,
-): GoproxyConsole {
-  const result = options.console ?? console;
-  const verbose =
-    options.verbose ?? (env.GOSUB_VERBOSE && env.GOSUB_VERBOSE !== "0");
-  return verbose
-    ? result
-    : {
-        info: noop,
-        log: noop,
-        warn(obj) {
-          return result.warn(obj);
-        },
-        error(obj) {
-          return result.error(obj);
-        },
-      };
 }
 
 export function goproxy(

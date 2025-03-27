@@ -5,7 +5,15 @@ import {
   removeOptionalSuffix,
   removePrefix,
 } from "./utils.ts";
-import { type GoproxyConfig, goproxy, GoproxyEnv } from "./goproxy.ts";
+import {
+  type GoproxyConfig,
+  goproxy,
+  goproxyConsole,
+  GoproxyConsole,
+  goproxyEnv,
+  GoproxyEnv,
+  GoproxyOptions,
+} from "./goproxy.ts";
 import { Result, err, ok } from "./result.ts";
 
 const DEFAULTS: Partial<GoproxyConfig> = {
@@ -91,17 +99,26 @@ export function gosubDecode(path: string): GosubDecode | undefined {
 
 export function gosub(
   base: string = "/",
-  env?: GoproxyEnv,
+  env: GoproxyEnv = goproxyEnv(),
+  options: GoproxyOptions = {},
 ): (request: Request) => Promise<Response | undefined> {
+  const console = goproxyConsole(env, options);
   base = ensurePrefix("/", ensureSuffix("/", base));
+  console.log({ message: "gosub init", base });
   return async (request: Request) => {
     const url = new URL(request.url);
     const subpath = removePrefix(base, url.pathname);
     const decode = subpath && gosubDecode(subpath);
+    console.log({ message: "gosub request", url, subpath, decode });
     if (!decode) {
       return;
     }
-    const handler = deps.goproxy(`${base}${decode.used}/`, decode.config, env);
+    const handler = deps.goproxy(
+      `${base}${decode.used}/`,
+      decode.config,
+      env,
+      options,
+    );
     return handler(request);
   };
 }

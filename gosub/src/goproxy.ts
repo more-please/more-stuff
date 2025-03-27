@@ -16,6 +16,18 @@ const textHeaders = {
 
 export type GoproxyEnv = Record<string, string | undefined> & {
   GITHUB_TOKEN?: string;
+  GOSUB_VERBOSE?: string;
+};
+
+export type GoproxyLogObj = Record<string, any> & {
+  message: string;
+};
+
+export type GoproxyConsole = {
+  info: (obj: GoproxyLogObj) => void;
+  log: (obj: GoproxyLogObj) => void;
+  warn: (obj: GoproxyLogObj) => void;
+  error: (obj: GoproxyLogObj) => void;
 };
 
 export type GoproxyConfig = {
@@ -26,7 +38,7 @@ export type GoproxyConfig = {
   tagSuffix?: string; // Suffix for version tags in git
 };
 
-function goproxyEnv(): GoproxyEnv {
+export function goproxyEnv(): GoproxyEnv {
   // Assume that process.env or Deno.env are usable if they exist.
   // They may or may not be declared, so work locally to avoid any
   // fiddly TypeScript declaration clashes.
@@ -38,11 +50,42 @@ function goproxyEnv(): GoproxyEnv {
   return global.process?.env ?? global.Deno?.env?.toObject?.() ?? {};
 }
 
+export type GoproxyOptions = {
+  console?: GoproxyConsole;
+  verbose?: boolean;
+};
+
+function noop() {}
+
+export function goproxyConsole(
+  env: GoproxyEnv,
+  options: GoproxyOptions,
+): GoproxyConsole {
+  const result = options.console ?? console;
+  const verbose =
+    options.verbose ?? (env.GOSUB_VERBOSE && env.GOSUB_VERBOSE !== "0");
+  return verbose
+    ? result
+    : {
+        info: noop,
+        log: noop,
+        warn(obj) {
+          return result.warn(obj);
+        },
+        error(obj) {
+          return result.error(obj);
+        },
+      };
+}
+
 export function goproxy(
   base: string,
   config: GoproxyConfig,
-  env?: GoproxyEnv,
+  env: GoproxyEnv = goproxyEnv(),
+  options: GoproxyOptions = {},
 ): (request: string | Request) => Promise<Response | undefined> {
+  const console = goproxyConsole(env, options);
+  console.log({ message: "goproxy init", config, env });
   const url = new URL(config.url);
   if (url.hostname !== "github.com") {
     throw new Error("Only github.com URLs are supported");
@@ -66,7 +109,7 @@ export function goproxy(
     }
   }
 
-  const { GITHUB_TOKEN } = env ?? goproxyEnv();
+  const { GITHUB_TOKEN } = env;
   const API = "https://api.github.com";
   const NEXT_LINK = /(?<=<)([\S]*)(?=>; rel="Next")/i;
 
@@ -74,6 +117,7 @@ export function goproxy(
     path: string,
     extraHeaders: Record<string, string> = {},
   ): Promise<Response> {
+    console.log({ message: "github fetch", path, extraHeaders });
     const url = new URL(path, API);
     const headers = new Headers({
       "User-Agent": "gosub-goproxy",
@@ -86,6 +130,8 @@ export function goproxy(
       headers.set(k, v);
     }
     const response = await fetch(url.href, { headers });
+    const { status, statusText } = response;
+    console.log({ message: "fetch", url: response.url, status, statusText });
     if (!response.ok) {
       throw response;
     }
@@ -104,35 +150,40 @@ export function goproxy(
   return async (request: string | Request) => {
     const url =
       typeof request === "string" ? request : new URL(request.url).pathname;
+    console.log({ message: "goproxy request", url });
     const path = removePrefix(base, url);
     if (!path) {
+      console.info({ message: "url doesn't match base", url, base });
       return;
     }
     const cmdStart = path.lastIndexOf("@");
     if (cmdStart < 0) {
+      console.info({ message: "path has no @ command", path });
       return;
     }
     const module = path.substring(0, cmdStart - 1);
     if (config.module && config.module !== module) {
+      console.info({ message: "module doesn't match config", module, config });
       return;
     }
 
     try {
-      const cmd = path.substring(cmdStart);
+      const command = path.substring(cmdStart);
+      console.info({ message: "goproxy command", command });
 
-      if (cmd === "@gosub/rate_limit") {
+      if (command === "@gosub/rate_limit") {
         const result = await githubFetch("/rate_limit");
         return Response.json(await result.json());
       }
 
-      if (cmd === "@v/list" || cmd === "@gosub/tags") {
+      if (command === "@v/list" || command === "@gosub/tags") {
         const results: string[] = [];
         for await (const page of githubPaginate(
           `/repos/${owner}/${repo}/tags`,
         )) {
           const tags = (await page.json()) as github.Tags;
           for (const tag of tags) {
-            const v = cmd === "@v/list" ? tagToVersion(tag.name) : tag.name;
+            const v = command === "@v/list" ? tagToVersion(tag.name) : tag.name;
             if (v) {
               results.push(`${v}\n`);
             }
@@ -141,7 +192,7 @@ export function goproxy(
         return new Response(results.join(""), { headers: textHeaders });
       }
 
-      const v = removePrefix("@v/v", cmd);
+      const v = removePrefix("@v/v", command);
       const info = removeSuffix(".info", v);
       if (info) {
         const refData = await githubFetch(
@@ -185,6 +236,7 @@ export function goproxy(
         if (!treeData.ok) {
           throw new Error(treeData.statusText);
         }
+        console.info({ message: "goproxy treeData", treeData });
         // Extract the metadata we care about
         const metadata = ((await treeData.json()) as github.Tree).tree
           .filter(github.isBlob)
@@ -195,10 +247,12 @@ export function goproxy(
             size: i.size,
             url: i.url,
           }));
+        console.info({ message: "goproxy metadata", metadata });
         // Find subdirectories with nested go.mod files
         const nestedModules = metadata
           .map((m) => removeSuffix("/go.mod", m.name))
           .filter(isDefined);
+        console.info({ message: "goproxy nestedModules", nestedModules });
         // Build zip file
         async function* data() {
           nextFile: for (const m of metadata) {
@@ -220,12 +274,16 @@ export function goproxy(
         return downloadZip(data(), { metadata });
       }
 
+      console.warn({ message: "unknown goproxy command", command });
       return new Response("Not found", { status: 404 });
-    } catch (err) {
-      if (err instanceof Response) {
-        return err;
+    } catch (error) {
+      if (error instanceof Response) {
+        const { status, statusText } = error;
+        console.warn({ message: "goproxy error response", status, statusText });
+        return error;
       }
-      return new Response(`${err}`, { status: 500 });
+      console.error({ message: "goproxy internal error", error });
+      return new Response(`${error}`, { status: 500 });
     }
   };
 }

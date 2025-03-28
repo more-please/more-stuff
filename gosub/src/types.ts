@@ -1,6 +1,6 @@
 export type GoproxyEnv = Record<string, string | undefined> & {
-  GITHUB_TOKEN?: string;
-  GOSUB_VERBOSE?: string;
+  GITHUB_TOKEN?: string | undefined;
+  GOSUB_VERBOSE?: string | undefined;
 };
 
 export type GoproxyConfig = {

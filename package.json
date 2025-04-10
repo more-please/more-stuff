@@ -1,14 +1,14 @@
 {
   "name": "more-stuff",
   "private": true,
-  "packageManager": "pnpm@10.7.0",
+  "packageManager": "pnpm@10.8.0",
   "scripts": {
     "hooks": "rm -f .git/hooks/pre-commit && ln -s ../../.githooks/pre-commit .git/hooks/pre-commit",
     "codegen": "runfig"
   },
   "dependencies": {
     "runfig": "workspace:*",
-    "turbo": "^2.4.4",
+    "turbo": "^2.5.0",
     "walk-sync": "^3.0.0"
   },
   "pnpm": {

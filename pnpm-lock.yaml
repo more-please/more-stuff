@@ -68,8 +68,8 @@ importers:
         specifier: ^12.4.0
         version: 12.4.0(@types/node@22.14.0)(astro@5.6.1(@types/node@22.14.0)(jiti@2.4.2)(rollup@4.39.0)(terser@5.38.0)(tsx@4.19.3)(typescript@5.8.3)(yaml@2.7.1))(jiti@2.4.2)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.1)
       '@astrojs/solid-js':
-        specifier: ^5.0.7
-        version: 5.0.7(@types/node@22.14.0)(jiti@2.4.2)(solid-js@1.9.5)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.1)
+        specifier: ^5.0.8
+        version: 5.0.8(@types/node@22.14.0)(jiti@2.4.2)(solid-js@1.9.5)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.1)
       '@moreplease/rollup-plugin-build-info':
         specifier: workspace:*
         version: link:../../rollup-plugin-build-info
@@ -187,8 +187,8 @@ importers:
         specifier: ^12.4.0
         version: 12.4.0(@types/node@22.14.0)(astro@5.6.1(@types/node@22.14.0)(jiti@2.4.2)(rollup@4.39.0)(terser@5.38.0)(tsx@4.19.3)(typescript@5.8.3)(yaml@2.7.1))(jiti@2.4.2)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.1)
       '@astrojs/solid-js':
-        specifier: ^5.0.7
-        version: 5.0.7(@types/node@22.14.0)(jiti@2.4.2)(solid-js@1.9.5)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.1)
+        specifier: ^5.0.8
+        version: 5.0.8(@types/node@22.14.0)(jiti@2.4.2)(solid-js@1.9.5)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.1)
       '@moreplease/rollup-plugin-build-info':
         specifier: workspace:*
         version: link:../../rollup-plugin-build-info
@@ -262,8 +262,8 @@ packages:
     resolution: {integrity: sha512-GilTHKGCW6HMq7y3BUv9Ac7GMe/MO9gi9GW62GzKtth0SwukCu/qp2wLiGpEujhY+VVhaG9v7kv/5vFzvf4NYw==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0}
 
-  '@astrojs/solid-js@5.0.7':
-    resolution: {integrity: sha512-L4h88kGMiASNfug/n5Sxcjudei9anedxkah1Hpom/3JySONywcQy3w4oVuF3VVE1pUD/le5NeK1anFddT528DA==}
+  '@astrojs/solid-js@5.0.8':
+    resolution: {integrity: sha512-Q598DN21LzNvDfAYIXaPVHZPqJXtLcQmkxDt5cs0o2qLsuGGcUynub2MDvdr8XnaSfjsy6zkAedFE1z+B6KXng==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0}
     peerDependencies:
       solid-devtools: ^0.30.1
@@ -1507,8 +1507,8 @@ packages:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
     engines: {node: '>= 0.4'}
 
-  electron-to-chromium@1.5.135:
-    resolution: {integrity: sha512-8gXUdEmvb+WCaYUhA0Svr08uSeRjM2w3x5uHOc1QbaEVzJXB8rgm5eptieXzyKoVEtinLvW6MtTcurA65PeS1Q==}
+  electron-to-chromium@1.5.136:
+    resolution: {integrity: sha512-kL4+wUTD7RSA5FHx5YwWtjDnEEkIIikFgWHR4P6fqjw1PPLlqYkxeOb++wAauAssat0YClCy8Y3C5SxgSkjibQ==}
 
   emmet@2.4.11:
     resolution: {integrity: sha512-23QPJB3moh/U9sT4rQzGgeyyGIrcM+GH5uVYg2C6wZIxAIJq7Ng3QLT79tl8FUwDXhyq9SusfknOrofAKqvgyQ==}
@@ -2590,11 +2590,11 @@ packages:
     resolution: {integrity: sha512-n1cw8k1k0x4pgA2+9XrOkFydTerNcJ1zWCO5Nn9scWHTD+5tp8dghT2x1uduQePZTZgd3Tupf+x9BxJjeJi77Q==}
     engines: {node: '>=14.0.0'}
 
-  tldts-core@6.1.85:
-    resolution: {integrity: sha512-DTjUVvxckL1fIoPSb3KE7ISNtkWSawZdpfxGxwiIrZoO6EbHVDXXUIlIuWympPaeS+BLGyggozX/HTMsRAdsoA==}
+  tldts-core@6.1.86:
+    resolution: {integrity: sha512-Je6p7pkk+KMzMv2XXKmAE3McmolOQFdxkKw0R8EYNr7sELW46JqnNeTX8ybPiQgvg1ymCoF8LXs5fzFaZvJPTA==}
 
-  tldts@6.1.85:
-    resolution: {integrity: sha512-gBdZ1RjCSevRPFix/hpaUWeak2/RNUZB4/8frF1r5uYMHjFptkiT0JXIebWvgI/0ZHXvxaUDDJshiA0j6GdL3w==}
+  tldts@6.1.86:
+    resolution: {integrity: sha512-WMi/OQ2axVTf/ykqCQgXiIct+mSQDFdH2fkwhPwgEwvJ1kSzZRiinb0zF2Xb8u4+OqPChmyI6MEu4EezNJz+FQ==}
     hasBin: true
 
   to-object-path@0.3.0:
@@ -3304,7 +3304,7 @@ snapshots:
     dependencies:
       prismjs: 1.30.0
 
-  '@astrojs/solid-js@5.0.7(@types/node@22.14.0)(jiti@2.4.2)(solid-js@1.9.5)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.1)':
+  '@astrojs/solid-js@5.0.8(@types/node@22.14.0)(jiti@2.4.2)(solid-js@1.9.5)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.1)':
     dependencies:
       solid-js: 1.9.5
       vite: 6.2.6(@types/node@22.14.0)(jiti@2.4.2)(terser@5.38.0)(tsx@4.19.3)(yaml@2.7.1)
@@ -4273,7 +4273,7 @@ snapshots:
   browserslist@4.24.4:
     dependencies:
       caniuse-lite: 1.0.30001713
-      electron-to-chromium: 1.5.135
+      electron-to-chromium: 1.5.136
       node-releases: 2.0.19
       update-browserslist-db: 1.1.3(browserslist@4.24.4)
 
@@ -4472,7 +4472,7 @@ snapshots:
       gopd: 1.2.0
     optional: true
 
-  electron-to-chromium@1.5.135: {}
+  electron-to-chromium@1.5.136: {}
 
   emmet@2.4.11:
     dependencies:
@@ -5917,12 +5917,12 @@ snapshots:
 
   tinyspy@3.0.2: {}
 
-  tldts-core@6.1.85:
+  tldts-core@6.1.86:
     optional: true
 
-  tldts@6.1.85:
+  tldts@6.1.86:
     dependencies:
-      tldts-core: 6.1.85
+      tldts-core: 6.1.86
     optional: true
 
   to-object-path@0.3.0:
@@ -5937,7 +5937,7 @@ snapshots:
 
   tough-cookie@5.1.2:
     dependencies:
-      tldts: 6.1.85
+      tldts: 6.1.86
     optional: true
 
   tr46@5.1.0:

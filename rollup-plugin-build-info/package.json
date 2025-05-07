@@ -22,8 +22,8 @@
   "types": "build/index.d.ts",
   "devDependencies": {
     "@rollup/plugin-typescript": "^12.1.2",
-    "@types/node": "^22.15.3",
-    "rollup": "^4.40.1",
+    "@types/node": "^22.15.14",
+    "rollup": "^4.40.2",
     "tslib": "^2.8.1",
     "typescript": "^5.8.3"
   },

@@ -29,7 +29,7 @@
     "@astrojs/cloudflare": "^12.5.2",
     "@astrojs/solid-js": "^5.0.10",
     "@moreplease/rollup-plugin-build-info": "workspace:*",
-    "astro": "^5.7.11",
+    "astro": "^5.7.12",
     "gosub-goproxy": "workspace:*",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",

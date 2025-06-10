@@ -1,6 +1,7 @@
 # Auto-generated from pnpm-workspace.yaml.ts
 
 packages:
+  - esbuild-plugin-build-info
   - gosub/src
   - gosub/test
   - gosub/website

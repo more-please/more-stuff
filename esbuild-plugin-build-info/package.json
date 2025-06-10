@@ -1,0 +1,30 @@
+{
+  "name": "@moreplease/esbuild-plugin-build-info",
+  "type": "module",
+  "keywords": [
+    "esbuild",
+    "esbuild-plugin"
+  ],
+  "version": "0.0.1",
+  "description": "import { commit, timestamp } from \"build-info\"",
+  "scripts": {
+    "test": "tsc",
+    "prepare": "tsx build.ts"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "build/*"
+  ],
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "devDependencies": {
+    "@types/node": "^22.15.30",
+    "esbuild": "^0.25.5",
+    "tsx": "^4.7.1",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "esbuild": "^0.20.0"
+  }
+}

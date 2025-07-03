@@ -19,7 +19,7 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "devDependencies": {
-    "@types/node": "^24.0.4",
+    "@types/node": "^24.0.10",
     "esbuild": "^0.25.5",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3"

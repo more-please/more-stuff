@@ -7,7 +7,7 @@ jobs:
   utf64:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Build
         working-directory: ./utf64/rust
         run: cargo build --verbose

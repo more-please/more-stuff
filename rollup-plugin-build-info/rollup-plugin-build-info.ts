@@ -1,4 +1,4 @@
-import type { Plugin } from "rollup";
+import type { Plugin } from "vite";
 import type { BuildInfo } from "./build/index";
 import { exec } from "node:child_process";
 

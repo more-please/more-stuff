@@ -21,7 +21,7 @@
   "devDependencies": {
     "@types/node": "^24.3.0",
     "esbuild": "^0.25.9",
-    "tsx": "^4.20.4",
+    "tsx": "^4.20.5",
     "typescript": "^5.9.2"
   },
   "peerDependencies": {

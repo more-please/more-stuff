@@ -9,7 +9,7 @@
   "dependencies": {
     "runfig": "workspace:*",
     "turbo": "^2.5.6",
-    "walk-sync": "^3.0.0"
+    "walk-sync": "^4.0.1"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

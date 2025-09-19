@@ -48,7 +48,7 @@ export async function buildInfo(): Promise<BuildInfo> {
   }
 }
 
-export default function plugin(): Plugin {
+export default function plugin(): Pick<Plugin, "name" | "buildStart" | "resolveId" | "load"> {
   let info = buildInfo();
   return {
     name: "rollup-plugin-build-info",

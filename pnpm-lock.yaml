@@ -113,8 +113,8 @@ importers:
         specifier: ^3.2.4
         version: 3.2.4(@types/debug@4.1.12)(@types/node@24.5.2)(jiti@2.4.2)(jsdom@26.0.0)(terser@5.38.0)(tsx@4.20.5)(yaml@2.8.1)
       wrangler:
-        specifier: ^4.40.0
-        version: 4.40.0(@cloudflare/workers-types@4.20250924.0)
+        specifier: ^4.40.2
+        version: 4.40.2(@cloudflare/workers-types@4.20250924.0)
 
   rollup-plugin-build-info:
     devDependencies:
@@ -232,8 +232,8 @@ importers:
         specifier: ^3.2.4
         version: 3.2.4(@types/debug@4.1.12)(@types/node@24.5.2)(jiti@2.4.2)(jsdom@26.0.0)(terser@5.38.0)(tsx@4.20.5)(yaml@2.8.1)
       wrangler:
-        specifier: ^4.40.0
-        version: 4.40.0(@cloudflare/workers-types@4.20250924.0)
+        specifier: ^4.40.2
+        version: 4.40.2(@cloudflare/workers-types@4.20250924.0)
 
 packages:
 
@@ -3436,8 +3436,8 @@ packages:
       '@cloudflare/workers-types':
         optional: true
 
-  wrangler@4.40.0:
-    resolution: {integrity: sha512-HCPNUz599h9emi6qjppn92kxS6E12QvD0A3K087CZFEysw6lO1saZUdJ8azk0LsYGYDnrkBs5TzUOEfpuccwWA==}
+  wrangler@4.40.2:
+    resolution: {integrity: sha512-wcev8GF6GU4ME5AsYY/gUehHrGdRiUCkifuyCeuVvpOtha3TMK4/s39x+jLuJBRtibpgejDekO68rqxfamf16A==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     peerDependencies:
@@ -7063,7 +7063,7 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  wrangler@4.40.0(@cloudflare/workers-types@4.20250924.0):
+  wrangler@4.40.2(@cloudflare/workers-types@4.20250924.0):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.4.0
       '@cloudflare/unenv-preset': 2.7.4(unenv@2.0.0-rc.21)(workerd@1.20250924.0)

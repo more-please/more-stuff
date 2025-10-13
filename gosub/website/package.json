@@ -26,10 +26,10 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/cloudflare": "^12.6.9",
+    "@astrojs/cloudflare": "^12.6.10",
     "@astrojs/solid-js": "^5.1.1",
     "@moreplease/rollup-plugin-build-info": "workspace:*",
-    "astro": "^5.14.1",
+    "astro": "^5.14.4",
     "gosub-goproxy": "workspace:*",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
@@ -37,6 +37,6 @@
     "typescript": "^5.9.3",
     "utf64": "workspace:^",
     "vitest": "^3.2.4",
-    "wrangler": "^4.40.3"
+    "wrangler": "^4.42.2"
   }
 }

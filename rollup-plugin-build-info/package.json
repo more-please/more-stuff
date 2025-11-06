@@ -22,11 +22,11 @@
   "types": "build/index.d.ts",
   "devDependencies": {
     "@rollup/plugin-typescript": "^12.3.0",
-    "@types/node": "^24.9.2",
+    "@types/node": "^24.10.0",
     "rollup": "^4.52.5",
     "tslib": "^2.8.1",
     "typescript": "^5.9.3",
-    "vite": "^7.1.12"
+    "vite": "^7.2.1"
   },
   "peerDependencies": {
     "rollup": "4",

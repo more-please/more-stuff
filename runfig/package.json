@@ -23,7 +23,7 @@
     "test": "tsc"
   },
   "devDependencies": {
-    "@types/node": "^24.10.0",
+    "@types/node": "^24.10.1",
     "markdown-toc": "^1.2.0",
     "prettier": "^3.6.2",
     "typescript": "^5.9.3"
@@ -31,7 +31,7 @@
   "dependencies": {
     "import-meta-resolve": "^4.2.0",
     "json5": "^2.2.3",
-    "smol-toml": "^1.4.2",
+    "smol-toml": "^1.5.2",
     "tsx": "^4.20.6",
     "walk-sync": "^4.0.1",
     "yaml": "^2.8.1"

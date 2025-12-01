@@ -36,7 +36,7 @@
     "solid-js": "^1.9.10",
     "typescript": "^5.9.3",
     "utf64": "workspace:^",
-    "vitest": "^4.0.10",
+    "vitest": "^4.0.14",
     "wrangler": "^4.49.0"
   }
 }

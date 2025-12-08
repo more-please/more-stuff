@@ -33,7 +33,7 @@
     "@journeyapps/ts-browser-compat": "github:more-please/ts-browser-compat",
     "@types/node": "^24.10.1",
     "markdown-toc": "^1.2.0",
-    "prettier": "^3.7.3",
+    "prettier": "^3.7.4",
     "typescript": "^5.9.3",
     "vitest": "^4.0.15"
   }

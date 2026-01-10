@@ -13,6 +13,7 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
+      "@journeyapps/ts-browser-compat",
       "esbuild",
       "sharp",
       "workerd"

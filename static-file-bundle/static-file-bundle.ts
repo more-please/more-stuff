@@ -1,4 +1,4 @@
-#!/usr/bin/env tsx
+#!/usr/bin/env node
 
 import { readFileSync } from "node:fs";
 import { basename, dirname, extname, join } from "node:path";

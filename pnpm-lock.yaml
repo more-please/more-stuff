@@ -171,6 +171,28 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
 
+  static-file-bundle:
+    dependencies:
+      tsx:
+        specifier: ^4.21.0
+        version: 4.21.0
+      walk-sync:
+        specifier: ^4.0.1
+        version: 4.0.1
+    devDependencies:
+      '@types/node':
+        specifier: ^25.0.5
+        version: 25.0.5
+      markdown-toc:
+        specifier: ^1.2.0
+        version: 1.2.0
+      prettier:
+        specifier: ^3.7.4
+        version: 3.7.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
   utf64/go: {}
 
   utf64/js:

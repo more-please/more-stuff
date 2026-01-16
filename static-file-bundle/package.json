@@ -1,0 +1,31 @@
+{
+  "name": "@moreplease/static-file-bundle",
+  "version": "0.0.1",
+  "description": "Read a directory of files and bundle them into a standalone web server",
+  "license": "0BSD",
+  "author": "Iain Merrick <iain@moreplease.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/more-please/more-stuff.git",
+    "directory": "static-file-bundle"
+  },
+  "type": "module",
+  "main": "static-file-bundle.ts",
+  "bin": {
+    "static-file-bundle": "static-file-bundle.ts"
+  },
+  "scripts": {
+    "format": "prettier --log-level warn -w . && markdown-toc -i README.md",
+    "test": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.5",
+    "markdown-toc": "^1.2.0",
+    "prettier": "^3.7.4",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "tsx": "^4.21.0",
+    "walk-sync": "^4.0.1"
+  }
+}

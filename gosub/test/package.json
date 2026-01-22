@@ -7,10 +7,10 @@
     "test": "vitest run && tsc"
   },
   "devDependencies": {
-    "prettier": "^3.7.4",
+    "prettier": "^3.8.1",
     "typescript": "^5.9.3",
     "unzipit": "^1.4.3",
-    "vitest": "^4.0.16"
+    "vitest": "^4.0.18"
   },
   "dependencies": {
     "gosub-goproxy": "link:../src"

@@ -1,0 +1,53 @@
+{
+  "name": "@moreplease/remark-bundle",
+  "version": "0.0.1",
+  "description": "Remark plugin to bundle linked markdown files into a single document",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "remark-plugin",
+    "markdown",
+    "bundle"
+  ],
+  "bin": {
+    "remark-bundle": "dist/main.js"
+  },
+  "exports": {
+    "module-sync": "./dist/remark-bundle.js"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist/*"
+  ],
+  "tsup": {
+    "entry": [
+      "main.ts",
+      "remark-bundle.ts"
+    ],
+    "format": [
+      "esm"
+    ],
+    "outDir": "dist",
+    "target": "node22",
+    "splitting": false,
+    "dts": true
+  },
+  "scripts": {
+    "prepare": "tsup",
+    "lint": "tsc",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/mdast": "^4.0.4",
+    "@types/node": "^25.1.0",
+    "tsup": "^8.5.1",
+    "vitest": "^4.0.18"
+  },
+  "dependencies": {
+    "remark-parse": "^11.0.0",
+    "remark-stringify": "^11.0.0",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.0.0"
+  }
+}

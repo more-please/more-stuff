@@ -5,6 +5,7 @@ packages:
   - gosub/src
   - gosub/test
   - gosub/website
+  - remark-bundle
   - rollup-plugin-build-info
   - runfig
   - static-file-bundle

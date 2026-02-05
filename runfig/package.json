@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@types/mdast": "^4.0.4",
-    "@types/node": "^25.2.0",
+    "@types/node": "^25.2.1",
     "markdown-toc": "^1.2.0",
     "prettier": "^3.8.1",
     "typescript": "^5.9.3"

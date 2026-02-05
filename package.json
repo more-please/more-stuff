@@ -16,12 +16,12 @@
   },
   "dependencies": {
     "@types/mdast": "^4.0.4",
-    "@types/node": "^25.2.0",
+    "@types/node": "^25.2.1",
     "mdast-builder": "^1.1.1",
     "remark-parse": "^11.0.0",
     "remark-stringify": "^11.0.0",
     "runfig": "workspace:*",
-    "turbo": "^2.8.1",
+    "turbo": "^2.8.3",
     "unified": "^11.0.5",
     "walk-sync": "^4.0.1"
   },

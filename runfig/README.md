@@ -36,7 +36,7 @@ For example, see [`pnpm-workspace.yaml`](../pnpm-workspace.yaml) in this monorep
 Why use Runfig rather than hand-rolling a script to generate configs?
 
 - All the boilerplate file access is handled for you;
-- JSON, TOML and YAML supported out of the box;
+- JSON, TOML, YAML and Markdown supported out of the box;
 - `--unfig` flag for easy bootstrapping.
 
 ## Installation & usage
@@ -51,7 +51,7 @@ Executing `runfig` will then:
 
 - Scan for config files with an additional `.js` or `.ts` extension
 - Load each file and extract its default export
-- Convert each export to the appropriate format (JSON, YAML or TOML)
+- Convert each export to the appropriate format (JSON, YAML, TOML or Markdown)
 - Write a corresponding output file for each input
 
 For example, if Runfig sees a `wrangler.toml.ts` script it will use that to generate `wrangler.toml`.
@@ -195,12 +195,14 @@ If the `--recursive` flag is used, subdirectory paths are preserved in the outpu
 | `.toml.js` | `.toml.ts` |     | `.toml` |
 | `.yaml.js` | `.yaml.ts` |     | `.yaml` |
 | `.yml.js ` | `.yml.ts`  |     | `.yml`  |
+| `.markdown.js` | `.markdown.ts` |     | `.markdown` |
+| `.md.js ` | `.md.ts`  |     | `.md`  |
 
 ## Notes & caveats
 
 I've tried to make this tool reasonably robust and flexible, but fundamentally Runfig is at a "works well enough for me" quality level, hence the 0.x version number. If you're interested in using it, please let me know!
 
-Config scripts are currently executed using [tsx](https://github.com/privatenumber/tsx#readme).
+Runfig requires Node 22 or later (as we rely on [native TypeScript support](https://nodejs.org/en/learn/typescript/run-natively)).
 
 ### Possible future enhancements
 

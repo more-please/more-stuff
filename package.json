@@ -2,6 +2,10 @@
   "name": "more-stuff",
   "private": true,
   "packageManager": "pnpm@10.28.1",
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
     "hooks": "rm -f .git/hooks/pre-commit && ln -s ../../.githooks/pre-commit .git/hooks/pre-commit",
     "codegen": "runfig"

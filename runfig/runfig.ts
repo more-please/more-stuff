@@ -1,4 +1,4 @@
-#!/usr/bin/env tsx
+#!/usr/bin/env node
 
 import * as TOML from "smol-toml";
 import * as YAML from "yaml";

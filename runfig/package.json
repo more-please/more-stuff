@@ -1,6 +1,6 @@
 {
   "name": "runfig",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Down with YAML and TOML! Generate your config files from code, the way nature intended",
   "keywords": [
     "configuration",
@@ -19,18 +19,36 @@
     "node": ">=22.0.0"
   },
   "bin": {
-    "runfig": "runfig.ts"
+    "runfig": "dist/runfig.js"
+  },
+  "files": [
+    "README.md",
+    "LICENSE",
+    "runfig.svg",
+    "dist/*"
+  ],
+  "tsup": {
+    "entry": [
+      "runfig.ts"
+    ],
+    "format": [
+      "esm"
+    ],
+    "outDir": "dist",
+    "target": "node22",
+    "splitting": false
   },
   "scripts": {
     "format": "prettier --log-level warn -w . && markdown-toc -i README.md",
-    "test": "tsc"
+    "test": "tsc",
+    "prepare": "tsup"
   },
   "devDependencies": {
     "@types/mdast": "^4.0.4",
     "@types/node": "^25.2.1",
     "markdown-toc": "^1.2.0",
     "prettier": "^3.8.1",
-    "typescript": "^5.9.3"
+    "tsup": "^8.5.1"
   },
   "dependencies": {
     "import-meta-resolve": "^4.2.0",
@@ -38,7 +56,6 @@
     "remark-parse": "^11.0.0",
     "remark-stringify": "^11.0.0",
     "smol-toml": "^1.6.0",
-    "tsx": "^4.21.0",
     "unified": "^11.0.5",
     "walk-sync": "^4.0.1",
     "yaml": "^2.8.2"

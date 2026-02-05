@@ -1,6 +1,6 @@
 ![GOSUB](https://raw.githubusercontent.com/more-please/more-stuff/main/gosub/gosub.svg)
 
-GOPROXY implementation that allows Go modules to live in subdirectories
+GOPROXY implementation that allows Go modules to live in subdirectories.
 
 ## Contents
 

@@ -1,6 +1,6 @@
 {
   "name": "@moreplease/remark-bundle",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Remark plugin to bundle linked markdown files into a single document",
   "type": "module",
   "license": "MIT",

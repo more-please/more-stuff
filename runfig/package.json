@@ -1,6 +1,6 @@
 {
   "name": "runfig",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Down with YAML and TOML! Generate your config files from code, the way nature intended",
   "keywords": [
     "configuration",

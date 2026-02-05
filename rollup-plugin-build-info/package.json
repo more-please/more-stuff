@@ -7,7 +7,7 @@
     "vite",
     "vite-plugin"
   ],
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "import { commit, timestamp } from \"build-info\"",
   "scripts": {
     "test": "tsc",

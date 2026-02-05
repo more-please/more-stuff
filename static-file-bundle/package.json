@@ -1,6 +1,6 @@
 {
   "name": "@moreplease/static-file-bundle",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Read a directory of files and bundle them into a standalone web server",
   "license": "0BSD",
   "author": "Iain Merrick <iain@moreplease.com>",

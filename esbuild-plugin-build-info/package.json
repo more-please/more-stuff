@@ -20,7 +20,7 @@
   "types": "build/index.d.ts",
   "devDependencies": {
     "@types/node": "^25.2.1",
-    "esbuild": "^0.27.2",
+    "esbuild": "^0.27.3",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   },

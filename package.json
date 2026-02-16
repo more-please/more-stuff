@@ -21,7 +21,7 @@
     "remark-parse": "^11.0.0",
     "remark-stringify": "^11.0.0",
     "runfig": "workspace:*",
-    "turbo": "^2.8.3",
+    "turbo": "^2.8.9",
     "unified": "^11.0.5",
     "walk-sync": "^4.0.1"
   },

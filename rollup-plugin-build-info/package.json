@@ -11,22 +11,32 @@
   ],
   "version": "0.0.8",
   "description": "import { commit, timestamp } from \"build-info\"",
+  "tsup": {
+    "entry": [
+      "rollup-plugin-build-info.ts"
+    ],
+    "format": [
+      "esm"
+    ],
+    "outDir": "build",
+    "target": "node18",
+    "splitting": false,
+    "dts": true
+  },
   "scripts": {
     "test": "tsc",
-    "prepare": "rollup --config rollup.config.ts --configPlugin typescript"
+    "prepare": "tsup"
   },
   "files": [
     "LICENSE",
     "README.md",
     "build/*"
   ],
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "main": "build/rollup-plugin-build-info.js",
+  "types": "build/rollup-plugin-build-info.d.ts",
   "devDependencies": {
-    "@rollup/plugin-typescript": "^12.3.0",
     "@types/node": "^25.5.0",
-    "rollup": "^4.59.0",
-    "tslib": "^2.8.1",
+    "tsup": "^8.5.1",
     "typescript": "^5.9.3"
   }
 }

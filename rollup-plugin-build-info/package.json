@@ -33,7 +33,7 @@
     "build/*"
   ],
   "main": "build/rollup-plugin-build-info.js",
-  "types": "build/build-info.d.ts",
+  "types": "build/index.d.ts",
   "devDependencies": {
     "@types/node": "^25.5.0",
     "tsup": "^8.5.1",

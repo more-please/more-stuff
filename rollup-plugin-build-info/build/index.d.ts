@@ -1,8 +1,8 @@
 export { BuildInfo } from "./build-info";
 
-import type { Plugin } from "vite";
-
-export default function plugin(): Pick<
-  Plugin,
-  "name" | "buildStart" | "resolveId" | "load"
->;
+export default function plugin(): {
+  name: string;
+  buildStart(): void;
+  resolveId(source: string): string | null;
+  load(id: string): Promise<string | null>;
+};

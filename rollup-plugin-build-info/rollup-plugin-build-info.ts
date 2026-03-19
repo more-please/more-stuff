@@ -1,4 +1,3 @@
-import type { Plugin } from "vite";
 import type { BuildInfo } from "./build/index";
 import { exec } from "node:child_process";
 
@@ -48,7 +47,12 @@ export async function buildInfo(): Promise<BuildInfo> {
   }
 }
 
-export default function plugin(): Pick<Plugin, "name" | "buildStart" | "resolveId" | "load"> {
+export default function plugin(): {
+  name: string;
+  buildStart(): void;
+  resolveId(source: string): string | null;
+  load(id: string): Promise<string | null>;
+} {
   let info = buildInfo();
   return {
     name: "rollup-plugin-build-info",

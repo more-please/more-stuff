@@ -9,7 +9,7 @@
     "vite-plugin",
     "astro"
   ],
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "import { commit, timestamp } from \"@moreplease/build-info\"",
   "tsup": {
     "entry": [

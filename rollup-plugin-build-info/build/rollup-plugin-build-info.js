@@ -1,7 +1,7 @@
 // rollup-plugin-build-info.ts
 import { exec } from "child_process";
-var MODULE_NAME = "build-info";
-var LOAD_NAME = "\0build-info";
+var MODULE_NAME = "@moreplease/build-info";
+var LOAD_NAME = "\0@moreplease/build-info";
 async function branch() {
   if (process.env.GITHUB_REF_NAME) {
     return process.env.GITHUB_REF_NAME;

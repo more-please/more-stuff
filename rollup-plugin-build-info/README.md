@@ -35,10 +35,10 @@ type BuildInfo = {
 }
 ```
 
-Use it in your code by importing `build-info`:
+Use it in your code by importing `@moreplease/build-info`:
 ```js
-import buildInfo from "build-info";
+import buildInfo from "@moreplease/build-info";
 
 // Or if you prefer, import each field separately
-import { branch, commit, timestamp } from "build-info";
+import { branch, commit, timestamp } from "@moreplease/build-info";
 ```

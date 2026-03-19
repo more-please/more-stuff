@@ -10,7 +10,7 @@
     "astro"
   ],
   "version": "0.0.8",
-  "description": "import { commit, timestamp } from \"build-info\"",
+  "description": "import { commit, timestamp } from \"@moreplease/build-info\"",
   "tsup": {
     "entry": [
       "rollup-plugin-build-info.ts"

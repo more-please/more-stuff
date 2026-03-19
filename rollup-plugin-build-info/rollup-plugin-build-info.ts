@@ -6,8 +6,8 @@ export type BuildInfo = {
   timestamp: Date;
 };
 
-const MODULE_NAME = "build-info";
-const LOAD_NAME = "\0build-info";
+const MODULE_NAME = "@moreplease/build-info";
+const LOAD_NAME = "\0@moreplease/build-info";
 
 export async function branch(): Promise<BuildInfo["branch"]> {
   if (process.env.GITHUB_REF_NAME) {

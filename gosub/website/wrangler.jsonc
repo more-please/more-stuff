@@ -1,6 +1,6 @@
 {
   "name": "gosub",
-  "main": "./build/_worker.js",
+  "main": "@astrojs/cloudflare/entrypoints/server",
   "compatibility_date": "2024-11-11",
   "workers_dev": false,
   "observability": {

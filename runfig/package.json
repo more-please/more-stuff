@@ -55,7 +55,7 @@
     "json5": "^2.2.3",
     "remark-parse": "^11.0.0",
     "remark-stringify": "^11.0.0",
-    "smol-toml": "^1.6.0",
+    "smol-toml": "^1.6.1",
     "unified": "^11.0.5",
     "walk-sync": "^4.0.1",
     "yaml": "^2.8.2"

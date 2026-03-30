@@ -9,7 +9,7 @@
   "devDependencies": {
     "prettier": "^3.8.1",
     "typescript": "^5.9.3",
-    "unzipit": "^1.4.3",
+    "unzipit": "^2.0.0",
     "vitest": "^4.1.0"
   },
   "dependencies": {

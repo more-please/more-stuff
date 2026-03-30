@@ -10,7 +10,7 @@
     "target": "ES2015",
     "module": "ES2015",
     "lib": ["ES2018", "WebWorker"],
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "declaration": true,
     "forceConsistentCasingInFileNames": true,

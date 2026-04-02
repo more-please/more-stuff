@@ -11,7 +11,7 @@
   ],
   "version": "0.0.11",
   "description": "import { commit, timestamp } from \"@moreplease/build-info\"",
-  "tsup": {
+  "tsdown": {
     "entry": [
       "rollup-plugin-build-info.ts"
     ],
@@ -21,22 +21,23 @@
     "outDir": "build",
     "target": "node18",
     "splitting": false,
-    "dts": true
+    "dts": true,
+    "clean": false
   },
   "scripts": {
     "test": "tsc",
-    "prepare": "tsup"
+    "prepare": "tsdown"
   },
   "files": [
     "LICENSE",
     "README.md",
     "build/*"
   ],
-  "main": "build/rollup-plugin-build-info.js",
+  "main": "build/rollup-plugin-build-info.mjs",
   "types": "build/index.d.ts",
   "devDependencies": {
     "@types/node": "^25.5.0",
-    "tsup": "^8.5.1",
+    "tsdown": "^0.21.7",
     "typescript": "^5.9.3"
   }
 }

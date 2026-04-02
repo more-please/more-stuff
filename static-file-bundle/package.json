@@ -18,18 +18,30 @@
   "scripts": {
     "format": "prettier --log-level warn -w . && markdown-toc -i README.md",
     "test": "tsc",
-    "prepare": "tsup"
+    "prepare": "tsdown"
   },
   "files": [
     "LICENSE",
     "README.md",
     "build/*"
   ],
+  "tsdown": {
+    "entry": ["static-file-bundle.ts"],
+    "format": ["esm"],
+    "dts": true,
+    "target": "node18",
+    "minify": false,
+    "clean": true,
+    "outDir": "build",
+    "deps": {
+      "neverBundle": ["node:fs", "node:path"]
+    }
+  },
   "devDependencies": {
     "@types/node": "^25.5.0",
     "markdown-toc": "^1.2.0",
     "prettier": "^3.8.1",
-    "tsup": "^8.5.1",
+    "tsdown": "^0.21.7",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "walk-sync": "^4.0.1"

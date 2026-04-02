@@ -20,7 +20,7 @@
     "README.md",
     "dist/*"
   ],
-  "tsup": {
+  "tsdown": {
     "entry": [
       "main.ts",
       "remark-bundle.ts"
@@ -34,14 +34,14 @@
     "dts": true
   },
   "scripts": {
-    "prepare": "tsup",
+    "prepare": "tsdown",
     "lint": "tsc",
     "test": "vitest run"
   },
   "devDependencies": {
     "@types/mdast": "^4.0.4",
     "@types/node": "^25.5.0",
-    "tsup": "^8.5.1",
+    "tsdown": "^0.21.7",
     "typescript": "^5.9.3",
     "vitest": "^4.1.0"
   },

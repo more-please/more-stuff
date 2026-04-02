@@ -19,7 +19,7 @@
     "node": ">=22.0.0"
   },
   "bin": {
-    "runfig": "dist/runfig.js"
+    "runfig": "dist/runfig.mjs"
   },
   "files": [
     "README.md",
@@ -27,7 +27,7 @@
     "runfig.svg",
     "dist/*"
   ],
-  "tsup": {
+  "tsdown": {
     "entry": [
       "runfig.ts"
     ],
@@ -41,14 +41,14 @@
   "scripts": {
     "format": "prettier --log-level warn -w . && markdown-toc -i README.md",
     "test": "tsc",
-    "prepare": "tsup"
+    "prepare": "tsdown"
   },
   "devDependencies": {
     "@types/mdast": "^4.0.4",
     "@types/node": "^25.5.0",
     "markdown-toc": "^1.2.0",
     "prettier": "^3.8.1",
-    "tsup": "^8.5.1"
+    "tsdown": "^0.21.7"
   },
   "dependencies": {
     "import-meta-resolve": "^4.2.0",

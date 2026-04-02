@@ -36,13 +36,7 @@
     "target": "node18",
     "minify": false,
     "clean": true,
-    "outDir": "build",
-    "deps": {
-      "neverBundle": [
-        "node:fs",
-        "node:path"
-      ]
-    }
+    "outDir": "build"
   },
   "devDependencies": {
     "@types/node": "^25.5.0",

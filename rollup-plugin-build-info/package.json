@@ -1,5 +1,6 @@
 {
   "name": "@moreplease/rollup-plugin-build-info",
+  "version": "0.0.12",
   "type": "module",
   "keywords": [
     "rollup",
@@ -9,7 +10,6 @@
     "vite-plugin",
     "astro"
   ],
-  "version": "0.0.11",
   "description": "import { commit, timestamp } from \"@moreplease/build-info\"",
   "tsdown": {
     "entry": [

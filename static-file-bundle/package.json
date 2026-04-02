@@ -26,15 +26,22 @@
     "build/*"
   ],
   "tsdown": {
-    "entry": ["static-file-bundle.ts"],
-    "format": ["esm"],
+    "entry": [
+      "static-file-bundle.ts"
+    ],
+    "format": [
+      "esm"
+    ],
     "dts": true,
     "target": "node18",
     "minify": false,
     "clean": true,
     "outDir": "build",
     "deps": {
-      "neverBundle": ["node:fs", "node:path"]
+      "neverBundle": [
+        "node:fs",
+        "node:path"
+      ]
     }
   },
   "devDependencies": {
@@ -43,7 +50,7 @@
     "prettier": "^3.8.1",
     "tsdown": "^0.21.7",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.2",
     "walk-sync": "^4.0.1"
   }
 }

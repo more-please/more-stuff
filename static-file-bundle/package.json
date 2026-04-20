@@ -42,7 +42,7 @@
     "@types/node": "^25.5.0",
     "markdown-toc": "^1.2.0",
     "prettier": "^3.8.1",
-    "tsdown": "^0.21.7",
+    "tsdown": "^0.21.9",
     "tsx": "^4.21.0",
     "typescript": "^6.0.2",
     "walk-sync": "^4.0.1"

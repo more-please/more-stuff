@@ -48,7 +48,7 @@
     "@types/node": "^25.5.0",
     "markdown-toc": "^1.2.0",
     "prettier": "^3.8.1",
-    "tsdown": "^0.21.7"
+    "tsdown": "^0.21.9"
   },
   "dependencies": {
     "import-meta-resolve": "^4.2.0",

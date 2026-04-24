@@ -31,7 +31,7 @@
     "@moreplease/rollup-plugin-build-info": "workspace:*",
     "astro": "^6.1.9",
     "gosub-goproxy": "workspace:*",
-    "prettier": "^3.8.1",
+    "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
     "solid-js": "^1.9.12",
     "typescript": "^6.0.2",

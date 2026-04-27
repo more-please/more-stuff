@@ -35,7 +35,7 @@
     "prettier-plugin-astro": "^0.14.1",
     "typescript": "^6.0.2",
     "utf64": "workspace:*",
-    "vitest": "^4.1.4",
+    "vitest": "^4.1.5",
     "wrangler": "^4.85.0"
   }
 }

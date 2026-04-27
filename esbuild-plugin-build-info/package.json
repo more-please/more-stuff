@@ -22,7 +22,7 @@
     "@types/node": "^25.5.0",
     "esbuild": "^0.28.0",
     "tsx": "^4.21.0",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.3"
   },
   "peerDependencies": {
     "esbuild": "^0.20.0"

@@ -1,0 +1,35 @@
+{
+  "name": "@moreplease/build-info",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "import { commit, timestamp } from \"@moreplease/build-info\"",
+  "tsdown": {
+    "entry": [
+      "build-info.ts"
+    ],
+    "format": [
+      "esm"
+    ],
+    "outDir": "build",
+    "target": "node18",
+    "splitting": false,
+    "dts": true,
+    "clean": false
+  },
+  "scripts": {
+    "test": "tsc",
+    "prepare": "tsdown"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "build/*"
+  ],
+  "main": "build/build-info.mjs",
+  "types": "build/index.d.ts",
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "tsdown": "^0.21.7",
+    "typescript": "^6.0.2"
+  }
+}

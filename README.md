@@ -7,6 +7,10 @@
 [![Go](https://github.com/more-please/more-stuff/actions/workflows/go.yml/badge.svg)](https://github.com/more-please/more-stuff/actions/workflows/go.yml)
 [![Rust](https://github.com/more-please/more-stuff/actions/workflows/rust.yml/badge.svg)](https://github.com/more-please/more-stuff/actions/workflows/rust.yml)
 
+## [build-info](build-info/README.md)
+
+Embed build metadata in your bundled code.
+
 ## [esbuild-plugin-build-info](esbuild-plugin-build-info/README.md)
 
 Embed build metadata in your bundled code.

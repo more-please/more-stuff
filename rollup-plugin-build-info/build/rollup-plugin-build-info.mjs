@@ -33,6 +33,7 @@ function plugin() {
 	let info = buildInfo();
 	return {
 		name: "rollup-plugin-build-info",
+		enforce: "pre",
 		buildStart() {
 			info = buildInfo();
 		},

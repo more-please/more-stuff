@@ -54,6 +54,7 @@ export async function buildInfo(): Promise<BuildInfo> {
 
 export default function plugin(): {
   name: string;
+  enforce: "pre";
   buildStart(): void;
   resolveId(source: string): string | null;
   load(id: string): Promise<string | null>;
@@ -61,6 +62,7 @@ export default function plugin(): {
   let info = buildInfo();
   return {
     name: "rollup-plugin-build-info",
+    enforce: "pre",
     buildStart() {
       info = buildInfo();
     },

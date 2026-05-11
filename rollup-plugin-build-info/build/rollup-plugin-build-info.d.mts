@@ -9,6 +9,7 @@ declare function commit(): Promise<BuildInfo["commit"]>;
 declare function buildInfo(): Promise<BuildInfo>;
 declare function plugin(): {
   name: string;
+  enforce: "pre";
   buildStart(): void;
   resolveId(source: string): string | null;
   load(id: string): Promise<string | null>;

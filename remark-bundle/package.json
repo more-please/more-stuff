@@ -42,7 +42,7 @@
     "@types/mdast": "^4.0.4",
     "@types/node": "^25.7.0",
     "tsdown": "^0.22.0",
-    "typescript": "^6.0.2",
+    "typescript": "^6.0.3",
     "vitest": "^4.1.6"
   },
   "dependencies": {

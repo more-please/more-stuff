@@ -9,4 +9,10 @@ const packages = paths.map((p) => dirname(p)).filter((p) => p !== ".");
 
 export default {
   packages,
+  allowBuilds: {
+    "@journeyapps/ts-browser-compat": true,
+    esbuild: false,
+    sharp: false,
+    workerd: false,
+  }
 };

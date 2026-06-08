@@ -9,7 +9,7 @@
   "description": "import { commit, timestamp } from \"build-info\"",
   "scripts": {
     "test": "tsc",
-    "prepare": "tsx build.ts"
+    "prepare": "./build.ts"
   },
   "files": [
     "LICENSE",
@@ -21,7 +21,6 @@
   "devDependencies": {
     "@types/node": "^25.9.0",
     "esbuild": "^0.28.0",
-    "tsx": "^4.21.0",
     "typescript": "^6.0.3"
   },
   "peerDependencies": {

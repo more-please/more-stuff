@@ -43,7 +43,7 @@
     "@types/node": "^25.9.0",
     "tsdown": "^0.22.0",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.6"
+    "vitest": "^4.1.8"
   },
   "dependencies": {
     "remark-parse": "^11.0.0",

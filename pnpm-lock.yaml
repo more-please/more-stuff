@@ -12,8 +12,8 @@ importers:
         specifier: ^4.0.4
         version: 4.0.4
       '@types/node':
-        specifier: ^25.9.0
-        version: 25.9.0
+        specifier: ^25.9.3
+        version: 25.9.3
       mdast-builder:
         specifier: ^1.1.1
         version: 1.1.1
@@ -39,8 +39,8 @@ importers:
   build-info:
     devDependencies:
       '@types/node':
-        specifier: ^25.5.0
-        version: 25.9.0
+        specifier: ^25.9.3
+        version: 25.9.3
       tsdown:
         specifier: ^0.22.2
         version: 0.22.2(tsx@4.21.0)(typescript@6.0.3)(unrun@0.2.39)
@@ -51,8 +51,8 @@ importers:
   esbuild-plugin-build-info:
     devDependencies:
       '@types/node':
-        specifier: ^25.9.0
-        version: 25.9.0
+        specifier: ^25.9.3
+        version: 25.9.3
       esbuild:
         specifier: ^0.28.0
         version: 0.28.0
@@ -99,7 +99,7 @@ importers:
         version: 2.0.3
       vitest:
         specifier: ^4.1.8
-        version: 4.1.8(@types/node@25.9.0)(jsdom@26.0.0)(vite@8.0.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.9.0)(esbuild@0.27.7)(jiti@2.4.2)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))
+        version: 4.1.8(@types/node@25.9.3)(jsdom@26.0.0)(vite@8.0.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.9.3)(esbuild@0.27.7)(jiti@2.4.2)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))
 
   gosub/website:
     dependencies:
@@ -108,16 +108,16 @@ importers:
         version: 0.9.9(prettier-plugin-astro@0.14.1)(prettier@3.8.3)(typescript@6.0.3)
       '@astrojs/cloudflare':
         specifier: ^13.7.0
-        version: 13.7.0(@types/node@25.9.0)(astro@6.4.4(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(rollup@4.62.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(workerd@1.20260616.1)(wrangler@4.101.0)(yaml@2.9.0)
+        version: 13.7.0(@types/node@25.9.3)(astro@6.4.4(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(rollup@4.62.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(workerd@1.20260616.1)(wrangler@4.101.0)(yaml@2.9.0)
       '@astrojs/solid-js':
         specifier: ^6.0.1
-        version: 6.0.1(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(solid-js@1.9.13)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
+        version: 6.0.1(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(solid-js@1.9.13)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
       '@moreplease/rollup-plugin-build-info':
         specifier: workspace:*
         version: link:../../rollup-plugin-build-info
       astro:
         specifier: ^6.4.4
-        version: 6.4.4(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(rollup@4.62.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
+        version: 6.4.4(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(rollup@4.62.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
       gosub-goproxy:
         specifier: workspace:*
         version: link:../src
@@ -138,7 +138,7 @@ importers:
         version: link:../../utf64/js
       vitest:
         specifier: ^4.1.8
-        version: 4.1.8(@types/node@25.9.0)(jsdom@26.0.0)(vite@8.0.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.9.0)(esbuild@0.27.7)(jiti@2.4.2)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))
+        version: 4.1.8(@types/node@25.9.3)(jsdom@26.0.0)(vite@8.0.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.9.3)(esbuild@0.27.7)(jiti@2.4.2)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))
       wrangler:
         specifier: ^4.101.0
         version: 4.101.0
@@ -162,8 +162,8 @@ importers:
         specifier: ^4.0.4
         version: 4.0.4
       '@types/node':
-        specifier: ^25.9.0
-        version: 25.9.0
+        specifier: ^25.9.3
+        version: 25.9.3
       tsdown:
         specifier: ^0.22.2
         version: 0.22.2(tsx@4.21.0)(typescript@6.0.3)(unrun@0.2.39)
@@ -172,13 +172,13 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^4.1.8
-        version: 4.1.8(@types/node@25.9.0)(jsdom@26.0.0)(vite@8.0.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.9.0)(esbuild@0.27.7)(jiti@2.4.2)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))
+        version: 4.1.8(@types/node@25.9.3)(jsdom@26.0.0)(vite@8.0.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.9.3)(esbuild@0.27.7)(jiti@2.4.2)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))
 
   rollup-plugin-build-info:
     devDependencies:
       '@types/node':
-        specifier: ^25.9.0
-        version: 25.9.0
+        specifier: ^25.9.3
+        version: 25.9.3
       tsdown:
         specifier: ^0.22.2
         version: 0.22.2(tsx@4.21.0)(typescript@6.0.3)(unrun@0.2.39)
@@ -217,8 +217,8 @@ importers:
         specifier: ^4.0.4
         version: 4.0.4
       '@types/node':
-        specifier: ^25.9.0
-        version: 25.9.0
+        specifier: ^25.9.3
+        version: 25.9.3
       markdown-toc:
         specifier: ^1.2.0
         version: 1.2.0
@@ -232,8 +232,8 @@ importers:
   static-file-bundle:
     devDependencies:
       '@types/node':
-        specifier: ^25.9.0
-        version: 25.9.0
+        specifier: ^25.9.3
+        version: 25.9.3
       markdown-toc:
         specifier: ^1.2.0
         version: 1.2.0
@@ -258,8 +258,8 @@ importers:
         specifier: github:more-please/ts-browser-compat
         version: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@6.0.3)
       '@types/node':
-        specifier: ^25.9.0
-        version: 25.9.0
+        specifier: ^25.9.3
+        version: 25.9.3
       markdown-toc:
         specifier: ^1.2.0
         version: 1.2.0
@@ -271,7 +271,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^4.1.8
-        version: 4.1.8(@types/node@25.9.0)(jsdom@26.0.0)(vite@8.0.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.9.0)(esbuild@0.27.7)(jiti@2.4.2)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))
+        version: 4.1.8(@types/node@25.9.3)(jsdom@26.0.0)(vite@8.0.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.9.3)(esbuild@0.27.7)(jiti@2.4.2)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))
 
   utf64/py: {}
 
@@ -282,16 +282,16 @@ importers:
         version: 0.9.9(prettier-plugin-astro@0.14.1)(prettier@3.8.3)(typescript@6.0.3)
       '@astrojs/cloudflare':
         specifier: ^13.7.0
-        version: 13.7.0(@types/node@25.9.0)(astro@6.4.4(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(rollup@4.62.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(workerd@1.20260616.1)(wrangler@4.101.0)(yaml@2.9.0)
+        version: 13.7.0(@types/node@25.9.3)(astro@6.4.4(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(rollup@4.62.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(workerd@1.20260616.1)(wrangler@4.101.0)(yaml@2.9.0)
       '@astrojs/solid-js':
         specifier: ^6.0.1
-        version: 6.0.1(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(solid-js@1.9.13)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
+        version: 6.0.1(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(solid-js@1.9.13)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
       '@moreplease/rollup-plugin-build-info':
         specifier: workspace:*
         version: link:../../rollup-plugin-build-info
       astro:
         specifier: ^6.4.4
-        version: 6.4.4(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(rollup@4.62.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
+        version: 6.4.4(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(rollup@4.62.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
       gosub-goproxy:
         specifier: workspace:*
         version: link:../../gosub/src
@@ -309,7 +309,7 @@ importers:
         version: link:../js
       vitest:
         specifier: ^4.1.8
-        version: 4.1.8(@types/node@25.9.0)(jsdom@26.0.0)(vite@8.0.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.9.0)(esbuild@0.27.7)(jiti@2.4.2)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))
+        version: 4.1.8(@types/node@25.9.3)(jsdom@26.0.0)(vite@8.0.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.9.3)(esbuild@0.27.7)(jiti@2.4.2)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))
       wrangler:
         specifier: ^4.101.0
         version: 4.101.0
@@ -1992,8 +1992,8 @@ packages:
   '@types/nlcst@2.0.3':
     resolution: {integrity: sha512-vSYNSDe6Ix3q+6Z7ri9lyWqgGhJTmzRjZRqyq15N0Z/1/UnVsno9G/N40NBijoYx2seFDIl0+B2mgAb9mezUCA==}
 
-  '@types/node@25.9.0':
-    resolution: {integrity: sha512-AOQwYUNolgy3VosiRqXrACUXTN8nJUtPl7FJXMqZVyxiiCLhQuG3jXKvCS1ALr+Y2OmZhzzLVlYPEqJaiqkaJQ==}
+  '@types/node@25.9.3':
+    resolution: {integrity: sha512-603BddQMv3pUcr4U2dhujk83N2tTDVr/34wII2B6bJy6g+8WD6yUb11jszNs0gdi4PesVWl7ABt8nYMVpnLUcg==}
 
   '@types/unist@2.0.11':
     resolution: {integrity: sha512-CmBKiL6NNo/OqgmMn95Fk9Whlp2mtvIv+KNpQKN2F4SjvrEesubTRWGYSg+BnWZOnlCaSTU1sMpsBOzgbYhnsA==}
@@ -4265,15 +4265,15 @@ snapshots:
       - prettier
       - prettier-plugin-astro
 
-  '@astrojs/cloudflare@13.7.0(@types/node@25.9.0)(astro@6.4.4(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(rollup@4.62.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(workerd@1.20260616.1)(wrangler@4.101.0)(yaml@2.9.0)':
+  '@astrojs/cloudflare@13.7.0(@types/node@25.9.3)(astro@6.4.4(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(rollup@4.62.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(workerd@1.20260616.1)(wrangler@4.101.0)(yaml@2.9.0)':
     dependencies:
       '@astrojs/internal-helpers': 0.10.0
       '@astrojs/underscore-redirects': 1.0.3
-      '@cloudflare/vite-plugin': 1.41.0(vite@7.3.5(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))(workerd@1.20260616.1)(wrangler@4.101.0)
-      astro: 6.4.4(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(rollup@4.62.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
+      '@cloudflare/vite-plugin': 1.41.0(vite@7.3.5(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))(workerd@1.20260616.1)(wrangler@4.101.0)
+      astro: 6.4.4(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(rollup@4.62.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
       piccolore: 0.1.3
       tinyglobby: 0.2.17
-      vite: 7.3.5(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
+      vite: 7.3.5(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
       wrangler: 4.101.0
     transitivePeerDependencies:
       - '@types/node'
@@ -4358,11 +4358,11 @@ snapshots:
     dependencies:
       prismjs: 1.30.0
 
-  '@astrojs/solid-js@6.0.1(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(solid-js@1.9.13)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)':
+  '@astrojs/solid-js@6.0.1(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(solid-js@1.9.13)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)':
     dependencies:
       solid-js: 1.9.13
-      vite: 7.3.1(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
-      vite-plugin-solid: 2.11.11(solid-js@1.9.13)(vite@7.3.1(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))
+      vite: 7.3.1(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
+      vite-plugin-solid: 2.11.11(solid-js@1.9.13)(vite@7.3.1(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))
     transitivePeerDependencies:
       - '@testing-library/jest-dom'
       - '@types/node'
@@ -4549,12 +4549,12 @@ snapshots:
     optionalDependencies:
       workerd: 1.20260616.1
 
-  '@cloudflare/vite-plugin@1.41.0(vite@7.3.5(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))(workerd@1.20260616.1)(wrangler@4.101.0)':
+  '@cloudflare/vite-plugin@1.41.0(vite@7.3.5(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))(workerd@1.20260616.1)(wrangler@4.101.0)':
     dependencies:
       '@cloudflare/unenv-preset': 2.16.1(unenv@2.0.0-rc.24)(workerd@1.20260616.1)
       miniflare: 4.20260616.0
       unenv: 2.0.0-rc.24
-      vite: 7.3.5(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
+      vite: 7.3.5(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
       wrangler: 4.101.0
       ws: 8.20.1
     transitivePeerDependencies:
@@ -5491,7 +5491,7 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
 
-  '@types/node@25.9.0':
+  '@types/node@25.9.3':
     dependencies:
       undici-types: 7.24.6
 
@@ -5510,13 +5510,13 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.1.0
 
-  '@vitest/mocker@4.1.8(vite@8.0.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.9.0)(esbuild@0.27.7)(jiti@2.4.2)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))':
+  '@vitest/mocker@4.1.8(vite@8.0.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.9.3)(esbuild@0.27.7)(jiti@2.4.2)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))':
     dependencies:
       '@vitest/spy': 4.1.8
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 8.0.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.9.0)(esbuild@0.27.7)(jiti@2.4.2)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
+      vite: 8.0.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.9.3)(esbuild@0.27.7)(jiti@2.4.2)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
 
   '@vitest/pretty-format@4.1.8':
     dependencies:
@@ -5646,7 +5646,7 @@ snapshots:
       estree-walker: 3.0.3
       pathe: 2.0.3
 
-  astro@6.4.4(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(rollup@4.62.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0):
+  astro@6.4.4(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(rollup@4.62.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0):
     dependencies:
       '@astrojs/compiler': 4.0.0
       '@astrojs/internal-helpers': 0.10.0
@@ -5698,8 +5698,8 @@ snapshots:
       unist-util-visit: 5.1.0
       unstorage: 1.17.5
       vfile: 6.0.3
-      vite: 7.3.5(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
-      vitefu: 1.1.3(vite@7.3.5(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))
+      vite: 7.3.5(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
+      vitefu: 1.1.3(vite@7.3.5(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))
       xxhash-wasm: 1.1.0
       yargs-parser: 22.0.0
       zod: 4.4.3
@@ -7812,7 +7812,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite-plugin-solid@2.11.11(solid-js@1.9.13)(vite@7.3.1(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)):
+  vite-plugin-solid@2.11.11(solid-js@1.9.13)(vite@7.3.1(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)):
     dependencies:
       '@babel/core': 7.29.0
       '@types/babel__core': 7.20.5
@@ -7820,12 +7820,12 @@ snapshots:
       merge-anything: 5.1.7
       solid-js: 1.9.13
       solid-refresh: 0.6.3(solid-js@1.9.13)
-      vite: 7.3.1(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
-      vitefu: 1.1.3(vite@7.3.1(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))
+      vite: 7.3.1(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
+      vitefu: 1.1.3(vite@7.3.1(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))
     transitivePeerDependencies:
       - supports-color
 
-  vite@7.3.1(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0):
+  vite@7.3.1(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0):
     dependencies:
       esbuild: 0.27.7
       fdir: 6.5.0(picomatch@4.0.4)
@@ -7834,7 +7834,7 @@ snapshots:
       rollup: 4.60.1
       tinyglobby: 0.2.17
     optionalDependencies:
-      '@types/node': 25.9.0
+      '@types/node': 25.9.3
       fsevents: 2.3.3
       jiti: 2.4.2
       lightningcss: 1.32.0
@@ -7842,7 +7842,7 @@ snapshots:
       tsx: 4.21.0
       yaml: 2.9.0
 
-  vite@7.3.5(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0):
+  vite@7.3.5(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0):
     dependencies:
       esbuild: 0.27.7
       fdir: 6.5.0(picomatch@4.0.4)
@@ -7851,7 +7851,7 @@ snapshots:
       rollup: 4.62.0
       tinyglobby: 0.2.17
     optionalDependencies:
-      '@types/node': 25.9.0
+      '@types/node': 25.9.3
       fsevents: 2.3.3
       jiti: 2.4.2
       lightningcss: 1.32.0
@@ -7859,7 +7859,7 @@ snapshots:
       tsx: 4.21.0
       yaml: 2.9.0
 
-  vite@8.0.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.9.0)(esbuild@0.27.7)(jiti@2.4.2)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0):
+  vite@8.0.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.9.3)(esbuild@0.27.7)(jiti@2.4.2)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.4
@@ -7867,7 +7867,7 @@ snapshots:
       rolldown: 1.0.0-rc.10(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
       tinyglobby: 0.2.17
     optionalDependencies:
-      '@types/node': 25.9.0
+      '@types/node': 25.9.3
       esbuild: 0.27.7
       fsevents: 2.3.3
       jiti: 2.4.2
@@ -7878,18 +7878,18 @@ snapshots:
       - '@emnapi/core'
       - '@emnapi/runtime'
 
-  vitefu@1.1.3(vite@7.3.1(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)):
+  vitefu@1.1.3(vite@7.3.1(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)):
     optionalDependencies:
-      vite: 7.3.1(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
+      vite: 7.3.1(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
 
-  vitefu@1.1.3(vite@7.3.5(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)):
+  vitefu@1.1.3(vite@7.3.5(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)):
     optionalDependencies:
-      vite: 7.3.5(@types/node@25.9.0)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
+      vite: 7.3.5(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
 
-  vitest@4.1.8(@types/node@25.9.0)(jsdom@26.0.0)(vite@8.0.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.9.0)(esbuild@0.27.7)(jiti@2.4.2)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)):
+  vitest@4.1.8(@types/node@25.9.3)(jsdom@26.0.0)(vite@8.0.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.9.3)(esbuild@0.27.7)(jiti@2.4.2)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)):
     dependencies:
       '@vitest/expect': 4.1.8
-      '@vitest/mocker': 4.1.8(vite@8.0.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.9.0)(esbuild@0.27.7)(jiti@2.4.2)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))
+      '@vitest/mocker': 4.1.8(vite@8.0.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.9.3)(esbuild@0.27.7)(jiti@2.4.2)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))
       '@vitest/pretty-format': 4.1.8
       '@vitest/runner': 4.1.8
       '@vitest/snapshot': 4.1.8
@@ -7906,10 +7906,10 @@ snapshots:
       tinyexec: 1.2.4
       tinyglobby: 0.2.17
       tinyrainbow: 3.1.0
-      vite: 8.0.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.9.0)(esbuild@0.27.7)(jiti@2.4.2)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
+      vite: 8.0.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.9.3)(esbuild@0.27.7)(jiti@2.4.2)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
-      '@types/node': 25.9.0
+      '@types/node': 25.9.3
       jsdom: 26.0.0
     transitivePeerDependencies:
       - msw

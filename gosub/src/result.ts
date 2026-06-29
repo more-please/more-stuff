@@ -14,7 +14,7 @@ export function ok<T>(value: T): ResultOK<T> {
   return { ok: true, value };
 }
 
-export function err(cause: any): ResultErr {
+export function err(cause: Error | unknown): ResultErr {
   const message = cause instanceof Error ? cause.message : `${cause}`;
   return { ok: false, message };
 }

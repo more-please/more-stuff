@@ -1,5 +1,5 @@
-import type { GoproxyConsole } from "gosub-goproxy/types.ts";
 import { goproxyConsole } from "gosub-goproxy/logging.ts";
+import type { GoproxyConsole } from "gosub-goproxy/types.ts";
 import { describe, expect, test } from "vitest";
 
 function snoopLog(): { console: GoproxyConsole; count: () => number } {

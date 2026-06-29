@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 
-import * as TOML from "smol-toml";
-import * as YAML from "yaml";
-import JSON5 from "json5";
-import { parseArgs } from "node:util";
-import { dirname, join } from "node:path";
-import walkSync from "walk-sync";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { resolve } from "import-meta-resolve";
+import { dirname, join } from "node:path";
 import { pathToFileURL } from "node:url";
-import { unified } from "unified";
+import { parseArgs } from "node:util";
+import { resolve } from "import-meta-resolve";
+import JSON5 from "json5";
 import remarkParse from "remark-parse";
 import remarkStringify from "remark-stringify";
+import * as TOML from "smol-toml";
+import { unified } from "unified";
+import walkSync from "walk-sync";
+import * as YAML from "yaml";
 
 const CONFIGS = ["json", "markdown", "md", "toml", "yaml", "yml"] as const;
 type Config = (typeof CONFIGS)[number];
@@ -20,7 +20,7 @@ const CONFIG_GLOB = `{${CONFIGS.join(",")}}`;
 const SCRIPT_GLOB = "{js,ts}";
 
 type Formatter = (props: { module: string; obj: unknown }) => Promise<string>;
-type Parser = (data: string) => Promise<any>;
+type Parser = (data: string) => Promise<object>;
 
 type Args = {
   indir: string;
@@ -104,7 +104,7 @@ async function runfig(args: Args) {
       throw new Error(`Invalid filename (expected base.ext.ts): ${module}`);
     }
     const path = join(args.indir, module);
-    const root = pathToFileURL(process.cwd()).href + "/";
+    const root = `${pathToFileURL(process.cwd()).href}/`;
     const resolved = resolve(`./${path}`, root);
     const { default: obj } = await import(resolved);
     const output = await converter({ module, obj });

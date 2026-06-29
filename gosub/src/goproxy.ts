@@ -1,7 +1,7 @@
-import type { GoproxyConfig, GoproxyEnv, GoproxyOptions } from "./types.ts";
-import { goproxyConsole } from "./logging.ts";
+import { downloadZip } from "client-zip";
 import * as github from "./github.ts";
-
+import { goproxyConsole } from "./logging.ts";
+import type { GoproxyConfig, GoproxyEnv, GoproxyOptions } from "./types.ts";
 import {
   ensurePrefix,
   ensureSuffix,
@@ -9,8 +9,6 @@ import {
   removePrefix,
   removeSuffix,
 } from "./utils.ts";
-
-import { downloadZip } from "client-zip";
 
 const textHeaders = {
   "content-type": "text/plain; charset=utf-8",
@@ -24,7 +22,7 @@ export function goproxyEnv(): GoproxyEnv {
     process: undefined | { env?: GoproxyEnv };
     Deno: undefined | { env?: { toObject?(): GoproxyEnv } };
   };
-  const global: Global = globalThis as any;
+  const global: Global = globalThis as unknown as Global;
   return global.process?.env ?? global.Deno?.env?.toObject?.() ?? {};
 }
 
@@ -52,7 +50,7 @@ export function goproxy(
   function tagToVersion(str: string): string | undefined {
     const VERSION = /^[0-9]+\.[0-9]+\.[0-9]+$/;
     const v = removePrefix(prefix, removeSuffix(suffix, str));
-    if (v && v.match(VERSION)) {
+    if (v?.match(VERSION)) {
       return `v${v}`;
     } else {
       return undefined;
@@ -93,7 +91,7 @@ export function goproxy(
       const response = await githubFetch(url);
       const link = response.headers.get("link");
       yield response;
-      url = (link && link.match(NEXT_LINK)?.[0]) ?? "";
+      url = link?.match(NEXT_LINK)?.[0] ?? "";
     }
   }
 

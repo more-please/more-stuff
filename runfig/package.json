@@ -39,7 +39,7 @@
     "splitting": false
   },
   "scripts": {
-    "format": "prettier --log-level warn -w . && markdown-toc -i README.md",
+    "format": "biome check --write --unsafe . && markdown-toc -i README.md",
     "test": "tsc",
     "prepare": "tsdown"
   },
@@ -47,7 +47,7 @@
     "@types/mdast": "^4.0.4",
     "@types/node": "^25.9.3",
     "markdown-toc": "^1.2.0",
-    "prettier": "^3.8.3",
+    "@biomejs/biome": "2.5.0",
     "tsdown": "^0.22.3"
   },
   "dependencies": {

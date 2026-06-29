@@ -3,26 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "format": "prettier --log-level warn -w .",
+    "format": "biome check --write --unsafe .",
     "lint": "astro check",
     "test": "vitest --pool=threads run",
     "dev": "astro dev",
     "build": "astro build",
     "push": "wrangler deploy"
-  },
-  "prettier": {
-    "plugins": [
-      "prettier-plugin-astro"
-    ],
-    "overrides": [
-      {
-        "files": "*.astro",
-        "options": {
-          "parser": "astro",
-          "printWidth": 1000
-        }
-      }
-    ]
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
@@ -31,8 +17,7 @@
     "@moreplease/rollup-plugin-build-info": "workspace:*",
     "astro": "^6.4.4",
     "gosub-goproxy": "workspace:*",
-    "prettier": "^3.8.3",
-    "prettier-plugin-astro": "^0.14.1",
+    "@biomejs/biome": "2.5.0",
     "solid-js": "^1.9.13",
     "typescript": "^6.0.3",
     "utf64": "workspace:^",

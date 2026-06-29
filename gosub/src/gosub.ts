@@ -1,7 +1,7 @@
-import type { GoproxyConfig, GoproxyEnv, GoproxyOptions } from "./types.ts";
 import { goproxy, goproxyEnv } from "./goproxy.ts";
 import { goproxyConsole } from "./logging.ts";
-import { Result, err, ok } from "./result.ts";
+import { err, ok, type Result } from "./result.ts";
+import type { GoproxyConfig, GoproxyEnv, GoproxyOptions } from "./types.ts";
 import {
   ensurePrefix,
   ensureSuffix,

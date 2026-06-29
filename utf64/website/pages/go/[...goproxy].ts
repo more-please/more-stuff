@@ -1,5 +1,5 @@
-import type { APIRoute } from "astro";
 import { getSecret } from "astro:env/server";
+import type { APIRoute } from "astro";
 import { goproxy } from "gosub-goproxy";
 
 const handler = goproxy(

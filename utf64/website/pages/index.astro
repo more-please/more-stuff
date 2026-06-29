@@ -10,7 +10,7 @@ const timestamp = `${t.getUTCFullYear()}-${nn(t.getUTCMonth() + 1)}-${nn(t.getUT
 const search = Astro.url.searchParams;
 let encode = search.get("encode");
 let decode = search.get("decode");
-let error: string | undefined = undefined;
+let error: string | undefined;
 try {
   if (encode) {
     decode = utf64.encode(encode);

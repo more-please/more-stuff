@@ -1,7 +1,6 @@
-import * as utf64 from "./utf64";
-
 import { assert, test } from "vitest";
 import { invalid_utf64, valid_utf64 } from "../test.json";
+import * as utf64 from "./utf64";
 
 for (const [dest, src] of Object.entries(valid_utf64)) {
   test(dest, () => {

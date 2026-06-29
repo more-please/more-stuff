@@ -16,7 +16,7 @@ export type GoproxyOptions = {
   verbose?: boolean;
 };
 
-export type GoproxyLogEntry = Record<string, any> & {
+export type GoproxyLogEntry = Record<string, unknown> & {
   message: string;
 };
 

@@ -1,16 +1,15 @@
-import type { GoproxyConfig } from "gosub-goproxy/types.ts";
 import { goproxy } from "gosub-goproxy/goproxy.ts";
-import { describe, expect, test } from "vitest";
-
 import { fatal } from "gosub-goproxy/result.ts";
+import type { GoproxyConfig } from "gosub-goproxy/types.ts";
 import { unzip } from "unzipit";
+import { describe, expect, test } from "vitest";
 
 type Test = {
   description: string;
   config: GoproxyConfig;
   error?: Record<string, number | undefined>;
   text?: Record<string, string>;
-  json?: Record<string, any>;
+  json?: Record<string, object>;
   zip?: Record<string, Record<string, string>>;
 };
 

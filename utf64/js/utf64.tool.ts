@@ -38,6 +38,7 @@ for (let arg = args.shift(); arg; arg = args.shift()) {
     case "--help":
       process.stdout.write(USAGE);
       process.exit(0);
+      break;
 
     case "-v":
     case "--version": {
@@ -47,6 +48,7 @@ for (let arg = args.shift(); arg; arg = args.shift()) {
       const json = JSON.parse(fs.readFileSync(src, "utf-8"));
       process.stdout.write(`${json.version}\n`);
       process.exit(0);
+      break;
     }
 
     default:

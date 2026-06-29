@@ -25,7 +25,7 @@
     "build/*"
   ],
   "scripts": {
-    "format": "prettier --log-level warn -w . && markdown-toc -i ../README.md",
+    "format": "biome check --write --unsafe . && markdown-toc -i ../README.md",
     "test": "ts-browser-compat && vitest run",
     "prepare": "tsc && cp -f ../README.md ../LICENSE ."
   },
@@ -33,7 +33,7 @@
     "@journeyapps/ts-browser-compat": "github:more-please/ts-browser-compat",
     "@types/node": "^25.9.3",
     "markdown-toc": "^1.2.0",
-    "prettier": "^3.8.3",
+    "@biomejs/biome": "2.5.0",
     "typescript": "^6.0.3",
     "vitest": "^4.1.9"
   }

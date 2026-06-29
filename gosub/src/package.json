@@ -27,7 +27,7 @@
     "build/result.d.ts"
   ],
   "scripts": {
-    "format": "prettier --log-level warn -w . && markdown-toc -i ../README.md",
+    "format": "biome check --write --unsafe . && markdown-toc -i ../README.md",
     "build": "tsc && esbuild index.ts --outdir=build --format=esm --bundle --minify --external:client-zip",
     "lint": "ts-browser-compat",
     "prepare": "cp -f ../README.md ../LICENSE ."
@@ -36,7 +36,7 @@
     "@journeyapps/ts-browser-compat": "github:more-please/ts-browser-compat",
     "esbuild": "^0.28.1",
     "markdown-toc": "^1.2.0",
-    "prettier": "^3.8.3",
+    "@biomejs/biome": "2.5.0",
     "typescript": "^6.0.3"
   },
   "dependencies": {

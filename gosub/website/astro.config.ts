@@ -1,7 +1,7 @@
-import { defineConfig } from "astro/config";
-import buildInfo from "@moreplease/rollup-plugin-build-info";
 import cloudflare from "@astrojs/cloudflare";
 import solid from "@astrojs/solid-js";
+import buildInfo from "@moreplease/rollup-plugin-build-info";
+import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({

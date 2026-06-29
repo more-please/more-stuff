@@ -66,6 +66,9 @@ importers:
         specifier: ^2.5.0
         version: 2.5.0
     devDependencies:
+      '@biomejs/biome':
+        specifier: 2.5.0
+        version: 2.5.0
       '@journeyapps/ts-browser-compat':
         specifier: github:more-please/ts-browser-compat
         version: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@6.0.3)
@@ -75,9 +78,6 @@ importers:
       markdown-toc:
         specifier: ^1.2.0
         version: 1.2.0
-      prettier:
-        specifier: ^3.8.3
-        version: 3.8.3
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -88,9 +88,9 @@ importers:
         specifier: link:../src
         version: link:../src
     devDependencies:
-      prettier:
-        specifier: ^3.8.3
-        version: 3.8.3
+      '@biomejs/biome':
+        specifier: 2.5.0
+        version: 2.5.0
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -112,6 +112,9 @@ importers:
       '@astrojs/solid-js':
         specifier: ^6.0.1
         version: 6.0.1(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(solid-js@1.9.13)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
+      '@biomejs/biome':
+        specifier: 2.5.0
+        version: 2.5.0
       '@moreplease/rollup-plugin-build-info':
         specifier: workspace:*
         version: link:../../rollup-plugin-build-info
@@ -121,12 +124,6 @@ importers:
       gosub-goproxy:
         specifier: workspace:*
         version: link:../src
-      prettier:
-        specifier: ^3.8.3
-        version: 3.8.3
-      prettier-plugin-astro:
-        specifier: ^0.14.1
-        version: 0.14.1
       solid-js:
         specifier: ^1.9.13
         version: 1.9.13
@@ -213,6 +210,9 @@ importers:
         specifier: ^2.9.0
         version: 2.9.0
     devDependencies:
+      '@biomejs/biome':
+        specifier: 2.5.0
+        version: 2.5.0
       '@types/mdast':
         specifier: ^4.0.4
         version: 4.0.4
@@ -222,24 +222,21 @@ importers:
       markdown-toc:
         specifier: ^1.2.0
         version: 1.2.0
-      prettier:
-        specifier: ^3.8.3
-        version: 3.8.3
       tsdown:
         specifier: ^0.22.3
         version: 0.22.3(tsx@4.21.0)(typescript@6.0.3)(unrun@0.2.39)
 
   static-file-bundle:
     devDependencies:
+      '@biomejs/biome':
+        specifier: 2.5.0
+        version: 2.5.0
       '@types/node':
         specifier: ^25.9.3
         version: 25.9.3
       markdown-toc:
         specifier: ^1.2.0
         version: 1.2.0
-      prettier:
-        specifier: ^3.8.3
-        version: 3.8.3
       tsdown:
         specifier: ^0.22.3
         version: 0.22.3(tsx@4.21.0)(typescript@6.0.3)(unrun@0.2.39)
@@ -254,6 +251,9 @@ importers:
 
   utf64/js:
     devDependencies:
+      '@biomejs/biome':
+        specifier: 2.5.0
+        version: 2.5.0
       '@journeyapps/ts-browser-compat':
         specifier: github:more-please/ts-browser-compat
         version: https://codeload.github.com/more-please/ts-browser-compat/tar.gz/5c05fc44e6495fc538f6f6cc4b6cae4775ac47f5(typescript@6.0.3)
@@ -263,9 +263,6 @@ importers:
       markdown-toc:
         specifier: ^1.2.0
         version: 1.2.0
-      prettier:
-        specifier: ^3.8.3
-        version: 3.8.3
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -286,6 +283,9 @@ importers:
       '@astrojs/solid-js':
         specifier: ^6.0.1
         version: 6.0.1(@types/node@25.9.3)(jiti@2.4.2)(lightningcss@1.32.0)(solid-js@1.9.13)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0)
+      '@biomejs/biome':
+        specifier: 2.5.0
+        version: 2.5.0
       '@moreplease/rollup-plugin-build-info':
         specifier: workspace:*
         version: link:../../rollup-plugin-build-info
@@ -295,12 +295,6 @@ importers:
       gosub-goproxy:
         specifier: workspace:*
         version: link:../../gosub/src
-      prettier:
-        specifier: ^3.8.3
-        version: 3.8.3
-      prettier-plugin-astro:
-        specifier: ^0.14.1
-        version: 0.14.1
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -480,6 +474,63 @@ packages:
   '@babel/types@8.0.0':
     resolution: {integrity: sha512-K8ponJDxBwDHigkeFqaqT5wLGl4bTlwMafR8k7b5CPxr6Ww+UG9ls8Yx6Tcpboxu97eeGVEEyKcHmEyOwN1vSw==}
     engines: {node: ^22.18.0 || >=24.11.0}
+
+  '@biomejs/biome@2.5.0':
+    resolution: {integrity: sha512-4kURkd9hAPrdDM3C9n82ycYgx8hvQcW6MjKTEejruj8rK0N8P3OPpdy8BvI8kt3KWY4ycF5XtDOrktetEfhfuw==}
+    engines: {node: '>=14.21.3'}
+    hasBin: true
+
+  '@biomejs/cli-darwin-arm64@2.5.0':
+    resolution: {integrity: sha512-Mn3Fwi3SA5fgmfCPqmzpWF2DLZnms3BVAhM088nTnGrTZmHS3wwIjcoZPqpXeNgd3DrrLH6xp8vTLIBuJoZiXw==}
+    engines: {node: '>=14.21.3'}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@biomejs/cli-darwin-x64@2.5.0':
+    resolution: {integrity: sha512-rg3VPL5P8mYro6pqlXYXuJWph21slVp3SZtAqWSrkZs40d2gTzYmHF8E/X1iTID25btmNKltNDJ926sqVBp7DQ==}
+    engines: {node: '>=14.21.3'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@biomejs/cli-linux-arm64-musl@2.5.0':
+    resolution: {integrity: sha512-vQdM4oSGaf7ZNeGO9w5+Y8SBtyser9M6znxYbm7Ec8wInxJu1WiKxFYZW5Auj2d80bcVvefuGGRxoFOE0eee8g==}
+    engines: {node: '>=14.21.3'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [musl]
+
+  '@biomejs/cli-linux-arm64@2.5.0':
+    resolution: {integrity: sha512-tl+LW8fdD96/xdeWtWwc82LIOc5CoY7N2AsogLTp5R4ECErYt+8Jl/N68ezN9vzSiqPTxw6vjcihoLPYKZHrlw==}
+    engines: {node: '>=14.21.3'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [glibc]
+
+  '@biomejs/cli-linux-x64-musl@2.5.0':
+    resolution: {integrity: sha512-+9hIcMngJ+yGUahXqZuZ8CoWKJE9SAZsFsM3QDvXpNsLbXZ9lqVzgBhOk/jTSYkOA0GLP9eu3teukqpLUojHMg==}
+    engines: {node: '>=14.21.3'}
+    cpu: [x64]
+    os: [linux]
+    libc: [musl]
+
+  '@biomejs/cli-linux-x64@2.5.0':
+    resolution: {integrity: sha512-zpEGf4RQbFEh8Vt7OmavLyyOzRbtcE9osCqrS1kfvt8jDvxwhKXLSf7n0ebr/ov0RJ9ssP+lhs6C8a9WwFvrQA==}
+    engines: {node: '>=14.21.3'}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
+
+  '@biomejs/cli-win32-arm64@2.5.0':
+    resolution: {integrity: sha512-jB0wAvTLI4itx5VidqVUejPQFhRUxiZ9l9FvZ26D5fl6t3qme+ZB4PD3bTSeL1vZ8NI2Rx/zj6H9zcESuGHKGw==}
+    engines: {node: '>=14.21.3'}
+    cpu: [arm64]
+    os: [win32]
+
+  '@biomejs/cli-win32-x64@2.5.0':
+    resolution: {integrity: sha512-VT/lF+GId+67j8aDfLkxdxNoVApsPSTbyAtB3jJq0IWTrY77WXfbPfpngxq0bA6JCEv/7k8C9qWjDRKRznDlyw==}
+    engines: {node: '>=14.21.3'}
+    cpu: [x64]
+    os: [win32]
 
   '@capsizecss/unpack@4.0.0':
     resolution: {integrity: sha512-VERIM64vtTP1C4mxQ5thVT9fK0apjPFobqybMtA1UdUujWka24ERHbRHFGmpbbhp73MhV+KSsHQH9C6uOTdEQA==}
@@ -4438,6 +4489,41 @@ snapshots:
       '@babel/helper-string-parser': 8.0.0
       '@babel/helper-validator-identifier': 8.0.2
 
+  '@biomejs/biome@2.5.0':
+    optionalDependencies:
+      '@biomejs/cli-darwin-arm64': 2.5.0
+      '@biomejs/cli-darwin-x64': 2.5.0
+      '@biomejs/cli-linux-arm64': 2.5.0
+      '@biomejs/cli-linux-arm64-musl': 2.5.0
+      '@biomejs/cli-linux-x64': 2.5.0
+      '@biomejs/cli-linux-x64-musl': 2.5.0
+      '@biomejs/cli-win32-arm64': 2.5.0
+      '@biomejs/cli-win32-x64': 2.5.0
+
+  '@biomejs/cli-darwin-arm64@2.5.0':
+    optional: true
+
+  '@biomejs/cli-darwin-x64@2.5.0':
+    optional: true
+
+  '@biomejs/cli-linux-arm64-musl@2.5.0':
+    optional: true
+
+  '@biomejs/cli-linux-arm64@2.5.0':
+    optional: true
+
+  '@biomejs/cli-linux-x64-musl@2.5.0':
+    optional: true
+
+  '@biomejs/cli-linux-x64@2.5.0':
+    optional: true
+
+  '@biomejs/cli-win32-arm64@2.5.0':
+    optional: true
+
+  '@biomejs/cli-win32-x64@2.5.0':
+    optional: true
+
   '@capsizecss/unpack@4.0.0':
     dependencies:
       fontkitten: 1.0.3
@@ -6987,6 +7073,7 @@ snapshots:
       '@astrojs/compiler': 2.13.1
       prettier: 3.8.3
       sass-formatter: 0.7.9
+    optional: true
 
   prettier@3.8.3: {}
 
@@ -7291,7 +7378,8 @@ snapshots:
   rrweb-cssom@0.8.0:
     optional: true
 
-  s.color@0.0.15: {}
+  s.color@0.0.15:
+    optional: true
 
   safe-buffer@5.1.2: {}
 
@@ -7301,6 +7389,7 @@ snapshots:
   sass-formatter@0.7.9:
     dependencies:
       suf-log: 2.5.3
+    optional: true
 
   sax@1.6.0: {}
 
@@ -7432,6 +7521,7 @@ snapshots:
   suf-log@2.5.3:
     dependencies:
       s.color: 0.0.15
+    optional: true
 
   supports-color@10.2.2: {}
 

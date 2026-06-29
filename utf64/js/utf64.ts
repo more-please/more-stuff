@@ -82,7 +82,7 @@ export function decode(str: string): string {
     throw new Error(`Invalid UTF-64 character: '${n.value}'`);
   };
   for (let n = iter.next(); !n.done; n = iter.next()) {
-    let c = n.value;
+    const c = n.value;
     // a-z, 0-9 and - are encoded as themselves
     if (
       (c >= "a" && c <= "z") ||
@@ -110,7 +110,7 @@ export function decode(str: string): string {
       continue;
     }
     // Remaining encodings are packed UTF-8 (without the synchronisation bits)
-    if (c != "Z") {
+    if (c !== "Z") {
       throw new Error(`Invalid UTF-64 character: '${c}'`);
     }
     let i = next();

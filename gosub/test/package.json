@@ -3,11 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "format": "prettier --log-level warn -w .",
+    "format": "biome check --write --unsafe .",
     "test": "vitest run && tsc"
   },
   "devDependencies": {
-    "prettier": "^3.8.3",
+    "@biomejs/biome": "2.5.0",
     "typescript": "^6.0.3",
     "unzipit": "^2.0.3",
     "vitest": "^4.1.9"

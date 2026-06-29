@@ -1,6 +1,6 @@
-import type { GoproxyConfig } from "gosub-goproxy/types.ts";
 import { deps, gosub, gosubDecode, gosubEncode } from "gosub-goproxy/gosub.ts";
 import { unwrap } from "gosub-goproxy/result";
+import type { GoproxyConfig } from "gosub-goproxy/types.ts";
 import { describe, expect, test } from "vitest";
 
 type Test = {
@@ -62,7 +62,7 @@ describe("encode", () => {
 });
 
 describe("decode", () => {
-  for (let { config, encoded } of TESTS) {
+  for (const { config, encoded } of TESTS) {
     for (const extra of ["", "ignore;", "/extra/stuff/"]) {
       test(encoded + extra, () => {
         const decode = gosubDecode(encoded + extra);
@@ -85,7 +85,7 @@ describe("gosub", async () => {
           const goodRequest = new Request(`https://foo.bar${encoded}${extra}`);
           const goodResponse = new Response();
           deps.goproxy = (proxyBase: string, proxyConfig: GoproxyConfig) => {
-            expect(proxyBase).toEqual(encoded + "/");
+            expect(proxyBase).toEqual(`${encoded}/`);
             expect(proxyConfig).toEqual(config);
             return async (request: string | Request) => {
               expect(request).toBe(goodRequest);

@@ -16,7 +16,7 @@
     "static-file-bundle": "build/static-file-bundle.js"
   },
   "scripts": {
-    "format": "prettier --log-level warn -w . && markdown-toc -i README.md",
+    "format": "biome check --write --unsafe . && markdown-toc -i README.md",
     "test": "tsc",
     "prepare": "tsdown"
   },
@@ -41,7 +41,7 @@
   "devDependencies": {
     "@types/node": "^25.9.3",
     "markdown-toc": "^1.2.0",
-    "prettier": "^3.8.3",
+    "@biomejs/biome": "2.5.0",
     "tsdown": "^0.22.3",
     "typescript": "^6.0.3",
     "walk-sync": "^4.0.2"

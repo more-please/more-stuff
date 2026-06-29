@@ -13,7 +13,7 @@
   "dependencies": {
     "@astrojs/check": "^0.9.9",
     "@astrojs/cloudflare": "^13.7.0",
-    "@astrojs/solid-js": "^6.0.1",
+    "@astrojs/solid-js": "^7.0.0",
     "@moreplease/rollup-plugin-build-info": "workspace:*",
     "astro": "^6.4.4",
     "gosub-goproxy": "workspace:*",

@@ -14,7 +14,8 @@
     "url": "https://github.com/more-please/more-stuff.git",
     "directory": "utf64/js"
   },
-  "main": "build/utf64.js",
+  "main": "build/utf64.mjs",
+  "types": "build/utf64.d.mts",
   "type": "module",
   "bin": {
     "utf64": "utf64.sh"
@@ -24,15 +25,30 @@
     "LICENSE",
     "build/*"
   ],
+  "tsdown": {
+    "entry": [
+      "utf64.ts",
+      "utf64.tool.ts"
+    ],
+    "format": [
+      "esm"
+    ],
+    "outDir": "build",
+    "target": "es2015",
+    "splitting": false,
+    "dts": true,
+    "clean": true
+  },
   "scripts": {
     "format": "biome check --write --unsafe . && markdown-toc -i ../README.md",
     "test": "vitest run",
-    "prepare": "tsc && cp -f ../README.md ../LICENSE ."
+    "prepare": "tsdown && cp -f ../README.md ../LICENSE ."
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.0",
     "@types/node": "^26.1.1",
     "markdown-toc": "^1.2.0",
+    "tsdown": "^0.22.4",
     "typescript": "^6.0.3",
     "vitest": "^4.1.10"
   }

@@ -28,12 +28,11 @@
   ],
   "scripts": {
     "format": "biome check --write --unsafe . && markdown-toc -i ../README.md",
-    "build": "tsc && esbuild index.ts --outdir=build --format=esm --bundle --minify --external:client-zip",
-    "lint": "ts-browser-compat",
+    "build": "esbuild index.ts --outdir=build --format=esm --bundle --minify --external:client-zip",
+    "lint": "tsc",
     "prepare": "cp -f ../README.md ../LICENSE ."
   },
   "devDependencies": {
-    "@journeyapps/ts-browser-compat": "github:more-please/ts-browser-compat",
     "esbuild": "^0.28.1",
     "markdown-toc": "^1.2.0",
     "@biomejs/biome": "2.5.0",

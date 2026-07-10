@@ -26,11 +26,10 @@
   ],
   "scripts": {
     "format": "biome check --write --unsafe . && markdown-toc -i ../README.md",
-    "test": "ts-browser-compat && vitest run",
+    "test": "vitest run",
     "prepare": "tsc && cp -f ../README.md ../LICENSE ."
   },
   "devDependencies": {
-    "@journeyapps/ts-browser-compat": "github:more-please/ts-browser-compat",
     "@types/node": "^26.1.0",
     "markdown-toc": "^1.2.0",
     "@biomejs/biome": "2.5.0",

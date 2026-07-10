@@ -9,10 +9,9 @@
     "lib": ["es2015"],
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "declaration": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "outDir": "build"
-  },
-  "files": ["utf64.ts", "utf64.tool.ts"]
+    "noEmit": true,
+    "types": ["node"]
+  }
 }

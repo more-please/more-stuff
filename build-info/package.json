@@ -28,8 +28,8 @@
   "main": "build/build-info.mjs",
   "types": "build/index.d.ts",
   "devDependencies": {
-    "@types/node": "^26.1.0",
-    "tsdown": "^0.22.3",
-    "typescript": "^6.0.2"
+    "@types/node": "^26.1.1",
+    "tsdown": "^0.22.4",
+    "typescript": "^6.0.3"
   }
 }

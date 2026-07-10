@@ -44,18 +44,18 @@
     "prepare": "tsdown"
   },
   "devDependencies": {
-    "@types/mdast": "^4.0.4",
-    "@types/node": "^26.1.0",
-    "markdown-toc": "^1.2.0",
     "@biomejs/biome": "2.5.0",
-    "tsdown": "^0.22.3"
+    "@types/mdast": "^4.0.4",
+    "@types/node": "^26.1.1",
+    "markdown-toc": "^1.2.0",
+    "tsdown": "^0.22.4"
   },
   "dependencies": {
     "import-meta-resolve": "^4.2.0",
     "json5": "^2.2.3",
     "remark-parse": "^11.0.0",
     "remark-stringify": "^11.0.0",
-    "smol-toml": "^1.6.1",
+    "smol-toml": "^1.7.0",
     "unified": "^11.0.5",
     "walk-sync": "^4.0.2",
     "yaml": "^2.9.0"

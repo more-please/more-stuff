@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "preserveSymlinks": true,
     "allowImportingTsExtensions": true,
     "rewriteRelativeImportExtensions": true,
     "noEmit": true,

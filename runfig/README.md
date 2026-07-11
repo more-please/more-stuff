@@ -36,7 +36,7 @@ For example, see [`pnpm-workspace.yaml`](../pnpm-workspace.yaml) in this monorep
 Why use Runfig rather than hand-rolling a script to generate configs?
 
 - All the boilerplate file access is handled for you;
-- JSON, TOML, YAML and Markdown supported out of the box;
+- JSON, TOML and YAML supported out of the box;
 - `--unfig` flag for easy bootstrapping.
 
 ## Installation & usage
@@ -51,7 +51,7 @@ Executing `runfig` will then:
 
 - Scan for config files with an additional `.js` or `.ts` extension
 - Load each file and extract its default export
-- Convert each export to the appropriate format (JSON, YAML, TOML or Markdown)
+- Convert each export to the appropriate format (JSON, YAML or TOML)
 - Write a corresponding output file for each input
 
 For example, if Runfig sees a `wrangler.toml.ts` script it will use that to generate `wrangler.toml`.
@@ -195,8 +195,6 @@ If the `--recursive` flag is used, subdirectory paths are preserved in the outpu
 | `.toml.js` | `.toml.ts` |     | `.toml` |
 | `.yaml.js` | `.yaml.ts` |     | `.yaml` |
 | `.yml.js ` | `.yml.ts`  |     | `.yml`  |
-| `.markdown.js` | `.markdown.ts` |     | `.markdown` |
-| `.md.js ` | `.md.ts`  |     | `.md`  |
 
 ## Notes & caveats
 

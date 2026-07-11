@@ -188,18 +188,9 @@ importers:
       json5:
         specifier: ^2.2.3
         version: 2.2.3
-      remark-parse:
-        specifier: ^11.0.0
-        version: 11.0.0
-      remark-stringify:
-        specifier: ^11.0.0
-        version: 11.0.0
       smol-toml:
         specifier: ^1.7.0
         version: 1.7.0
-      unified:
-        specifier: ^11.0.5
-        version: 11.0.5
       walk-sync:
         specifier: ^4.0.2
         version: 4.0.2

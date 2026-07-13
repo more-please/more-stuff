@@ -45,7 +45,7 @@
     "prepare": "tsdown && cp -f ../README.md ../LICENSE ."
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.0",
+    "@biomejs/biome": "2.5.3",
     "@types/node": "^26.1.1",
     "markdown-toc": "^1.2.0",
     "tsdown": "^0.22.4",

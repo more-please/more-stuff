@@ -14,7 +14,7 @@
     "@astrojs/check": "^0.9.9",
     "@astrojs/cloudflare": "^14.1.2",
     "@astrojs/solid-js": "^7.0.1",
-    "@biomejs/biome": "2.5.0",
+    "@biomejs/biome": "2.5.3",
     "@moreplease/rollup-plugin-build-info": "workspace:*",
     "astro": "^7.0.7",
     "gosub-goproxy": "workspace:*",

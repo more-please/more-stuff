@@ -18,7 +18,7 @@
     "@moreplease/rollup-plugin-build-info": "workspace:*",
     "astro": "^7.0.7",
     "gosub-goproxy": "workspace:*",
-    "typescript": "^6.0.3",
+    "typescript": "^7.0.2",
     "utf64": "workspace:*",
     "vitest": "^4.1.10",
     "wrangler": "^4.107.1"

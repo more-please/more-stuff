@@ -36,7 +36,7 @@
     "esbuild": "^0.28.1",
     "markdown-toc": "^1.2.0",
     "@biomejs/biome": "2.5.0",
-    "typescript": "^6.0.3"
+    "typescript": "^7.0.2"
   },
   "dependencies": {
     "client-zip": "^2.5.0"

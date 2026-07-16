@@ -44,11 +44,11 @@
     "prepare": "tsdown"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.0",
+    "@biomejs/biome": "2.5.4",
     "@types/mdast": "^4.0.4",
     "@types/node": "^26.1.1",
     "markdown-toc": "^1.2.0",
-    "tsdown": "^0.22.4"
+    "tsdown": "^0.22.8"
   },
   "dependencies": {
     "import-meta-resolve": "^4.2.0",

@@ -37,7 +37,7 @@
   "types": "build/index.d.ts",
   "devDependencies": {
     "@types/node": "^26.1.1",
-    "tsdown": "^0.22.4",
+    "tsdown": "^0.22.8",
     "typescript": "^6.0.3"
   }
 }

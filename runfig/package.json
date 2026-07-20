@@ -48,7 +48,7 @@
     "@types/mdast": "^4.0.4",
     "@types/node": "^26.1.1",
     "markdown-toc": "^1.2.0",
-    "tsdown": "^0.22.8"
+    "tsdown": "^0.22.12"
   },
   "dependencies": {
     "import-meta-resolve": "^4.2.0",

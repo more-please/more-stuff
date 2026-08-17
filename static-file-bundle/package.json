@@ -39,8 +39,8 @@
     "outDir": "build"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.6",
-    "@types/node": "^26.1.1",
+    "@biomejs/biome": "2.5.8",
+    "@types/node": "^26.2.0",
     "markdown-toc": "^1.2.0",
     "tsdown": "^0.22.14",
     "typescript": "^6.0.3",

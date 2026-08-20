@@ -1,7 +1,7 @@
 {
   "name": "@moreplease/build-info",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "import { commit, timestamp } from \"@moreplease/build-info\"",
   "tsdown": {
     "entry": [
@@ -26,7 +26,7 @@
     "build/*"
   ],
   "main": "build/build-info.mjs",
-  "types": "build/index.d.ts",
+  "types": "build/build-info.d.mts",
   "devDependencies": {
     "@types/node": "^26.2.0",
     "tsdown": "^0.22.14",

@@ -7,10 +7,10 @@
     "test": "vitest run && tsc"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.8",
+    "@biomejs/biome": "2.5.9",
     "typescript": "^6.0.3",
     "unzipit": "^2.0.3",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.11"
   },
   "dependencies": {
     "gosub-goproxy": "link:../src"

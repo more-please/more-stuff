@@ -12,15 +12,15 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
-    "@astrojs/cloudflare": "^14.2.1",
+    "@astrojs/cloudflare": "^14.2.3",
     "@astrojs/solid-js": "^7.0.2",
-    "@biomejs/biome": "2.5.8",
+    "@biomejs/biome": "2.5.9",
     "@moreplease/rollup-plugin-build-info": "workspace:*",
-    "astro": "^7.2.2",
+    "astro": "^7.2.4",
     "gosub-goproxy": "workspace:*",
     "typescript": "^6.0.3",
     "utf64": "workspace:*",
-    "vitest": "^4.1.10",
-    "wrangler": "^4.123.0"
+    "vitest": "^4.1.11",
+    "wrangler": "^4.124.0"
   }
 }

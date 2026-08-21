@@ -44,7 +44,7 @@
     "prepare": "tsdown"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.8",
+    "@biomejs/biome": "2.5.9",
     "@types/mdast": "^4.0.4",
     "@types/node": "^26.2.0",
     "markdown-toc": "^1.2.0",

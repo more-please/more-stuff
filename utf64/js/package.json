@@ -45,11 +45,11 @@
     "prepare": "tsdown && cp -f ../README.md ../LICENSE ."
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.8",
+    "@biomejs/biome": "2.5.9",
     "@types/node": "^26.2.0",
     "markdown-toc": "^1.2.0",
     "tsdown": "^0.22.14",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.11"
   }
 }

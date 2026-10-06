@@ -13,6 +13,7 @@ packages:
   - utf64/go
   - utf64/js
   - utf64/py
+  - utf64/rust
   - utf64/website
   - workie
 allowBuilds:

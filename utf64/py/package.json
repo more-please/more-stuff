@@ -2,6 +2,7 @@
   "name": "utf64.py",
   "private": true,
   "scripts": {
-    "format": "make format"
+    "format": "make format",
+    "test": "make test"
   }
 }

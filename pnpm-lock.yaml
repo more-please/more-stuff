@@ -260,6 +260,8 @@ importers:
 
   utf64/py: {}
 
+  utf64/rust: {}
+
   utf64/website:
     dependencies:
       '@astrojs/check':

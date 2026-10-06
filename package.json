@@ -8,13 +8,14 @@
   },
   "scripts": {
     "hooks": "rm -f .git/hooks/pre-commit && ln -s ../../.githooks/pre-commit .git/hooks/pre-commit",
-    "codegen": "runfig"
+    "codegen": "runfig && workie"
   },
   "devDependencies": {
     "@types/mdast": "^4.0.4",
     "@types/node": "^26.1.0"
   },
   "dependencies": {
+    "@moreplease/workie": "workspace:*",
     "@types/mdast": "^4.0.4",
     "@types/node": "^26.2.0",
     "mdast-builder": "^1.1.1",

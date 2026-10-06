@@ -7,13 +7,14 @@ jobs:
   utf64:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - name: Build
-        working-directory: ./utf64/rust
-        run: cargo build --verbose
-      - name: Run tests
-        working-directory: ./utf64/rust
-        run: cargo test --verbose
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec turbo test --filter=utf64.rust --log-order=stream
       - name: Publish
         working-directory: ./utf64/rust
         run: cargo publish

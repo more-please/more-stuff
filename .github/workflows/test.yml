@@ -1,0 +1,20 @@
+# The required check. The workie-*.yml workflows only run when their paths
+# change, so none of them can be required (a workflow that doesn't run never
+# reports, which blocks the merge). This job runs on every pull request and
+# passes once every check that did start on the commit has passed. The delay
+# gives those workflows time to queue before the first poll.
+name: test
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      checks: read
+    steps:
+      - uses: poseidon/wait-for-status-checks@v0.7.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          delay: 30

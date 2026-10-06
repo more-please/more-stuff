@@ -5,7 +5,8 @@
     "useIgnoreFile": true
   },
   "files": {
-    "ignoreUnknown": true
+    "ignoreUnknown": true,
+    "includes": ["**", "!workie/schemas/*.validator.cjs"]
   },
   "formatter": {
     "enabled": true,

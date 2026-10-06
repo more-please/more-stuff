@@ -33,10 +33,7 @@ const body = processor.stringify(root(...rows));
 export default `
 # More Please! open source
 
-[![JS](https://github.com/more-please/more-stuff/actions/workflows/js.yml/badge.svg)](https://github.com/more-please/more-stuff/actions/workflows/js.yml)
-[![Python](https://github.com/more-please/more-stuff/actions/workflows/py.yml/badge.svg)](https://github.com/more-please/more-stuff/actions/workflows/py.yml)
-[![Go](https://github.com/more-please/more-stuff/actions/workflows/go.yml/badge.svg)](https://github.com/more-please/more-stuff/actions/workflows/go.yml)
-[![Rust](https://github.com/more-please/more-stuff/actions/workflows/rust.yml/badge.svg)](https://github.com/more-please/more-stuff/actions/workflows/rust.yml)
+[![test](https://github.com/more-please/more-stuff/actions/workflows/test.yml/badge.svg?event=pull_request)](https://github.com/more-please/more-stuff/actions/workflows/test.yml)
 
 ${body}
 `;

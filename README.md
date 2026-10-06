@@ -38,3 +38,7 @@ Given a set of files, produces a standalone TS module that embeds all the files 
 ## [utf64](utf64/README.md)
 
 A terse, human-readable, URL-safe encoding for JSONish strings.
+
+## [workie](workie/README.md)
+
+Generate GitHub Actions workflows for a Turbo monorepo.

@@ -10,16 +10,25 @@ schema](https://json.schemastore.org/github-workflow.json) and emitted as YAML.
 
 ## Usage
 
+Install it as a dev dependency in the monorepo root:
+
+```sh
+pnpm add -D @moreplease/workie
+```
+
+Node 22.18 or later is required, so that `workie.config.ts` can be loaded
+without a separate TypeScript compiler.
+
 Create a `workie.config.ts` in the monorepo root:
 
 ```ts
-import { defineConfig, type WorkflowTemplate } from "@moreplease/workie";
+import { defineConfig, type WorkflowFunction } from "@moreplease/workie";
 
-const testWorkflow: WorkflowTemplate = ({ packageName, paths }) => ({
-  name: `test ${packageName}`,
+const testWorkflow: WorkflowFunction = ({ pkg, paths }) => ({
+  name: `test ${pkg.name}`,
   on: {
     workflow_dispatch: {},
-    pull_request: { branches: ["main"], paths: paths.map((p) => `${p}/**`) },
+    pull_request: { branches: ["main"], paths },
   },
   jobs: {
     test: {
@@ -28,7 +37,7 @@ const testWorkflow: WorkflowTemplate = ({ packageName, paths }) => ({
         { uses: "actions/checkout@v6.0.2" },
         {
           name: "turbo test",
-          run: `pnpm exec turbo test --filter=${packageName}`,
+          run: `pnpm exec turbo test --filter=${pkg.name}`,
         },
       ],
     },

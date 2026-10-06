@@ -1,0 +1,9 @@
+{
+  "name": "utf64.rust",
+  "private": true,
+  "scripts": {
+    "format": "cargo fmt",
+    "build": "cargo build",
+    "test": "cargo test"
+  }
+}

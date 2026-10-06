@@ -2,6 +2,7 @@
   "name": "utf64.go",
   "private": true,
   "scripts": {
-    "format": "gofmt -w -s ."
+    "format": "gofmt -w -s .",
+    "test": "go test"
   }
 }

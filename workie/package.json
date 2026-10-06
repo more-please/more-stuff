@@ -1,6 +1,6 @@
 {
   "name": "@moreplease/workie",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Generate GitHub Actions workflows for a Turbo monorepo",
   "keywords": [
     "github",
@@ -20,18 +20,49 @@
     "directory": "workie"
   },
   "type": "module",
-  "main": "./workie.ts",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "main": "./dist/workie.mjs",
+  "types": "./dist/workie.d.mts",
   "exports": {
-    ".": "./workie.ts",
+    ".": {
+      "types": "./dist/workie.d.mts",
+      "default": "./dist/workie.mjs"
+    },
     "./schemas/github-workflow.json": "./schemas/github-workflow.json"
   },
   "bin": {
-    "workie": "workie-cli.ts"
+    "workie": "dist/workie-cli.mjs"
+  },
+  "files": [
+    "README.md",
+    "dist/*",
+    "schemas/github-workflow.json"
+  ],
+  "tsdown": {
+    "entry": [
+      "workie.ts",
+      "workie-cli.ts"
+    ],
+    "format": [
+      "esm"
+    ],
+    "outDir": "dist",
+    "target": "node22",
+    "dts": true,
+    "clean": true,
+    "deps": {
+      "onlyBundle": [
+        "ajv"
+      ]
+    }
   },
   "scripts": {
     "build-validator": "node schemas/build.mjs",
     "check": "tsc",
-    "test": "vitest run --testTimeout 5000"
+    "test": "vitest run --testTimeout 5000",
+    "prepare": "tsdown"
   },
   "dependencies": {
     "yaml": "^2.9.0"
@@ -39,6 +70,7 @@
   "devDependencies": {
     "@types/node": "^26.2.0",
     "ajv": "^8.20.0",
+    "tsdown": "^0.22.14",
     "typescript": "^7.0.2",
     "vitest": "^4.1.10"
   }

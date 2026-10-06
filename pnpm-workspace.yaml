@@ -14,6 +14,7 @@ packages:
   - utf64/js
   - utf64/py
   - utf64/website
+  - workie
 allowBuilds:
   "@journeyapps/ts-browser-compat": true
   esbuild: false

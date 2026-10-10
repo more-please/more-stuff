@@ -1,6 +1,6 @@
 {
   "name": "@moreplease/workie",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Generate GitHub Actions workflows for a Turbo monorepo",
   "keywords": [
     "github",

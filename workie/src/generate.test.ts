@@ -49,26 +49,35 @@ function tempRepo(): string {
   return dir;
 }
 
+const MANUAL = { workflow_dispatch: {} };
+
 describe("generate", () => {
-  test("writes a workflow for each root package", async () => {
+  test("writes one workflow per task covering every root", async () => {
     const cwd = tempRepo();
     const graph = makeGraph(
       [
-        makePackage("A", "a", { test: "t" }, ["B"]),
-        makePackage("B", "b", { test: "t" }),
+        makePackage("A", "a", { test: "t" }, ["C"]),
+        makePackage("B", "b", { test: "t" }, ["C"]),
+        makePackage("C", "c", { test: "t" }),
       ],
       { tasks: { test: { dependsOn: ["^test"] } } },
     );
     const result = await generate(
       {
         tasks: {
-          test: ({ pkg, paths }) => ({
-            name: `test ${pkg.name}`,
-            on: { push: { branches: ["main"] } },
+          test: ({ task, roots, paths, affected }) => ({
+            name: task,
+            on: { ...MANUAL, push: { branches: ["main"], paths } },
             jobs: {
               test: {
                 "runs-on": "ubuntu-latest",
-                steps: [{ run: `echo ${paths.join(",")}` }],
+                steps: [
+                  affected.step(),
+                  {
+                    if: affected.if(),
+                    run: `echo ${roots.map((r) => r.pkg.name).join(",")} ${affected.filter}`,
+                  },
+                ],
               },
             },
           }),
@@ -76,17 +85,19 @@ describe("generate", () => {
       },
       { cwd, graph, log: false },
     );
-    expect(result.written).toEqual(["workie-a-test.yml"]);
+    expect(result.written).toEqual(["workie-test.yml"]);
     const body = readFileSync(
-      join(cwd, ".github/workflows/workie-a-test.yml"),
+      join(cwd, ".github/workflows/workie-test.yml"),
       "utf-8",
     );
-    expect(body).toContain("name: test A");
-    // Paths include A's own path plus its dependency B's, each wildcarded.
-    expect(body).toContain("echo a/**,b/**");
+    expect(body).toContain("name: test");
+    // C is shared by both roots, so it's covered rather than a root itself.
+    expect(body).toContain("echo A,B ${{ steps.workie.outputs.filter }}");
+    expect(body).toContain("      - a/**\n      - b/**\n      - c/**\n");
+    expect(body).toContain("if: steps.workie.outputs.filter != ''");
   });
 
-  test("passes an env of collected secrets into the template", async () => {
+  test("merges the secrets of every root into env", async () => {
     const cwd = tempRepo();
     const A: PackageInfo = {
       name: "A",
@@ -96,7 +107,7 @@ describe("generate", () => {
         scripts: { test: "t" },
         workie: { secrets: { test: ["FOO"] } },
       },
-      directDependencies: ["B"],
+      directDependencies: [],
       directDependents: [],
     };
     const B: PackageInfo = {
@@ -105,10 +116,10 @@ describe("generate", () => {
       manifest: {
         name: "B",
         scripts: { test: "t" },
-        workie: { secrets: ["BAR"] },
+        workie: { secrets: ["BAR", "FOO"] },
       },
       directDependencies: [],
-      directDependents: ["A"],
+      directDependents: [],
     };
     const graph = makeGraph([A, B], {
       tasks: { test: { dependsOn: ["^test"] } },
@@ -117,7 +128,7 @@ describe("generate", () => {
       {
         tasks: {
           test: ({ env }) => ({
-            on: "push",
+            on: MANUAL,
             jobs: {
               t: {
                 "runs-on": "ubuntu-latest",
@@ -130,19 +141,17 @@ describe("generate", () => {
       { cwd, graph, log: false },
     );
     const body = readFileSync(
-      join(cwd, ".github/workflows/workie-a-test.yml"),
+      join(cwd, ".github/workflows/workie-test.yml"),
       "utf-8",
     );
-    expect(body).toContain("BAR: ${{ secrets.BAR }}");
-    expect(body).toContain("FOO: ${{ secrets.FOO }}");
+    expect(body).toContain(
+      "BAR: ${{ secrets.BAR }}\n          FOO: ${{ secrets.FOO }}\n",
+    );
   });
 
   test("removes stale workflows with the prefix", async () => {
     const cwd = tempRepo();
-    writeFileSync(
-      join(cwd, ".github/workflows/workie-stale-test.yml"),
-      "old\n",
-    );
+    writeFileSync(join(cwd, ".github/workflows/workie-a-test.yml"), "old\n");
     writeFileSync(
       join(cwd, ".github/workflows/keep-me.yml"),
       "name: keep-me\non: push\njobs: {}\n",
@@ -153,9 +162,8 @@ describe("generate", () => {
     const result = await generate(
       {
         tasks: {
-          test: ({ pkg }) => ({
-            name: pkg.name,
-            on: "push",
+          test: () => ({
+            on: "workflow_dispatch",
             jobs: {
               t: { "runs-on": "ubuntu-latest", steps: [{ run: "hi" }] },
             },
@@ -164,11 +172,11 @@ describe("generate", () => {
       },
       { cwd, graph, log: false },
     );
-    expect(result.removed).toEqual(["workie-stale-test.yml"]);
+    expect(result.removed).toEqual(["workie-a-test.yml"]);
     // The unrelated file is left alone.
     expect(readdirSync(join(cwd, ".github/workflows")).sort()).toEqual([
       "keep-me.yml",
-      "workie-a-test.yml",
+      "workie-test.yml",
     ]);
   });
 
@@ -180,7 +188,7 @@ describe("generate", () => {
     const config = {
       tasks: {
         test: () => ({
-          on: "push" as const,
+          on: ["push" as const, "workflow_dispatch" as const],
           jobs: {
             t: { "runs-on": "ubuntu-latest", steps: [{ run: "hi" }] },
           },
@@ -188,10 +196,26 @@ describe("generate", () => {
       },
     };
     const first = await generate(config, { cwd, graph, log: false });
-    expect(first.written).toEqual(["workie-a-test.yml"]);
+    expect(first.written).toEqual(["workie-test.yml"]);
     const second = await generate(config, { cwd, graph, log: false });
     expect(second.written).toEqual([]);
-    expect(second.unchanged).toEqual(["workie-a-test.yml"]);
+    expect(second.unchanged).toEqual(["workie-test.yml"]);
+  });
+
+  test("skips a task with no roots", async () => {
+    const cwd = tempRepo();
+    const graph = makeGraph([makePackage("A", "a", { build: "b" })]);
+    const result = await generate(
+      {
+        tasks: {
+          test: () => {
+            throw new Error("not called");
+          },
+        },
+      },
+      { cwd, graph, log: false },
+    );
+    expect(result.written).toEqual([]);
   });
 
   test("throws when the workflows dir is missing", async () => {
@@ -225,38 +249,76 @@ describe("generate", () => {
     ).rejects.toThrow(/invalid workflow/);
   });
 
+  test("throws when a workflow can't be run manually", async () => {
+    const cwd = tempRepo();
+    const graph = makeGraph([makePackage("A", "a", { test: "t" })]);
+    await expect(
+      generate(
+        {
+          tasks: {
+            test: () => ({
+              on: { push: {} },
+              jobs: {
+                t: { "runs-on": "ubuntu-latest", steps: [{ run: "hi" }] },
+              },
+            }),
+          },
+        },
+        { cwd, graph, log: false },
+      ),
+    ).rejects.toThrow(/workflow_dispatch/);
+  });
+
+  test("throws when a job uses the affected filter without the step", async () => {
+    const cwd = tempRepo();
+    const graph = makeGraph([makePackage("A", "a", { test: "t" })]);
+    await expect(
+      generate(
+        {
+          tasks: {
+            test: ({ affected }) => ({
+              on: MANUAL,
+              jobs: {
+                t: {
+                  "runs-on": "ubuntu-latest",
+                  steps: [{ run: `turbo test ${affected.filter}` }],
+                },
+              },
+            }),
+          },
+        },
+        { cwd, graph, log: false },
+      ),
+    ).rejects.toThrow(/without affected.step/);
+  });
+
   test("allows templates to return null to skip", async () => {
     const cwd = tempRepo();
     const graph = makeGraph(
-      [
-        makePackage("A", "a", { test: "t" }),
-        makePackage("B", "b", { test: "t" }),
-      ],
-      { tasks: { test: { dependsOn: ["^test"] } } },
+      [makePackage("A", "a", { test: "t", build: "b" })],
+      { tasks: { test: { dependsOn: ["build"] } } },
     );
     const result = await generate(
       {
         tasks: {
-          test: ({ pkg }) =>
-            pkg.name === "A"
-              ? null
-              : {
-                  on: "push",
-                  jobs: {
-                    t: { "runs-on": "ubuntu-latest", steps: [{ run: "hi" }] },
-                  },
-                },
+          build: () => null,
+          test: () => ({
+            on: MANUAL,
+            jobs: {
+              t: { "runs-on": "ubuntu-latest", steps: [{ run: "hi" }] },
+            },
+          }),
         },
       },
       { cwd, graph, log: false },
     );
-    expect(result.written).toEqual(["workie-b-test.yml"]);
+    expect(result.written).toEqual(["workie-test.yml"]);
   });
 });
 
 describe("workflowFilename", () => {
-  test("slugs slashes in the package path", () => {
-    const pkg = makePackage("x", "tools/foo");
-    expect(workflowFilename("test", pkg)).toBe("workie-tools-foo-test.yml");
+  test("slugs slashes in the task name", () => {
+    expect(workflowFilename("test")).toBe("workie-test.yml");
+    expect(workflowFilename("a/b")).toBe("workie-a-b.yml");
   });
 });

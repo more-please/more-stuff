@@ -8,6 +8,7 @@ import {
   writeFileSync,
 } from "node:fs";
 import { join } from "node:path";
+import { AFFECTED_STEP_ID, affected } from "./affected.ts";
 import { collectSecrets, secretsToEnv } from "./secrets.ts";
 import { taskRoots } from "./taskRoots.ts";
 import {
@@ -15,7 +16,13 @@ import {
   type TurboGraph,
   transitiveDependencies,
 } from "./turboGraph.ts";
-import type { PackageInfo, WorkflowContext, WorkieConfig } from "./types.ts";
+import type {
+  PackageInfo,
+  TaskRoot,
+  Workflow,
+  WorkflowContext,
+  WorkieConfig,
+} from "./types.ts";
 import { validateWorkflow } from "./validateWorkflow.ts";
 import { yaml } from "./yaml.ts";
 
@@ -69,49 +76,42 @@ export async function generate(
   const allTasks = Object.keys(config.tasks);
   for (const [task, fn] of Object.entries(config.tasks)) {
     const otherTasks = allTasks.filter((t) => t !== task);
-    const roots = taskRoots(graph, task, { otherTasks });
-    for (const root of roots) {
-      const deps = transitiveDependencies(graph, root.name);
-      const dependencies = [...deps]
-        .map((n) => graph.byName.get(n))
-        .filter((p): p is PackageInfo => p !== undefined);
-      const paths = dependencies
-        .map((p) => p.path)
-        .filter((p) => p !== "")
-        .map((p) => `${p}/**`)
-        .sort();
-      const env = secretsToEnv(collectSecrets(graph, root, task));
-      const ctx: WorkflowContext = {
-        task,
-        pkg: root,
-        paths,
-        dependencies,
-        env,
-      };
-      const workflow = fn(ctx);
-      if (!workflow) {
-        continue;
-      }
-
-      const result = validateWorkflow(workflow);
-      if (!result.ok) {
-        errors.push(
-          `Task "${task}" for package "${root.name}" produced an invalid workflow:\n  ` +
-            result.errors.join("\n  "),
-        );
-        continue;
-      }
-
-      const filename = workflowFilename(task, root);
-      if (generated.has(filename)) {
-        errors.push(
-          `Two workflows claimed the same filename: ${filename}. ` +
-            `Check your task templates -- each (task, package) pair must produce a unique filename.`,
-        );
-        continue;
-      }
-      generated.set(filename, `${HEADER}\n\n${yaml(workflow)}`);
+    const roots = taskRoots(graph, task, { otherTasks }).map((pkg) =>
+      taskRoot(graph, pkg),
+    );
+    if (roots.length === 0) {
+      continue;
     }
+    const dependencies = sortPackages(
+      new Set(roots.flatMap((r) => r.dependencies)),
+    );
+    const paths = [...new Set(roots.flatMap((r) => r.paths))].sort();
+    const secrets = roots.flatMap((r) => collectSecrets(graph, r.pkg, task));
+    const env = secretsToEnv([...new Set(secrets)].sort());
+    const ctx: WorkflowContext = {
+      task,
+      roots,
+      dependencies,
+      paths,
+      env,
+      affected: affected(roots),
+    };
+    const workflow = fn(ctx);
+    if (!workflow) {
+      continue;
+    }
+
+    const result = validateWorkflow(workflow);
+    const problems = result.ok ? workieProblems(workflow) : result.errors;
+    if (problems.length > 0) {
+      errors.push(
+        `Task "${task}" produced an invalid workflow:\n  ` +
+          problems.join("\n  "),
+      );
+      continue;
+    }
+
+    generated.set(workflowFilename(task), `${HEADER}\n\n${yaml(workflow)}`);
   }
 
   if (errors.length > 0) {
@@ -161,11 +161,54 @@ export async function generate(
   return { written, unchanged, removed };
 }
 
-/**
- * Derive a filename for the given task + package. Always starts with
- * `workie-`; the rest is a slug of the package path and task name.
- */
-export function workflowFilename(task: string, pkg: PackageInfo): string {
-  const slug = pkg.path.replace(/\//g, "-");
-  return `${PREFIX}${slug}-${task}.yml`;
+/** The filename of the workflow for `task`. Always starts with `workie-`. */
+export function workflowFilename(task: string): string {
+  return `${PREFIX}${task.replace(/\//g, "-")}.yml`;
+}
+
+function taskRoot(graph: TurboGraph, pkg: PackageInfo): TaskRoot {
+  const dependencies = sortPackages(
+    [...transitiveDependencies(graph, pkg.name)]
+      .map((n) => graph.byName.get(n))
+      .filter((p): p is PackageInfo => p !== undefined),
+  );
+  const paths = dependencies
+    .map((p) => p.path)
+    .filter((p) => p !== "")
+    .map((p) => `${p}/**`)
+    .sort();
+  return { pkg, dependencies, paths };
+}
+
+function sortPackages(packages: Iterable<PackageInfo>): PackageInfo[] {
+  return [...packages].sort((a, b) => a.path.localeCompare(b.path));
+}
+
+/** Checks the schema can't express: a manual trigger, and the affected step. */
+function workieProblems(workflow: Workflow): string[] {
+  const problems: string[] = [];
+  const on = workflow.on;
+  const manual =
+    typeof on === "string"
+      ? on === "workflow_dispatch"
+      : Array.isArray(on)
+        ? on.includes("workflow_dispatch")
+        : "workflow_dispatch" in on;
+  if (!manual) {
+    problems.push(
+      "/on needs a workflow_dispatch trigger, for running every package",
+    );
+  }
+  for (const [id, job] of Object.entries(workflow.jobs)) {
+    const usesOutputs = JSON.stringify(job).includes(
+      `steps.${AFFECTED_STEP_ID}.outputs`,
+    );
+    const hasStep = (job.steps ?? []).some((s) => s.id === AFFECTED_STEP_ID);
+    if (usesOutputs && !hasStep) {
+      problems.push(
+        `/jobs/${id} uses affected.filter or affected.if() without affected.step()`,
+      );
+    }
+  }
+  return problems;
 }

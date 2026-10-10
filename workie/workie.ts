@@ -24,8 +24,11 @@ export {
 } from "./src/taskRoots.ts";
 export { loadTurboGraph, transitiveDependencies } from "./src/turboGraph.ts";
 export type {
+  Affected,
+  AffectedOptions,
   PackageInfo,
   PackageManifest,
+  TaskRoot,
   Workflow,
   WorkflowContext,
   WorkflowFunction,

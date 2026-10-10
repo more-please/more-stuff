@@ -9,7 +9,7 @@ import {
 
 // workie's paths only cover package directories. Changes at the root (a
 // dependency bump, a turbo.json edit) can break any package, so they run
-// every workflow.
+// every package.
 const ROOT_PATHS = [
   "package.json",
   "pnpm-lock.yaml",
@@ -47,8 +47,8 @@ function toolchainSetup(packages: PackageInfo[]): WorkflowStep[] {
   return steps;
 }
 
-const test: WorkflowFunction = ({ pkg, paths, dependencies, env }) => ({
-  name: `test ${pkg.name}`,
+const test: WorkflowFunction = ({ paths, dependencies, env, affected }) => ({
+  name: "test",
   on: {
     workflow_dispatch: {},
     pull_request: { branches: ["main"], paths: [...ROOT_PATHS, ...paths] },
@@ -57,15 +57,17 @@ const test: WorkflowFunction = ({ pkg, paths, dependencies, env }) => ({
     test: {
       // The job name is the check name. A bare "test" would collide with
       // test.yml's gate job, which is the check branch protection requires.
-      name: `test ${pkg.name}`,
+      name: "test packages",
       "runs-on": "ubuntu-latest",
       steps: [
         { uses: "actions/checkout@v7" },
+        affected.step({ always: ROOT_PATHS }),
         ...toolchainSetup(dependencies),
         ...PNPM_SETUP,
         {
           name: "turbo test",
-          run: `pnpm exec turbo test --filter=${pkg.name} --log-order=stream`,
+          if: affected.if(),
+          run: `pnpm exec turbo test ${affected.filter} --log-order=stream`,
           env,
         },
       ],

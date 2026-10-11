@@ -8,9 +8,9 @@ import {
   writeFileSync,
 } from "node:fs";
 import { join } from "node:path";
-import { AFFECTED_STEP_ID, affected } from "./affected.ts";
-import { collectSecrets, secretsToEnv } from "./secrets.ts";
-import { taskRoots } from "./taskRoots.ts";
+import { AFFECTED_ARGS, AFFECTED_ENV } from "./affected.ts";
+import { packageSecrets, secretsToEnv } from "./secrets.ts";
+import { sortPackages, taskRoots } from "./taskRoots.ts";
 import {
   loadTurboGraph,
   type TurboGraph,
@@ -18,7 +18,6 @@ import {
 } from "./turboGraph.ts";
 import type {
   PackageInfo,
-  TaskRoot,
   Workflow,
   WorkflowContext,
   WorkieConfig,
@@ -76,25 +75,33 @@ export async function generate(
   const allTasks = Object.keys(config.tasks);
   for (const [task, fn] of Object.entries(config.tasks)) {
     const otherTasks = allTasks.filter((t) => t !== task);
-    const roots = taskRoots(graph, task, { otherTasks }).map((pkg) =>
-      taskRoot(graph, pkg),
-    );
+    const roots = taskRoots(graph, task, { otherTasks });
     if (roots.length === 0) {
       continue;
     }
-    const dependencies = sortPackages(
-      new Set(roots.flatMap((r) => r.dependencies)),
+    const names = new Set(
+      roots.flatMap((r) => [...transitiveDependencies(graph, r.name)]),
     );
-    const paths = [...new Set(roots.flatMap((r) => r.paths))].sort();
-    const secrets = roots.flatMap((r) => collectSecrets(graph, r.pkg, task));
-    const env = secretsToEnv([...new Set(secrets)].sort());
+    const dependencies = sortPackages(
+      [...names]
+        .map((n) => graph.byName.get(n))
+        .filter((p): p is PackageInfo => p !== undefined),
+    );
+    const paths = dependencies
+      .map((p) => p.path)
+      .filter((p) => p !== "")
+      .map((p) => `${p}/**`)
+      .sort();
+    const secrets = new Set(
+      dependencies.flatMap((p) => packageSecrets(p, task)),
+    );
     const ctx: WorkflowContext = {
       task,
       roots,
       dependencies,
       paths,
-      env,
-      affected: affected(roots),
+      affected: AFFECTED_ARGS,
+      env: { ...AFFECTED_ENV, ...secretsToEnv([...secrets].sort()) },
     };
     const workflow = fn(ctx);
     if (!workflow) {
@@ -102,7 +109,7 @@ export async function generate(
     }
 
     const result = validateWorkflow(workflow);
-    const problems = result.ok ? workieProblems(workflow) : result.errors;
+    const problems = result.ok ? manualRunProblems(workflow) : result.errors;
     if (problems.length > 0) {
       errors.push(
         `Task "${task}" produced an invalid workflow:\n  ` +
@@ -166,27 +173,11 @@ export function workflowFilename(task: string): string {
   return `${PREFIX}${task.replace(/\//g, "-")}.yml`;
 }
 
-function taskRoot(graph: TurboGraph, pkg: PackageInfo): TaskRoot {
-  const dependencies = sortPackages(
-    [...transitiveDependencies(graph, pkg.name)]
-      .map((n) => graph.byName.get(n))
-      .filter((p): p is PackageInfo => p !== undefined),
-  );
-  const paths = dependencies
-    .map((p) => p.path)
-    .filter((p) => p !== "")
-    .map((p) => `${p}/**`)
-    .sort();
-  return { pkg, dependencies, paths };
-}
-
-function sortPackages(packages: Iterable<PackageInfo>): PackageInfo[] {
-  return [...packages].sort((a, b) => a.path.localeCompare(b.path));
-}
-
-/** Checks the schema can't express: a manual trigger, and the affected step. */
-function workieProblems(workflow: Workflow): string[] {
-  const problems: string[] = [];
+/**
+ * A check the schema can't express: every workflow needs a manual trigger,
+ * since that's how the task gets run in every package.
+ */
+function manualRunProblems(workflow: Workflow): string[] {
   const on = workflow.on;
   const manual =
     typeof on === "string"
@@ -194,21 +185,7 @@ function workieProblems(workflow: Workflow): string[] {
       : Array.isArray(on)
         ? on.includes("workflow_dispatch")
         : "workflow_dispatch" in on;
-  if (!manual) {
-    problems.push(
-      "/on needs a workflow_dispatch trigger, for running every package",
-    );
-  }
-  for (const [id, job] of Object.entries(workflow.jobs)) {
-    const usesOutputs = JSON.stringify(job).includes(
-      `steps.${AFFECTED_STEP_ID}.outputs`,
-    );
-    const hasStep = (job.steps ?? []).some((s) => s.id === AFFECTED_STEP_ID);
-    if (usesOutputs && !hasStep) {
-      problems.push(
-        `/jobs/${id} uses affected.filter or affected.if() without affected.step()`,
-      );
-    }
-  }
-  return problems;
+  return manual
+    ? []
+    : ["/on needs a workflow_dispatch trigger, for running every package"];
 }

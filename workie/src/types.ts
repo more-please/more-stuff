@@ -78,60 +78,32 @@ export type PackageManifest = {
   [key: string]: unknown;
 };
 
-/** A package whose `task` run covers others', with what it depends on. */
-export type TaskRoot = {
-  pkg: PackageInfo;
-  /** All packages reachable from `pkg` via `directDependencies` (including itself). */
-  dependencies: PackageInfo[];
-  /** `dependencies`' directories, expanded with the `/**` wildcard and sorted. */
-  paths: string[];
-};
-
 /** Context passed to a `WorkflowFunction`. */
 export type WorkflowContext = {
   /** The task this workflow implements (e.g. `"test"`, `"push"`). */
   task: string;
   /** The packages the workflow runs `task` in, sorted by path. */
-  roots: TaskRoot[];
+  roots: PackageInfo[];
   /** Every package reachable from a root (roots included), sorted by path. */
   dependencies: PackageInfo[];
   /**
-   * Path filters for this workflow's `on:` trigger: the union of every
-   * root's `paths`, sorted alphabetically.
+   * Path filters for this workflow's `on:` trigger: the directories of
+   * `dependencies`, expanded with the `/**` wildcard and sorted.
    */
   paths: string[];
   /**
-   * GitHub Actions `env` block, pre-populated with all secrets declared
-   * in `workie.secrets` on any root or its transitive dependencies that
-   * apply to this task. Each value is a `${{ secrets.NAME }}` expression.
-   * Plug it into any step (or the whole job) that needs the secrets.
+   * Arguments for the `turbo run` command that limit `task` to the packages
+   * the triggering change affects: `--affected` on a pull request or push.
+   * Any other event, such as a manual run, runs the task everywhere.
+   */
+  affected: string;
+  /**
+   * GitHub Actions `env` block for the step that runs turbo. It tells turbo
+   * which commit a pull request is compared against, and holds every secret
+   * declared in `workie.secrets` on `dependencies` that applies to this
+   * task, as a `${{ secrets.NAME }}` expression.
    */
   env: Record<string, string>;
-  /** Helpers for running `task` only in the roots a change affects. */
-  affected: Affected;
-};
-
-/**
- * Selects the roots affected by the change set that triggered the
- * workflow. Put `step()` early in the job, then run turbo with `filter`
- * in a later step of the same job, guarded by `if()`.
- */
-export type Affected = {
-  /** A step (with id `workie`) that works out the affected roots. */
-  step(options?: AffectedOptions): WorkflowStep;
-  /** `--filter=` arguments for the affected roots, as an expression. */
-  filter: string;
-  /**
-   * An `if:` condition that's true when any of `roots` (default: all of
-   * them) is affected. Without it, an empty `filter` would make turbo run
-   * the task in every package.
-   */
-  if(roots?: TaskRoot[]): string;
-};
-
-export type AffectedOptions = {
-  /** Path globs (e.g. `pnpm-lock.yaml`) whose change affects every root. */
-  always?: string[];
 };
 
 /** A function that produces a workflow JSON object, or `null` to skip. */

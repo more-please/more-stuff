@@ -7,9 +7,10 @@ import {
   type WorkflowStep,
 } from "@moreplease/workie";
 
-// workie's paths only cover package directories. Changes at the root (a
-// dependency bump, a turbo.json edit) can break any package, so they run
-// every package.
+// Root files whose changes can affect any package, so they trigger the
+// workflow too. turbo.json and the lockfile are global to turbo already; the
+// others are listed as globalDependencies in turbo.json, so that `--affected`
+// treats them the same way.
 const ROOT_PATHS = [
   "package.json",
   "pnpm-lock.yaml",
@@ -29,7 +30,7 @@ const PNPM_SETUP: WorkflowStep[] = [
 // Rust needs no setup: the runner image comes with cargo.
 function toolchainSetup(packages: PackageInfo[]): WorkflowStep[] {
   const has = (file: string) =>
-    packages.find((p) => existsSync(join(p.path, file)));
+    packages.find((p) => existsSync(join(import.meta.dirname, p.path, file)));
   const steps: WorkflowStep[] = [];
   const go = has("go.mod");
   if (go) {
@@ -47,7 +48,7 @@ function toolchainSetup(packages: PackageInfo[]): WorkflowStep[] {
   return steps;
 }
 
-const test: WorkflowFunction = ({ paths, dependencies, env, affected }) => ({
+const test: WorkflowFunction = ({ paths, dependencies, affected, env }) => ({
   name: "test",
   on: {
     workflow_dispatch: {},
@@ -60,14 +61,13 @@ const test: WorkflowFunction = ({ paths, dependencies, env, affected }) => ({
       name: "test packages",
       "runs-on": "ubuntu-latest",
       steps: [
-        { uses: "actions/checkout@v7" },
-        affected.step({ always: ROOT_PATHS }),
+        // `--affected` needs the history back to the commit it compares with.
+        { uses: "actions/checkout@v7", with: { "fetch-depth": 0 } },
         ...toolchainSetup(dependencies),
         ...PNPM_SETUP,
         {
           name: "turbo test",
-          if: affected.if(),
-          run: `pnpm exec turbo test ${affected.filter} --log-order=stream`,
+          run: `pnpm exec turbo test ${affected} --log-order=stream`,
           env,
         },
       ],

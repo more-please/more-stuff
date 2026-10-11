@@ -65,17 +65,16 @@ describe("generate", () => {
     const result = await generate(
       {
         tasks: {
-          test: ({ task, roots, paths, affected }) => ({
+          test: ({ task, roots, paths, affected, env }) => ({
             name: task,
             on: { ...MANUAL, push: { branches: ["main"], paths } },
             jobs: {
               test: {
                 "runs-on": "ubuntu-latest",
                 steps: [
-                  affected.step(),
                   {
-                    if: affected.if(),
-                    run: `echo ${roots.map((r) => r.pkg.name).join(",")} ${affected.filter}`,
+                    run: `turbo test ${affected} ${roots.map((r) => r.name).join(",")}`,
+                    env,
                   },
                 ],
               },
@@ -92,9 +91,15 @@ describe("generate", () => {
     );
     expect(body).toContain("name: test");
     // C is shared by both roots, so it's covered rather than a root itself.
-    expect(body).toContain("echo A,B ${{ steps.workie.outputs.filter }}");
+    expect(body).toContain("A,B");
     expect(body).toContain("      - a/**\n      - b/**\n      - c/**\n");
-    expect(body).toContain("if: steps.workie.outputs.filter != ''");
+    // Only a pull request or push is limited to the affected packages.
+    expect(body).toContain(
+      "turbo test ${{ (github.event_name == 'pull_request' || github.event_name == 'push') && '--affected' || '' }} A,B",
+    );
+    expect(body).toContain(
+      "TURBO_SCM_BASE: ${{ github.event_name == 'pull_request' && 'HEAD^1' || '' }}",
+    );
   });
 
   test("merges the secrets of every root into env", async () => {
@@ -145,7 +150,8 @@ describe("generate", () => {
       "utf-8",
     );
     expect(body).toContain(
-      "BAR: ${{ secrets.BAR }}\n          FOO: ${{ secrets.FOO }}\n",
+      "TURBO_SCM_BASE: ${{ github.event_name == 'pull_request' && 'HEAD^1' || '' }}\n" +
+        "          BAR: ${{ secrets.BAR }}\n          FOO: ${{ secrets.FOO }}\n",
     );
   });
 
@@ -267,29 +273,6 @@ describe("generate", () => {
         { cwd, graph, log: false },
       ),
     ).rejects.toThrow(/workflow_dispatch/);
-  });
-
-  test("throws when a job uses the affected filter without the step", async () => {
-    const cwd = tempRepo();
-    const graph = makeGraph([makePackage("A", "a", { test: "t" })]);
-    await expect(
-      generate(
-        {
-          tasks: {
-            test: ({ affected }) => ({
-              on: MANUAL,
-              jobs: {
-                t: {
-                  "runs-on": "ubuntu-latest",
-                  steps: [{ run: `turbo test ${affected.filter}` }],
-                },
-              },
-            }),
-          },
-        },
-        { cwd, graph, log: false },
-      ),
-    ).rejects.toThrow(/without affected.step/);
   });
 
   test("allows templates to return null to skip", async () => {

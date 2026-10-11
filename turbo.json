@@ -1,6 +1,7 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalEnv": ["CLOUDFLARE_ACCOUNT_ID", "CLOUDFLARE_API_TOKEN", "NPM_TOKEN"],
+  "globalDependencies": ["package.json", "pnpm-workspace.yaml"],
   "tasks": {
     "//#codegen": {
       "dependsOn": []

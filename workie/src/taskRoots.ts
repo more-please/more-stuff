@@ -238,6 +238,7 @@ function isSubsetOrEqual<T>(a: Set<T>, b: Set<T>): boolean {
   return true;
 }
 
-function sortPackages(packages: PackageInfo[]): PackageInfo[] {
+/** Sort packages by path, for deterministic output. */
+export function sortPackages(packages: PackageInfo[]): PackageInfo[] {
   return [...packages].sort((a, b) => a.path.localeCompare(b.path));
 }

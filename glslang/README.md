@@ -39,7 +39,7 @@ Each file's stage is its extension's: `.vert` or `.vs` for a vertex shader, `.fr
 ```ts
 import { formatDiagnostic, validate } from "@moreplease/glslang";
 
-const result = validate(
+const result = await validate(
   [
     { name: "sprite.vert", source: vertexSource },
     { name: "sprite.frag", source: fragmentSource },
@@ -51,11 +51,11 @@ if (!result.ok) {
 }
 ```
 
-`validate` is synchronous, and works in Node and in browsers. It compiles the WebAssembly module the first time it is called, in under half a second; after that, a program takes a few milliseconds, or tens for one of thousands of lines.
+`validate` works in Node and in browsers, and returns a promise. It compiles the WebAssembly module the first time it is called, asynchronously, in under half a second; after that, a program takes a few milliseconds, or tens for one of thousands of lines.
 
 | Export | Description |
 | --- | --- |
-| `validate(shaders, options?)` | Validates up to one vertex and one fragment shader as a program. Each shader is `{ name, source, stage? }`, the stage from the name's extension if not given. Options are the `target`, `"webgl2"` (the default) or `"webgl1"`, and any `limits` to check against in place of its minimums. |
+| `validate(shaders, options?)` | Validates up to one vertex and one fragment shader as a program, resolving to the result. Each shader is `{ name, source, stage? }`, the stage from the name's extension if not given. Options are the `target`, `"webgl2"` (the default) or `"webgl1"`, and any `limits` to check against in place of its minimums. |
 | `formatDiagnostic(diagnostic)` | A diagnostic as `name:line: error: message`. |
 | `stageOf(name)` | The stage a file name's extension gives, if any. |
 | `LIMITS` | Each target's minimum limits. |
@@ -84,7 +84,7 @@ The package version is glslang's version plus a packaging revision: `@moreplease
 pnpm build
 ```
 
-`build.ts` clones the pinned glslang release into `node_modules/.cache`, checks it against its commit, and compiles its GLSL front end with `src/driver.cpp` to `wasm32-wasi`, using the Zig toolchain from [@moreplease/zig](https://www.npmjs.com/package/@moreplease/zig). The module is written to `build/glslang.wasm`, and as base64 to `build/glslang-wasm.ts`, which the package loads: as a module of its own it loads synchronously, the same way everywhere, with no bundler configuration. The first build takes a minute or two; Zig's cache makes later ones take a few seconds.
+`build.ts` clones the pinned glslang release into `node_modules/.cache`, checks it against its commit, and compiles its GLSL front end with `src/driver.cpp` to `wasm32-wasi`, using the Zig toolchain from [@moreplease/zig](https://www.npmjs.com/package/@moreplease/zig). The module is written to `build/glslang.wasm`, and as base64 to `build/glslang-wasm.ts`, which the package imports: a module of its own, which loads the same way everywhere, with no bundler configuration. The first build takes a minute or two; Zig's cache makes later ones take a few seconds.
 
 The module needs only a handful of WASI calls, which the package provides itself, so it does not depend on Node's `node:wasi`.
 

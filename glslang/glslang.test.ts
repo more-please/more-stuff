@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { formatDiagnostic, validate } from "./glslang.ts";
+import { formatDiagnostic, type Result, validate } from "./glslang.ts";
 import { packs } from "./src/webgl.ts";
 
 const VERTEX = `#version 300 es
@@ -22,12 +22,11 @@ void main() {
 }
 `;
 
-const messages = (result: ReturnType<typeof validate>) =>
-  result.diagnostics.map(formatDiagnostic);
+const messages = (result: Result) => result.diagnostics.map(formatDiagnostic);
 
 describe("validate", () => {
-  test("a program that compiles and links, and what it uses", () => {
-    const result = validate([
+  test("a program that compiles and links, and what it uses", async () => {
+    const result = await validate([
       { name: "quad.vert", source: VERTEX },
       { name: "quad.frag", source: FRAGMENT },
     ]);
@@ -55,8 +54,8 @@ describe("validate", () => {
     });
   });
 
-  test("a compile error, where it is", () => {
-    const result = validate([
+  test("a compile error, where it is", async () => {
+    const result = await validate([
       { name: "bad.frag", source: FRAGMENT.replace("v_uv)", "v_xy)") },
     ]);
     expect(result.ok).toBe(false);
@@ -65,12 +64,12 @@ describe("validate", () => {
     );
   });
 
-  test("a mismatch between the stages", () => {
+  test("a mismatch between the stages", async () => {
     const fragment = FRAGMENT.replace("in vec2 v_uv;", "in vec3 v_uv;").replace(
       "v_uv)",
       "v_uv.xy)",
     );
-    const result = validate([
+    const result = await validate([
       { name: "quad.vert", source: VERTEX },
       { name: "quad.frag", source: fragment },
     ]);
@@ -78,8 +77,8 @@ describe("validate", () => {
     expect(messages(result).join("\n")).toContain("v_uv");
   });
 
-  test("the version each target accepts", () => {
-    const result = validate([{ name: "quad.frag", source: FRAGMENT }], {
+  test("the version each target accepts", async () => {
+    const result = await validate([{ name: "quad.frag", source: FRAGMENT }], {
       target: "webgl1",
     });
     expect(messages(result)).toEqual([
@@ -87,7 +86,7 @@ describe("validate", () => {
     ]);
   });
 
-  test("GLSL ES 1.00's loops and indexing are restricted", () => {
+  test("GLSL ES 1.00's loops and indexing are restricted", async () => {
     const source = `precision mediump float;
 uniform int u_count;
 void main() {
@@ -98,24 +97,24 @@ void main() {
   gl_FragColor = vec4(sum);
 }
 `;
-    const result = validate([{ name: "loop.frag", source }]);
+    const result = await validate([{ name: "loop.frag", source }]);
     expect(result.ok).toBe(false);
     expect(messages(result)[0]).toMatch(/^loop\.frag:5: error: 'limitations'/);
     const v300 = `#version 300 es\nprecision mediump float;\nout vec4 color;\n${source.replace("precision mediump float;\n", "").replace("gl_FragColor", "color")}`;
-    expect(messages(validate([{ name: "loop.frag", source: v300 }]))).toEqual(
-      [],
-    );
+    expect(
+      messages(await validate([{ name: "loop.frag", source: v300 }])),
+    ).toEqual([]);
   });
 
-  test("identifiers WebGL reserves", () => {
+  test("identifiers WebGL reserves", async () => {
     const source = FRAGMENT.replaceAll("v_uv", "webgl_uv");
-    const result = validate([{ name: "quad.frag", source }]);
+    const result = await validate([{ name: "quad.frag", source }]);
     expect(messages(result)).toContain(
       `quad.frag:3: error: 'webgl_uv' : identifiers beginning "webgl_" or "_webgl_" are reserved by WebGL`,
     );
   });
 
-  test("texture units", () => {
+  test("texture units", async () => {
     const samplers = Array.from({ length: 17 }, (_, i) => `u_s${i}`);
     const source = `#version 300 es
 precision highp float;
@@ -125,13 +124,13 @@ void main() {
   color = ${samplers.map((s) => `texture(${s}, vec2(0.0))`).join(" + ")};
 }
 `;
-    const result = validate([{ name: "many.frag", source }]);
+    const result = await validate([{ name: "many.frag", source }]);
     expect(messages(result)).toEqual([
       "error: fragment shader texture units: 17 used, 16 available",
     ]);
   });
 
-  test("uniform vectors", () => {
+  test("uniform vectors", async () => {
     const source = (n: number) => `#version 300 es
 precision highp float;
 uniform vec4 u_v[${n}];
@@ -141,23 +140,26 @@ void main() {
   color = u_v[u_i];
 }
 `;
-    expect(validate([{ name: "fits.frag", source: source(223) }]).ok).toBe(
-      true,
-    );
     expect(
-      messages(validate([{ name: "over.frag", source: source(224) }])),
+      (await validate([{ name: "fits.frag", source: source(223) }])).ok,
+    ).toBe(true);
+    expect(
+      messages(await validate([{ name: "over.frag", source: source(224) }])),
     ).toEqual([
       "error: fragment shader uniforms do not fit in 224 vectors (225 rows to pack)",
     ]);
   });
 
-  test("a stage from the extension, or given", () => {
-    expect(() => validate([{ name: "shader.glsl", source: FRAGMENT }])).toThrow(
-      /no stage/,
-    );
+  test("a stage from the extension, or given", async () => {
+    await expect(
+      validate([{ name: "shader.glsl", source: FRAGMENT }]),
+    ).rejects.toThrow(/no stage/);
     expect(
-      validate([{ name: "shader.glsl", source: FRAGMENT, stage: "fragment" }])
-        .ok,
+      (
+        await validate([
+          { name: "shader.glsl", source: FRAGMENT, stage: "fragment" },
+        ])
+      ).ok,
     ).toBe(true);
   });
 });

@@ -82,7 +82,10 @@ export function stageOf(name: string): Stage | undefined {
 // Validates shaders as a WebGL program: compiles each, and if they all
 // compile, links them -- at most one shader for each stage -- and checks
 // the program against the target's limits.
-export function validate(shaders: Shader[], options: Options = {}): Result {
+export async function validate(
+  shaders: Shader[],
+  options: Options = {},
+): Promise<Result> {
   const target = options.target ?? "webgl2";
   const limits = { ...LIMITS[target], ...options.limits };
   const diagnostics: Diagnostic[] = [];
@@ -108,7 +111,7 @@ export function validate(shaders: Shader[], options: Options = {}): Result {
     return { ok: false, diagnostics };
   }
 
-  const raw = check(
+  const raw = await check(
     staged.map((s) => ({
       stage: STAGES[s.stage],
       name: s.name,

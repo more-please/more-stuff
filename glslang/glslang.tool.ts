@@ -47,7 +47,7 @@ for (const path of positionals) {
 
 let failed = false;
 for (const [program, shaders] of programs) {
-  const result = validate(shaders, { target });
+  const result = await validate(shaders, { target });
   for (const diagnostic of result.diagnostics) {
     // A diagnostic about the program as a whole is named for it.
     console.error(

@@ -75,19 +75,20 @@ function wasiImports(memory: () => WebAssembly.Memory) {
   };
 }
 
-let loaded: Exports | undefined;
+let loaded: Promise<Exports> | undefined;
 
-function load(): Exports {
-  if (!loaded) {
+function load(): Promise<Exports> {
+  loaded ??= (async () => {
     const bytes = Uint8Array.from(atob(wasm), (c) => c.charCodeAt(0));
-    const module = new WebAssembly.Module(bytes);
-    const instance = new WebAssembly.Instance(module, {
-      wasi_snapshot_preview1: wasiImports(() => exports.memory),
+    let memory: WebAssembly.Memory | undefined;
+    const { instance } = await WebAssembly.instantiate(bytes, {
+      wasi_snapshot_preview1: wasiImports(() => memory!),
     });
     const exports = instance.exports as unknown as Exports;
+    memory = exports.memory;
     exports._initialize();
-    loaded = exports;
-  }
+    return exports;
+  })();
   return loaded;
 }
 
@@ -95,7 +96,7 @@ function load(): Exports {
 // reflects the program: `stage` is glslang's (0 vertex, 4 fragment),
 // `restricted` whether GLSL ES 1.00's Appendix A applies, and `limits` in
 // the order src/driver.cpp reads them.
-export function check(
+export async function check(
   shaders: {
     stage: number;
     name: string;
@@ -103,8 +104,8 @@ export function check(
     restricted: boolean;
   }[],
   limits: number[],
-): RawResult {
-  const m = load();
+): Promise<RawResult> {
+  const m = await load();
   const encoder = new TextEncoder();
   const allocated: number[] = [];
   const alloc = (size: number) => {

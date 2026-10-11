@@ -12,6 +12,10 @@ Embed build metadata in your bundled code.
 
 Embed build metadata in your bundled code.
 
+## [glslang](glslang/README.md)
+
+Validate GLSL ES shaders for WebGL with Khronos's reference compiler, glslang, compiled to WebAssembly: no native binaries, and nothing to install but the package.
+
 ## [gosub](gosub/README.md)
 
 GOPROXY implementation that allows Go modules to live in subdirectories.

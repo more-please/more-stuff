@@ -63,6 +63,30 @@ importers:
         specifier: ^6.0.3
         version: 6.0.3
 
+  glslang:
+    devDependencies:
+      '@biomejs/biome':
+        specifier: 2.5.9
+        version: 2.5.9
+      '@moreplease/zig':
+        specifier: 0.17.0
+        version: 0.17.0
+      '@types/node':
+        specifier: ^26.2.0
+        version: 26.2.0
+      markdown-toc:
+        specifier: ^1.2.0
+        version: 1.2.0
+      tsdown:
+        specifier: ^0.22.14
+        version: 0.22.14(@volar/typescript@2.4.28(typescript@6.0.3))(tsx@4.21.0)(typescript@6.0.3)(unrun@0.2.39)
+      typescript:
+        specifier: ^6.0.3
+        version: 6.0.3
+      vitest:
+        specifier: ^4.1.11
+        version: 4.1.11(@types/node@26.2.0)(jsdom@26.0.0(supports-color@10.2.2))(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.4.2)(terser@5.38.0)(tsx@4.21.0)(yaml@2.9.0))
+
   gosub/src:
     dependencies:
       client-zip:
@@ -1585,6 +1609,11 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
+
+  '@moreplease/zig@0.17.0':
+    resolution: {integrity: sha512-KsDFERpzrtqCCl7yHjLBswMKgw1CzLF+AoMNHn6WcM93M+FRIhkHo3Pp2REVyxieeo+JQGPlj+MzFD4sbZmcDQ==}
+    engines: {node: '>=22'}
+    hasBin: true
 
   '@napi-rs/wasm-runtime@1.2.3':
     resolution: {integrity: sha512-UMduMbqO5s5zF2NkNacMT/yK5Y5QiKvWr2+50bzIIxFDwVJ2h49b+oyjaCGPhJxd2/gC2x39EHv/gHVuu36x2Q==}
@@ -5259,6 +5288,8 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
+
+  '@moreplease/zig@0.17.0': {}
 
   '@napi-rs/wasm-runtime@1.2.3(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)':
     dependencies:

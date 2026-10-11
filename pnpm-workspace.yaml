@@ -3,6 +3,7 @@
 packages:
   - build-info
   - esbuild-plugin-build-info
+  - glslang
   - gosub/src
   - gosub/test
   - gosub/website
@@ -18,6 +19,7 @@ packages:
   - workie
 allowBuilds:
   "@journeyapps/ts-browser-compat": true
+  "@moreplease/zig": false
   esbuild: false
   sharp: false
   workerd: false

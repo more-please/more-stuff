@@ -11,6 +11,7 @@ export default {
   packages,
   allowBuilds: {
     "@journeyapps/ts-browser-compat": true,
+    "@moreplease/zig": false,
     esbuild: false,
     sharp: false,
     workerd: false,

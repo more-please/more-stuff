@@ -1,0 +1,60 @@
+{
+  "name": "@moreplease/glslang",
+  "version": "16.6.0-1",
+  "description": "Validate GLSL ES shaders for WebGL with Khronos glslang, compiled to WebAssembly",
+  "keywords": [
+    "glsl",
+    "glslang",
+    "shader",
+    "validator",
+    "webgl",
+    "webgl2"
+  ],
+  "license": "SEE LICENSE IN LICENSE",
+  "author": "Iain Merrick <iain@moreplease.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/more-please/more-stuff.git",
+    "directory": "glslang"
+  },
+  "type": "module",
+  "main": "dist/glslang.mjs",
+  "types": "dist/glslang.d.mts",
+  "bin": {
+    "glslang": "dist/glslang.tool.mjs"
+  },
+  "files": [
+    "LICENSE",
+    "LICENSE.glslang.txt",
+    "README.md",
+    "dist/*"
+  ],
+  "tsdown": {
+    "entry": [
+      "glslang.ts",
+      "glslang.tool.ts"
+    ],
+    "format": [
+      "esm"
+    ],
+    "dts": true,
+    "target": "es2022",
+    "clean": true,
+    "outDir": "dist"
+  },
+  "scripts": {
+    "build": "node build.ts && tsdown",
+    "format": "biome check --write --unsafe . && markdown-toc -i README.md",
+    "test": "tsc && vitest run",
+    "prepublishOnly": "pnpm build && pnpm test"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.9",
+    "@moreplease/zig": "0.17.0",
+    "@types/node": "^26.2.0",
+    "markdown-toc": "^1.2.0",
+    "tsdown": "^0.22.14",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.11"
+  }
+}
